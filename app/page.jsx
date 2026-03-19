@@ -37,7 +37,7 @@ YieldStream is submission intelligence that learns from every outcome, so every 
 
               <div className="reveal reveal-delay-2 home__hero-actions">
                 <Link href="/pricing" className="btn btn-primary btn-lg">Start 14-Day Free Trial →</Link>
-                <Link href="/features" className="btn btn-outline btn-lg">Explore Features</Link>
+                <Link href="/features" className="btn btn-outline btn-lg">Platform Overview</Link>
               </div>
 
               {/* Proof stats */}
