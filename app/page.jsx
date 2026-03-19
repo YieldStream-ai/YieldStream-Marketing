@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useReveal } from './components/useReveal';
 import CTABanner from './components/CTABanner';
+import './page.scss';
 
 export default function Home() {
   useReveal();
@@ -11,103 +12,74 @@ export default function Home() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section style={{
-        padding: '100px 0 80px',
-        background: 'linear-gradient(180deg, var(--p50) 0%, var(--n0) 100%)',
-        position: 'relative', overflow: 'hidden'
-      }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'radial-gradient(circle at 15% 40%, rgba(4,121,135,0.05) 0%, transparent 50%), radial-gradient(circle at 85% 60%, rgba(16,185,129,0.03) 0%, transparent 50%)',
-          pointerEvents: 'none'
-        }} />
-        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+      <section className="home__hero">
+        <div className="home__hero-glow" />
+        <div className="container home__hero-inner">
           <div className="grid-feature grid-feature-hero">
             <div>
               {/* Badge */}
-              <div className="reveal" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '6px 14px 6px 10px',
-                background: 'var(--a50)', border: '1px solid var(--a200)',
-                borderRadius: 100, marginBottom: 24
-              }}>
-                <span style={{
-                  width: 8, height: 8, borderRadius: '50%', background: 'var(--a500)',
-                  animation: 'pulse 2s infinite'
-                }} />
-                <span style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--a700)' }}>
+              <div className="reveal home__badge">
+                <span className="home__badge-dot" />
+                <span className="home__badge-text">
                   Now accepting founding members
                 </span>
               </div>
 
-              <h1 className="display-xl reveal" style={{ marginBottom: 20, maxWidth: 560 }}>
+              <h1 className="display-xl reveal home__hero-headline">
                 Stop guessing which lenders will{' '}
                 <em className="italic teal-gradient">fund.</em>
               </h1>
 
-              <p className="text-lg reveal reveal-delay-1" style={{ maxWidth: 500, marginBottom: 32 }}>
+              <p className="text-lg reveal reveal-delay-1 home__hero-sub">
               Start funding more deals — while building lender trust.
 
 YieldStream is submission intelligence that learns from every outcome, so every deal gets smarter than the last.            </p>
 
-              <div className="reveal reveal-delay-2" style={{ display: 'flex', gap: 12, marginBottom: 40, flexWrap: 'wrap' }}>
+              <div className="reveal reveal-delay-2 home__hero-actions">
                 <Link href="/pricing" className="btn btn-primary btn-lg">Start 14-Day Free Trial →</Link>
                 <Link href="/features" className="btn btn-outline btn-lg">Explore Features</Link>
               </div>
 
               {/* Proof stats */}
-              <div className="reveal reveal-delay-3" style={{
-                display: 'flex', gap: 32, paddingTop: 24,
-                borderTop: '1px solid var(--n200)'
-              }}>
+              <div className="reveal reveal-delay-3 home__hero-stats">
                 {[
                   { num: '94%', label: 'Match Accuracy' },
                   { num: '2.4×', label: 'Faster Funding' },
                   { num: '40hrs', label: 'Saved / Week' },
                 ].map(s => (
                   <div key={s.label}>
-                    <div className="mono" style={{ fontSize: '1.5rem', fontWeight: 600, color: 'var(--p700)' }}>{s.num}</div>
-                    <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--n400)', fontWeight: 500 }}>{s.label}</div>
+                    <div className="mono home__stat-num">{s.num}</div>
+                    <div className="home__stat-label">{s.label}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Hero Screenshot */}
-            <div className="reveal reveal-delay-2" style={{ position: 'relative' }}>
+            <div className="reveal reveal-delay-2 home__hero-screenshot">
               <div className="screenshot screenshot-elevated">
                 <Image src="/images/Opportunities-Table.png" alt="YieldStream Opportunities" width={1400} height={800} priority />
               </div>
               {/* Floating card */}
-              <div style={{
-                position: 'absolute', bottom: -16, left: -24,
-                background: 'white', borderRadius: 12, padding: '14px 18px',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.1)', border: '1px solid var(--n100)',
-                animation: 'floatUp 3s ease-in-out infinite alternate'
-              }}>
-                <div style={{ fontSize: '0.68rem', textTransform: 'uppercase', letterSpacing: '0.07em', color: 'var(--n400)', fontWeight: 500, marginBottom: 2 }}>Top Lender Match</div>
-                <div className="mono" style={{ fontSize: '1.3rem', fontWeight: 600, color: 'var(--a600)' }}>99 Score</div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--n500)' }}>National Funding · $350K</div>
+              <div className="home__floating-card">
+                <div className="home__floating-card-label">Top Lender Match</div>
+                <div className="mono home__floating-card-score">99 Score</div>
+                <div className="home__floating-card-detail">National Funding · $350K</div>
               </div>
             </div>
           </div>
         </div>
-
-        <style jsx>{`
-          @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-          @keyframes floatUp { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
-        `}</style>
       </section>
 
       {/* ===== LOGO BAR ===== */}
-      <section style={{ padding: '48px 0', borderBottom: '1px solid var(--n100)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <div className="label" style={{ marginBottom: 20, color: 'var(--n400)' }}>
+      <section className="home__logo-bar">
+        <div className="container home__logo-bar-inner">
+          <div className="label home__logo-bar-label">
             Built for brokerages moving $10M+ monthly
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: 40, flexWrap: 'wrap', opacity: 0.45 }}>
+          <div className="home__logo-bar-names">
             {['Apex Funding', 'BlueVine Capital', 'National Funding', 'Credibly', 'Kapitus', 'Rapid Finance'].map(name => (
-              <span key={name} style={{ fontWeight: 600, fontSize: '1rem', color: 'var(--n500)' }}>{name}</span>
+              <span key={name} className="home__logo-bar-name">{name}</span>
             ))}
           </div>
         </div>
@@ -117,9 +89,9 @@ YieldStream is submission intelligence that learns from every outcome, so every 
       <section className="section section-alt">
         <div className="container">
           <div className="section-header reveal">
-            <div className="label" style={{ marginBottom: 12 }}>The Problem</div>
+            <div className="label home__label-spacing">The Problem</div>
             <h2 className="display-lg">The MCA industry runs on gut feel.<br />That costs real money.</h2>
-            <p className="text-lg" style={{ maxWidth: 600, marginTop: 12 }}>
+            <p className="text-lg home__section-sub">
               Brokers lose commissions to mismatched submissions every day. Relationship knowledge lives in one person's head. Lender appetites shift and nobody tracks the change.
             </p>
           </div>
@@ -130,14 +102,9 @@ YieldStream is submission intelligence that learns from every outcome, so every 
               { icon: '∅', stat: '0%', title: 'Decline Intelligence Captured', desc: 'When a lender declines, the reason dies in an email. No feedback loop, no learning, no improvement.', bg: 'var(--n100)', color: 'var(--n600)' },
             ].map((card, i) => (
               <div key={i} className={`card reveal reveal-delay-${i + 1}`}>
-                <div style={{
-                  width: 44, height: 44, borderRadius: 10,
-                  background: card.bg, color: card.color,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: 16, fontSize: '1.1rem', fontWeight: 600
-                }}>{card.icon}</div>
-                <div className="mono" style={{ fontSize: '1.6rem', fontWeight: 600, color: card.color, marginBottom: 4 }}>{card.stat}</div>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: 6 }}>{card.title}</h3>
+                <div className="home__card-icon" style={{ background: card.bg, color: card.color }}>{card.icon}</div>
+                <div className="mono home__card-stat" style={{ color: card.color }}>{card.stat}</div>
+                <h3 className="home__card-title">{card.title}</h3>
                 <p className="text-sm">{card.desc}</p>
               </div>
             ))}
@@ -149,16 +116,16 @@ YieldStream is submission intelligence that learns from every outcome, so every 
       <section className="section">
         <div className="container">
           <div className="section-header reveal">
-            <div className="label" style={{ marginBottom: 12 }}>Platform</div>
+            <div className="label home__label-spacing">Platform</div>
             <h2 className="display-lg">Intelligence at every stage<br />of the deal lifecycle.</h2>
           </div>
 
           {/* Feature 1 */}
-          <div className="grid-feature reveal" style={{ marginBottom: 'var(--space-5xl)' }}>
+          <div className="grid-feature reveal home__feature-block">
             <div>
-              <div className="label" style={{ marginBottom: 12 }}>AI Lender Matching</div>
-              <h3 className="display-md" style={{ marginBottom: 12 }}>Every lender scored. Every match explained.</h3>
-              <p className="text-md" style={{ marginBottom: 20 }}>
+              <div className="label home__feature-label">AI Lender Matching</div>
+              <h3 className="display-md home__feature-heading">Every lender scored. Every match explained.</h3>
+              <p className="text-md home__feature-desc">
                 Three-layer scoring weighs global performance, your relationship history, and buybox fit — then ranks by expected commission, not just approval probability.
               </p>
               <Link href="/intelligence" className="btn btn-outline btn-sm">Learn about the scoring engine →</Link>
@@ -169,14 +136,14 @@ YieldStream is submission intelligence that learns from every outcome, so every 
           </div>
 
           {/* Feature 2 */}
-          <div className="grid-feature reveal" style={{ marginBottom: 'var(--space-5xl)' }}>
-            <div className="screenshot screenshot-elevated" style={{ order: -1 }}>
+          <div className="grid-feature reveal home__feature-block">
+            <div className="screenshot screenshot-elevated home__screenshot-order">
               <Image src="/images/Underwriting-Approval-Comparison.png" alt="Offer Comparison" width={1400} height={800} />
             </div>
             <div>
-              <div className="label" style={{ marginBottom: 12 }}>Offer Comparison</div>
-              <h3 className="display-md" style={{ marginBottom: 12 }}>Compare every offer. Pick the best one.</h3>
-              <p className="text-md" style={{ marginBottom: 20 }}>
+              <div className="label home__feature-label">Offer Comparison</div>
+              <h3 className="display-md home__feature-heading">Compare every offer. Pick the best one.</h3>
+              <p className="text-md home__feature-desc">
                 Side-by-side comparison across advance amount, factor rate, term, daily remittance, total payback, and commission. Automated scoring with transparent reasoning.
               </p>
               <Link href="/features" className="btn btn-outline btn-sm">See all features →</Link>
@@ -184,11 +151,11 @@ YieldStream is submission intelligence that learns from every outcome, so every 
           </div>
 
           {/* Feature 3 */}
-          <div className="grid-feature reveal">
+          <div className="grid-feature reveal home__feature-block home__feature-block--last">
             <div>
-              <div className="label" style={{ marginBottom: 12 }}>Deal Pipeline</div>
-              <h3 className="display-md" style={{ marginBottom: 12 }}>See every deal. Know where it stands.</h3>
-              <p className="text-md" style={{ marginBottom: 20 }}>
+              <div className="label home__feature-label">Deal Pipeline</div>
+              <h3 className="display-md home__feature-heading">See every deal. Know where it stands.</h3>
+              <p className="text-md home__feature-desc">
                 Kanban board or table view. Intake through Funded. Running dollar totals per stage, stale deal alerts, and commission estimates that update as offers arrive.
               </p>
               <Link href="/features" className="btn btn-outline btn-sm">Explore the pipeline →</Link>
@@ -205,7 +172,7 @@ YieldStream is submission intelligence that learns from every outcome, so every 
         <div className="container">
           <div className="section-header reveal">
             <div className="label">How It Works</div>
-            <h2 className="display-lg" style={{ color: 'white', marginTop: 12 }}>From intake to funded in four steps.</h2>
+            <h2 className="display-lg home__section-header-title">From intake to funded in four steps.</h2>
           </div>
           <div className="grid-4">
             {[
@@ -214,15 +181,10 @@ YieldStream is submission intelligence that learns from every outcome, so every 
               { num: '03', title: 'Submit & Track', desc: 'Generate deal packages, submit to matched lenders, and track responses. Every approval, decline, and counteroffer logged.' },
               { num: '04', title: 'Learn & Improve', desc: 'Outcomes feed back into the model. Funded deals strengthen scores. Declines trigger smart penalties. The system compounds.' },
             ].map((step, i) => (
-              <div key={i} className={`reveal reveal-delay-${i + 1}`} style={{
-                padding: '28px 24px',
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: 12,
-              }}>
-                <div className="mono" style={{ fontSize: '0.75rem', color: 'var(--a400)', marginBottom: 14 }}>{step.num}</div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: 8, color: 'white' }}>{step.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.6 }}>{step.desc}</p>
+              <div key={i} className={`reveal reveal-delay-${i + 1} home__how-step`}>
+                <div className="mono home__how-step-num">{step.num}</div>
+                <h3 className="home__how-step-title">{step.title}</h3>
+                <p className="home__how-step-desc">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -234,37 +196,26 @@ YieldStream is submission intelligence that learns from every outcome, so every 
         <div className="container">
           <div className="grid-feature reveal">
             <div>
-              <div className="label" style={{ marginBottom: 12 }}>Transparent AI</div>
+              <div className="label home__feature-label">Transparent AI</div>
               <h2 className="display-lg">Every recommendation comes with a reason.</h2>
               <p className="text-lg" style={{ marginTop: 12 }}>
                 Other platforms give you a score and say "trust us." YieldStream generates a human-readable Underwriter's Note for every match — explaining the structural logic. No black boxes.
               </p>
-              <div style={{ marginTop: 24 }}>
+              <div className="home__note-section">
                 <Link href="/underwriting" className="btn btn-outline">Deep-dive: Underwriting →</Link>
               </div>
             </div>
-            <div style={{
-              background: 'var(--p900)', borderRadius: 16,
-              padding: 36, color: 'white', position: 'relative', overflow: 'hidden'
-            }}>
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'radial-gradient(circle at 0% 100%, rgba(16,185,129,0.12) 0%, transparent 50%)',
-                pointerEvents: 'none'
-              }} />
-              <div className="mono" style={{ fontSize: '0.72rem', color: 'var(--a400)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 14, position: 'relative' }}>
+            <div className="home__note-card">
+              <div className="home__note-card-glow" />
+              <div className="mono home__note-label">
                 ✎ Underwriter's Note
               </div>
-              <p style={{ fontSize: '0.98rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.8)', position: 'relative' }}>
+              <p className="home__note-text">
                 Growing catering operation — <strong style={{ color: 'var(--a300)' }}>$95K/mo</strong> with only <strong style={{ color: 'var(--a300)' }}>8.1% stacking</strong>. 1 NSF was a timing issue (vendor payment). Well within tolerance for most lenders. <strong style={{ color: 'var(--a300)' }}>93% confidence</strong> · Revenue: Growing
               </p>
-              <div style={{
-                marginTop: 20, paddingTop: 14,
-                borderTop: '1px solid rgba(255,255,255,0.08)',
-                display: 'flex', gap: 20, position: 'relative'
-              }}>
-                <span className="mono" style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)' }}>Napa Valley Catering Co</span>
-                <span className="mono" style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)' }}>$150K requested</span>
+              <div className="home__note-footer">
+                <span className="mono home__note-meta">Napa Valley Catering Co</span>
+                <span className="mono home__note-meta">$150K requested</span>
               </div>
             </div>
           </div>
@@ -276,7 +227,7 @@ YieldStream is submission intelligence that learns from every outcome, so every 
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">What Brokers Say</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>Trusted by the brokers<br />who close the most deals.</h2>
+            <h2 className="display-lg home__section-header-mt">Trusted by the brokers<br />who close the most deals.</h2>
           </div>
           <div className="grid-3">
             {[
@@ -285,18 +236,13 @@ YieldStream is submission intelligence that learns from every outcome, so every 
               { quote: "Renewal alerts alone paid for the platform. We caught $2.3M in renewal opportunities in the first 60 days that would've walked to competitors.", name: 'James T.', role: 'CEO, Summit Funding Partners', initials: 'JT' },
             ].map((t, i) => (
               <div key={i} className={`card reveal reveal-delay-${i + 1}`}>
-                <div style={{ color: '#f59e0b', fontSize: '0.85rem', marginBottom: 10, letterSpacing: 2 }}>★★★★★</div>
-                <p style={{ fontSize: '0.92rem', color: 'var(--n600)', lineHeight: 1.7, marginBottom: 20, fontStyle: 'italic' }}>"{t.quote}"</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{
-                    width: 36, height: 36, borderRadius: '50%',
-                    background: 'var(--p100)', color: 'var(--p700)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontWeight: 700, fontSize: '0.78rem'
-                  }}>{t.initials}</div>
+                <div className="home__testimonial-stars">★★★★★</div>
+                <p className="home__testimonial-quote">"{t.quote}"</p>
+                <div className="home__testimonial-author">
+                  <div className="home__testimonial-avatar">{t.initials}</div>
                   <div>
-                    <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>{t.name}</div>
-                    <div style={{ fontSize: '0.75rem', color: 'var(--n400)' }}>{t.role}</div>
+                    <div className="home__testimonial-name">{t.name}</div>
+                    <div className="home__testimonial-role">{t.role}</div>
                   </div>
                 </div>
               </div>

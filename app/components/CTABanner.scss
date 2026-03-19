@@ -1,0 +1,41 @@
+/* CTABanner - BEM */
+.cta-banner {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &__glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__headline {
+    color: white;
+    margin-bottom: 16px;
+  }
+
+  &__sub {
+    max-width: 520px;
+    margin: 0 auto 32px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__secondary-btn {
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+}

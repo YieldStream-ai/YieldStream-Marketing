@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useReveal } from '../components/useReveal';
 import CTABanner from '../components/CTABanner';
+import './intelligence.scss';
 
 export default function IntelligencePage() {
   useReveal();
@@ -11,12 +12,12 @@ export default function IntelligencePage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ padding: '80px 0 60px', background: 'linear-gradient(180deg, var(--p50), var(--n0))' }}>
+      <section className="intelligence__hero">
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">The Relationship Engine</div>
-            <h1 className="display-xl" style={{ marginTop: 12 }}>Three layers of intelligence.<br />One <em className="italic teal-gradient">compounding</em> advantage.</h1>
-            <p className="text-lg" style={{ maxWidth: 600, margin: '16px auto 0' }}>
+            <h1 className="display-xl intelligence__hero-title">Three layers of intelligence.<br />One <em className="italic teal-gradient">compounding</em> advantage.</h1>
+            <p className="text-lg intelligence__hero-sub">
               YieldStream doesn't just store data — it thinks. Every lender recommendation is computed from three distinct signal layers, weighted by your organization's unique history.
             </p>
           </div>
@@ -26,7 +27,7 @@ export default function IntelligencePage() {
       {/* Three Layers */}
       <section className="section">
         <div className="container">
-          <div className="grid-3" style={{ marginBottom: 'var(--space-4xl)' }}>
+          <div className="grid-3 intelligence__layers">
             {[
               {
                 num: '50%', label: 'RELATIONSHIP INTELLIGENCE',
@@ -48,9 +49,9 @@ export default function IntelligencePage() {
               },
             ].map((layer, i) => (
               <div key={i} className={`card reveal reveal-delay-${i + 1}`} style={{ borderTop: `3px solid ${layer.color}` }}>
-                <div className="mono" style={{ fontSize: '2rem', fontWeight: 700, color: layer.color, marginBottom: 4 }}>{layer.num}</div>
-                <div className="label" style={{ color: layer.color, marginBottom: 12 }}>{layer.label}</div>
-                <h3 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: 8 }}>{layer.title}</h3>
+                <div className="mono intelligence__layer-num" style={{ color: layer.color }}>{layer.num}</div>
+                <div className="label intelligence__layer-label" style={{ color: layer.color }}>{layer.label}</div>
+                <h3 className="intelligence__layer-title">{layer.title}</h3>
                 <p className="text-sm">{layer.desc}</p>
               </div>
             ))}
@@ -70,8 +71,8 @@ export default function IntelligencePage() {
         <div className="container">
           <div className="section-header reveal">
             <div className="label">The Learning Loop</div>
-            <h2 className="display-lg" style={{ color: 'white', marginTop: 12 }}>Every outcome makes the system smarter.</h2>
-            <p className="text-lg" style={{ maxWidth: 600, marginTop: 12 }}>
+            <h2 className="display-lg intelligence__section-title">Every outcome makes the system smarter.</h2>
+            <p className="text-lg intelligence__section-sub">
               This is the data flywheel: more outcomes → better predictions → higher pull-through → more commissions → more outcomes.
             </p>
           </div>
@@ -82,17 +83,12 @@ export default function IntelligencePage() {
               { event: 'Lender Appetite Stale', response: 'Warning badge appears on lender. Broker prompted to update buybox. Match confidence drops until refreshed.', icon: '⚠️' },
               { event: 'Prediction Ages', response: 'Time-decay reduces weight automatically. 30d = full weight, 90d = 40%, 180d = 20%, >180d = 5%.', icon: '⏳' },
             ].map((item, i) => (
-              <div key={i} className={`reveal reveal-delay-${(i % 2) + 1}`} style={{
-                padding: 28,
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                borderRadius: 12,
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                  <span style={{ fontSize: '1.2rem' }}>{item.icon}</span>
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: 600, color: 'white' }}>{item.event}</h3>
+              <div key={i} className={`reveal reveal-delay-${(i % 2) + 1} intelligence__loop-card`}>
+                <div className="intelligence__loop-header">
+                  <span className="intelligence__loop-icon">{item.icon}</span>
+                  <h3 className="intelligence__loop-title">{item.event}</h3>
                 </div>
-                <p style={{ fontSize: '0.88rem', color: 'rgba(255,255,255,0.5)', lineHeight: 1.65 }}>{item.response}</p>
+                <p className="intelligence__loop-desc">{item.response}</p>
               </div>
             ))}
           </div>
@@ -104,9 +100,9 @@ export default function IntelligencePage() {
         <div className="container">
           <div className="grid-feature reveal">
             <div>
-              <div className="label" style={{ marginBottom: 12 }}>Time-Decay Accuracy</div>
+              <div className="label intelligence__label">Time-Decay Accuracy</div>
               <h2 className="display-lg">Data from 6 months ago shouldn't dictate today's submissions.</h2>
-              <p className="text-lg" style={{ marginTop: 12, marginBottom: 24 }}>
+              <p className="text-lg intelligence__time-desc">
                 Lender appetites shift. A funder who was aggressively buying restaurant deals in Q1 might have pulled back by Q3. YieldStream automatically de-prioritizes old data to keep every recommendation fresh and current.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -116,31 +112,31 @@ export default function IntelligencePage() {
                   { range: '91–180 days', weight: '20%', bar: 20 },
                   { range: '180+ days', weight: '5%', bar: 5 },
                 ].map((d, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                    <span className="mono" style={{ fontSize: '0.78rem', color: 'var(--n500)', width: 100, flexShrink: 0 }}>{d.range}</span>
-                    <div style={{ flex: 1, background: 'var(--n100)', borderRadius: 4, height: 8 }}>
-                      <div style={{ width: `${d.bar}%`, background: 'var(--p600)', borderRadius: 4, height: 8, transition: 'width 1s var(--ease-out)' }} />
+                  <div key={i} className="intelligence__time-row">
+                    <span className="mono intelligence__time-range">{d.range}</span>
+                    <div className="intelligence__time-bar-bg">
+                      <div className="intelligence__time-bar-fill" style={{ width: `${d.bar}%` }} />
                     </div>
-                    <span className="mono" style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--p700)', width: 50 }}>{d.weight}</span>
+                    <span className="mono intelligence__time-weight">{d.weight}</span>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <div className="card" style={{ borderTop: '3px solid var(--a500)' }}>
-                <div className="label" style={{ color: 'var(--a600)', marginBottom: 16 }}>Progressive Unlock</div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: 10 }}>AI predictions earn trust before asking for it.</h3>
+              <div className="card intelligence__progressive-card">
+                <div className="label intelligence__progressive-label">Progressive Unlock</div>
+                <h3 className="intelligence__progressive-title">AI predictions earn trust before asking for it.</h3>
                 <p className="text-sm" style={{ marginBottom: 20 }}>
                   New organizations start with rule-based matching (attribute + global signals). The full AI Predictions view unlocks only after:
                 </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div className="intelligence__progressive-list">
                   {[
                     '10+ recorded outcomes',
                     '3+ qualified lenders in registry',
                     '30+ days of historical data',
                   ].map((req, i) => (
-                    <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.88rem', color: 'var(--n700)' }}>
-                      <span style={{ color: 'var(--a500)', fontWeight: 700 }}>✓</span> {req}
+                    <div key={i} className="intelligence__progressive-item">
+                      <span className="intelligence__progressive-check">✓</span> {req}
                     </div>
                   ))}
                 </div>

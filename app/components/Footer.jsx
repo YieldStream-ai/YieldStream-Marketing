@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import './Footer.scss';
 
 export default function Footer() {
   return (
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="nav-logo" style={{ color: 'white' }}>
+            <Link href="/" className="nav-logo footer__logo">
               <div className="nav-logo-mark">Y</div>
               YieldStream
             </Link>

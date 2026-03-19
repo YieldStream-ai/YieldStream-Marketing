@@ -1,0 +1,347 @@
+/* Home page - BEM: home__element--modifier */
+
+@keyframes homePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@keyframes homeFloatUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+.home {
+  &__hero {
+    padding: 100px 0 80px;
+    background: linear-gradient(180deg, var(--p50) 0%, var(--n0) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__hero-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 40%, rgba(4, 121, 135, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 85% 60%, rgba(16, 185, 129, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  &__hero-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px 6px 10px;
+    background: var(--a50);
+    border: 1px solid var(--a200);
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  &__badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--a500);
+    animation: homePulse 2s infinite;
+  }
+
+  &__badge-text {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--a700);
+  }
+
+  &__hero-headline {
+    margin-bottom: 20px;
+    max-width: 560px;
+  }
+
+  &__hero-sub {
+    max-width: 500px;
+    margin-bottom: 32px;
+  }
+
+  &__hero-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  &__hero-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--n200);
+  }
+
+  &__stat-num {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--p700);
+  }
+
+  &__stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--n400);
+    font-weight: 500;
+  }
+
+  &__hero-screenshot {
+    position: relative;
+  }
+
+  &__floating-card {
+    position: absolute;
+    bottom: -16px;
+    left: -24px;
+    background: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--n100);
+    animation: homeFloatUp 3s ease-in-out infinite alternate;
+  }
+
+  &__floating-card-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--n400);
+    font-weight: 500;
+    margin-bottom: 2px;
+  }
+
+  &__floating-card-score {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--a600);
+  }
+
+  &__floating-card-detail {
+    font-size: 0.75rem;
+    color: var(--n500);
+  }
+
+  &__logo-bar {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--n100);
+  }
+
+  &__logo-bar-inner {
+    text-align: center;
+  }
+
+  &__logo-bar-label {
+    margin-bottom: 20px;
+    color: var(--n400);
+  }
+
+  &__logo-bar-names {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    opacity: 0.45;
+  }
+
+  &__logo-bar-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--n500);
+  }
+
+  &__label-spacing {
+    margin-bottom: 12px;
+  }
+
+  &__section-sub {
+    max-width: 600px;
+    margin-top: 12px;
+  }
+
+  /* Problem cards - icon box uses dynamic bg/color, keep inline */
+  &__card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
+  &__card-stat {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  &__feature-block {
+    margin-bottom: var(--space-5xl);
+  }
+
+  &__feature-block--last {
+    margin-bottom: 0;
+  }
+
+  &__feature-label {
+    margin-bottom: 12px;
+  }
+
+  &__feature-heading {
+    margin-bottom: 12px;
+  }
+
+  &__feature-desc {
+    margin-bottom: 20px;
+  }
+
+  &__how-step {
+    padding: 28px 24px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  &__how-step-num {
+    font-size: 0.75rem;
+    color: var(--a400);
+    margin-bottom: 14px;
+  }
+
+  &__how-step-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: white;
+  }
+
+  &__how-step-desc {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+  }
+
+  &__note-section {
+    margin-top: 24px;
+  }
+
+  &__note-card {
+    background: var(--p900);
+    border-radius: 16px;
+    padding: 36px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__note-card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 0% 100%, rgba(16, 185, 129, 0.12) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  &__note-label {
+    font-size: 0.72rem;
+    color: var(--a400);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  &__note-text {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+  }
+
+  &__note-footer {
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    gap: 20px;
+    position: relative;
+  }
+
+  &__note-meta {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  &__testimonial-stars {
+    color: #f59e0b;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+
+  &__testimonial-quote {
+    font-size: 0.92rem;
+    color: var(--n600);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  &__testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__testimonial-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--p100);
+    color: var(--p700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.78rem;
+  }
+
+  &__testimonial-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  &__testimonial-role {
+    font-size: 0.75rem;
+    color: var(--n400);
+  }
+
+  &__section-header-title {
+    color: white;
+    margin-top: 12px;
+  }
+
+  &__section-header-mt {
+    margin-top: 12px;
+  }
+
+  &__screenshot-order {
+    order: -1;
+  }
+}

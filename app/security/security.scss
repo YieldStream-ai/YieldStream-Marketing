@@ -1,0 +1,91 @@
+/* Security page - BEM */
+.security {
+  &__hero {
+    padding: 80px 0 60px;
+    background: var(--n50);
+  }
+
+  &__hero-title {
+    margin-top: 12px;
+  }
+
+  &__hero-sub {
+    max-width: 600px;
+    margin: 16px auto 0;
+  }
+
+  &__grid {
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-4xl);
+  }
+
+  &__card {
+    padding: 32px;
+  }
+
+  &__card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 14px;
+  }
+
+  &__card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__card-desc {
+    margin-bottom: 12px;
+  }
+
+  &__card-detail {
+    font-style: italic;
+  }
+
+  &__section-title {
+    margin-top: 12px;
+  }
+
+  &__section-sub {
+    max-width: 600px;
+    margin: 16px auto 0;
+  }
+
+  &__vault-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: var(--space-2xl);
+  }
+
+  &__vault-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: var(--n50);
+    border-radius: 8px;
+    border: 1px solid var(--n150);
+  }
+
+  &__vault-check {
+    color: var(--a500);
+    font-weight: 700;
+  }
+
+  &__vault-text {
+    font-size: 0.92rem;
+    color: var(--n700);
+  }
+
+  &__infra-card {
+    padding: 24px;
+    text-align: center;
+  }
+
+  &__infra-title {
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+}

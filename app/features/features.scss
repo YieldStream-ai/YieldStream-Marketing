@@ -1,0 +1,85 @@
+/* Features page - BEM */
+.features {
+  &__hero {
+    padding: 80px 0 60px;
+    background: var(--n50);
+  }
+
+  &__hero-title {
+    margin-top: 12px;
+  }
+
+  &__hero-sub {
+    max-width: 580px;
+    margin: 16px auto 0;
+  }
+
+  &__block {
+    margin-bottom: var(--space-5xl);
+
+    &--last {
+      margin-bottom: 0;
+    }
+  }
+
+  &__block-order {
+    order: 1;
+  }
+
+  &__block-order-reverse {
+    order: 0;
+  }
+
+  &__label {
+    margin-bottom: 10px;
+  }
+
+  &__heading {
+    margin-bottom: 12px;
+  }
+
+  &__desc {
+    margin-bottom: 20px;
+  }
+
+  &__bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--n600);
+  }
+
+  &__bullet-check {
+    color: var(--a500);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  &__card {
+    padding: 24px;
+  }
+
+  &__card-icon {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  &__card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__section-title {
+    margin-top: 12px;
+  }
+}

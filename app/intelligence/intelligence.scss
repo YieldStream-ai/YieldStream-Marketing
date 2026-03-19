@@ -1,0 +1,154 @@
+/* Intelligence page - BEM */
+.intelligence {
+  &__hero {
+    padding: 80px 0 60px;
+    background: linear-gradient(180deg, var(--p50), var(--n0));
+  }
+
+  &__hero-title {
+    margin-top: 12px;
+  }
+
+  &__hero-sub {
+    max-width: 600px;
+    margin: 16px auto 0;
+  }
+
+  &__layers {
+    margin-bottom: var(--space-4xl);
+  }
+
+  /* borderTop uses dynamic layer.color - keep inline */
+  &__layer-num {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  &__layer-label {
+    margin-bottom: 12px;
+  }
+
+  &__layer-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__section-title {
+    color: white;
+    margin-top: 12px;
+  }
+
+  &__section-sub {
+    max-width: 600px;
+    margin-top: 12px;
+  }
+
+  &__loop-card {
+    padding: 28px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+  }
+
+  &__loop-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  &__loop-icon {
+    font-size: 1.2rem;
+  }
+
+  &__loop-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  &__loop-desc {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.65;
+  }
+
+  &__label {
+    margin-bottom: 12px;
+  }
+
+  &__time-desc {
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+
+  &__time-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__time-range {
+    font-size: 0.78rem;
+    color: var(--n500);
+    width: 100px;
+    flex-shrink: 0;
+  }
+
+  &__time-bar-bg {
+    flex: 1;
+    background: var(--n100);
+    border-radius: 4px;
+    height: 8px;
+  }
+
+  &__time-bar-fill {
+    background: var(--p600);
+    border-radius: 4px;
+    height: 8px;
+    transition: width 1s var(--ease-out);
+  }
+
+  &__time-weight {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--p700);
+    width: 50px;
+  }
+
+  &__progressive-card {
+    border-top: 3px solid var(--a500);
+  }
+
+  &__progressive-label {
+    color: var(--a600);
+    margin-bottom: 16px;
+  }
+
+  &__progressive-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  &__progressive-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__progressive-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    color: var(--n700);
+  }
+
+  &__progressive-check {
+    color: var(--a500);
+    font-weight: 700;
+  }
+}

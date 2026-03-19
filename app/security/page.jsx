@@ -2,18 +2,19 @@
 
 import { useReveal } from '../components/useReveal';
 import CTABanner from '../components/CTABanner';
+import './security.scss';
 
 export default function SecurityPage() {
   useReveal();
 
   return (
     <>
-      <section style={{ padding: '80px 0 60px', background: 'var(--n50)' }}>
+      <section className="security__hero">
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Security & Compliance</div>
-            <h1 className="display-xl" style={{ marginTop: 12 }}>Enterprise-grade security.<br />Your data stays yours.</h1>
-            <p className="text-lg" style={{ maxWidth: 600, margin: '16px auto 0' }}>
+            <h1 className="display-xl security__hero-title">Enterprise-grade security.<br />Your data stays yours.</h1>
+            <p className="text-lg security__hero-sub">
               Built from day one with financial-grade data protection. Multi-tenant isolation at the database level — not the application level.
             </p>
           </div>
@@ -23,7 +24,7 @@ export default function SecurityPage() {
       {/* Core Security */}
       <section className="section">
         <div className="container">
-          <div className="grid-2" style={{ gap: 'var(--space-2xl)', marginBottom: 'var(--space-4xl)' }}>
+          <div className="grid-2 security__grid">
             {[
               {
                 icon: '🔒', title: 'Multi-Tenant Data Isolation',
@@ -46,11 +47,11 @@ export default function SecurityPage() {
                 detail: 'Export covers all merchant data, deal history, lender interactions, and AI-generated insights associated with your organization.'
               },
             ].map((item, i) => (
-              <div key={i} className={`card reveal reveal-delay-${(i % 2) + 1}`} style={{ padding: 32 }}>
-                <div style={{ fontSize: '1.5rem', marginBottom: 14 }}>{item.icon}</div>
-                <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: 8 }}>{item.title}</h3>
-                <p className="text-md" style={{ marginBottom: 12 }}>{item.desc}</p>
-                <p className="text-sm" style={{ fontStyle: 'italic' }}>{item.detail}</p>
+              <div key={i} className={`card reveal reveal-delay-${(i % 2) + 1} security__card`}>
+                <div className="security__card-icon">{item.icon}</div>
+                <h3 className="security__card-title">{item.title}</h3>
+                <p className="text-md security__card-desc">{item.desc}</p>
+                <p className="text-sm security__card-detail">{item.detail}</p>
               </div>
             ))}
           </div>
@@ -62,7 +63,7 @@ export default function SecurityPage() {
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Infrastructure</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>Built on trusted foundations.</h2>
+            <h2 className="display-lg security__section-title">Built on trusted foundations.</h2>
           </div>
           <div className="grid-4">
             {[
@@ -71,8 +72,8 @@ export default function SecurityPage() {
               { title: 'AES-256 Encryption', desc: 'All data encrypted at rest. TLS 1.3 encryption in transit for every API call and file transfer.' },
               { title: 'Brute-Force Protection', desc: 'Login rate limiting, account lockout after failed attempts, and suspicious activity monitoring.' },
             ].map((item, i) => (
-              <div key={i} className={`card reveal reveal-delay-${i + 1}`} style={{ padding: 24, textAlign: 'center' }}>
-                <h3 style={{ fontSize: '0.92rem', fontWeight: 600, marginBottom: 6 }}>{item.title}</h3>
+              <div key={i} className={`card reveal reveal-delay-${i + 1} security__infra-card`}>
+                <h3 className="security__infra-title">{item.title}</h3>
                 <p className="text-sm">{item.desc}</p>
               </div>
             ))}
@@ -85,12 +86,12 @@ export default function SecurityPage() {
         <div className="container-narrow">
           <div className="section-header center reveal">
             <div className="label">Document Vault</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>Bank statements deserve bank-grade protection.</h2>
-            <p className="text-lg" style={{ maxWidth: 600, margin: '16px auto 0' }}>
+            <h2 className="display-lg security__section-title">Bank statements deserve bank-grade protection.</h2>
+            <p className="text-lg security__section-sub">
               Merchant bank statements contain the most sensitive business data. YieldStream treats them accordingly — encrypted storage, scoped access, and automatic retention policies.
             </p>
           </div>
-          <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 'var(--space-2xl)' }}>
+          <div className="reveal security__vault-list">
             {[
               'All uploaded documents encrypted with AES-256 at rest',
               'Scoped to organization — no cross-tenant access possible',
@@ -99,13 +100,9 @@ export default function SecurityPage() {
               'Configurable retention policies for compliance requirements',
               'Full access audit trail — every view and download logged',
             ].map((item, i) => (
-              <div key={i} style={{
-                display: 'flex', alignItems: 'center', gap: 12,
-                padding: '14px 20px', background: 'var(--n50)',
-                borderRadius: 8, border: '1px solid var(--n150)',
-              }}>
-                <span style={{ color: 'var(--a500)', fontWeight: 700 }}>✓</span>
-                <span style={{ fontSize: '0.92rem', color: 'var(--n700)' }}>{item}</span>
+              <div key={i} className="security__vault-item">
+                <span className="security__vault-check">✓</span>
+                <span className="security__vault-text">{item}</span>
               </div>
             ))}
           </div>

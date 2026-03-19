@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useReveal } from '../components/useReveal';
 import CTABanner from '../components/CTABanner';
+import './features.scss';
 
 export default function FeaturesPage() {
   useReveal();
@@ -95,12 +96,12 @@ export default function FeaturesPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ padding: '80px 0 60px', background: 'var(--n50)' }}>
+      <section className="features__hero">
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Platform Features</div>
-            <h1 className="display-xl" style={{ marginTop: 12 }}>Every tool a broker needs.<br />Nothing they don't.</h1>
-            <p className="text-lg" style={{ maxWidth: 580, margin: '16px auto 0' }}>
+            <h1 className="display-xl features__hero-title">Every tool a broker needs.<br />Nothing they don't.</h1>
+            <p className="text-lg features__hero-sub">
               Six core capabilities that replace spreadsheets, gut feel, and manual underwriting with data-driven intelligence that compounds with every deal.
             </p>
           </div>
@@ -111,24 +112,22 @@ export default function FeaturesPage() {
       <section className="section">
         <div className="container">
           {features.map((f, i) => (
-            <div key={i} className="grid-feature reveal" style={{
-              marginBottom: i < features.length - 1 ? 'var(--space-5xl)' : 0,
-            }}>
-              <div style={{ order: f.reverse ? 1 : 0 }}>
-                <div className="label" style={{ marginBottom: 10 }}>{f.label}</div>
-                <h2 className="display-md" style={{ marginBottom: 12 }}>{f.title}</h2>
-                <p className="text-md" style={{ marginBottom: 20 }}>{f.desc}</p>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, marginBottom: f.link ? 20 : 0 }}>
+            <div key={i} className={`grid-feature reveal features__block ${i === features.length - 1 ? 'features__block--last' : ''}`}>
+              <div className={f.reverse ? 'features__block-order' : ''}>
+                <div className="label features__label">{f.label}</div>
+                <h2 className="display-md features__heading">{f.title}</h2>
+                <p className="text-md features__desc">{f.desc}</p>
+                <ul className="features__bullets" style={{ marginBottom: f.link ? 20 : 0 }}>
                   {f.bullets.map((b, j) => (
-                    <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: '0.9rem', color: 'var(--n600)' }}>
-                      <span style={{ color: 'var(--a500)', fontWeight: 700, flexShrink: 0 }}>✓</span>
+                    <li key={j} className="features__bullet">
+                      <span className="features__bullet-check">✓</span>
                       {b}
                     </li>
                   ))}
                 </ul>
                 {f.link && <Link href={f.link} className="btn btn-outline btn-sm">{f.linkText}</Link>}
               </div>
-              <div className="screenshot screenshot-elevated" style={{ order: f.reverse ? 0 : 1 }}>
+              <div className={`screenshot screenshot-elevated ${f.reverse ? 'features__block-order-reverse' : ''}`}>
                 <Image src={f.image} alt={f.title} width={1400} height={800} />
               </div>
             </div>
@@ -141,7 +140,7 @@ export default function FeaturesPage() {
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Also Included</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>And everything else you'd expect.</h2>
+            <h2 className="display-lg features__section-title">And everything else you'd expect.</h2>
           </div>
           <div className="grid-4">
             {[
@@ -154,9 +153,9 @@ export default function FeaturesPage() {
               { icon: '📱', title: 'Daily Queue', desc: 'Smart follow-up routing with LRU sorting. No merchant falls through the cracks.' },
               { icon: '⚡', title: 'Onboarding Wizard', desc: 'Guided setup reduces time-to-value. Upload lenders, invite team, run first deal.' },
             ].map((cap, i) => (
-              <div key={i} className={`card reveal reveal-delay-${(i % 4) + 1}`} style={{ padding: 24 }}>
-                <div style={{ fontSize: '1.3rem', marginBottom: 10 }}>{cap.icon}</div>
-                <h3 style={{ fontSize: '0.95rem', fontWeight: 600, marginBottom: 4 }}>{cap.title}</h3>
+              <div key={i} className={`card reveal reveal-delay-${(i % 4) + 1} features__card`}>
+                <div className="features__card-icon">{cap.icon}</div>
+                <h3 className="features__card-title">{cap.title}</h3>
                 <p className="text-sm">{cap.desc}</p>
               </div>
             ))}

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useReveal } from '../components/useReveal';
+import './feedback.scss';
 
 export default function FeedbackPage() {
   useReveal();
@@ -43,12 +44,12 @@ export default function FeedbackPage() {
 
   return (
     <>
-      <section style={{ padding: '80px 0 40px', background: 'var(--n50)' }}>
+      <section className="feedback__hero">
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Feedback & Roadmap</div>
-            <h1 className="display-xl" style={{ marginTop: 12 }}>Built with you, not just for you.</h1>
-            <p className="text-lg" style={{ maxWidth: 560, margin: '16px auto 0' }}>
+            <h1 className="display-xl feedback__hero-title">Built with you, not just for you.</h1>
+            <p className="text-lg feedback__hero-sub">
               Founding members shape the product roadmap. Submit feature requests, report bugs, and vote on what gets built next.
             </p>
           </div>
@@ -56,58 +57,35 @@ export default function FeedbackPage() {
       </section>
 
       {/* Tabs */}
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section feedback__section">
         <div className="container">
-          <div className="reveal" style={{ display: 'flex', gap: 4, marginBottom: 'var(--space-2xl)', borderBottom: '1px solid var(--n200)' }}>
+          <div className="reveal feedback__tabs">
             {[
               { id: 'roadmap', label: 'Public Roadmap' },
               { id: 'request', label: 'Feature Request' },
               { id: 'bug', label: 'Report a Bug' },
             ].map(t => (
-              <button key={t.id} onClick={() => { setTab(t.id); setSubmitted(false); setPriority(null); }} style={{
-                padding: '12px 20px', fontSize: '0.88rem', fontWeight: 600,
-                color: tab === t.id ? 'var(--p600)' : 'var(--n500)',
-                borderBottom: tab === t.id ? '2px solid var(--p600)' : '2px solid transparent',
-                marginBottom: -1, transition: 'all 0.2s',
-              }}>{t.label}</button>
+              <button key={t.id} onClick={() => { setTab(t.id); setSubmitted(false); setPriority(null); }} className={`feedback__tab ${tab === t.id ? 'feedback__tab--active' : ''}`}>{t.label}</button>
             ))}
           </div>
 
           {/* Roadmap */}
           {tab === 'roadmap' && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20, alignItems: 'flex-start' }}>
+            <div className="feedback__roadmap-grid">
               {roadmapItems.map((column, ci) => (
                 <div key={ci}>
-                  <div style={{
-                    display: 'flex', alignItems: 'center', gap: 8,
-                    marginBottom: 16, padding: '6px 12px',
-                    background: statusColors[column.status].bg,
-                    borderRadius: 8,
-                  }}>
-                    <span style={{
-                      width: 8, height: 8, borderRadius: '50%',
-                      background: statusColors[column.status].dot,
-                    }} />
-                    <span style={{
-                      fontSize: '0.78rem', fontWeight: 600,
-                      color: statusColors[column.status].color,
-                    }}>{column.label}</span>
-                    <span className="mono" style={{ fontSize: '0.7rem', color: 'var(--n400)', marginLeft: 'auto' }}>{column.items.length}</span>
+                  <div className="feedback__column-header" style={{ background: statusColors[column.status].bg }}>
+                    <span className="feedback__column-dot" style={{ background: statusColors[column.status].dot }} />
+                    <span className="feedback__column-label" style={{ color: statusColors[column.status].color }}>{column.label}</span>
+                    <span className="mono feedback__column-count">{column.items.length}</span>
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                  <div className="feedback__column-items">
                     {column.items.map((item, i) => (
-                      <div key={i} className="card" style={{
-                        padding: 16, cursor: 'pointer',
-                      }}>
-                        <h4 style={{ fontSize: '0.88rem', fontWeight: 600, marginBottom: 4 }}>{item.title}</h4>
-                        <p style={{ fontSize: '0.78rem', color: 'var(--n500)', lineHeight: 1.5, marginBottom: 10 }}>{item.desc}</p>
+                      <div key={i} className="card feedback__roadmap-card">
+                        <h4 className="feedback__roadmap-card-title">{item.title}</h4>
+                        <p className="feedback__roadmap-card-desc">{item.desc}</p>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <button style={{
-                            display: 'flex', alignItems: 'center', gap: 4,
-                            padding: '3px 8px', borderRadius: 4,
-                            background: 'var(--n50)', border: '1px solid var(--n200)',
-                            fontSize: '0.72rem', fontWeight: 600, color: 'var(--p600)',
-                          }}>▲ {item.votes}</button>
+                          <button type="button" className="feedback__vote-btn">▲ {item.votes}</button>
                         </div>
                       </div>
                     ))}
@@ -119,25 +97,23 @@ export default function FeedbackPage() {
 
           {/* Feature Request */}
           {tab === 'request' && (
-            <div style={{ maxWidth: 640 }}>
+            <div className="feedback__form">
               {submitted ? (
-                <div style={{ padding: 40, background: 'var(--a50)', borderRadius: 12, border: '1px solid var(--a200)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: 12 }}>🎉</div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: 8 }}>Feature request submitted!</h3>
+                <div className="feedback__success-box">
+                  <div className="feedback__success-icon">🎉</div>
+                  <h3 className="feedback__success-title">Feature request submitted!</h3>
                   <p className="text-md">We review every request. Founding members get priority consideration.</p>
                 </div>
               ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <div className="feedback__form-fields">
                   <p className="text-md">Describe the feature you'd like to see. Be specific about the problem it solves and how you'd use it.</p>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Feature title</label>
-                    <input placeholder="e.g. Automated lender follow-up reminders" style={{
-                      width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem',
-                    }} />
+                    <label className="feedback__label">Feature title</label>
+                    <input placeholder="e.g. Automated lender follow-up reminders" className="feedback__input" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Category</label>
-                    <select style={{ width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem', background: 'white' }}>
+                    <label className="feedback__label">Category</label>
+                    <select className="feedback__input">
                       <option>AI / Intelligence</option>
                       <option>Pipeline / Workflow</option>
                       <option>Analytics / Reporting</option>
@@ -148,37 +124,25 @@ export default function FeedbackPage() {
                     </select>
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Description</label>
-                    <textarea rows={6} placeholder="What problem does this solve? How would you use it? What does your workflow look like today without this feature?" style={{
-                      width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem', resize: 'vertical',
-                    }} />
+                    <label className="feedback__label">Description</label>
+                    <textarea rows={6} placeholder="What problem does this solve? How would you use it? What does your workflow look like today without this feature?" className="feedback__textarea" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Priority for your team</label>
-                    <div style={{ display: 'flex', gap: 8 }}>
+                    <label className="feedback__label">Priority for your team</label>
+                    <div className="feedback__priority-btns">
                       {['Nice to have', 'Important', 'Critical'].map(p => (
                         <button
                           key={p}
                           type="button"
                           onClick={() => setPriority(p)}
-                          style={{
-                            padding: '8px 16px',
-                            borderRadius: 6,
-                            border: priority === p ? '2px solid var(--p600)' : '1.5px solid var(--n200)',
-                            background: priority === p ? 'var(--p50)' : 'white',
-                            color: priority === p ? 'var(--p700)' : 'var(--n700)',
-                            fontSize: '0.82rem',
-                            fontWeight: priority === p ? 600 : 500,
-                            cursor: 'pointer',
-                            transition: 'all 0.15s',
-                          }}
+                          className={`feedback__priority-btn ${priority === p ? 'feedback__priority-btn--active' : ''}`}
                         >
                           {p}
                         </button>
                       ))}
                     </div>
                   </div>
-                  <button onClick={() => setSubmitted(true)} className="btn btn-primary btn-lg" style={{ alignSelf: 'flex-start' }}>
+                  <button onClick={() => setSubmitted(true)} className="btn btn-primary btn-lg feedback__submit">
                     Submit Feature Request →
                   </button>
                 </div>
@@ -188,38 +152,32 @@ export default function FeedbackPage() {
 
           {/* Bug Report */}
           {tab === 'bug' && (
-            <div style={{ maxWidth: 640 }}>
+            <div className="feedback__form">
               {submitted ? (
-                <div style={{ padding: 40, background: 'var(--a50)', borderRadius: 12, border: '1px solid var(--a200)', textAlign: 'center' }}>
-                  <div style={{ fontSize: '2rem', marginBottom: 12 }}>🐛</div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 600, marginBottom: 8 }}>Bug report received.</h3>
+                <div className="feedback__success-box">
+                  <div className="feedback__success-icon">🐛</div>
+                  <h3 className="feedback__success-title">Bug report received.</h3>
                   <p className="text-md">We'll investigate and follow up. Thank you for helping us improve.</p>
                 </div>
               ) : (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <div className="feedback__form-fields">
                   <p className="text-md">Help us fix it fast. The more detail you provide, the quicker we can resolve the issue.</p>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Bug summary</label>
-                    <input placeholder="Brief description of the issue" style={{
-                      width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem',
-                    }} />
+                    <label className="feedback__label">Bug summary</label>
+                    <input placeholder="Brief description of the issue" className="feedback__input" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Steps to reproduce</label>
-                    <textarea rows={4} placeholder="1. Go to...\n2. Click on...\n3. See error..." style={{
-                      width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem', resize: 'vertical',
-                    }} />
+                    <label className="feedback__label">Steps to reproduce</label>
+                    <textarea rows={4} placeholder="1. Go to...\n2. Click on...\n3. See error..." className="feedback__textarea" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Expected vs actual behavior</label>
-                    <textarea rows={3} placeholder="I expected X to happen, but instead Y happened" style={{
-                      width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem', resize: 'vertical',
-                    }} />
+                    <label className="feedback__label">Expected vs actual behavior</label>
+                    <textarea rows={3} placeholder="I expected X to happen, but instead Y happened" className="feedback__textarea" />
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                  <div className="feedback__form-row">
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Severity</label>
-                      <select style={{ width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem', background: 'white' }}>
+                      <label className="feedback__label">Severity</label>
+                      <select className="feedback__input">
                         <option>Low — cosmetic issue</option>
                         <option>Medium — feature partially broken</option>
                         <option>High — feature completely broken</option>
@@ -227,8 +185,8 @@ export default function FeedbackPage() {
                       </select>
                     </div>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Browser</label>
-                      <select style={{ width: '100%', padding: '10px 14px', border: '1.5px solid var(--n200)', borderRadius: 8, fontSize: '0.9rem', background: 'white' }}>
+                      <label className="feedback__label">Browser</label>
+                      <select className="feedback__input">
                         <option>Chrome</option>
                         <option>Firefox</option>
                         <option>Safari</option>
@@ -237,7 +195,7 @@ export default function FeedbackPage() {
                       </select>
                     </div>
                   </div>
-                  <button onClick={() => setSubmitted(true)} className="btn btn-primary btn-lg" style={{ alignSelf: 'flex-start' }}>
+                  <button onClick={() => setSubmitted(true)} className="btn btn-primary btn-lg feedback__submit">
                     Submit Bug Report →
                   </button>
                 </div>

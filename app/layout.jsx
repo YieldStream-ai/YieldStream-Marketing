@@ -1,4 +1,5 @@
 import './globals.css';
+import './Layout.scss';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
 
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Nav />
-        <main style={{ paddingTop: 'var(--nav-height)' }}>
+        <main className="layout__main">
           {children}
         </main>
         <Footer />

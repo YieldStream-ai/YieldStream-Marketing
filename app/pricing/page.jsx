@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useReveal } from '../components/useReveal';
+import './pricing.scss';
 
 export default function PricingPage() {
   useReveal();
@@ -74,12 +75,12 @@ export default function PricingPage() {
   return (
     <>
       {/* Hero */}
-      <section style={{ padding: '80px 0 40px', background: 'var(--n50)' }}>
+      <section className="pricing__hero">
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Pricing</div>
-            <h1 className="display-xl" style={{ marginTop: 12 }}>Simple pricing that<br />scales with you.</h1>
-            <p className="text-lg" style={{ maxWidth: 500, margin: '16px auto 0' }}>
+            <h1 className="display-xl pricing__hero-title">Simple pricing that<br />scales with you.</h1>
+            <p className="text-lg pricing__hero-sub">
               No per-deal fees. No merchant limits. No hidden costs. Just a flat monthly rate for your entire team.
             </p>
           </div>
@@ -87,27 +88,20 @@ export default function PricingPage() {
       </section>
 
       {/* Toggle + Cards */}
-      <section style={{ padding: '0 0 var(--space-5xl)' }}>
+      <section className="pricing__section">
         <div className="container">
           {/* Toggle */}
-          <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, marginBottom: 48 }}>
-            <span style={{ fontSize: '0.88rem', fontWeight: annual ? 500 : 600, color: annual ? 'var(--n400)' : 'var(--n800)' }}>Monthly</span>
-            <button onClick={() => setAnnual(!annual)} style={{
-              width: 48, height: 26, borderRadius: 13,
-              background: 'var(--p600)', position: 'relative', cursor: 'pointer',
-            }}>
-              <span style={{
-                position: 'absolute', top: 3, left: annual ? 25 : 3,
-                width: 20, height: 20, borderRadius: '50%',
-                background: 'white', transition: 'left 0.2s',
-              }} />
+          <div className="reveal pricing__toggle-wrap">
+            <span className={`pricing__toggle-label ${!annual ? 'pricing__toggle-label--active' : ''}`}>Monthly</span>
+            <button onClick={() => setAnnual(!annual)} className="pricing__toggle-btn">
+              <span className="pricing__toggle-knob" style={{ left: annual ? 25 : 3 }} />
             </button>
-            <span style={{ fontSize: '0.88rem', fontWeight: annual ? 600 : 500, color: annual ? 'var(--n800)' : 'var(--n400)' }}>Annual</span>
-            <span style={{ fontSize: '0.72rem', background: 'var(--a100)', color: 'var(--a700)', padding: '2px 8px', borderRadius: 4, fontWeight: 600 }}>Save 20%</span>
+            <span className={`pricing__toggle-label ${annual ? 'pricing__toggle-label--active' : ''}`}>Annual</span>
+            <span className="pricing__toggle-badge">Save 20%</span>
           </div>
 
           {/* Cards */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, maxWidth: 1060, margin: '0 auto' }}>
+          <div className="pricing__cards">
             {tiers.map((tier, i) => (
               <div key={i} className={`reveal reveal-delay-${i + 1}`} style={{
                 background: tier.bg || 'white',
@@ -115,32 +109,27 @@ export default function PricingPage() {
                 borderRadius: 16, padding: 36, position: 'relative',
               }}>
                 {tier.badge && (
-                  <div style={{
-                    position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)',
-                    background: tier.badgeColor, color: 'white',
-                    padding: '4px 14px', borderRadius: 100,
-                    fontSize: '0.72rem', fontWeight: 600, whiteSpace: 'nowrap'
-                  }}>{tier.badge}</div>
+                  <div className="pricing__card-badge" style={{ background: tier.badgeColor }}>{tier.badge}</div>
                 )}
-                <div style={{ marginTop: tier.badge ? 8 : 0 }}>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: 4 }}>{tier.name}</h3>
-                  <p className="text-sm" style={{ marginBottom: 20, minHeight: 44 }}>{tier.desc}</p>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 4 }}>
-                    <span className="mono" style={{ fontSize: typeof tier.price === 'number' ? '2.6rem' : '2rem', fontWeight: 700 }}>
+                <div className={tier.badge ? 'pricing__card-mt' : ''}>
+                  <h3 className="pricing__card-title">{tier.name}</h3>
+                  <p className="text-sm pricing__card-desc">{tier.desc}</p>
+                  <div className="pricing__card-price-wrap">
+                    <span className="mono pricing__card-price" style={{ fontSize: typeof tier.price === 'number' ? '2.6rem' : '2rem' }}>
                       {typeof tier.price === 'number' ? `$${tier.price}` : tier.price}
                     </span>
                     {typeof tier.price === 'number' && <span className="text-sm">/month</span>}
                   </div>
                   {tier.was && <div className="text-sm" style={{ textDecoration: typeof tier.price === 'number' && !annual ? 'line-through' : 'none', marginBottom: 16 }}>{tier.was}</div>}
                   {!tier.was && <div style={{ height: 20, marginBottom: 16 }} />}
-                  <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10, padding: '20px 0', borderTop: '1px solid var(--n100)', marginBottom: 20 }}>
+                  <ul className="pricing__card-features">
                     {tier.features.map((f, j) => (
-                      <li key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: '0.85rem', color: 'var(--n600)' }}>
-                        <span style={{ color: 'var(--a500)', fontWeight: 700, flexShrink: 0 }}>✓</span> {f}
+                      <li key={j} className="pricing__card-feature">
+                        <span className="pricing__card-feature-check">✓</span> {f}
                       </li>
                     ))}
                   </ul>
-                  <Link href={tier.name === 'Enterprise' ? '/contact' : '#'} className={tier.ctaClass} style={{ width: '100%', justifyContent: 'center' }}>
+                  <Link href={tier.name === 'Enterprise' ? '/contact' : '#'} className={`${tier.ctaClass} pricing__card-cta`}>
                     {tier.cta}
                   </Link>
                 </div>
@@ -155,7 +144,7 @@ export default function PricingPage() {
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">ROI Calculator</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>See what YieldStream saves your brokerage.</h2>
+            <h2 className="display-lg pricing__section-title">See what YieldStream saves your brokerage.</h2>
           </div>
           <ROICalculator />
         </div>
@@ -166,7 +155,7 @@ export default function PricingPage() {
         <div className="container-narrow">
           <div className="section-header center reveal">
             <div className="label">FAQ</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>Common questions</h2>
+            <h2 className="display-lg pricing__section-title">Common questions</h2>
           </div>
           <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {[
@@ -177,12 +166,9 @@ export default function PricingPage() {
               { q: 'Can I cancel anytime?', a: 'Yes. Monthly plans have no commitment. Annual plans are billed upfront and are non-refundable but you keep access through the end of the billing period.' },
               { q: 'What\'s the onboarding process?', a: 'Founder members get priority 1-on-1 onboarding. Professional customers use the guided onboarding wizard — upload lenders, invite team, and run your first AI-scored deal in under 30 minutes.' },
             ].map((faq, i) => (
-              <details key={i} style={{
-                padding: '20px 24px', background: 'white',
-                border: '1px solid var(--n200)', borderRadius: 10,
-              }}>
-                <summary style={{ fontSize: '0.95rem', fontWeight: 600, cursor: 'pointer', color: 'var(--n800)' }}>{faq.q}</summary>
-                <p className="text-sm" style={{ marginTop: 10 }}>{faq.a}</p>
+              <details key={i} className="pricing__faq-item">
+                <summary className="pricing__faq-summary">{faq.q}</summary>
+                <p className="text-sm pricing__faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -203,13 +189,8 @@ function ROICalculator() {
   const commission = extra * size * 0.075;
 
   return (
-    <div className="reveal" style={{
-      maxWidth: 800, margin: '0 auto',
-      background: 'white', border: '1px solid var(--n200)',
-      borderRadius: 16, padding: 40,
-      boxShadow: '0 4px 20px rgba(0,0,0,0.04)',
-    }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 28 }}>
+    <div className="reveal pricing__roi">
+      <div className="pricing__roi-fields">
         {[
           { label: 'Deals per month', value: deals, set: setDeals },
           { label: 'Average deal size ($)', value: size, set: setSize },
@@ -217,30 +198,25 @@ function ROICalculator() {
           { label: 'Number of reps', value: reps, set: setReps },
         ].map((field, i) => (
           <div key={i}>
-            <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>{field.label}</label>
+            <label className="pricing__roi-label">{field.label}</label>
             <input
               type="number"
               value={field.value}
               onChange={e => field.set(Number(e.target.value) || 0)}
-              style={{
-                width: '100%', padding: '10px 14px',
-                border: '1.5px solid var(--n200)', borderRadius: 8,
-                fontFamily: 'var(--font-mono)', fontSize: '0.95rem',
-                color: 'var(--n800)',
-              }}
+              className="pricing__roi-input"
             />
           </div>
         ))}
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, paddingTop: 24, borderTop: '1px solid var(--n100)' }}>
+      <div className="pricing__roi-results">
         {[
           { label: 'Hours saved / month', value: `${hours} hrs` },
           { label: 'Additional funded deals', value: `+${extra} deals` },
           { label: 'Additional monthly commission', value: `$${commission.toLocaleString()}` },
         ].map((r, i) => (
           <div key={i} style={{ textAlign: 'center' }}>
-            <div className="mono" style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--a600)' }}>{r.value}</div>
-            <div style={{ fontSize: '0.78rem', color: 'var(--n500)' }}>{r.label}</div>
+            <div className="mono pricing__roi-result-value">{r.value}</div>
+            <div className="pricing__roi-result-label">{r.label}</div>
           </div>
         ))}
       </div>

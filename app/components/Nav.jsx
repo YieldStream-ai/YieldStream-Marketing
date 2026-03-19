@@ -3,30 +3,42 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, useRef } from 'react';
-import './Nav.css';
+import {
+  ChevronDown,
+  BarChart3,
+  Zap,
+  ShieldCheck,
+  BookOpen,
+  Milestone,
+  User,
+  Mail,
+} from 'lucide-react';
+import './Nav.scss';
+
+const ICON_PROPS = { size: 20, strokeWidth: 1.5 };
 
 const dropdowns = {
-  product: {
+  platform: {
     label: 'Platform',
     items: [
-      { href: '/features', title: 'Features', desc: 'Everything the platform does' },
-      { href: '/underwriting', title: 'Underwriting', desc: 'AI bank statement analysis' },
-      { href: '/intelligence', title: 'Intelligence Engine', desc: 'Three-layer scoring' },
+      { href: '/underwriting', title: 'Underwriting', desc: 'AI bank statement analysis', icon: BarChart3 },
+      { href: '/intelligence', title: 'Intelligence Engine', desc: 'Three-layer scoring', icon: Zap },
+      { href: '/security', title: 'ISO Vault', desc: 'Data protection & compliance', icon: ShieldCheck },
     ],
   },
   company: {
     label: 'Company',
     items: [
-      { href: '/about', title: 'About', desc: 'Our story' },
-      { href: '/security', title: 'Security', desc: 'Data protection & compliance' },
-      { href: '/contact', title: 'Contact', desc: 'Get in touch' },
+      { href: '/about', title: 'About', desc: 'Our story', icon: User },
+      { href: '/security', title: 'Security', desc: 'Data protection & compliance', icon: ShieldCheck },
+      { href: '/contact', title: 'Contact', desc: 'Get in touch', icon: Mail },
     ],
   },
   resources: {
     label: 'Resources',
     items: [
-      { href: '/resources', title: 'Blog', desc: 'Insights & guides' },
-      { href: '/feedback', title: 'Feedback & Roadmap', desc: 'Shape the product' },
+      { href: '/resources', title: 'Blog', desc: 'Insights & guides', icon: BookOpen },
+      { href: '/feedback', title: 'Feedback & Roadmap', desc: 'Shape the product', icon: Milestone },
     ],
   },
 };
@@ -72,17 +84,8 @@ export default function Nav() {
   }
 
   function isActiveDropdown(key) {
-    return dropdowns[key].items.some(item => pathname === item.href);
+    return dropdowns[key].items.some((item) => pathname === item.href);
   }
-
-  const chevron = (isOpen) => (
-    <svg width="10" height="6" viewBox="0 0 10 6" fill="none" style={{
-      marginLeft: 4, transition: 'transform 0.2s',
-      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-    }}>
-      <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
 
   return (
     <>
@@ -94,47 +97,77 @@ export default function Nav() {
           </Link>
 
           {/* Desktop */}
-          <div className="ys-nav-desktop">
+          <div className="nav__desktop">
             {Object.entries(dropdowns).map(([key, dd]) => (
-              <div key={key} className="ys-dd-wrap"
+              <div
+                key={key}
+                className="nav__dropdown-wrap"
                 onMouseEnter={() => handleEnter(key)}
                 onMouseLeave={handleLeave}
               >
                 <button
-                  className={`ys-dd-trigger ${isActiveDropdown(key) ? 'ys-active' : ''}`}
+                  className={`nav__dropdown-trigger ${isActiveDropdown(key) ? 'nav__dropdown-trigger--active' : ''}`}
                   onClick={() => setOpen(open === key ? null : key)}
                   aria-expanded={open === key}
                 >
-                  {dd.label}{chevron(open === key)}
+                  {dd.label}
+                  <ChevronDown
+                    size={10}
+                    strokeWidth={1.5}
+                    className="nav__chevron"
+                    style={{ transform: open === key ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  />
                 </button>
-                <div className={`ys-dd-panel ${open === key ? 'ys-open' : ''}`}
+                <div
+                  className={`nav__dropdown-panel ${open === key ? 'nav__dropdown-panel--open' : ''}`}
                   onMouseEnter={() => handleEnter(key)}
                   onMouseLeave={handleLeave}
                 >
-                  {dd.items.map(item => (
-                    <Link key={item.href} href={item.href}
-                      className={`ys-dd-item ${pathname === item.href ? 'ys-active' : ''}`}
-                    >
-                      <span className="ys-dd-item-title">{item.title}</span>
-                      <span className="ys-dd-item-desc">{item.desc}</span>
-                    </Link>
-                  ))}
+                  {dd.items.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        className={`nav__dropdown-item ${pathname === item.href ? 'nav__dropdown-item--active' : ''}`}
+                      >
+                        <div className="nav__dropdown-icon">
+                          <Icon {...ICON_PROPS} />
+                        </div>
+                        <div className="nav__dropdown-item-content">
+                          <span className="nav__dropdown-item-title">{item.title}</span>
+                          <span className="nav__dropdown-item-desc">{item.desc}</span>
+                        </div>
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             ))}
-            <Link href="/pricing" className={`ys-dd-trigger ${pathname === '/pricing' ? 'ys-active' : ''}`}>
+            <Link
+              href="/pricing"
+              className={`nav__dropdown-trigger ${pathname === '/pricing' ? 'nav__dropdown-trigger--active' : ''}`}
+            >
               Pricing
             </Link>
           </div>
 
           <div className="nav-cta">
-            <Link href="/pricing" className="btn btn-primary">Start Free Trial</Link>
+            <Link href="/pricing" className="btn btn-primary btn-sm">
+              Start Free Trial
+            </Link>
           </div>
 
           {/* Mobile toggle */}
-          <button className="ys-mobile-toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
-            <span className={`ys-hamburger ${mobileOpen ? 'ys-x' : ''}`}>
-              <span /><span /><span />
+          <button
+            className="nav__mobile-toggle"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Menu"
+          >
+            <span className={`nav__hamburger ${mobileOpen ? 'nav__hamburger--open' : ''}`}>
+              <span />
+              <span />
+              <span />
             </span>
           </button>
         </div>
@@ -142,35 +175,60 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="ys-mobile-overlay" onClick={() => setMobileOpen(false)}>
-          <div className="ys-mobile-drawer" onClick={e => e.stopPropagation()}>
+        <div className="nav__mobile-overlay" onClick={() => setMobileOpen(false)}>
+          <div className="nav__mobile-drawer" onClick={(e) => e.stopPropagation()}>
             {Object.entries(dropdowns).map(([key, dd]) => (
-              <div key={key} className="ys-mobile-section">
-                <button className="ys-mobile-trigger"
-                  onClick={() => setMobileExpanded(mobileExpanded === key ? null : key)}
+              <div key={key} className="nav__mobile-section">
+                <button
+                  className="nav__mobile-trigger"
+                  onClick={() =>
+                    setMobileExpanded(mobileExpanded === key ? null : key)
+                  }
                 >
-                  {dd.label}{chevron(mobileExpanded === key)}
+                  {dd.label}
+                  <ChevronDown
+                    size={12}
+                    strokeWidth={1.5}
+                    className="nav__mobile-trigger-chevron"
+                    style={{ transform: mobileExpanded === key ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                  />
                 </button>
                 {mobileExpanded === key && (
-                  <div className="ys-mobile-items">
-                    {dd.items.map(item => (
-                      <Link key={item.href} href={item.href} className="ys-mobile-link"
-                        onClick={() => setMobileOpen(false)}
-                      >
-                        <span className="ys-mobile-link-t">{item.title}</span>
-                        <span className="ys-mobile-link-d">{item.desc}</span>
-                      </Link>
-                    ))}
+                  <div className="nav__mobile-items">
+                    {dd.items.map((item) => {
+                      const Icon = item.icon;
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className="nav__mobile-link"
+                          onClick={() => setMobileOpen(false)}
+                        >
+                          <div className="nav__mobile-icon-frame">
+                            <Icon {...ICON_PROPS} />
+                          </div>
+                          <div>
+                            <span className="nav__mobile-link-title">{item.title}</span>
+                            <span className="nav__mobile-link-desc">{item.desc}</span>
+                          </div>
+                        </Link>
+                      );
+                    })}
                   </div>
                 )}
               </div>
             ))}
-            <Link href="/pricing" className="ys-mobile-pricing" onClick={() => setMobileOpen(false)}>
+            <Link
+              href="/pricing"
+              className="nav__mobile-pricing"
+              onClick={() => setMobileOpen(false)}
+            >
               Pricing
             </Link>
-            <div style={{ padding: '16px 20px' }}>
-              <Link href="/pricing" className="btn btn-primary btn-lg"
-                style={{ width: '100%', justifyContent: 'center' }}
+            <div className="nav__mobile-cta-wrap">
+              <Link
+                href="/pricing"
+                className="btn btn-primary btn-lg nav__mobile-cta-btn"
                 onClick={() => setMobileOpen(false)}
               >
                 Start Free Trial →

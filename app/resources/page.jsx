@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useReveal } from '../components/useReveal';
+import './resources.scss';
 
 export default function ResourcesPage() {
   useReveal();
@@ -17,12 +18,12 @@ export default function ResourcesPage() {
 
   return (
     <>
-      <section style={{ padding: '80px 0 40px', background: 'var(--n50)' }}>
+      <section className="resources__hero">
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Resources</div>
-            <h1 className="display-xl" style={{ marginTop: 12 }}>Insights for MCA brokers<br />who think in systems.</h1>
-            <p className="text-lg" style={{ maxWidth: 560, margin: '16px auto 0' }}>
+            <h1 className="display-xl resources__hero-title">Insights for MCA brokers<br />who think in systems.</h1>
+            <p className="text-lg resources__hero-sub">
               Deep dives on submission intelligence, lender matching, underwriting automation, and building a data-driven brokerage.
             </p>
           </div>
@@ -32,22 +33,14 @@ export default function ResourcesPage() {
       {/* Featured */}
       <section className="section">
         <div className="container">
-          <div className="reveal" style={{
-            padding: 40, background: 'var(--p900)', borderRadius: 16,
-            color: 'white', marginBottom: 'var(--space-3xl)',
-            position: 'relative', overflow: 'hidden',
-          }}>
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'radial-gradient(circle at 80% 30%, rgba(16,185,129,0.1) 0%, transparent 50%)',
-              pointerEvents: 'none'
-            }} />
-            <div style={{ position: 'relative', maxWidth: 600 }}>
-              <span className="mono" style={{ fontSize: '0.72rem', color: 'var(--a400)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Featured Guide</span>
-              <h2 style={{ fontSize: '1.6rem', fontWeight: 600, marginTop: 8, marginBottom: 10, lineHeight: 1.3 }}>
+          <div className="reveal resources__featured">
+            <div className="resources__featured-glow" />
+            <div className="resources__featured-inner">
+              <span className="mono resources__featured-label">Featured Guide</span>
+              <h2 className="resources__featured-title">
                 The ISO Owner's Guide to Submission Intelligence
               </h2>
-              <p style={{ fontSize: '0.92rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.65, marginBottom: 20 }}>
+              <p className="resources__featured-desc">
                 A comprehensive breakdown of how data-driven lender matching works, why relationship weighting is the key differentiator, and how to evaluate whether your brokerage is ready for AI-powered submissions.
               </p>
               <span className="btn btn-emerald">Read the Guide →</span>
@@ -57,11 +50,11 @@ export default function ResourcesPage() {
           {/* Article Grid */}
           <div className="grid-3">
             {articles.map((article, i) => (
-              <article key={i} className={`card reveal reveal-delay-${(i % 3) + 1}`} style={{ cursor: 'pointer' }}>
-                <span className="mono" style={{ fontSize: '0.7rem', color: 'var(--p600)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{article.category}</span>
-                <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginTop: 8, marginBottom: 8, lineHeight: 1.4 }}>{article.title}</h3>
-                <p className="text-sm" style={{ marginBottom: 16 }}>{article.desc}</p>
-                <div style={{ display: 'flex', gap: 12, fontSize: '0.75rem', color: 'var(--n400)' }}>
+              <article key={i} className={`card reveal reveal-delay-${(i % 3) + 1} resources__article`}>
+                <span className="mono resources__article-category">{article.category}</span>
+                <h3 className="resources__article-title">{article.title}</h3>
+                <p className="text-sm resources__article-desc">{article.desc}</p>
+                <div className="resources__article-meta">
                   <span>{article.date}</span>
                   <span>·</span>
                   <span>{article.readTime} read</span>
@@ -74,19 +67,15 @@ export default function ResourcesPage() {
 
       {/* Newsletter */}
       <section className="section section-alt">
-        <div className="container-narrow" style={{ textAlign: 'center' }}>
+        <div className="container-narrow resources__newsletter">
           <div className="reveal">
-            <div className="label" style={{ marginBottom: 12 }}>Stay Informed</div>
+            <div className="label resources__newsletter-label">Stay Informed</div>
             <h2 className="display-md">Get the MCA intelligence briefing.</h2>
-            <p className="text-lg" style={{ maxWidth: 480, margin: '12px auto 24px' }}>
+            <p className="text-lg resources__newsletter-desc">
               Weekly insights on lender trends, submission strategies, and product updates. No spam, unsubscribe anytime.
             </p>
-            <div style={{ display: 'flex', gap: 8, maxWidth: 440, margin: '0 auto' }}>
-              <input type="email" placeholder="you@yourbrokerage.com" style={{
-                flex: 1, padding: '12px 16px',
-                border: '1.5px solid var(--n200)', borderRadius: 8,
-                fontSize: '0.9rem',
-              }} />
+            <div className="resources__newsletter-form">
+              <input type="email" placeholder="you@yourbrokerage.com" className="resources__newsletter-input" />
               <button className="btn btn-primary">Subscribe</button>
             </div>
           </div>

@@ -1,0 +1,210 @@
+/* Feedback page - BEM */
+.feedback {
+  &__hero {
+    padding: 80px 0 40px;
+    background: var(--n50);
+  }
+
+  &__hero-title {
+    margin-top: 12px;
+  }
+
+  &__hero-sub {
+    max-width: 560px;
+    margin: 16px auto 0;
+  }
+
+  &__section {
+    padding-top: 0;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: var(--space-2xl);
+    border-bottom: 1px solid var(--n200);
+  }
+
+  &__tab {
+    padding: 12px 20px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.2s;
+    cursor: pointer;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: inherit;
+    color: var(--n500);
+
+    &--active {
+      color: var(--p600);
+      border-bottom-color: var(--p600);
+    }
+  }
+
+  &__roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  &__column-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+
+  &__column-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  &__column-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  &__column-count {
+    font-size: 0.7rem;
+    color: var(--n400);
+    margin-left: auto;
+  }
+
+  &__column-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__roadmap-card {
+    padding: 16px;
+    cursor: pointer;
+  }
+
+  &__roadmap-card-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__roadmap-card-desc {
+    font-size: 0.78rem;
+    color: var(--n500);
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  &__vote-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: var(--n50);
+    border: 1px solid var(--n200);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--p600);
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  &__form {
+    max-width: 640px;
+  }
+
+  &__form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__success-box {
+    padding: 40px;
+    background: var(--a50);
+    border-radius: 12px;
+    border: 1px solid var(--a200);
+    text-align: center;
+  }
+
+  &__success-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+  }
+
+  &__success-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--n700);
+    margin-bottom: 6px;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--n200);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: white;
+  }
+
+  &__textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid var(--n200);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    resize: vertical;
+  }
+
+  &__priority-btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__priority-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    border: 1.5px solid var(--n200);
+    background: white;
+    color: var(--n700);
+    font-weight: 500;
+
+    &--active {
+      border: 2px solid var(--p600);
+      background: var(--p50);
+      color: var(--p700);
+      font-weight: 600;
+    }
+  }
+
+  &__submit {
+    align-self: flex-start;
+  }
+
+  &__form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}

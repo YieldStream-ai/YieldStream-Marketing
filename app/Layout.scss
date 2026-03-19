@@ -1,0 +1,6 @@
+/* Layout - BEM */
+.layout {
+  &__main {
+    padding-top: var(--nav-height);
+  }
+}

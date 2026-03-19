@@ -273,10 +273,18 @@ input, textarea, select { font-family: inherit; }
   border-bottom: 1px solid transparent;
   transition: all 0.3s var(--ease-out);
 }
-.nav.scrolled { border-bottom-color: var(--n150); }
+.nav.scrolled {
+  border-bottom-color: var(--n150);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
 .nav-inner {
-  max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-lg);
-  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   height: 100%;
 }
 .nav-logo {

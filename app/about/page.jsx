@@ -2,17 +2,18 @@
 
 import { useReveal } from '../components/useReveal';
 import CTABanner from '../components/CTABanner';
+import './about.scss';
 
 export default function AboutPage() {
   useReveal();
 
   return (
     <>
-      <section style={{ padding: '80px 0 60px', background: 'var(--n50)' }}>
+      <section className="about__hero">
         <div className="container-narrow">
           <div className="section-header center reveal">
             <div className="label">About YieldStream</div>
-            <h1 className="display-xl" style={{ marginTop: 12 }}>Built by a broker who<br />got tired of spreadsheets.</h1>
+            <h1 className="display-xl about__hero-title">Built by a broker who<br />got tired of spreadsheets.</h1>
           </div>
         </div>
       </section>
@@ -20,36 +21,31 @@ export default function AboutPage() {
       {/* Founder Story */}
       <section className="section">
         <div className="container-narrow">
-        <div className="reveal" style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--n600)' }}>
-          <p style={{ marginBottom: 20 }}>
+        <div className="reveal about__story">
+          <p>
             I spent years as an MCA broker, and the workflow was chaos. Not organized chaos — actual chaos. Sticky notes on monitors with lender appetites that changed two weeks ago. Printed bank statements stacked on desks with handwritten margin notes. Approval emails buried in threads nobody could find. Stips tracked in one place, offers in another, and the deal itself living across three tabs, a text chain, and somebody's memory.
           </p>
-          <p style={{ marginBottom: 20 }}>
+          <p>
             The CRM was supposed to fix this. It didn't. It just gave us a more expensive place to lose things. A thousand fields, none of them built for how funding actually works. So we built workarounds on top of workarounds — spreadsheets taped to a Salesforce instance that fought us every step of the way.
           </p>
-          <p style={{ marginBottom: 20 }}>
+          <p>
             When a deal got declined, the reason disappeared. When a lender tightened their buybox, I found out three wasted submissions later. When a new rep joined, it took months before they could make a decent lender call — because the real intelligence lived in sticky notes, gut feel, and whatever the senior broker could remember from last quarter.
           </p>
-          <p style={{ marginBottom: 20 }}>
-            <strong style={{ color: 'var(--n800)' }}>YieldStream exists because the tools were never built for us.</strong> Not the brokers — the tools. CRMs store data but can't tell you where to send a deal. They'll let you log a decline but won't stop you from making the same submission tomorrow. Nobody was building software for the actual job: reading a bank statement, matching it to a lender who's actually hungry, and getting the deal funded before the merchant walks.
+          <p>
+            <strong className="about__story-strong">YieldStream exists because the tools were never built for us.</strong> Not the brokers — the tools. CRMs store data but can't tell you where to send a deal. They'll let you log a decline but won't stop you from making the same submission tomorrow. Nobody was building software for the actual job: reading a bank statement, matching it to a lender who's actually hungry, and getting the deal funded before the merchant walks.
           </p>
-          <p style={{ marginBottom: 20 }}>
+          <p>
             So I built it. YieldStream replaces the sticky notes and the spreadsheet workarounds with a system that actually thinks. It analyzes bank statements in minutes. It scores every lender against every deal using your relationship history. It learns from every outcome. And it explains every recommendation in plain English — because brokers don't trust black boxes, and they shouldn't have to.
           </p>
           <p>
             We're just getting started. The first 20 founding members will shape what this platform becomes. If you're running an ISO and your "system" is held together with sticky notes, printed PDFs, and a CRM that wasn't built for funding — I'd love to show you what's possible.
           </p>
         </div>
-          <div className="reveal" style={{ marginTop: 'var(--space-2xl)', paddingTop: 'var(--space-xl)', borderTop: '1px solid var(--n200)' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <div style={{
-                width: 56, height: 56, borderRadius: '50%',
-                background: 'var(--p100)', color: 'var(--p700)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontWeight: 700, fontSize: '1.1rem',
-              }}>JD</div>
+          <div className="reveal about__author-wrap">
+            <div className="about__author-inner">
+              <div className="about__author-avatar">JD</div>
               <div>
-                <div style={{ fontWeight: 600, fontSize: '1.05rem' }}>Joshua Dinh</div>
+                <div className="about__author-name">Joshua Dinh</div>
                 <div className="text-sm">Founder & CEO, YieldStream.ai</div>
                 <div className="text-sm">Former MCA Broker</div>
               </div>
@@ -63,7 +59,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Our Principles</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>How we build.</h2>
+            <h2 className="display-lg about__section-title">How we build.</h2>
           </div>
           <div className="grid-3">
             {[
@@ -75,7 +71,7 @@ export default function AboutPage() {
               { title: 'Build in Public', desc: 'Founding members see the roadmap, vote on features, and get a direct line to the team. We ship fast and iterate based on real broker feedback.' },
             ].map((v, i) => (
               <div key={i} className={`card reveal reveal-delay-${(i % 3) + 1}`}>
-                <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 6 }}>{v.title}</h3>
+                <h3 className="about__card-title">{v.title}</h3>
                 <p className="text-sm">{v.desc}</p>
               </div>
             ))}
