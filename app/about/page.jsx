@@ -20,23 +20,26 @@ export default function AboutPage() {
       {/* Founder Story */}
       <section className="section">
         <div className="container-narrow">
-          <div className="reveal" style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--n600)' }}>
-            <p style={{ marginBottom: 20 }}>
-              I spent years as an MCA broker. Every day was the same: pull up bank statements, open a spreadsheet, manually calculate revenue and daily balances, check for NSFs, try to remember which lender was funding restaurant deals this month, and hope I picked the right one.
-            </p>
-            <p style={{ marginBottom: 20 }}>
-              When a deal got declined, the reason lived in an email I'd never look at again. When my best lender tightened their buybox, I found out three wasted submissions later. When a new rep joined the team, it took months before they could make decent lender decisions — because all the relationship knowledge lived in my head.
-            </p>
-            <p style={{ marginBottom: 20 }}>
-              <strong style={{ color: 'var(--n800)' }}>YieldStream exists because that workflow is broken.</strong> Not because the brokers are bad — they're not. The tools are bad. CRMs store data but don't think. Spreadsheets track numbers but don't learn. Nobody builds software for the specific, high-stakes, relationship-driven work that MCA brokers actually do.
-            </p>
-            <p style={{ marginBottom: 20 }}>
-              So I built it. YieldStream is the platform I wished existed when I was running a brokerage. It analyzes bank statements in minutes instead of hours. It scores every lender against every deal using three layers of intelligence. It learns from every funded and declined deal. And it explains every recommendation in plain English — because brokers don't trust black boxes, and they shouldn't have to.
-            </p>
-            <p>
-              We're just getting started. The first 20 founding members will shape what this platform becomes. If you're an ISO owner who's tired of gut-feel submissions and spreadsheet underwriting, I'd love to show you what's possible.
-            </p>
-          </div>
+        <div className="reveal" style={{ fontSize: '1.05rem', lineHeight: 1.8, color: 'var(--n600)' }}>
+          <p style={{ marginBottom: 20 }}>
+            I spent years as an MCA broker, and the workflow was chaos. Not organized chaos — actual chaos. Sticky notes on monitors with lender appetites that changed two weeks ago. Printed bank statements stacked on desks with handwritten margin notes. Approval emails buried in threads nobody could find. Stips tracked in one place, offers in another, and the deal itself living across three tabs, a text chain, and somebody's memory.
+          </p>
+          <p style={{ marginBottom: 20 }}>
+            The CRM was supposed to fix this. It didn't. It just gave us a more expensive place to lose things. A thousand fields, none of them built for how funding actually works. So we built workarounds on top of workarounds — spreadsheets taped to a Salesforce instance that fought us every step of the way.
+          </p>
+          <p style={{ marginBottom: 20 }}>
+            When a deal got declined, the reason disappeared. When a lender tightened their buybox, I found out three wasted submissions later. When a new rep joined, it took months before they could make a decent lender call — because the real intelligence lived in sticky notes, gut feel, and whatever the senior broker could remember from last quarter.
+          </p>
+          <p style={{ marginBottom: 20 }}>
+            <strong style={{ color: 'var(--n800)' }}>YieldStream exists because the tools were never built for us.</strong> Not the brokers — the tools. CRMs store data but can't tell you where to send a deal. They'll let you log a decline but won't stop you from making the same submission tomorrow. Nobody was building software for the actual job: reading a bank statement, matching it to a lender who's actually hungry, and getting the deal funded before the merchant walks.
+          </p>
+          <p style={{ marginBottom: 20 }}>
+            So I built it. YieldStream replaces the sticky notes and the spreadsheet workarounds with a system that actually thinks. It analyzes bank statements in minutes. It scores every lender against every deal using your relationship history. It learns from every outcome. And it explains every recommendation in plain English — because brokers don't trust black boxes, and they shouldn't have to.
+          </p>
+          <p>
+            We're just getting started. The first 20 founding members will shape what this platform becomes. If you're running an ISO and your "system" is held together with sticky notes, printed PDFs, and a CRM that wasn't built for funding — I'd love to show you what's possible.
+          </p>
+        </div>
           <div className="reveal" style={{ marginTop: 'var(--space-2xl)', paddingTop: 'var(--space-xl)', borderTop: '1px solid var(--n200)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
               <div style={{

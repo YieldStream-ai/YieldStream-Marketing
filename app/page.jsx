@@ -46,8 +46,8 @@ export default function Home() {
               </h1>
 
               <p className="text-lg reveal reveal-delay-1" style={{ maxWidth: 500, marginBottom: 32 }}>
-                YieldStream is the submission intelligence platform that learns from every funded and declined deal. Built by a former MCA broker who got tired of spreadsheets.
-              </p>
+              Stop playing CRM architect and start funding deals.
+              YieldStream is submission intelligence that learns from every outcome. Built by an MCA veteran who traded the Salesforce headache for a platform that actually knows which lenders are hungry.              </p>
 
               <div className="reveal reveal-delay-2" style={{ display: 'flex', gap: 12, marginBottom: 40, flexWrap: 'wrap' }}>
                 <Link href="/pricing" className="btn btn-primary btn-lg">Start 14-Day Free Trial →</Link>
