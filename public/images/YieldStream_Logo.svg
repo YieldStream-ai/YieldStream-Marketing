@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 140 140">
+  <defs>
+    <!-- Y cutout mask -->
+    <mask id="ymask">
+      <rect width="140" height="140" fill="white"/>
+      <!-- Left arm: 225° → (70 + 60*cos(225°), 70 + 60*sin(225°)) = (27.6, 27.6) -->
+      <line x1="70" y1="70" x2="28" y2="28" stroke="black" stroke-width="14" stroke-linecap="square"/>
+      <!-- Right arm: 315° → (70 + 60*cos(315°), 70 + 60*sin(315°)) = (112.4, 27.6) -->
+      <line x1="70" y1="70" x2="112" y2="28" stroke="black" stroke-width="14" stroke-linecap="square"/>
+      <!-- Stem: straight down to (70, 130) -->
+      <line x1="70" y1="70" x2="70" y2="130" stroke="black" stroke-width="14" stroke-linecap="square"/>
+    </mask>
+
+    <!-- Gradient: top-left segment (dark center → teal outer) -->
+    <linearGradient id="g-tl" x1="70" y1="70" x2="14" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#01313a"/>
+      <stop offset="100%" stop-color="#047987"/>
+    </linearGradient>
+
+    <!-- Gradient: top-right segment -->
+    <linearGradient id="g-tr" x1="70" y1="70" x2="126" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#01313a"/>
+      <stop offset="100%" stop-color="#047987"/>
+    </linearGradient>
+
+    <!-- Gradient: bottom segment -->
+    <linearGradient id="g-b" x1="70" y1="70" x2="70" y2="134" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#01313a"/>
+      <stop offset="100%" stop-color="#035d6a"/>
+    </linearGradient>
+
+    <!--
+      Pie-slice clip paths.
+      Circle r=60, center (70,70).
+      Arms at 225°, 315°, 90°.
+      Points on circle:
+        225°: (28, 28)
+        315°: (112, 28)
+         90°: (70, 130)
+    -->
+
+    <!-- seg-tl: wedge from 90° → 225° -->
+    <clipPath id="clip-tl">
+      <path d="M70,70 L70,130 A60,60 0 0,1 28,28 Z"/>
+    </clipPath>
+
+    <!-- seg-tr: wedge from 315° → 90° -->
+    <clipPath id="clip-tr">
+      <path d="M70,70 L112,28 A60,60 0 0,1 70,130 Z"/>
+    </clipPath>
+
+    <!-- seg-b: wedge from 225° → 315° -->
+    <clipPath id="clip-b">
+      <path d="M70,70 L28,28 A60,60 0 0,1 112,28 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Top-left segment -->
+  <circle cx="70" cy="70" r="60" fill="url(#g-tl)" clip-path="url(#clip-tl)" mask="url(#ymask)"/>
+
+  <!-- Top-right segment -->
+  <circle cx="70" cy="70" r="60" fill="url(#g-tr)" clip-path="url(#clip-tr)" mask="url(#ymask)"/>
+
+  <!-- Bottom segment -->
+  <circle cx="70" cy="70" r="60" fill="url(#g-b)" clip-path="url(#clip-b)" mask="url(#ymask)"/>
+</svg>
