@@ -171,7 +171,7 @@ input, textarea, select { font-family: inherit; }
 .btn-ghost { color: var(--n600); }
 .btn-ghost:hover { color: var(--p600); }
 
-.btn-lg { padding: 14px 28px; font-size: 0.95rem; border-radius: 4px; }
+.btn-lg { padding: 10px 20px; font-size: 0.875rem; border-radius: 4px; }
 .btn-sm { padding: 7px 14px; font-size: 0.8rem; border-radius: 4px; }
 
 /* ===== SECTIONS ===== */

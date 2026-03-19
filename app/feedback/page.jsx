@@ -7,18 +7,13 @@ export default function FeedbackPage() {
   useReveal();
   const [tab, setTab] = useState('roadmap');
   const [submitted, setSubmitted] = useState(false);
+  const [priority, setPriority] = useState(null);
 
   const roadmapItems = [
-    { status: 'shipped', label: 'Shipped', items: [
-      { title: 'AI Bank Statement Analysis', desc: 'LlamaParse OCR + Gemini enrichment pipeline', votes: 48 },
-      { title: 'Three-Layer Lender Scoring', desc: 'Relationship + attribute + global signals', votes: 52 },
-      { title: 'Deal Pipeline (Kanban + Table)', desc: 'Full pipeline visibility with stage tracking', votes: 41 },
-      { title: 'Offer Comparison & Scoring', desc: 'Side-by-side lender offer analysis', votes: 39 },
-    ]},
-    { status: 'building', label: 'In Progress', items: [
-      { title: 'Prediction Accuracy Dashboard', desc: 'Track and display AI match accuracy over time', votes: 67 },
-      { title: 'Lender Portal (Self-Service)', desc: 'Lenders update their own buybox criteria', votes: 54 },
-      { title: 'Mobile Responsive Views', desc: 'Field rep access on phone and tablet', votes: 45 },
+    { status: 'considering', label: 'Under Review', items: [
+      { title: 'SMS/Email Drip for Renewals', desc: 'Automated merchant outreach at paydown milestones', votes: 22 },
+      { title: 'White-Label Option', desc: 'Custom branding for large ISOs', votes: 18 },
+      { title: 'Dialer Integration', desc: 'Click-to-call from merchant records', votes: 15 },
     ]},
     { status: 'planned', label: 'Planned', items: [
       { title: 'Penalty Visibility Panel', desc: 'See active decline penalties and expiry dates', votes: 38 },
@@ -26,10 +21,16 @@ export default function FeedbackPage() {
       { title: 'UCC Scraping Integration', desc: 'Automated lien search via state filing databases', votes: 29 },
       { title: 'Lendio API Integration', desc: 'Direct submission to Lendio lender network', votes: 26 },
     ]},
-    { status: 'considering', label: 'Under Review', items: [
-      { title: 'SMS/Email Drip for Renewals', desc: 'Automated merchant outreach at paydown milestones', votes: 22 },
-      { title: 'White-Label Option', desc: 'Custom branding for large ISOs', votes: 18 },
-      { title: 'Dialer Integration', desc: 'Click-to-call from merchant records', votes: 15 },
+    { status: 'building', label: 'In Progress', items: [
+      { title: 'Prediction Accuracy Dashboard', desc: 'Track and display AI match accuracy over time', votes: 67 },
+      { title: 'Lender Portal (Self-Service)', desc: 'Lenders update their own buybox criteria', votes: 54 },
+      { title: 'Mobile Responsive Views', desc: 'Field rep access on phone and tablet', votes: 45 },
+    ]},
+    { status: 'shipped', label: 'Shipped', items: [
+      { title: 'AI Bank Statement Analysis', desc: 'LlamaParse OCR + Gemini enrichment pipeline', votes: 48 },
+      { title: 'Three-Layer Lender Scoring', desc: 'Relationship + attribute + global signals', votes: 52 },
+      { title: 'Deal Pipeline (Kanban + Table)', desc: 'Full pipeline visibility with stage tracking', votes: 41 },
+      { title: 'Offer Comparison & Scoring', desc: 'Side-by-side lender offer analysis', votes: 39 },
     ]},
   ];
 
@@ -63,7 +64,7 @@ export default function FeedbackPage() {
               { id: 'request', label: 'Feature Request' },
               { id: 'bug', label: 'Report a Bug' },
             ].map(t => (
-              <button key={t.id} onClick={() => { setTab(t.id); setSubmitted(false); }} style={{
+              <button key={t.id} onClick={() => { setTab(t.id); setSubmitted(false); setPriority(null); }} style={{
                 padding: '12px 20px', fontSize: '0.88rem', fontWeight: 600,
                 color: tab === t.id ? 'var(--p600)' : 'var(--n500)',
                 borderBottom: tab === t.id ? '2px solid var(--p600)' : '2px solid transparent',
@@ -156,10 +157,24 @@ export default function FeedbackPage() {
                     <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: 'var(--n700)', marginBottom: 6 }}>Priority for your team</label>
                     <div style={{ display: 'flex', gap: 8 }}>
                       {['Nice to have', 'Important', 'Critical'].map(p => (
-                        <button key={p} style={{
-                          padding: '6px 14px', borderRadius: 6,
-                          border: '1.5px solid var(--n200)', fontSize: '0.82rem', fontWeight: 500,
-                        }}>{p}</button>
+                        <button
+                          key={p}
+                          type="button"
+                          onClick={() => setPriority(p)}
+                          style={{
+                            padding: '8px 16px',
+                            borderRadius: 6,
+                            border: priority === p ? '2px solid var(--p600)' : '1.5px solid var(--n200)',
+                            background: priority === p ? 'var(--p50)' : 'white',
+                            color: priority === p ? 'var(--p700)' : 'var(--n700)',
+                            fontSize: '0.82rem',
+                            fontWeight: priority === p ? 600 : 500,
+                            cursor: 'pointer',
+                            transition: 'all 0.15s',
+                          }}
+                        >
+                          {p}
+                        </button>
                       ))}
                     </div>
                   </div>
