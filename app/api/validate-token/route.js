@@ -4,14 +4,18 @@ import { NextResponse } from 'next/server';
  * POST /api/validate-token
  * Called by app.yieldstream.ai to validate a signup token.
  *
- * Body: { token: string }
+ * Body: { token: string, peek?: boolean }
  * Returns: { valid, email, plan, interval, stripe_customer_id, stripe_subscription_id }
  *
- * Marks the token as used after successful validation (single-use).
+ * When peek is true, validates without marking the token as used (read-only).
+ * When peek is false/absent, marks the token as used after validation (legacy behavior).
+ *
+ * Recommended flow: call with peek:true on page load, then call POST /api/consume-token
+ * after the user account is successfully created.
  */
 export async function POST(request) {
   try {
-    const { token } = await request.json();
+    const { token, peek } = await request.json();
 
     if (!token) {
       return NextResponse.json({ valid: false, error: 'Missing token' }, { status: 400 });
@@ -48,20 +52,22 @@ export async function POST(request) {
       return NextResponse.json({ valid: false, error: 'Token expired' });
     }
 
-    // Mark as used
-    await fetch(
-      `${supabaseUrl}/rest/v1/signup_tokens?token=eq.${token}`,
-      {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
-          Prefer: 'return=minimal',
-        },
-        body: JSON.stringify({ used: true, used_at: new Date().toISOString() }),
-      }
-    );
+    // Mark as used only if not peeking (legacy behavior)
+    if (!peek) {
+      await fetch(
+        `${supabaseUrl}/rest/v1/signup_tokens?token=eq.${token}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+            apikey: supabaseKey,
+            Authorization: `Bearer ${supabaseKey}`,
+            Prefer: 'return=minimal',
+          },
+          body: JSON.stringify({ used: true, used_at: new Date().toISOString() }),
+        }
+      );
+    }
 
     return NextResponse.json({
       valid: true,
