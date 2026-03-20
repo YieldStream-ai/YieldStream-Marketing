@@ -1,3 +1,20 @@
+-- Signup tokens table (magic links for app registration)
+create table if not exists signup_tokens (
+  id uuid primary key default gen_random_uuid(),
+  token text unique not null,
+  email text not null,
+  stripe_customer_id text not null,
+  stripe_subscription_id text not null,
+  plan text,
+  interval text,
+  used boolean not null default false,
+  used_at timestamptz,
+  expires_at timestamptz not null,
+  created_at timestamptz not null default now()
+);
+
+alter table signup_tokens enable row level security;
+
 -- Roadmap items table
 create table if not exists roadmap_items (
   id text primary key,
