@@ -1,45 +1,174 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useReveal } from '../components/useReveal';
 import './feedback.scss';
+
+const INITIAL_ROADMAP = [
+  { status: 'considering', label: 'Under Review', items: [
+    { id: 'sms-drip', title: 'SMS/Email Drip for Renewals', desc: 'Automated merchant outreach at paydown milestones', votes: 22 },
+    { id: 'white-label', title: 'White-Label Option', desc: 'Custom branding for large ISOs', votes: 18 },
+    { id: 'dialer', title: 'Dialer Integration', desc: 'Click-to-call from merchant records', votes: 15 },
+  ]},
+  { status: 'planned', label: 'Planned', items: [
+    { id: 'penalty-panel', title: 'Penalty Visibility Panel', desc: 'See active decline penalties and expiry dates', votes: 38 },
+    { id: 'analytics-export', title: 'Advanced Analytics Export', desc: 'Custom date range reports for ISO owners', votes: 33 },
+    { id: 'ucc-scraping', title: 'UCC Scraping Integration', desc: 'Automated lien search via state filing databases', votes: 29 },
+    { id: 'lendio-api', title: 'Lendio API Integration', desc: 'Direct submission to Lendio lender network', votes: 26 },
+  ]},
+  { status: 'building', label: 'In Progress', items: [
+    { id: 'prediction-dash', title: 'Prediction Accuracy Dashboard', desc: 'Track and display AI match accuracy over time', votes: 67 },
+    { id: 'lender-portal', title: 'Lender Portal (Self-Service)', desc: 'Lenders update their own buybox criteria', votes: 54 },
+    { id: 'mobile-views', title: 'Mobile Responsive Views', desc: 'Field rep access on phone and tablet', votes: 45 },
+  ]},
+  { status: 'shipped', label: 'Shipped', items: [
+    { id: 'bank-statement', title: 'AI Bank Statement Analysis', desc: 'LlamaParse OCR + Gemini enrichment pipeline', votes: 48 },
+    { id: 'lender-scoring', title: 'Three-Layer Lender Scoring', desc: 'Relationship + attribute + global signals', votes: 52 },
+    { id: 'kanban-table', title: 'Deal Pipeline (Kanban + Table)', desc: 'Full pipeline visibility with stage tracking', votes: 41 },
+    { id: 'offer-comparison', title: 'Offer Comparison & Scoring', desc: 'Side-by-side lender offer analysis', votes: 39 },
+  ]},
+];
+
+const statusColors = {
+  shipped: { bg: 'var(--a50)', color: 'var(--a700)', dot: 'var(--a500)' },
+  building: { bg: '#eff6ff', color: '#1d4ed8', dot: '#3b82f6' },
+  planned: { bg: 'var(--p50)', color: 'var(--p700)', dot: 'var(--p500)' },
+  considering: { bg: 'var(--n100)', color: 'var(--n600)', dot: 'var(--n400)' },
+};
+
+function getVotedItems() {
+  if (typeof window === 'undefined') return new Set();
+  try {
+    return new Set(JSON.parse(localStorage.getItem('ys_votes') || '[]'));
+  } catch { return new Set(); }
+}
+
+function saveVotedItems(set) {
+  localStorage.setItem('ys_votes', JSON.stringify([...set]));
+}
 
 export default function FeedbackPage() {
   useReveal();
   const [tab, setTab] = useState('roadmap');
+  const [roadmap, setRoadmap] = useState(INITIAL_ROADMAP);
+  const [votedIds, setVotedIds] = useState(new Set());
+
+  // Feature request form state
+  const [frTitle, setFrTitle] = useState('');
+  const [frCategory, setFrCategory] = useState('AI / Intelligence');
+  const [frDescription, setFrDescription] = useState('');
+  const [frPriority, setFrPriority] = useState(null);
+
+  // Bug report form state
+  const [bugSummary, setBugSummary] = useState('');
+  const [bugSteps, setBugSteps] = useState('');
+  const [bugExpected, setBugExpected] = useState('');
+  const [bugSeverity, setBugSeverity] = useState('Low — cosmetic issue');
+  const [bugBrowser, setBugBrowser] = useState('Chrome');
+
+  // Shared form state
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [priority, setPriority] = useState(null);
+  const [error, setError] = useState(null);
 
-  const roadmapItems = [
-    { status: 'considering', label: 'Under Review', items: [
-      { title: 'SMS/Email Drip for Renewals', desc: 'Automated merchant outreach at paydown milestones', votes: 22 },
-      { title: 'White-Label Option', desc: 'Custom branding for large ISOs', votes: 18 },
-      { title: 'Dialer Integration', desc: 'Click-to-call from merchant records', votes: 15 },
-    ]},
-    { status: 'planned', label: 'Planned', items: [
-      { title: 'Penalty Visibility Panel', desc: 'See active decline penalties and expiry dates', votes: 38 },
-      { title: 'Advanced Analytics Export', desc: 'Custom date range reports for ISO owners', votes: 33 },
-      { title: 'UCC Scraping Integration', desc: 'Automated lien search via state filing databases', votes: 29 },
-      { title: 'Lendio API Integration', desc: 'Direct submission to Lendio lender network', votes: 26 },
-    ]},
-    { status: 'building', label: 'In Progress', items: [
-      { title: 'Prediction Accuracy Dashboard', desc: 'Track and display AI match accuracy over time', votes: 67 },
-      { title: 'Lender Portal (Self-Service)', desc: 'Lenders update their own buybox criteria', votes: 54 },
-      { title: 'Mobile Responsive Views', desc: 'Field rep access on phone and tablet', votes: 45 },
-    ]},
-    { status: 'shipped', label: 'Shipped', items: [
-      { title: 'AI Bank Statement Analysis', desc: 'LlamaParse OCR + Gemini enrichment pipeline', votes: 48 },
-      { title: 'Three-Layer Lender Scoring', desc: 'Relationship + attribute + global signals', votes: 52 },
-      { title: 'Deal Pipeline (Kanban + Table)', desc: 'Full pipeline visibility with stage tracking', votes: 41 },
-      { title: 'Offer Comparison & Scoring', desc: 'Side-by-side lender offer analysis', votes: 39 },
-    ]},
-  ];
+  useEffect(() => {
+    setVotedIds(getVotedItems());
+  }, []);
 
-  const statusColors = {
-    shipped: { bg: 'var(--a50)', color: 'var(--a700)', dot: 'var(--a500)' },
-    building: { bg: '#eff6ff', color: '#1d4ed8', dot: '#3b82f6' },
-    planned: { bg: 'var(--p50)', color: 'var(--p700)', dot: 'var(--p500)' },
-    considering: { bg: 'var(--n100)', color: 'var(--n600)', dot: 'var(--n400)' },
+  const handleVote = useCallback((itemId) => {
+    const alreadyVoted = votedIds.has(itemId);
+    const next = new Set(votedIds);
+
+    if (alreadyVoted) {
+      next.delete(itemId);
+    } else {
+      next.add(itemId);
+    }
+
+    setVotedIds(next);
+    saveVotedItems(next);
+
+    setRoadmap(prev => prev.map(column => ({
+      ...column,
+      items: column.items.map(item =>
+        item.id === itemId
+          ? { ...item, votes: item.votes + (alreadyVoted ? -1 : 1) }
+          : item
+      ),
+    })));
+
+    // Fire-and-forget vote to API
+    fetch('/api/vote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ itemId, action: alreadyVoted ? 'unvote' : 'vote' }),
+    }).catch(() => {});
+  }, [votedIds]);
+
+  const resetForms = () => {
+    setFrTitle(''); setFrCategory('AI / Intelligence'); setFrDescription(''); setFrPriority(null);
+    setBugSummary(''); setBugSteps(''); setBugExpected('');
+    setBugSeverity('Low — cosmetic issue'); setBugBrowser('Chrome');
+    setError(null);
+  };
+
+  const handleTabChange = (id) => {
+    setTab(id);
+    setSubmitted(false);
+    setError(null);
+  };
+
+  const submitFeatureRequest = async (e) => {
+    e.preventDefault();
+    if (!frTitle.trim()) { setError('Please provide a feature title.'); return; }
+    if (!frDescription.trim()) { setError('Please describe the feature.'); return; }
+    if (!frPriority) { setError('Please select a priority level.'); return; }
+
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'feature_request',
+          data: { title: frTitle, category: frCategory, description: frDescription, priority: frPriority },
+        }),
+      });
+      if (!res.ok) throw new Error('Submission failed');
+      setSubmitted(true);
+      resetForms();
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const submitBugReport = async (e) => {
+    e.preventDefault();
+    if (!bugSummary.trim()) { setError('Please provide a bug summary.'); return; }
+    if (!bugSteps.trim()) { setError('Please describe the steps to reproduce.'); return; }
+
+    setSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'bug_report',
+          data: { summary: bugSummary, steps: bugSteps, expected: bugExpected, severity: bugSeverity, browser: bugBrowser },
+        }),
+      });
+      if (!res.ok) throw new Error('Submission failed');
+      setSubmitted(true);
+      resetForms();
+    } catch {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -65,14 +194,14 @@ export default function FeedbackPage() {
               { id: 'request', label: 'Feature Request' },
               { id: 'bug', label: 'Report a Bug' },
             ].map(t => (
-              <button key={t.id} onClick={() => { setTab(t.id); setSubmitted(false); setPriority(null); }} className={`feedback__tab ${tab === t.id ? 'feedback__tab--active' : ''}`}>{t.label}</button>
+              <button key={t.id} onClick={() => handleTabChange(t.id)} className={`feedback__tab ${tab === t.id ? 'feedback__tab--active' : ''}`}>{t.label}</button>
             ))}
           </div>
 
           {/* Roadmap */}
           {tab === 'roadmap' && (
             <div className="feedback__roadmap-grid">
-              {roadmapItems.map((column, ci) => (
+              {roadmap.map((column, ci) => (
                 <div key={ci}>
                   <div className="feedback__column-header" style={{ background: statusColors[column.status].bg }}>
                     <span className="feedback__column-dot" style={{ background: statusColors[column.status].dot }} />
@@ -80,12 +209,18 @@ export default function FeedbackPage() {
                     <span className="mono feedback__column-count">{column.items.length}</span>
                   </div>
                   <div className="feedback__column-items">
-                    {column.items.map((item, i) => (
-                      <div key={i} className="card feedback__roadmap-card">
+                    {column.items.map((item) => (
+                      <div key={item.id} className="card feedback__roadmap-card">
                         <h4 className="feedback__roadmap-card-title">{item.title}</h4>
                         <p className="feedback__roadmap-card-desc">{item.desc}</p>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <button type="button" className="feedback__vote-btn">▲ {item.votes}</button>
+                          <button
+                            type="button"
+                            onClick={() => handleVote(item.id)}
+                            className={`feedback__vote-btn ${votedIds.has(item.id) ? 'feedback__vote-btn--voted' : ''}`}
+                          >
+                            ▲ {item.votes}
+                          </button>
                         </div>
                       </div>
                     ))}
@@ -100,20 +235,22 @@ export default function FeedbackPage() {
             <div className="feedback__form">
               {submitted ? (
                 <div className="feedback__success-box">
-                  <div className="feedback__success-icon">🎉</div>
+                  <div className="feedback__success-icon">&#127881;</div>
                   <h3 className="feedback__success-title">Feature request submitted!</h3>
                   <p className="text-md">We review every request. Founding members get priority consideration.</p>
+                  <button onClick={() => { setSubmitted(false); }} className="btn btn-secondary feedback__another-btn">Submit another</button>
                 </div>
               ) : (
-                <div className="feedback__form-fields">
-                  <p className="text-md">Describe the feature you'd like to see. Be specific about the problem it solves and how you'd use it.</p>
+                <form onSubmit={submitFeatureRequest} className="feedback__form-fields">
+                  <p className="text-md">Describe the feature you&apos;d like to see. Be specific about the problem it solves and how you&apos;d use it.</p>
+                  {error && <div className="feedback__error">{error}</div>}
                   <div>
-                    <label className="feedback__label">Feature title</label>
-                    <input placeholder="e.g. Automated lender follow-up reminders" className="feedback__input" />
+                    <label className="feedback__label" htmlFor="fr-title">Feature title</label>
+                    <input id="fr-title" value={frTitle} onChange={e => setFrTitle(e.target.value)} placeholder="e.g. Automated lender follow-up reminders" className="feedback__input" />
                   </div>
                   <div>
-                    <label className="feedback__label">Category</label>
-                    <select className="feedback__input">
+                    <label className="feedback__label" htmlFor="fr-category">Category</label>
+                    <select id="fr-category" value={frCategory} onChange={e => setFrCategory(e.target.value)} className="feedback__input">
                       <option>AI / Intelligence</option>
                       <option>Pipeline / Workflow</option>
                       <option>Analytics / Reporting</option>
@@ -124,8 +261,8 @@ export default function FeedbackPage() {
                     </select>
                   </div>
                   <div>
-                    <label className="feedback__label">Description</label>
-                    <textarea rows={6} placeholder="What problem does this solve? How would you use it? What does your workflow look like today without this feature?" className="feedback__textarea" />
+                    <label className="feedback__label" htmlFor="fr-desc">Description</label>
+                    <textarea id="fr-desc" rows={6} value={frDescription} onChange={e => setFrDescription(e.target.value)} placeholder="What problem does this solve? How would you use it? What does your workflow look like today without this feature?" className="feedback__textarea" />
                   </div>
                   <div>
                     <label className="feedback__label">Priority for your team</label>
@@ -134,18 +271,18 @@ export default function FeedbackPage() {
                         <button
                           key={p}
                           type="button"
-                          onClick={() => setPriority(p)}
-                          className={`feedback__priority-btn ${priority === p ? 'feedback__priority-btn--active' : ''}`}
+                          onClick={() => setFrPriority(p)}
+                          className={`feedback__priority-btn ${frPriority === p ? 'feedback__priority-btn--active' : ''}`}
                         >
                           {p}
                         </button>
                       ))}
                     </div>
                   </div>
-                  <button onClick={() => setSubmitted(true)} className="btn btn-primary btn-lg feedback__submit">
-                    Submit Feature Request →
+                  <button type="submit" disabled={submitting} className="btn btn-primary btn-lg feedback__submit">
+                    {submitting ? 'Submitting...' : 'Submit Feature Request →'}
                   </button>
-                </div>
+                </form>
               )}
             </div>
           )}
@@ -155,29 +292,31 @@ export default function FeedbackPage() {
             <div className="feedback__form">
               {submitted ? (
                 <div className="feedback__success-box">
-                  <div className="feedback__success-icon">🐛</div>
+                  <div className="feedback__success-icon">&#128027;</div>
                   <h3 className="feedback__success-title">Bug report received.</h3>
-                  <p className="text-md">We'll investigate and follow up. Thank you for helping us improve.</p>
+                  <p className="text-md">We&apos;ll investigate and follow up. Thank you for helping us improve.</p>
+                  <button onClick={() => { setSubmitted(false); }} className="btn btn-secondary feedback__another-btn">Report another</button>
                 </div>
               ) : (
-                <div className="feedback__form-fields">
+                <form onSubmit={submitBugReport} className="feedback__form-fields">
                   <p className="text-md">Help us fix it fast. The more detail you provide, the quicker we can resolve the issue.</p>
+                  {error && <div className="feedback__error">{error}</div>}
                   <div>
-                    <label className="feedback__label">Bug summary</label>
-                    <input placeholder="Brief description of the issue" className="feedback__input" />
+                    <label className="feedback__label" htmlFor="bug-summary">Bug summary</label>
+                    <input id="bug-summary" value={bugSummary} onChange={e => setBugSummary(e.target.value)} placeholder="Brief description of the issue" className="feedback__input" />
                   </div>
                   <div>
-                    <label className="feedback__label">Steps to reproduce</label>
-                    <textarea rows={4} placeholder="1. Go to...\n2. Click on...\n3. See error..." className="feedback__textarea" />
+                    <label className="feedback__label" htmlFor="bug-steps">Steps to reproduce</label>
+                    <textarea id="bug-steps" rows={4} value={bugSteps} onChange={e => setBugSteps(e.target.value)} placeholder={"1. Go to...\n2. Click on...\n3. See error..."} className="feedback__textarea" />
                   </div>
                   <div>
-                    <label className="feedback__label">Expected vs actual behavior</label>
-                    <textarea rows={3} placeholder="I expected X to happen, but instead Y happened" className="feedback__textarea" />
+                    <label className="feedback__label" htmlFor="bug-expected">Expected vs actual behavior</label>
+                    <textarea id="bug-expected" rows={3} value={bugExpected} onChange={e => setBugExpected(e.target.value)} placeholder="I expected X to happen, but instead Y happened" className="feedback__textarea" />
                   </div>
                   <div className="feedback__form-row">
                     <div>
-                      <label className="feedback__label">Severity</label>
-                      <select className="feedback__input">
+                      <label className="feedback__label" htmlFor="bug-severity">Severity</label>
+                      <select id="bug-severity" value={bugSeverity} onChange={e => setBugSeverity(e.target.value)} className="feedback__input">
                         <option>Low — cosmetic issue</option>
                         <option>Medium — feature partially broken</option>
                         <option>High — feature completely broken</option>
@@ -185,8 +324,8 @@ export default function FeedbackPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="feedback__label">Browser</label>
-                      <select className="feedback__input">
+                      <label className="feedback__label" htmlFor="bug-browser">Browser</label>
+                      <select id="bug-browser" value={bugBrowser} onChange={e => setBugBrowser(e.target.value)} className="feedback__input">
                         <option>Chrome</option>
                         <option>Firefox</option>
                         <option>Safari</option>
@@ -195,10 +334,10 @@ export default function FeedbackPage() {
                       </select>
                     </div>
                   </div>
-                  <button onClick={() => setSubmitted(true)} className="btn btn-primary btn-lg feedback__submit">
-                    Submit Bug Report →
+                  <button type="submit" disabled={submitting} className="btn btn-primary btn-lg feedback__submit">
+                    {submitting ? 'Submitting...' : 'Submit Bug Report →'}
                   </button>
-                </div>
+                </form>
               )}
             </div>
           )}

@@ -116,6 +116,23 @@
     color: var(--p600);
     cursor: pointer;
     font-family: inherit;
+    transition: all 0.15s;
+
+    &:hover {
+      background: var(--p50);
+      border-color: var(--p300);
+    }
+
+    &--voted {
+      background: var(--p600);
+      border-color: var(--p600);
+      color: white;
+
+      &:hover {
+        background: var(--p700);
+        border-color: var(--p700);
+      }
+    }
   }
 
   &__form {
@@ -200,6 +217,25 @@
 
   &__submit {
     align-self: flex-start;
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  &__error {
+    padding: 10px 14px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    color: #dc2626;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  &__another-btn {
+    margin-top: 16px;
   }
 
   &__form-row {
