@@ -126,7 +126,7 @@ export default function UnderwritingPage() {
           </div>
           <div className="reveal" style={{ marginTop: 'var(--space-2xl)' }}>
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/underwriting-approval-comparison.png" alt="Offer Comparison" width={1400} height={800} />
+              <Image src="/images/Underwriting-Approval-Comparison.png" alt="Offer Comparison" width={1400} height={800} />
             </div>
           </div>
         </div>

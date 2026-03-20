@@ -161,7 +161,7 @@ YieldStream is submission intelligence that learns from every outcome, so every 
               <Link href="/features" className="btn btn-outline btn-sm">Explore the pipeline →</Link>
             </div>
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/Opportunities-Khanban.png" alt="Deal Pipeline" width={1400} height={800} />
+              <Image src="/images/Opportunities-Kanban.png" alt="Deal Pipeline" width={1400} height={800} />
             </div>
           </div>
         </div>

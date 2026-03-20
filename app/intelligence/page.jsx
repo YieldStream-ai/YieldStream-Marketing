@@ -60,7 +60,7 @@ export default function IntelligencePage() {
           {/* Screenshot */}
           <div className="reveal">
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/underwriting-intelligence.png" alt="Intelligence Dashboard" width={1400} height={800} />
+              <Image src="/images/Underwriting-Intelligence.png" alt="Intelligence Dashboard" width={1400} height={800} />
             </div>
           </div>
         </div>

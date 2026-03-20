@@ -61,7 +61,7 @@ export default function FeaturesPage() {
         'Stale deal alerts flag merchants stuck in pipeline',
         'Commission estimates update in real-time as offers arrive',
       ],
-      image: '/images/Opportunities-Khanban.png',
+      image: '/images/Opportunities-Kanban.png',
       reverse: true,
     },
     {
