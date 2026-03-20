@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -152,7 +153,7 @@ export default function Nav() {
       <nav className={`nav ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
-            <div className="nav-logo-mark">Y</div>
+            <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" />
             YieldStream
           </Link>
 

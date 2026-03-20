@@ -3,4 +3,13 @@
   &__logo {
     color: white;
   }
+
+  &__logo-container {
+    padding: 4px;
+    background: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import './Footer.scss';
 
 export default function Footer() {
@@ -8,7 +9,9 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/" className="nav-logo footer__logo">
-              <div className="nav-logo-mark">Y</div>
+              <div className="footer__logo-container">
+                <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" />
+              </div>
               YieldStream
             </Link>
             <p>The submission intelligence platform for MCA brokers. AI-powered lender matching that learns from every outcome.</p>
