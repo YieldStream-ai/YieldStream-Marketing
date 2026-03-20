@@ -48,9 +48,32 @@
     font-size: 1.1rem;
   }
 
+  &__author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
   &__author-name {
-    font-weight: 600;
-    font-size: 1.05rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--n900);
+  }
+
+  &__author-role {
+    font-size: 11px;
+    color: var(--n500);
+    line-height: 1;
+  }
+
+  &__author-subtitle {
+    font-size: 11px;
+    color: var(--n500);
+    font-style: italic;
+    margin-top: 4px;
   }
 
   &__section-title {
