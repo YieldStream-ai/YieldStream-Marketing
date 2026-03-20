@@ -4,30 +4,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { useReveal } from '../components/useReveal';
 import './feedback.scss';
 
-const INITIAL_ROADMAP = [
-  { status: 'considering', label: 'Under Review', items: [
-    { id: 'sms-drip', title: 'SMS/Email Drip for Renewals', desc: 'Automated merchant outreach at paydown milestones', votes: 22 },
-    { id: 'white-label', title: 'White-Label Option', desc: 'Custom branding for large ISOs', votes: 18 },
-    { id: 'dialer', title: 'Dialer Integration', desc: 'Click-to-call from merchant records', votes: 15 },
-  ]},
-  { status: 'planned', label: 'Planned', items: [
-    { id: 'penalty-panel', title: 'Penalty Visibility Panel', desc: 'See active decline penalties and expiry dates', votes: 38 },
-    { id: 'analytics-export', title: 'Advanced Analytics Export', desc: 'Custom date range reports for ISO owners', votes: 33 },
-    { id: 'ucc-scraping', title: 'UCC Scraping Integration', desc: 'Automated lien search via state filing databases', votes: 29 },
-    { id: 'lendio-api', title: 'Lendio API Integration', desc: 'Direct submission to Lendio lender network', votes: 26 },
-  ]},
-  { status: 'building', label: 'In Progress', items: [
-    { id: 'prediction-dash', title: 'Prediction Accuracy Dashboard', desc: 'Track and display AI match accuracy over time', votes: 67 },
-    { id: 'lender-portal', title: 'Lender Portal (Self-Service)', desc: 'Lenders update their own buybox criteria', votes: 54 },
-    { id: 'mobile-views', title: 'Mobile Responsive Views', desc: 'Field rep access on phone and tablet', votes: 45 },
-  ]},
-  { status: 'shipped', label: 'Shipped', items: [
-    { id: 'bank-statement', title: 'AI Bank Statement Analysis', desc: 'LlamaParse OCR + Gemini enrichment pipeline', votes: 48 },
-    { id: 'lender-scoring', title: 'Three-Layer Lender Scoring', desc: 'Relationship + attribute + global signals', votes: 52 },
-    { id: 'kanban-table', title: 'Deal Pipeline (Kanban + Table)', desc: 'Full pipeline visibility with stage tracking', votes: 41 },
-    { id: 'offer-comparison', title: 'Offer Comparison & Scoring', desc: 'Side-by-side lender offer analysis', votes: 39 },
-  ]},
-];
 
 const statusColors = {
   shipped: { bg: 'var(--a50)', color: 'var(--a700)', dot: 'var(--a500)' },
@@ -50,7 +26,7 @@ function saveVotedItems(set) {
 export default function FeedbackPage() {
   useReveal();
   const [tab, setTab] = useState('roadmap');
-  const [roadmap, setRoadmap] = useState(INITIAL_ROADMAP);
+  const [roadmap, setRoadmap] = useState([]);
   const [votedIds, setVotedIds] = useState(new Set());
 
   // Feature request form state
@@ -73,6 +49,11 @@ export default function FeedbackPage() {
 
   useEffect(() => {
     setVotedIds(getVotedItems());
+
+    fetch('/api/roadmap')
+      .then((res) => res.json())
+      .then(({ items }) => setRoadmap(items))
+      .catch(() => {});
   }, []);
 
   const handleVote = useCallback((itemId) => {
@@ -219,7 +200,7 @@ export default function FeedbackPage() {
                             onClick={() => handleVote(item.id)}
                             className={`feedback__vote-btn ${votedIds.has(item.id) ? 'feedback__vote-btn--voted' : ''}`}
                           >
-                            ▲ {item.votes}
+                            ♥ {item.votes}
                           </button>
                         </div>
                       </div>

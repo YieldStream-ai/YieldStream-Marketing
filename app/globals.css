@@ -146,14 +146,14 @@ input, textarea, select { font-family: inherit; }
   transform: translateY(-1px);
 }
 
-.btn-emerald {
-  background: var(--a500);
+.btn-teal-light {
+  background: var(--p400);
   color: white;
-  box-shadow: 0 1px 2px rgba(16,185,129,0.2);
+  box-shadow: 0 1px 2px rgba(18,168,188,0.2), 0 0 0 1px rgba(18,168,188,0.1);
 }
-.btn-emerald:hover {
-  background: var(--a600);
-  box-shadow: 0 4px 12px rgba(16,185,129,0.25);
+.btn-teal-light:hover {
+  background: var(--p500);
+  box-shadow: 0 4px 12px rgba(18,168,188,0.25), 0 0 0 1px rgba(18,168,188,0.15);
   transform: translateY(-1px);
 }
 

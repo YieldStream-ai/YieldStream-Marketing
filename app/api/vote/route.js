@@ -2,12 +2,12 @@ import { NextResponse } from 'next/server';
 
 /**
  * POST /api/vote
- * Records an upvote or unvote on a roadmap item.
+ * Increments or decrements a roadmap item's vote count.
  *
  * Body: { itemId: string, action: 'vote' | 'unvote' }
  *
- * When Supabase is configured, this stores votes in a `roadmap_votes` table.
- * Without Supabase, it returns success (votes are tracked client-side via localStorage).
+ * Uses a Supabase RPC function for atomic updates.
+ * Without Supabase, returns success (votes tracked client-side only).
  */
 export async function POST(request) {
   try {
@@ -21,20 +21,21 @@ export async function POST(request) {
     const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
 
     if (supabaseUrl && supabaseKey) {
-      await fetch(`${supabaseUrl}/rest/v1/roadmap_votes`, {
+      const delta = action === 'vote' ? 1 : -1;
+
+      const res = await fetch(`${supabaseUrl}/rest/v1/rpc/vote_roadmap_item`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apikey': supabaseKey,
-          'Authorization': `Bearer ${supabaseKey}`,
-          'Prefer': 'return=minimal',
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
         },
-        body: JSON.stringify({
-          item_id: itemId,
-          action,
-          voted_at: new Date().toISOString(),
-        }),
+        body: JSON.stringify({ item_id: itemId, delta }),
       });
+
+      if (!res.ok) {
+        console.error('Supabase vote RPC failed:', res.status);
+      }
     }
 
     return NextResponse.json({ success: true });

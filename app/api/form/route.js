@@ -47,19 +47,24 @@ export async function POST(request) {
         newsletter: `Newsletter Signup: ${data.email}`,
       }[type] || `Marketing Form: ${type}`;
 
-      await fetch('https://api.resend.com/emails', {
+      const emailRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${resendKey}`,
         },
         body: JSON.stringify({
-          from: 'YieldStream <noreply@yieldstream.ai>',
-          to: ['hello@yieldstream.ai'],
+          from: 'YieldStream <noreply@updates.yieldstream.ai>',
+          to: ['support@yieldstream.ai'],
           subject,
           text: JSON.stringify(data, null, 2),
         }),
       });
+
+      if (!emailRes.ok) {
+        const err = await emailRes.json();
+        console.error('Resend error:', err);
+      }
     }
 
     return NextResponse.json({ success: true });

@@ -3,24 +3,24 @@ export const plans = {
     name: 'Founder',
     monthly: {
       priceId: process.env.NEXT_PUBLIC_STRIPE_FOUNDER_MONTHLY_PRICE_ID,
-      amount: 297,
+      amount: 497,
     },
     annual: {
       priceId: process.env.NEXT_PUBLIC_STRIPE_FOUNDER_ANNUAL_PRICE_ID,
-      amount: 237,
-      billedAmount: 2844,
+      amount: 397.60,
+      billedAmount: 4771.20,
     },
   },
   professional: {
     name: 'Professional',
     monthly: {
       priceId: process.env.NEXT_PUBLIC_STRIPE_PROFESSIONAL_MONTHLY_PRICE_ID,
-      amount: 497,
+      amount: 697,
     },
     annual: {
       priceId: process.env.NEXT_PUBLIC_STRIPE_PROFESSIONAL_ANNUAL_PRICE_ID,
-      amount: 397,
-      billedAmount: 4764,
+      amount: 557.60,
+      billedAmount: 6691.20,
     },
   },
 };
