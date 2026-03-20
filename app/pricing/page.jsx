@@ -129,7 +129,7 @@ export default function PricingPage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href={tier.name === 'Enterprise' ? '/contact' : '#'} className={`${tier.ctaClass} pricing__card-cta`}>
+                  <Link href={tier.name === 'Enterprise' ? '/contact' : `/checkout?plan=${tier.name.toLowerCase()}&interval=${annual ? 'annual' : 'monthly'}`} className={`${tier.ctaClass} pricing__card-cta`}>
                     {tier.cta}
                   </Link>
                 </div>
