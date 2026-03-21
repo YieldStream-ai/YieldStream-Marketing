@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useEffect, useState, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
   BarChart3,
@@ -15,41 +15,76 @@ import {
   Milestone,
   User,
   Mail,
-} from 'lucide-react';
-import './Nav.scss';
+} from "lucide-react";
+import "./Nav.scss";
 
 const ICON_PROPS = { size: 16, strokeWidth: 1.5 };
 
-const dropdownKeys = ['platform', 'company', 'resources'];
+const dropdownKeys = ["platform", "company", "resources"];
 
 const dropdowns = {
   platform: {
-    label: 'Platform',
+    label: "Platform",
     items: [
-      { href: '/features', title: 'Overview', desc: 'See the full platform', icon: LayoutGrid },
-      { href: '/underwriting', title: 'Underwriting', desc: 'AI bank statement analysis', icon: BarChart3 },
-      { href: '/intelligence', title: 'Intelligence Engine', desc: 'Three-layer scoring', icon: Zap },
+      {
+        href: "/features",
+        title: "Overview",
+        desc: "See the full platform",
+        icon: LayoutGrid,
+      },
+      {
+        href: "/underwriting",
+        title: "Underwriting",
+        desc: "AI bank statement analysis",
+        icon: BarChart3,
+      },
+      {
+        href: "/intelligence",
+        title: "Intelligence Engine",
+        desc: "Three-layer scoring",
+        icon: Zap,
+      },
     ],
   },
   company: {
-    label: 'Company',
+    label: "Company",
     items: [
-      { href: '/about', title: 'About', desc: 'Our story', icon: User },
-      { href: '/security', title: 'Security', desc: 'Data protection & compliance', icon: ShieldCheck },
-      { href: '/contact', title: 'Contact', desc: 'Get in touch', icon: Mail },
+      { href: "/about", title: "About", desc: "Our story", icon: User },
+      {
+        href: "/security",
+        title: "Security",
+        desc: "Data protection & compliance",
+        icon: ShieldCheck,
+      },
+      { href: "/contact", title: "Contact", desc: "Get in touch", icon: Mail },
     ],
   },
   resources: {
-    label: 'Resources',
+    label: "Resources",
     items: [
-      { href: '/resources', title: 'Blog', desc: 'Insights & guides', icon: BookOpen },
-      { href: '/feedback', title: 'Feedback & Roadmap', desc: 'Shape the product', icon: Milestone },
+      {
+        href: "/resources",
+        title: "Blog",
+        desc: "Insights & guides",
+        icon: BookOpen,
+      },
+      {
+        href: "/feedback",
+        title: "Feedback & Roadmap",
+        desc: "Shape the product",
+        icon: Milestone,
+      },
     ],
   },
 };
 
 // Spring config for the container morph — lower stiffness = more glide
-const containerSpring = { type: 'spring', stiffness: 180, damping: 22, mass: 1 };
+const containerSpring = {
+  type: "spring",
+  stiffness: 180,
+  damping: 22,
+  mass: 1,
+};
 
 // Content fade/slide duration
 const contentDuration = 0.35;
@@ -72,8 +107,8 @@ export default function Nav() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -88,8 +123,8 @@ export default function Nav() {
         setOpen(null);
       }
     };
-    document.addEventListener('click', handleClick);
-    return () => document.removeEventListener('click', handleClick);
+    document.addEventListener("click", handleClick);
+    return () => document.removeEventListener("click", handleClick);
   }, []);
 
   const measure = useCallback((key) => {
@@ -103,7 +138,8 @@ export default function Nav() {
     const desktopRect = desktopEl.getBoundingClientRect();
     const w = contentEl.scrollWidth;
     const h = contentEl.scrollHeight;
-    const triggerCenter = triggerRect.left + triggerRect.width / 2 - desktopRect.left;
+    const triggerCenter =
+      triggerRect.left + triggerRect.width / 2 - desktopRect.left;
 
     setDims({ width: w, height: h, x: triggerCenter - w / 2 });
   }, []);
@@ -150,10 +186,16 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`nav ${scrolled ? 'scrolled' : ''}`} ref={navRef}>
+      <nav className={`nav ${scrolled ? "scrolled" : ""}`} ref={navRef}>
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
-            <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" />
+            <Image
+              src="/images/YieldStream_Logo.svg"
+              alt=""
+              width={32}
+              height={32}
+              className="nav-logo-image"
+            />
             YieldStream
           </Link>
 
@@ -170,7 +212,7 @@ export default function Nav() {
                 >
                   <button
                     ref={(el) => (triggerRefs.current[key] = el)}
-                    className={`nav__dropdown-trigger ${open === key ? 'nav__dropdown-trigger--open' : ''} ${isActiveDropdown(key) ? 'nav__dropdown-trigger--active' : ''}`}
+                    className={`nav__dropdown-trigger ${open === key ? "nav__dropdown-trigger--open" : ""} ${isActiveDropdown(key) ? "nav__dropdown-trigger--active" : ""}`}
                     onClick={() => setOpen(open === key ? null : key)}
                     aria-expanded={open === key}
                   >
@@ -179,7 +221,10 @@ export default function Nav() {
                       size={10}
                       strokeWidth={1.5}
                       className="nav__chevron"
-                      style={{ transform: open === key ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                      style={{
+                        transform:
+                          open === key ? "rotate(180deg)" : "rotate(0deg)",
+                      }}
                     />
                   </button>
                 </div>
@@ -187,7 +232,7 @@ export default function Nav() {
             })}
             <Link
               href="/pricing"
-              className={`nav__dropdown-trigger ${pathname === '/pricing' ? 'nav__dropdown-trigger--active' : ''}`}
+              className={`nav__dropdown-trigger ${pathname === "/pricing" ? "nav__dropdown-trigger--active" : ""}`}
             >
               Pricing
             </Link>
@@ -208,8 +253,12 @@ export default function Nav() {
                           <Icon {...ICON_PROPS} />
                         </div>
                         <div className="nav__dropdown-item-content">
-                          <span className="nav__dropdown-item-title">{item.title}</span>
-                          <span className="nav__dropdown-item-desc">{item.desc}</span>
+                          <span className="nav__dropdown-item-title">
+                            {item.title}
+                          </span>
+                          <span className="nav__dropdown-item-desc">
+                            {item.desc}
+                          </span>
                         </div>
                       </div>
                     );
@@ -233,8 +282,8 @@ export default function Nav() {
                   }}
                   exit={{ opacity: 0, scale: 0.97 }}
                   transition={{
-                    opacity: { duration: 0.25, ease: 'easeOut' },
-                    scale: { duration: 0.25, ease: 'easeOut' },
+                    opacity: { duration: 0.25, ease: "easeOut" },
+                    scale: { duration: 0.25, ease: "easeOut" },
                     width: containerSpring,
                     height: containerSpring,
                     x: containerSpring,
@@ -249,7 +298,10 @@ export default function Nav() {
                       initial={{ opacity: 0, x: dir * 24 }}
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: dir * -24 }}
-                      transition={{ duration: contentDuration, ease: [0.4, 0, 0.2, 1] }}
+                      transition={{
+                        duration: contentDuration,
+                        ease: [0.4, 0, 0.2, 1],
+                      }}
                     >
                       {dropdowns[open].items.map((item) => {
                         const Icon = item.icon;
@@ -257,14 +309,18 @@ export default function Nav() {
                           <Link
                             key={item.href}
                             href={item.href}
-                            className={`nav__dropdown-item ${pathname === item.href ? 'nav__dropdown-item--active' : ''}`}
+                            className={`nav__dropdown-item ${pathname === item.href ? "nav__dropdown-item--active" : ""}`}
                           >
                             <div className="nav__dropdown-icon">
                               <Icon {...ICON_PROPS} />
                             </div>
                             <div className="nav__dropdown-item-content">
-                              <span className="nav__dropdown-item-title">{item.title}</span>
-                              <span className="nav__dropdown-item-desc">{item.desc}</span>
+                              <span className="nav__dropdown-item-title">
+                                {item.title}
+                              </span>
+                              <span className="nav__dropdown-item-desc">
+                                {item.desc}
+                              </span>
                             </div>
                           </Link>
                         );
@@ -278,7 +334,7 @@ export default function Nav() {
 
           <div className="nav-cta">
             <Link href="/pricing" className="btn btn-primary btn-sm">
-              Start Free Trial
+              Initialize Platform
             </Link>
           </div>
 
@@ -288,7 +344,9 @@ export default function Nav() {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Menu"
           >
-            <span className={`nav__hamburger ${mobileOpen ? 'nav__hamburger--open' : ''}`}>
+            <span
+              className={`nav__hamburger ${mobileOpen ? "nav__hamburger--open" : ""}`}
+            >
               <span />
               <span />
               <span />
@@ -299,8 +357,14 @@ export default function Nav() {
 
       {/* Mobile drawer */}
       {mobileOpen && (
-        <div className="nav__mobile-overlay" onClick={() => setMobileOpen(false)}>
-          <div className="nav__mobile-drawer" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="nav__mobile-overlay"
+          onClick={() => setMobileOpen(false)}
+        >
+          <div
+            className="nav__mobile-drawer"
+            onClick={(e) => e.stopPropagation()}
+          >
             {Object.entries(dropdowns).map(([key, dd]) => (
               <div key={key} className="nav__mobile-section">
                 <button
@@ -314,7 +378,12 @@ export default function Nav() {
                     size={12}
                     strokeWidth={1.5}
                     className="nav__mobile-trigger-chevron"
-                    style={{ transform: mobileExpanded === key ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                    style={{
+                      transform:
+                        mobileExpanded === key
+                          ? "rotate(180deg)"
+                          : "rotate(0deg)",
+                    }}
                   />
                 </button>
                 {mobileExpanded === key && (
@@ -332,8 +401,12 @@ export default function Nav() {
                             <Icon {...ICON_PROPS} />
                           </div>
                           <div>
-                            <span className="nav__mobile-link-title">{item.title}</span>
-                            <span className="nav__mobile-link-desc">{item.desc}</span>
+                            <span className="nav__mobile-link-title">
+                              {item.title}
+                            </span>
+                            <span className="nav__mobile-link-desc">
+                              {item.desc}
+                            </span>
                           </div>
                         </Link>
                       );
