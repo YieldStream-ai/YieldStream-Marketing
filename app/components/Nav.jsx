@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import YieldStreamSpinner from "../../YieldStreamSpinner";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -190,12 +190,10 @@ export default function Nav() {
       <nav className={`nav ${scrolled ? "scrolled" : ""}`} ref={navRef}>
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
-            <Image
-              src="/images/YieldStream_Logo.svg"
-              alt=""
-              width={32}
-              height={32}
-              className="nav-logo-image"
+            <YieldStreamSpinner
+              size={32}
+              classname="nav-logo-spinner"
+              runOnce
             />
             YieldStream
           </Link>

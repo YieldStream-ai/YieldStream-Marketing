@@ -303,6 +303,17 @@ input, textarea, select { font-family: inherit; }
   object-fit: contain;
   flex-shrink: 0;
 }
+.nav-logo .ys-spinner--nav-logo-spinner {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-logo .ys-spinner--nav-logo-spinner svg {
+  display: block;
+}
 .nav-links {
   display: flex; align-items: center; gap: 32px;
 }
