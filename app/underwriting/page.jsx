@@ -52,7 +52,7 @@ export default function UnderwritingPage() {
               </div>
             </div>
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/Document-Vault.png" alt="Document Analysis" width={1400} height={800} />
+              <Image src="/images/Document-Vault.png" alt="Document Analysis" width={1400} height={800} priority />
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function UnderwritingPage() {
         <div className="container">
           <div className="grid-feature reveal">
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/Underwriting-Intelligence.jpg" alt="Underwriting Intelligence" width={1400} height={800} />
+              <Image src="/images/Underwriting-Intelligence.jpg" alt="Underwriting Intelligence" width={1400} height={800} priority />
             </div>
             <div>
               <div className="label underwriting__label">The Underwriter's Note</div>
@@ -126,7 +126,7 @@ export default function UnderwritingPage() {
           </div>
           <div className="reveal" style={{ marginTop: 'var(--space-2xl)' }}>
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/Underwriting-Approval-Comparison.png" alt="Offer Comparison" width={1400} height={800} />
+              <Image src="/images/Underwriting-Approval-Comparison.png" alt="Offer Comparison" width={1400} height={800} priority />
             </div>
           </div>
         </div>

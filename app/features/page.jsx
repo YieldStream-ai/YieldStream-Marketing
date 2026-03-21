@@ -152,7 +152,7 @@ export default function FeaturesPage() {
               <div
                 className={`screenshot screenshot-elevated ${f.reverse ? "features__block-order-reverse" : ""}`}
               >
-                <Image src={f.image} alt={f.title} width={1400} height={800} />
+                <Image src={f.image} alt={f.title} width={1400} height={800} priority />
               </div>
             </div>
           ))}

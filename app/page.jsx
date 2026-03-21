@@ -209,6 +209,7 @@ export default function Home() {
                 alt="AI Lender Matching"
                 width={1400}
                 height={800}
+                priority
               />
             </div>
           </div>
@@ -221,6 +222,7 @@ export default function Home() {
                 alt="Offer Comparison"
                 width={1400}
                 height={800}
+                priority
               />
             </div>
             <div>
@@ -261,6 +263,7 @@ export default function Home() {
                 alt="Deal Pipeline"
                 width={1400}
                 height={800}
+                priority
               />
             </div>
           </div>

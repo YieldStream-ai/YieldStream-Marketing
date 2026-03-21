@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="footer-brand">
             <Link href="/" className="nav-logo footer__logo">
               <div className="footer__logo-container">
-                <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" />
+                <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" priority />
               </div>
               YieldStream
             </Link>
