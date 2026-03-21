@@ -24,7 +24,7 @@ export default function YieldStreamSpinner({
       R = 60;
 
     // Total duration for the full entrance animation (plays once, no loop)
-    const dur = 2200;
+    const dur = 900;
 
     const easeInOut = (t: number) =>
       t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;

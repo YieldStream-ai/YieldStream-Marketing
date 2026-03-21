@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import YieldStreamSpinner from "../../YieldStreamSpinner";
+import YieldStreamSpinner from "./YieldStreamSpinner";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
