@@ -334,16 +334,16 @@ export default function Nav() {
           </div>
 
           <div className="nav-cta">
+            <Link href="/pricing" className="btn btn-primary btn-sm">
+              Initialize Platform
+            </Link>
             <Link
               href="/docs"
               className="btn btn-outline btn-sm nav__docs-link"
               style={{ display: "flex", alignItems: "center", gap: 6 }}
             >
               <FileText size={14} strokeWidth={1.5} />
-              View System Documentation
-            </Link>
-            <Link href="/pricing" className="btn btn-primary btn-sm">
-              Initialize Platform
+              Documentation
             </Link>
           </div>
 
@@ -437,7 +437,7 @@ export default function Nav() {
               onClick={() => setMobileOpen(false)}
             >
               <FileText size={16} strokeWidth={1.5} />
-              View System Documentation
+              Documentation
             </Link>
             <div className="nav__mobile-cta-wrap">
               <Link

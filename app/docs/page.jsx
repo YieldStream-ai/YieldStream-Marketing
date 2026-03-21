@@ -51,7 +51,22 @@ export default function DocsPage() {
 
   return (
     <div className="docs-page">
-      <div className="container" style={{ maxWidth: 1100 }}>
+      {/* Architectural Documentation Header - Technical Blueprint */}
+      <header className="docs-hero">
+        <div className="docs-hero__grid" aria-hidden="true" />
+        <div className="docs-hero__gradient" aria-hidden="true" />
+        <div className="docs-hero__content">
+          <div className="docs-hero__label">System Documentation</div>
+          <h1 className="docs-hero__title">
+            Technical Blueprint
+          </h1>
+          <p className="docs-hero__subtitle">
+            Platform architecture, scoring engine, and infrastructure reference
+          </p>
+        </div>
+      </header>
+
+      <div className="container docs-container-wrap" style={{ maxWidth: 1100 }}>
         <div className="docs-container">
           <aside className="docs-sidebar">
             <div className="docs-sidebar-hd">
@@ -415,6 +430,9 @@ export default function DocsPage() {
                 by your ISO&apos;s relationship history with that lender.
               </div>
 
+              {/* Composite Score Glass Decal - layered intelligence */}
+              <div className="docs-formula-row">
+                <div className="docs-formula-wrap">
               <div className="docs-formula">
                 composite_score = (<span className="hl">0.25</span> ×
                 global_score)
@@ -424,6 +442,13 @@ export default function DocsPage() {
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 + (<span className="hl">0.25</span> × attribute_score)
+              </div>
+                </div>
+                <div className="docs-glass-decal" aria-hidden="true">
+                  <div className="docs-glass-slab docs-glass-slab--1" />
+                  <div className="docs-glass-slab docs-glass-slab--2" />
+                  <div className="docs-glass-slab docs-glass-slab--3" />
+                </div>
               </div>
 
               <div className="docs-h2">
