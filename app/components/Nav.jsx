@@ -335,7 +335,7 @@ export default function Nav() {
 
           <div className="nav-cta">
             <Link href="/pricing" className="btn btn-primary btn-sm">
-              Initialize Platform
+              Access Terminal
             </Link>
             <Link
               href="/docs"
@@ -445,7 +445,7 @@ export default function Nav() {
                 className="btn btn-primary btn-lg nav__mobile-cta-btn"
                 onClick={() => setMobileOpen(false)}
               >
-                Start Free Trial →
+                Access Terminal →
               </Link>
             </div>
           </div>

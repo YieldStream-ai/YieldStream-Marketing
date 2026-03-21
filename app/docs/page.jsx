@@ -187,9 +187,12 @@ export default function DocsPage() {
                     <tr>
                       <td>AI Bank Statement Analysis</td>
                       <td>
-                        LlamaParse OCR + Gemini 1.5 Flash enrichment. 20+ risk
-                        signals from uploaded PDFs including revenue trends,
-                        NSF patterns, stacking detection, and anomaly flags.
+                        Multi-provider extraction pipeline with circuit breaker
+                        fallback. LlamaParse OCR feeds into Gemini 1.5 Flash
+                        enrichment — with automatic provider failover ensuring
+                        continuity. Extracts 20+ risk signals including revenue
+                        trends, NSF patterns, stacking detection, and anomaly
+                        flags.
                       </td>
                     </tr>
                     <tr>
