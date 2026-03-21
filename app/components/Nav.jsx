@@ -15,6 +15,7 @@ import {
   Milestone,
   User,
   Mail,
+  FileText,
 } from "lucide-react";
 import "./Nav.scss";
 
@@ -333,6 +334,14 @@ export default function Nav() {
           </div>
 
           <div className="nav-cta">
+            <Link
+              href="/docs"
+              className="btn btn-outline btn-sm nav__docs-link"
+              style={{ display: "flex", alignItems: "center", gap: 6 }}
+            >
+              <FileText size={14} strokeWidth={1.5} />
+              View System Documentation
+            </Link>
             <Link href="/pricing" className="btn btn-primary btn-sm">
               Initialize Platform
             </Link>
@@ -421,6 +430,14 @@ export default function Nav() {
               onClick={() => setMobileOpen(false)}
             >
               Pricing
+            </Link>
+            <Link
+              href="/docs"
+              className="nav__mobile-docs"
+              onClick={() => setMobileOpen(false)}
+            >
+              <FileText size={16} strokeWidth={1.5} />
+              View System Documentation
             </Link>
             <div className="nav__mobile-cta-wrap">
               <Link
