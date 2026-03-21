@@ -1,19 +1,23 @@
-'use client';
+"use client";
 
-import { Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
-import { useReveal } from '../../components/useReveal';
-import '../checkout.scss';
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { useReveal } from "../../components/useReveal";
+import "../checkout.scss";
 
 function SuccessContent() {
   useReveal();
   const searchParams = useSearchParams();
-  const plan = searchParams.get('plan');
+  const plan = searchParams.get("plan");
 
   const trialEnd = new Date();
   trialEnd.setDate(trialEnd.getDate() + 14);
-  const trialEndStr = trialEnd.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  const trialEndStr = trialEnd.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
 
   return (
     <section className="checkout__success">
@@ -22,15 +26,27 @@ function SuccessContent() {
           <div className="checkout__success-check">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
               <circle cx="24" cy="24" r="24" fill="#10b981" />
-              <path d="M14 24l7 7 13-13" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              <path
+                d="M14 24l7 7 13-13"
+                stroke="white"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
-          <h1 className="display-lg checkout__success-title">Welcome to YieldStream!</h1>
+          <h1 className="display-lg checkout__success-title">
+            Welcome to YieldStream!
+          </h1>
           <p className="text-lg checkout__success-sub">
-            Your 14-day free trial has started. You won&apos;t be charged until {trialEndStr}.
+            {plan === "founder"
+              ? "You're in. Your founding rate is locked forever — welcome to YieldStream."
+              : `Your 14-day free trial has started. You won't be charged until ${trialEndStr}.`}{" "}
           </p>
           <div className="checkout__success-steps">
-            <h3 className="checkout__success-steps-title">What happens next:</h3>
+            <h3 className="checkout__success-steps-title">
+              What happens next:
+            </h3>
             <ol className="checkout__success-steps-list">
               <li>Check your email for login credentials</li>
               <li>Complete the guided onboarding (under 10 minutes)</li>
@@ -38,7 +54,9 @@ function SuccessContent() {
             </ol>
           </div>
           <div className="checkout__success-actions">
-            <Link href="/" className="btn btn-primary btn-lg">Back to Home →</Link>
+            <Link href="/" className="btn btn-primary btn-lg">
+              Back to Home →
+            </Link>
           </div>
         </div>
       </div>
