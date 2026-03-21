@@ -3,81 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useReveal } from "../components/useReveal";
+import PricingTiers from "./PricingTiers";
 import "./pricing.scss";
 
 export default function PricingPage() {
   useReveal();
   const [annual, setAnnual] = useState(false);
-
-  const tiers = [
-    {
-      name: "Founder",
-      badge: "Founding Member",
-      badgeColor: "var(--p400)",
-      desc: "First 20 customers only. Full platform access at a locked-in rate — forever.",
-      price: annual ? 397 : 497,
-      was: annual ? "$697/mo regular" : "$697/mo regular",
-      features: [
-        "Everything in Professional",
-        "Rate locked for life — never increases",
-        "Priority onboarding & setup",
-        "Direct Slack channel with founding team",
-        "Influence the product roadmap",
-        "100 Intelligent Analyses / mo",
-        "Unlimited team seats",
-      ],
-      cta: "Claim Founding Spot →",
-      ctaClass: "btn btn-teal-light btn-lg",
-      border: "2px solid var(--p300)",
-      bg: "linear-gradient(180deg, var(--p50), white)",
-    },
-    {
-      name: "Professional",
-      badge: "Most Popular",
-      badgeColor: "var(--p600)",
-      desc: "For established ISOs running 20+ deals per month with a growing team.",
-      price: annual ? 557 : 697,
-      was: annual ? "$697/mo if monthly" : null,
-      features: [
-        "AI lender matching & scoring engine",
-        "Unlimited merchants & deals",
-        "Secure Document Portals for each deal",
-        "Deal pipeline (Kanban + Table)",
-        "Offer comparison & scoring",
-        "Lender Registry management",
-        "Renewal forecasting & alerts",
-        "Smart Underwriting & Deal insights",
-        "Full audit log & compliance export",
-        "150 AI analyses /mo",
-        "Up to 10 team seats",
-      ],
-      cta: "Start Free Trial →",
-      ctaClass: "btn btn-primary btn-lg",
-      border: "2px solid var(--p600)",
-      bg: "linear-gradient(180deg, var(--p100), white)",
-    },
-    {
-      name: "Enterprise",
-      badge: "Coming Soon",
-      badgeColor: "var(--n500)",
-      desc: "For multi-office ISOs with 20+ reps needing custom integrations and SLAs.",
-      price: "Custom",
-      features: [
-        "Everything in Professional",
-        "Unlimited team seats",
-        "Dedicated account manager",
-        "Custom API integrations",
-        "SSO & advanced security",
-        "Custom analytics & reporting",
-        "SLA guarantee",
-        "On-site onboarding available",
-      ],
-      cta: "Contact Sales →",
-      ctaClass: "btn btn-outline btn-lg",
-      border: "1px solid var(--n200)",
-      bg: "linear-gradient(180deg, var(--n50), white)",
-    },
-  ];
 
   return (
     <>
@@ -101,112 +32,7 @@ export default function PricingPage() {
 
       {/* Toggle + Cards */}
       <section className="pricing__section">
-        <div className="container">
-          {/* Toggle */}
-          <div className="reveal pricing__toggle-wrap">
-            <span
-              className={`pricing__toggle-label ${!annual ? "pricing__toggle-label--active" : ""}`}
-            >
-              Monthly
-            </span>
-            <button
-              onClick={() => setAnnual(!annual)}
-              className="pricing__toggle-btn"
-            >
-              <span
-                className="pricing__toggle-knob"
-                style={{ left: annual ? 25 : 3 }}
-              />
-            </button>
-            <span
-              className={`pricing__toggle-label ${annual ? "pricing__toggle-label--active" : ""}`}
-            >
-              Annual
-            </span>
-            <span className="pricing__toggle-badge">Save 20%</span>
-          </div>
-
-          {/* Cards */}
-          <div className="pricing__cards">
-            {tiers.map((tier, i) => (
-              <div
-                key={i}
-                className={`reveal reveal-delay-${i + 1}`}
-                style={{
-                  background: tier.bg || "white",
-                  border: tier.border,
-                  borderRadius: 16,
-                  padding: 36,
-                  position: "relative",
-                }}
-              >
-                {tier.badge && (
-                  <div
-                    className="pricing__card-badge"
-                    style={{ background: tier.badgeColor }}
-                  >
-                    {tier.badge}
-                  </div>
-                )}
-                <div className={tier.badge ? "pricing__card-mt" : ""}>
-                  <h3 className="pricing__card-title">{tier.name}</h3>
-                  <p className="text-sm pricing__card-desc">{tier.desc}</p>
-                  <div className="pricing__card-price-wrap">
-                    <span
-                      className="mono pricing__card-price"
-                      style={{
-                        fontSize:
-                          typeof tier.price === "number" ? "2.6rem" : "2rem",
-                      }}
-                    >
-                      {typeof tier.price === "number"
-                        ? `$${tier.price}`
-                        : tier.price}
-                    </span>
-                    {typeof tier.price === "number" && (
-                      <span className="text-sm">/month</span>
-                    )}
-                  </div>
-                  {tier.was && (
-                    <div
-                      className="text-sm"
-                      style={{
-                        textDecoration:
-                          typeof tier.price === "number" && !annual
-                            ? "line-through"
-                            : "none",
-                        marginBottom: 16,
-                      }}
-                    >
-                      {tier.was}
-                    </div>
-                  )}
-                  {!tier.was && (
-                    <div style={{ height: 20, marginBottom: 16 }} />
-                  )}
-                  <ul className="pricing__card-features">
-                    {tier.features.map((f, j) => (
-                      <li key={j} className="pricing__card-feature">
-                        <span className="pricing__card-feature-check">✓</span>{" "}
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={
-                      tier.name === "Enterprise"
-                        ? "/contact"
-                        : `/checkout?plan=${tier.name.toLowerCase()}&interval=${annual ? "annual" : "monthly"}`
-                    }
-                    className={`${tier.ctaClass} pricing__card-cta`}
-                  >
-                    {tier.cta}
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <PricingTiers annual={annual} setAnnual={setAnnual} />
       </section>
 
       {/* ROI Calculator */}
@@ -238,11 +64,11 @@ export default function PricingPage() {
             {[
               {
                 q: "Is there a free trial?",
-                a: "Yes — 14 days, full platform access, no credit card required. You can process real deals during the trial.",
+                a: "Professional includes a 14-day free trial with no credit card required. Founder is a direct signup — your rate locks from day one.",
               },
               {
                 q: "What happens when the 20 founder spots are filled?",
-                a: "The Founder tier closes permanently. New customers start at the Professional tier ($497/mo). Founding members keep their rate forever.",
+                a: "The Founder tier closes permanently. New customers start at the Professional tier ($1,197/mo). Founding members keep their rate forever.",
               },
               {
                 q: "Are there per-deal or per-merchant fees?",
@@ -250,7 +76,7 @@ export default function PricingPage() {
               },
               {
                 q: "How many team members can I add?",
-                a: "Professional includes up to 10 seats. Founder and Enterprise include unlimited seats.",
+                a: "All plans include unlimited team seats.",
               },
               {
                 q: "Can I cancel anytime?",

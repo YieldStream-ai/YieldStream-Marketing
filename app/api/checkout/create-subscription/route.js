@@ -28,11 +28,12 @@ export async function POST(request) {
       ? existing.data[0]
       : await stripe.customers.create({ email, metadata: { source: 'marketing_site' } });
 
-    // Create subscription with trial
+    // Create subscription (trial for non-founder plans only)
+    const isFounder = plan === 'founder';
     const subscription = await stripe.subscriptions.create({
       customer: customer.id,
       items: [{ price: intervalConfig.priceId }],
-      trial_period_days: 14,
+      ...(isFounder ? {} : { trial_period_days: 14 }),
       payment_behavior: 'default_incomplete',
       payment_settings: {
         save_default_payment_method: 'on_subscription',

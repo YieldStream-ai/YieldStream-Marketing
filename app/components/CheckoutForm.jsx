@@ -6,7 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 
-function PaymentForm({ plan, interval }) {
+function PaymentForm({ plan, interval, isFounder }) {
   const stripe = useStripe();
   const elements = useElements();
   const [processing, setProcessing] = useState(false);
@@ -37,7 +37,7 @@ function PaymentForm({ plan, interval }) {
       <PaymentElement />
       {error && <div className="checkout__error">{error}</div>}
       <button type="submit" disabled={!stripe || processing} className="btn btn-primary btn-lg checkout__pay-btn">
-        {processing ? 'Processing...' : 'Start 14-Day Free Trial →'}
+        {processing ? 'Processing...' : isFounder ? 'Claim Founding Spot →' : 'Start 14-Day Free Trial →'}
       </button>
       <p className="checkout__secure-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -128,7 +128,7 @@ export default function CheckoutForm({ plan, interval, planConfig }) {
 
   return (
     <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
-      <PaymentForm plan={plan} interval={interval} />
+      <PaymentForm plan={plan} interval={interval} isFounder={plan === 'founder'} />
     </Elements>
   );
 }

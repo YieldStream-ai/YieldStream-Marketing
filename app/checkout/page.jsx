@@ -59,32 +59,41 @@ function CheckoutContent() {
                 {interval === 'annual' && (
                   <p className="text-sm checkout__summary-billed">Billed annually at ${intervalConfig.billedAmount?.toLocaleString()}/yr</p>
                 )}
-                <div className="checkout__summary-divider" />
-                <div className="checkout__summary-trial">
-                  <div className="checkout__trial-badge">14-day free trial</div>
-                  <p className="text-sm checkout__summary-trial-note">
-                    You won&apos;t be charged until {trialEndStr}. Cancel anytime during the trial at no cost.
+                {plan === 'founder' && (
+                  <p className="text-sm" style={{ color: "#9aa5b4", marginBottom: 8 }}>
+                    This rate is locked forever — it never increases.
                   </p>
-                </div>
+                )}
                 <div className="checkout__summary-divider" />
+                {plan !== 'founder' && (
+                  <div className="checkout__summary-trial">
+                    <div className="checkout__trial-badge">14-day free trial</div>
+                    <p className="text-sm checkout__summary-trial-note">
+                      You won&apos;t be charged until {trialEndStr}. Cancel anytime during the trial at no cost.
+                    </p>
+                  </div>
+                )}
+                {plan !== 'founder' && <div className="checkout__summary-divider" />}
                 <div className="checkout__summary-details">
                   <h4 className="checkout__summary-details-title">What&apos;s included:</h4>
                   <ul className="checkout__summary-features">
                     {plan === 'founder' ? (
                       <>
-                        <li>Everything in Professional</li>
-                        <li>Rate locked for life</li>
+                        <li>Rate locked for life — never increases</li>
+                        <li>100 AI analyses / mo</li>
+                        <li>Unlimited team seats</li>
                         <li>Priority onboarding & setup</li>
                         <li>Direct Slack channel with founding team</li>
-                        <li>Unlimited team seats</li>
+                        <li>Influence the product roadmap</li>
                       </>
                     ) : (
                       <>
-                        <li>AI lender matching & scoring</li>
+                        <li>AI lender matching & scoring engine</li>
                         <li>Unlimited merchants & deals</li>
                         <li>AI bank statement analysis</li>
                         <li>Deal pipeline (Kanban + Table)</li>
-                        <li>Up to 10 team seats</li>
+                        <li>200 AI analyses / mo</li>
+                        <li>Unlimited team seats</li>
                       </>
                     )}
                   </ul>
@@ -94,7 +103,7 @@ function CheckoutContent() {
 
             {/* Payment Form */}
             <div className="checkout__form-wrap">
-              <h2 className="display-sm checkout__form-title">Start your free trial</h2>
+              <h2 className="display-sm checkout__form-title">{plan === 'founder' ? 'Claim your founding spot' : 'Start your free trial'}</h2>
               <p className="text-md checkout__form-sub">Enter your details below to get started.</p>
               <CheckoutForm plan={plan} interval={interval} planConfig={planConfig} />
             </div>
