@@ -131,7 +131,7 @@ YieldStream is submission intelligence that learns from every outcome, so every 
               <Link href="/intelligence" className="btn btn-outline btn-sm">Learn about the scoring engine →</Link>
             </div>
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/Underwriting-Intelligence.png" alt="AI Lender Matching" width={1400} height={800} />
+              <Image src="/images/Underwriting-Intelligence.jpg" alt="AI Lender Matching" width={1400} height={800} />
             </div>
           </div>
 

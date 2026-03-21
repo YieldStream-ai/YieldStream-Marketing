@@ -90,7 +90,7 @@ export default function UnderwritingPage() {
         <div className="container">
           <div className="grid-feature reveal">
             <div className="screenshot screenshot-elevated">
-              <Image src="/images/Underwriting-Intelligence.png" alt="Underwriting Intelligence" width={1400} height={800} />
+              <Image src="/images/Underwriting-Intelligence.jpg" alt="Underwriting Intelligence" width={1400} height={800} />
             </div>
             <div>
               <div className="label underwriting__label">The Underwriter's Note</div>
