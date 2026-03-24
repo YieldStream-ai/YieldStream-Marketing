@@ -168,8 +168,16 @@ input, textarea, select { font-family: inherit; }
   background: var(--p50);
 }
 
-.btn-ghost { color: var(--n600); }
-.btn-ghost:hover { color: var(--p600); }
+.btn-ghost {
+  border: 1.5px solid var(--n200);
+  color: var(--n700);
+  background: transparent;
+}
+.btn-ghost:hover {
+  border-color: var(--p300);
+  color: var(--p700);
+  background: var(--p50);
+}
 
 .btn-lg { padding: 10px 20px; font-size: 0.875rem; border-radius: 4px; }
 .btn-sm { padding: 7px 14px; font-size: 0.8rem; border-radius: 4px; }

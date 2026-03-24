@@ -15,7 +15,6 @@ import {
   Milestone,
   User,
   Mail,
-  FileText,
 } from "lucide-react";
 import "./Nav.scss";
 
@@ -230,6 +229,12 @@ export default function Nav() {
               );
             })}
             <Link
+              href="/docs"
+              className={`nav__dropdown-trigger ${pathname.startsWith("/docs") ? "nav__dropdown-trigger--active" : ""}`}
+            >
+              Docs
+            </Link>
+            <Link
               href="/pricing"
               className={`nav__dropdown-trigger ${pathname === "/pricing" ? "nav__dropdown-trigger--active" : ""}`}
             >
@@ -332,16 +337,14 @@ export default function Nav() {
           </div>
 
           <div className="nav-cta">
-            <Link href="/pricing" className="btn btn-primary btn-sm">
-              Access Terminal
-            </Link>
             <Link
-              href="/docs"
-              className="btn btn-outline btn-sm nav__docs-link"
-              style={{ display: "flex", alignItems: "center", gap: 6 }}
+              href="https://app.yieldstream.ai"
+              className="btn btn-ghost btn-sm"
             >
-              <FileText size={14} strokeWidth={1.5} />
-              Documentation
+              Sign in
+            </Link>
+            <Link href="/pricing" className="btn btn-primary btn-sm">
+              Get Early Access
             </Link>
           </div>
 
@@ -434,16 +437,22 @@ export default function Nav() {
               className="nav__mobile-docs"
               onClick={() => setMobileOpen(false)}
             >
-              <FileText size={16} strokeWidth={1.5} />
-              Documentation
+              Docs
             </Link>
             <div className="nav__mobile-cta-wrap">
+              <Link
+                href="https://app.yieldstream.ai"
+                className="btn btn-ghost btn-lg nav__mobile-cta-btn"
+                onClick={() => setMobileOpen(false)}
+              >
+                Sign in
+              </Link>
               <Link
                 href="/pricing"
                 className="btn btn-primary btn-lg nav__mobile-cta-btn"
                 onClick={() => setMobileOpen(false)}
               >
-                Access Terminal →
+                Get Early Access →
               </Link>
             </div>
           </div>

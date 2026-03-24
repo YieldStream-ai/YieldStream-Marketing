@@ -212,6 +212,9 @@
 
   &__mobile-cta-wrap {
     padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   &__mobile-cta-btn {
