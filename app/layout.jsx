@@ -9,6 +9,9 @@ export const metadata = {
     template: '%s | YieldStream'
   },
   description: 'AI-powered lender matching, relationship-weighted scoring, and transparent underwriting — built by brokers, for brokers.',
+  verification: {
+    google: 'ClHgOmf5QsB5stjnypxvpn9sqeRROyRLGZq4bI2jN98',
+  },
   openGraph: {
     title: 'YieldStream — Submission Intelligence for MCA Brokers',
     description: 'Stop guessing which lenders will fund. Start knowing.',
