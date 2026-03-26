@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import EnterpriseModal from "../components/EnterpriseModal";
 
 const allPlansInclude = [
   "AI lender matching & scoring engine",
@@ -112,6 +113,8 @@ const tiers = [
 ];
 
 export default function PricingTiers({ annual, setAnnual }) {
+  const [showEnterprise, setShowEnterprise] = useState(false);
+
   return (
     <div
       style={{
@@ -348,6 +351,7 @@ export default function PricingTiers({ annual, setAnnual }) {
                 </Link>
               ) : (
                 <button
+                  onClick={tier.name === "Enterprise" ? () => setShowEnterprise(true) : undefined}
                   style={{
                     width: "100%",
                     padding: "12px 0",
@@ -432,6 +436,7 @@ export default function PricingTiers({ annual, setAnnual }) {
           ))}
         </div>
       </div>
+      <EnterpriseModal isOpen={showEnterprise} onClose={() => setShowEnterprise(false)} />
     </div>
   );
 }

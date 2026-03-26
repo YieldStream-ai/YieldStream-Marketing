@@ -16,7 +16,7 @@ export default function ContactPage() {
             <div className="label">Contact</div>
             <h1 className="display-xl contact__hero-title">Let's talk.</h1>
             <p className="text-lg contact__hero-sub">
-              Whether you're exploring a founding membership, need enterprise pricing, or have a security question — we respond within 24 hours.
+              Whether you're exploring a founding membership, need enterprise pricing, or have a security question — we'd love to hear from you.
             </p>
           </div>
         </div>
@@ -30,7 +30,7 @@ export default function ContactPage() {
               <div className="contact__success-box">
                 <div className="contact__success-icon">✓</div>
                 <h3 className="contact__success-title">Message sent.</h3>
-                <p className="text-md">We'll be in touch within 24 hours. Check your inbox.</p>
+                <p className="text-md">We'll be in touch soon. Check your inbox.</p>
               </div>
             ) : (
               <div className="contact__form-fields">

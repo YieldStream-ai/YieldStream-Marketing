@@ -344,4 +344,22 @@
   &__screenshot-order {
     order: -1;
   }
+
+  &__trust-card {
+    text-align: center;
+    padding: var(--space-xl);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  &__trust-icon {
+    font-size: 2rem;
+    margin-bottom: var(--space-md);
+  }
+
+  &__trust-card .text-md {
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: var(--space-sm);
+  }
 }

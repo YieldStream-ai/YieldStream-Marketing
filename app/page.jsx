@@ -115,7 +115,7 @@ export default function Home() {
           <div className="section-header reveal">
             <div className="label home__label-spacing">The Problem</div>
             <h2 className="display-lg">
-              The MCA industry runs on gut feel.
+              The MCA industry runs on spray and pray.
               <br />
               That costs real money.
             </h2>
@@ -131,7 +131,7 @@ export default function Home() {
                 icon: "⚠",
                 stat: "$2.3B",
                 title: "Lost to Mismatched Submissions",
-                desc: "Brokers submit to wrong lenders based on outdated info. The industry bleeds revenue from preventable declines.",
+                desc: "Brokers blast the same file to 10 lenders and hope something sticks. The industry bleeds revenue from preventable declines.",
                 bg: "#fef2f2",
                 color: "#dc2626",
               },
@@ -359,15 +359,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== DATA TRUST ===== */}
+      <section className="section section-dark">
+        <div className="container">
+          <div className="section-header center reveal">
+            <div className="label">Data Trust</div>
+            <h2 className="display-lg home__section-header-title">
+              Your data stays yours.
+            </h2>
+            <p className="text-lg home__section-sub">
+              Your lender list is proprietary. We never contact funders or
+              merchants on your behalf. No data resale. No shared blacklists.
+              Full export anytime.
+            </p>
+          </div>
+          <div className="grid-3">
+            {[
+              {
+                icon: "🔒",
+                title: "We don't own your relationships",
+                desc: "Your lender contacts, submission history, and pipeline are yours — we never reach out to your funders or merchants.",
+              },
+              {
+                icon: "🚫",
+                title: "We don't sell your data",
+                desc: "No data resale, no shared blacklists, no monetizing your deal flow behind your back.",
+              },
+              {
+                icon: "📦",
+                title: "You can leave with everything",
+                desc: "Full data export anytime. No lock-in, no hostage negotiations. Your business stays portable.",
+              },
+            ].map((c, i) => (
+              <div className="home__trust-card reveal" key={i}>
+                <div className="home__trust-icon">{c.icon}</div>
+                <h3 className="text-lg fw-600">{c.title}</h3>
+                <p className="text-md">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ===== TESTIMONIALS ===== */}
       <section className="section section-alt">
         <div className="container">
           <div className="section-header center reveal">
-            <div className="label">What Brokers Say</div>
+            <div className="label">Early Access Members</div>
             <h2 className="display-lg home__section-header-mt">
-              Trusted by the brokers
+              What our early partners
               <br />
-              who close the most deals.
+              are saying.
             </h2>
           </div>
           <div className="grid-3">
