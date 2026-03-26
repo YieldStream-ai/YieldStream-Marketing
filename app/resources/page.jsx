@@ -33,7 +33,7 @@ export default function ResourcesPage() {
       {/* Featured */}
       <section className="section">
         <div className="container">
-          <Link href="/resources/ISO-OwnersGuide" className="reveal resources__featured" style={{ textDecoration: 'none' }}>
+          <Link href="/resources/ISO-OwnersGuide" className="reveal resources__featured" style={{ textDecoration: 'none', display: 'block' }}>
             <div className="resources__featured-glow" />
             <div className="resources__featured-inner">
               <span className="mono resources__featured-label">Featured Guide</span>
