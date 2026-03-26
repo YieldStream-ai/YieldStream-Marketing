@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import "./docs.scss";
 import DocsHero from "./components/DocsHero";
 import DocsSidebar from "./components/DocsSidebar";
@@ -17,22 +17,21 @@ import GlossarySection from "./components/GlossarySection";
 
 export default function DocsPage() {
   const [activeSection, setActiveSection] = useState("overview");
-  const mainRef = useRef(null);
 
   const showSection = (id) => {
     setActiveSection(id);
-    if (mainRef.current) mainRef.current.scrollTop = 0;
+    window.scrollTo({ top: document.querySelector('.docs-container-wrap').offsetTop, behavior: 'instant' });
   };
 
   return (
     <div className="docs-page">
       <DocsHero />
 
-      <div className="container docs-container-wrap" style={{ maxWidth: 1100 }}>
+      <div className="docs-container-wrap">
         <div className="docs-container">
           <DocsSidebar activeSection={activeSection} onNavigate={showSection} />
 
-          <div className="docs-main" ref={mainRef} id="docs-main">
+          <div className="docs-main" id="docs-main">
             <OverviewSection active={activeSection === "overview"} />
             <EngineSection active={activeSection === "engine"} />
             <ScoringSection active={activeSection === "scoring"} />

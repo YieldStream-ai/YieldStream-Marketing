@@ -44,18 +44,18 @@ const dropdowns = {
         desc: "Three-layer scoring",
         icon: Zap,
       },
-    ],
-  },
-  company: {
-    label: "Company",
-    items: [
-      { href: "/about", title: "About", desc: "Our story", icon: User },
       {
         href: "/security",
         title: "Security",
         desc: "Data protection & compliance",
         icon: ShieldCheck,
       },
+    ],
+  },
+  company: {
+    label: "Company",
+    items: [
+      { href: "/about", title: "About", desc: "Our story", icon: User },
       { href: "/contact", title: "Contact", desc: "Get in touch", icon: Mail },
     ],
   },
