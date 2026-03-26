@@ -82,7 +82,7 @@ export async function POST(request) {
               subject: 'Create your YieldStream account',
               html: `
                 <h2>Welcome to YieldStream!</h2>
-                <p>Your ${subscription.metadata?.plan || ''} plan trial has started. Click below to create your account:</p>
+                <p>Your ${subscription.metadata?.plan || ''} plan is now active. Click below to create your account:</p>
                 <p><a href="${signupLink}" style="display:inline-block;padding:12px 24px;background:#047987;color:white;text-decoration:none;border-radius:8px;font-weight:600;">Create Your Account →</a></p>
                 <p style="color:#666;font-size:14px;">This link expires in 72 hours. If you need a new one, contact support@yieldstream.ai.</p>
               `,

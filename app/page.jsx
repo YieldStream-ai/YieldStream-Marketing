@@ -38,7 +38,7 @@ export default function Home() {
 
               <div className="reveal reveal-delay-2 home__hero-actions">
                 <Link href="/pricing" className="btn btn-primary btn-lg">
-                  Start 14-Day Free Trial →
+                  Get Started →
                 </Link>
                 <Link href="/features" className="btn btn-outline btn-lg">
                   Platform Overview

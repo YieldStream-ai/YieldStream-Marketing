@@ -11,14 +11,6 @@ function SuccessContent() {
   const searchParams = useSearchParams();
   const plan = searchParams.get("plan");
 
-  const trialEnd = new Date();
-  trialEnd.setDate(trialEnd.getDate() + 14);
-  const trialEndStr = trialEnd.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
-
   return (
     <section className="checkout__success">
       <div className="container">
@@ -41,7 +33,7 @@ function SuccessContent() {
           <p className="text-lg checkout__success-sub">
             {plan === "founder"
               ? "You're in. Your founding rate is locked forever — welcome to YieldStream."
-              : `Your 14-day free trial has started. You won't be charged until ${trialEndStr}.`}{" "}
+              : "Welcome to YieldStream. Your subscription is active — backed by our 30-day money-back guarantee."}{" "}
           </p>
           <div className="checkout__success-steps">
             <h3 className="checkout__success-steps-title">

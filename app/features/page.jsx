@@ -226,7 +226,7 @@ export default function FeaturesPage() {
 
       <CTABanner
         headline="See it in action."
-        sub="Start your 14-day free trial and run your first AI-scored deal in under 10 minutes."
+        sub="Run your first AI-scored deal in under 10 minutes. 30-day money-back guarantee."
       />
     </>
   );

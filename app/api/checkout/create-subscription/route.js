@@ -41,8 +41,6 @@ export async function POST(request) {
             metadata: { source: "marketing_site" },
           });
 
-    const isFounder = plan === "founder";
-
     // Create setup intent to collect card details
     const setupIntent = await stripe.setupIntents.create({
       customer: customer.id,
@@ -55,7 +53,6 @@ export async function POST(request) {
     const subscription = await stripe.subscriptions.create({
       customer: customer.id,
       items: [{ price: intervalConfig.priceId }],
-      ...(isFounder ? {} : { trial_period_days: 14 }),
       payment_behavior: "default_incomplete",
       payment_settings: {
         save_default_payment_method: "on_subscription",

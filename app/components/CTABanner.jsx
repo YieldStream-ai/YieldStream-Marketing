@@ -3,8 +3,8 @@ import './CTABanner.scss';
 
 export default function CTABanner({
   headline = "Ready to stop guessing?",
-  sub = "Join the founding members building the future of MCA submissions. 14-day free trial, no credit card required.",
-  primaryText = "Start Free Trial",
+  sub = "Join the founding members building the future of MCA submissions. 30-day money-back guarantee.",
+  primaryText = "Get Started",
   primaryHref = "/pricing",
   secondaryText = "Schedule a Demo",
   secondaryHref = "/contact"

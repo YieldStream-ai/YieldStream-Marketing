@@ -31,7 +31,7 @@ const tiers = [
       { icon: "✦", text: "Direct Slack channel with founding team" },
       { icon: "✦", text: "Influence the product roadmap" },
     ],
-    note: "Rate locked forever. Card required to reserve your spot.",
+    note: "Rate locked forever. 30-day money-back guarantee. Not the right fit? Full refund, no questions asked.",
     cta: "Claim Founding Spot →",
     ctaStyle: {
       background: "var(--p400, #047987)",
@@ -60,8 +60,8 @@ const tiers = [
       { icon: "✦", text: "Unlimited team seats" },
       { icon: "✦", text: "Standard onboarding" },
     ],
-    note: "14-day free trial · No credit card required to start",
-    cta: "Start Free Trial →",
+    note: "30-day money-back guarantee. Not the right fit? Full refund, no questions asked.",
+    cta: "Get Started →",
     ctaStyle: {
       background: "var(--p600, #01313a)",
       color: "#fff",
@@ -432,17 +432,6 @@ export default function PricingTiers({ annual, setAnnual }) {
           ))}
         </div>
       </div>
-      {/* Bottom trust line
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: 36,
-          fontSize: 12,
-          color: "#9aa5b4",
-        }}
-      >
-        14-day free trial · No credit card required to start · Cancel anytime
-      </div> */}
     </div>
   );
 }

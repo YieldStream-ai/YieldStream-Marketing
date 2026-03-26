@@ -8,9 +8,8 @@ export default function PricingSection({ active }) {
       <div className="docs-h1">Pricing</div>
       <div className="docs-lead">
         YieldStream is a flat monthly subscription — no per-seat pricing,
-        no submission limits, no hidden overages. The 14-day trial
-        includes full platform access with card on file; no charge until
-        the trial period ends.
+        no submission limits, no hidden overages. All plans include a
+        30-day money-back guarantee.
       </div>
 
       <div className="docs-pg-grid">
@@ -30,8 +29,8 @@ export default function PricingSection({ active }) {
             <span className="docs-pg-v">50</span>
           </div>
           <div className="docs-pg-row">
-            <span className="docs-pg-k">Trial period</span>
-            <span className="docs-pg-v">14 days</span>
+            <span className="docs-pg-k">Guarantee</span>
+            <span className="docs-pg-v">30-day money-back</span>
           </div>
           <div className="docs-pg-row">
             <span className="docs-pg-k">Billing</span>
@@ -54,8 +53,8 @@ export default function PricingSection({ active }) {
             <span className="docs-pg-v">150</span>
           </div>
           <div className="docs-pg-row">
-            <span className="docs-pg-k">Trial period</span>
-            <span className="docs-pg-v">14 days</span>
+            <span className="docs-pg-k">Guarantee</span>
+            <span className="docs-pg-v">30-day money-back</span>
           </div>
           <div className="docs-pg-row">
             <span className="docs-pg-k">Billing</span>

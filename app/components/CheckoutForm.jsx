@@ -37,7 +37,7 @@ function PaymentForm({ plan, interval, isFounder }) {
       <PaymentElement />
       {error && <div className="checkout__error">{error}</div>}
       <button type="submit" disabled={!stripe || processing} className="btn btn-primary btn-lg checkout__pay-btn">
-        {processing ? 'Processing...' : isFounder ? 'Claim Founding Spot →' : 'Start 14-Day Free Trial →'}
+        {processing ? 'Processing...' : isFounder ? 'Claim Founding Spot →' : 'Get Started →'}
       </button>
       <p className="checkout__secure-note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>

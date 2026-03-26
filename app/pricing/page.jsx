@@ -63,8 +63,8 @@ export default function PricingPage() {
           >
             {[
               {
-                q: "Is there a free trial?",
-                a: "Professional includes a 14-day free trial with no credit card required. Founder is a direct signup — your rate locks from day one.",
+                q: "Is there a money-back guarantee?",
+                a: "Yes. Both Founder and Professional plans include a 30-day money-back guarantee. If it's not the right fit, contact support@yieldstream.ai within 30 days of your first payment for a full refund.",
               },
               {
                 q: "What happens when the 20 founder spots are filled?",

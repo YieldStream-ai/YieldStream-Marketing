@@ -31,10 +31,6 @@ function CheckoutContent() {
     );
   }
 
-  const trialEnd = new Date();
-  trialEnd.setDate(trialEnd.getDate() + 14);
-  const trialEndStr = trialEnd.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-
   return (
     <>
       <section className="checkout__hero">
@@ -65,15 +61,13 @@ function CheckoutContent() {
                   </p>
                 )}
                 <div className="checkout__summary-divider" />
-                {plan !== 'founder' && (
-                  <div className="checkout__summary-trial">
-                    <div className="checkout__trial-badge">14-day free trial</div>
-                    <p className="text-sm checkout__summary-trial-note">
-                      You won&apos;t be charged until {trialEndStr}. Cancel anytime during the trial at no cost.
-                    </p>
-                  </div>
-                )}
-                {plan !== 'founder' && <div className="checkout__summary-divider" />}
+                <div className="checkout__summary-trial">
+                  <div className="checkout__trial-badge">30-day money-back guarantee</div>
+                  <p className="text-sm checkout__summary-trial-note">
+                    Not the right fit in your first 30 days? We&apos;ll refund you in full.
+                  </p>
+                </div>
+                <div className="checkout__summary-divider" />
                 <div className="checkout__summary-details">
                   <h4 className="checkout__summary-details-title">What&apos;s included:</h4>
                   <ul className="checkout__summary-features">
@@ -103,7 +97,7 @@ function CheckoutContent() {
 
             {/* Payment Form */}
             <div className="checkout__form-wrap">
-              <h2 className="display-sm checkout__form-title">{plan === 'founder' ? 'Claim your founding spot' : 'Start your free trial'}</h2>
+              <h2 className="display-sm checkout__form-title">{plan === 'founder' ? 'Claim your founding spot' : 'Get started'}</h2>
               <p className="text-md checkout__form-sub">Enter your details below to get started.</p>
               <CheckoutForm plan={plan} interval={interval} planConfig={planConfig} />
             </div>
