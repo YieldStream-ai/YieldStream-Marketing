@@ -116,3 +116,81 @@
     font-size: 0.9rem;
   }
 }
+
+/* Resource Article Page */
+.resource-article {
+  &__hero {
+    padding: 80px 0 20px;
+    background: var(--n50);
+  }
+
+  &__back {
+    font-size: 0.85rem;
+    color: var(--p600);
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__content {
+    max-width: 720px;
+    margin: 0 auto;
+    line-height: 1.75;
+    font-size: 1.02rem;
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      font-weight: 600;
+      margin-top: 48px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: var(--n600);
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--n200);
+      margin: 40px 0;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--n800);
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    a {
+      color: var(--p600);
+      text-decoration: underline;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--p600);
+      padding-left: 16px;
+      margin: 24px 0;
+      color: var(--n500);
+      font-style: italic;
+    }
+  }
+}

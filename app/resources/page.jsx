@@ -33,7 +33,7 @@ export default function ResourcesPage() {
       {/* Featured */}
       <section className="section">
         <div className="container">
-          <div className="reveal resources__featured">
+          <Link href="/resources/ISO-OwnersGuide" className="reveal resources__featured" style={{ textDecoration: 'none' }}>
             <div className="resources__featured-glow" />
             <div className="resources__featured-inner">
               <span className="mono resources__featured-label">Featured Guide</span>
@@ -45,7 +45,7 @@ export default function ResourcesPage() {
               </p>
               <span className="btn btn-emerald">Read the Guide →</span>
             </div>
-          </div>
+          </Link>
 
           {/* Article Grid */}
           <div className="grid-3">
