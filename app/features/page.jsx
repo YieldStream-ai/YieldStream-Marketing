@@ -21,7 +21,7 @@ export default function FeaturesPage() {
         "Time-decay ensures stale data never pollutes matches",
         "Sort by best match, best yield, or fastest funding speed",
       ],
-      image: "/images/Underwriting-Intelligence.jpg",
+      image: "/images/Underwriting-Intelligence.png",
       link: "/intelligence",
       linkText: "How the scoring engine works →",
     },
