@@ -205,7 +205,7 @@ export default function Home() {
             </div>
             <div className="screenshot screenshot-elevated">
               <Image
-                src="/images/Lender-Buy-Box.png"
+                src="/images/Lender-Edit.png"
                 alt="AI Lender Matching"
                 width={1400}
                 height={800}
