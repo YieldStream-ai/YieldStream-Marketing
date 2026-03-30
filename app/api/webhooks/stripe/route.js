@@ -342,7 +342,7 @@ function getProfessionalEmailHtml(signupLink) {
       <div class="feature"><span class="check">&#10003;</span>Unlimited merchants &amp; deals</div>
       <div class="feature"><span class="check">&#10003;</span>AI bank statement analysis</div>
       <div class="feature"><span class="check">&#10003;</span>Deal pipeline (Kanban + Table)</div>
-      <div class="feature"><span class="check">&#10003;</span>200 AI analyses / month</div>
+      <div class="feature"><span class="check">&#10003;</span>600 AI analyses / month</div>
       <div class="feature"><span class="check">&#10003;</span>Unlimited team seats</div>
     </div>
   </div>

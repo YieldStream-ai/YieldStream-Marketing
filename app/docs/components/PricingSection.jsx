@@ -17,7 +17,7 @@ export default function PricingSection({ active }) {
           <div className="docs-pg-badge">Recommended</div>
           <div className="docs-pg-name">Founder</div>
           <div style={{ marginBottom: 14 }}>
-            <span className="docs-pg-price">$497</span>
+            <span className="docs-pg-price">$797</span>
             <span className="docs-pg-per">/month</span>
           </div>
           <div className="docs-pg-row">
@@ -26,7 +26,7 @@ export default function PricingSection({ active }) {
           </div>
           <div className="docs-pg-row">
             <span className="docs-pg-k">AI credits / month</span>
-            <span className="docs-pg-v">50</span>
+            <span className="docs-pg-v">300</span>
           </div>
           <div className="docs-pg-row">
             <span className="docs-pg-k">Guarantee</span>
@@ -39,18 +39,18 @@ export default function PricingSection({ active }) {
         </div>
         <div className="docs-pg-card">
           <div style={{ height: 22 }} />
-          <div className="docs-pg-name">Pro</div>
+          <div className="docs-pg-name">Professional</div>
           <div style={{ marginBottom: 14 }}>
-            <span className="docs-pg-price">$697</span>
+            <span className="docs-pg-price">$1,197</span>
             <span className="docs-pg-per">/month</span>
           </div>
           <div className="docs-pg-row">
             <span className="docs-pg-k">Team seats</span>
-            <span className="docs-pg-v">Up to 10</span>
+            <span className="docs-pg-v">Unlimited</span>
           </div>
           <div className="docs-pg-row">
             <span className="docs-pg-k">AI credits / month</span>
-            <span className="docs-pg-v">150</span>
+            <span className="docs-pg-v">600</span>
           </div>
           <div className="docs-pg-row">
             <span className="docs-pg-k">Guarantee</span>
@@ -66,17 +66,21 @@ export default function PricingSection({ active }) {
       <div className="docs-h2">AI credit system</div>
       <div className="docs-p">
         AI credits govern consumption of the underwriting pipeline —
-        specifically bank statement enrichment (OCR + Gemini analysis)
-        and lender prediction generation. One credit is consumed per
-        bank statement analysis cycle. Prediction re-runs against cached
-        results do not consume credits.
+        specifically bank statement enrichment (OCR + Gemini analysis).
+        One credit is consumed per bank statement upload. Lender
+        predictions on first run are bundled with the enrichment credit
+        at no additional cost. Prediction re-runs within 48 hours are
+        free. Page views, teammate access, and read operations never
+        consume credits.
       </div>
       <div className="docs-callout">
         <div className="docs-callout-lbl">Credit policy</div>
         Unused AI credits do not roll over between billing periods.
         Credits refresh on the monthly billing anniversary. High-volume
-        ISOs processing above the included credit allotment should
-        contact support to discuss an Enterprise arrangement.
+        ISOs processing above their included credit allotment should
+        contact support to discuss an Enterprise arrangement, which
+        includes unlimited credits, dedicated support, and custom
+        lender network setup.
       </div>
     </section>
   );

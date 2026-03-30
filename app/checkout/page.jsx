@@ -74,7 +74,7 @@ function CheckoutContent() {
                     {plan === 'founder' ? (
                       <>
                         <li>Rate locked for life — never increases</li>
-                        <li>100 AI analyses / mo</li>
+                        <li>300 AI analyses / mo</li>
                         <li>Unlimited team seats</li>
                         <li>Priority onboarding & setup</li>
                         <li>Direct Slack channel with founding team</li>
@@ -86,7 +86,7 @@ function CheckoutContent() {
                         <li>Unlimited merchants & deals</li>
                         <li>AI bank statement analysis</li>
                         <li>Deal pipeline (Kanban + Table)</li>
-                        <li>200 AI analyses / mo</li>
+                        <li>600 AI analyses / mo</li>
                         <li>Unlimited team seats</li>
                       </>
                     )}
