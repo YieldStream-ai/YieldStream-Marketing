@@ -216,7 +216,7 @@ export default function FeedbackPage() {
             <div className="feedback__form">
               {submitted ? (
                 <div className="feedback__success-box">
-                  <div className="feedback__success-icon">&#127881;</div>
+                  <div className="feedback__success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 32, height: 32, color: 'var(--a500)' }}><path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg></div>
                   <h3 className="feedback__success-title">Feature request submitted!</h3>
                   <p className="text-md">We review every request. Founding members get priority consideration.</p>
                   <button onClick={() => { setSubmitted(false); }} className="btn btn-secondary feedback__another-btn">Submit another</button>
@@ -273,7 +273,7 @@ export default function FeedbackPage() {
             <div className="feedback__form">
               {submitted ? (
                 <div className="feedback__success-box">
-                  <div className="feedback__success-icon">&#128027;</div>
+                  <div className="feedback__success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 32, height: 32, color: 'var(--a500)' }}><path d="M22 11.08V12a10 10 0 11-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg></div>
                   <h3 className="feedback__success-title">Bug report received.</h3>
                   <p className="text-md">We&apos;ll investigate and follow up. Thank you for helping us improve.</p>
                   <button onClick={() => { setSubmitted(false); }} className="btn btn-secondary feedback__another-btn">Report another</button>

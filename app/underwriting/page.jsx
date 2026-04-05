@@ -100,7 +100,7 @@ export default function UnderwritingPage() {
               </p>
               <div className="underwriting__note-card">
                 <div className="mono underwriting__note-label">
-                  ✎ Example Note
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14, display: 'inline', verticalAlign: 'middle', marginRight: 4 }}><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" /></svg> Example Note
                 </div>
                 <p className="underwriting__note-text">
                   Premium profile — <strong style={{ color: 'var(--a300)' }}>$120K ADB</strong> is well above most lender floors; expect competitive factor rates. Revenue stable with no NSFs in 90 days.

@@ -60,8 +60,12 @@
 
   &__bullet-check {
     color: var(--a500);
-    font-weight: 700;
     flex-shrink: 0;
+    display: inline-flex;
+    svg {
+      width: 14px;
+      height: 14px;
+    }
   }
 
   &__card {
@@ -69,8 +73,12 @@
   }
 
   &__card-icon {
-    font-size: 1.3rem;
     margin-bottom: 10px;
+    color: var(--a500);
+    svg {
+      width: 28px;
+      height: 28px;
+    }
   }
 
   &__card-title {

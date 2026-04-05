@@ -128,32 +128,53 @@
     color: var(--n500);
   }
 
-  &__logo-bar {
-    padding: 36px 0;
+  /* ===== HOW IT WORKS ===== */
+  &__how {
+    padding: 40px 0;
     border-bottom: 1px solid var(--n100);
   }
 
-  &__logo-bar-inner {
+  &__how-inner {
     text-align: center;
   }
 
-  &__logo-bar-label {
-    margin-bottom: 20px;
-    color: var(--n400);
+  &__how-headline {
+    margin: 10px 0 32px;
+    color: var(--n900);
   }
 
-  &__logo-bar-names {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    opacity: 0.45;
+  &__how-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    text-align: left;
   }
 
-  &__logo-bar-name {
+  &__how-step {
+    padding: 20px 24px;
+    border: 1px solid var(--n150);
+    border-radius: 2px;
+    background: var(--n0);
+  }
+
+  &__how-step-num {
+    font-size: 0.7rem;
+    color: var(--p600);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  &__how-step-title {
+    font-size: 0.95rem;
     font-weight: 600;
-    font-size: 1rem;
+    color: var(--n900);
+    margin-bottom: 4px;
+  }
+
+  &__how-step-desc {
+    font-size: 0.84rem;
     color: var(--n500);
+    line-height: 1.5;
   }
 
   &__label-spacing {
@@ -264,6 +285,10 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  &__bento-card > .pill {
+    margin: 12px 0;
   }
 
   &__bento-card > .screenshot {
@@ -439,10 +464,14 @@
   }
 
   &__testimonial-stars {
-    color: #f59e0b;
-    font-size: 0.85rem;
+    display: flex;
+    gap: 3px;
     margin-bottom: 10px;
-    letter-spacing: 2px;
+    color: #f59e0b;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   &__testimonial-quote {
@@ -561,11 +590,13 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    font-size: 0.72rem;
-    font-weight: 700;
     margin-right: 10px;
     flex-shrink: 0;
     vertical-align: middle;
+    svg {
+      width: 12px;
+      height: 12px;
+    }
 
     &--x {
       background: #fef2f2;
@@ -669,6 +700,11 @@
     margin: 12px -24px -24px -24px;
     border-left: none;
     border-top: 1px solid var(--n200);
+  }
+
+  .home__how-steps {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .home__why-callout {

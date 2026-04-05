@@ -48,9 +48,9 @@ export default function Home() {
               {/* Proof stats */}
               <div className="reveal reveal-delay-3 home__hero-stats">
                 {[
-                  { num: "94%", label: "Match Accuracy" },
-                  { num: "2.4×", label: "Throughput Velocity" },
-                  { num: "40hrs", label: "Internal Capacity Gained" },
+                  { num: "~120s", label: "PDF to Scored Intelligence" },
+                  { num: "20+", label: "Risk Signals Extracted" },
+                  { num: "5", label: "Lender Matches Per Deal" },
                 ].map((s) => (
                   <div key={s.label}>
                     <div className="mono home__stat-num">{s.num}</div>
@@ -86,101 +86,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== LOGO BAR ===== */}
-      <section className="home__logo-bar">
-        <div className="container home__logo-bar-inner">
-          <div className="label home__logo-bar-label">
-            Built for brokerages moving <span className="mono">$10M+</span> monthly
-          </div>
-          <div className="home__logo-bar-names">
-            {[
-              "Apex Funding",
-              "BlueVine Capital",
-              "National Funding",
-              "Credibly",
-              "Kapitus",
-              "Rapid Finance",
-            ].map((name) => (
-              <span key={name} className="home__logo-bar-name">
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== PROBLEM ===== */}
-      <section className="home__problem">
-        <div className="container">
-          <div className="section-header center reveal">
-            <div className="label home__label-spacing">The Cost of Guesswork</div>
-            <h2 className="display-md">
-              The MCA industry runs on spray and pray.
-              <br />
-              That costs real money.
-            </h2>
-            <p className="text-lg home__section-sub" style={{ maxWidth: 640, margin: '10px auto 0' }}>
-              Brokers lose commissions to mismatched submissions every day.
-              Relationship knowledge lives in one person&apos;s head. Lender appetites shift
-              and nobody tracks the change.
-            </p>
-          </div>
-          <div className="home__problem-columns">
-            {[
-              {
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
-                    <line x1="12" y1="9" x2="12" y2="13"/>
-                    <line x1="12" y1="17" x2="12.01" y2="17"/>
-                  </svg>
-                ),
-                stat: "$2.3B",
-                statUnit: null,
-                title: "Lost to Blind Submissions",
-                desc: "Brokers blast the same file to 10 lenders and hope something sticks. Mismatched deals get declined on sight — and every decline burns a relationship.",
-              },
-              {
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                ),
-                stat: "45",
-                statUnit: "min",
-                title: "Burned Per Manual Underwrite",
-                desc: "Three bank statements, ten deals a day. Your team is spending 22+ hours a week on spreadsheet analysis that a machine should handle in seconds.",
-              },
-              {
-                icon: (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
-                  </svg>
-                ),
-                stat: "0",
-                statUnit: "%",
-                title: "Decline Intelligence Captured",
-                desc: "When a lender passes, the reason dies in an email thread. No pattern recognition, no feedback loop — the same mistakes repeat deal after deal.",
-              },
-            ].map((col, i) => (
-              <div key={i} className={`home__problem-col reveal reveal-delay-${i + 1}`}>
-                <div className="home__problem-icon">
-                  {col.icon}
-                </div>
-                <div className="home__problem-stat">
-                  {col.stat}
-                  {col.statUnit && <span className="home__problem-stat-unit">{col.statUnit}</span>}
-                </div>
-                <h3 className="home__problem-col-title">{col.title}</h3>
-                <p className="home__problem-col-desc">{col.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===== FEATURE HIGHLIGHTS ===== */}
       <section className="section">
         <div className="container">
@@ -197,21 +102,25 @@ export default function Home() {
             {/* Feature 1 — Wide card */}
             <div className="home__bento-card home__bento-card--wide">
               <div className="home__bento-card-content">
-                <div className="home__mod-label mono">[SYS_MOD // 01: INTAKE]</div>
+                <div className="home__mod-label mono">
+                  [SYS_MOD // 01: INTAKE]
+                </div>
                 <span className="pill pill--accent">AI Lender Matching</span>
                 <h3 className="display-md home__feature-heading">
                   Every lender scored. Every match explained.
                 </h3>
                 <p className="text-md home__feature-desc">
-                  Three-layer scoring weighs global performance, your relationship
-                  history, and buybox fit — then ranks by expected commission, not
-                  just approval probability.
+                  Three-layer scoring weighs global performance, your
+                  relationship history, and buybox fit — then ranks by expected
+                  commission, not just approval probability.
                 </p>
                 {/* Data Fragment */}
                 <div className="home__data-fragment">
                   <div className="home__data-fragment-row">
                     <span className="home__data-fragment-key">A.I. Status</span>
-                    <span className="home__data-fragment-pill home__data-fragment-pill--verified">Verified</span>
+                    <span className="home__data-fragment-pill home__data-fragment-pill--verified">
+                      Verified
+                    </span>
                   </div>
                   <div className="home__data-fragment-row">
                     <span className="home__data-fragment-key">Confidence</span>
@@ -219,7 +128,9 @@ export default function Home() {
                   </div>
                   <div className="home__data-fragment-row">
                     <span className="home__data-fragment-key">Match Score</span>
-                    <span className="home__data-fragment-val">645 FICO above floor · 3yr TiB — strong</span>
+                    <span className="home__data-fragment-val">
+                      645 FICO above floor · 3yr TiB — strong
+                    </span>
                   </div>
                 </div>
                 <Link href="/intelligence" className="btn btn-outline btn-sm">
@@ -239,7 +150,9 @@ export default function Home() {
 
             {/* Feature 2 */}
             <div className="home__bento-card">
-              <div className="home__mod-label mono">[SYS_MOD // 02: ANALYSIS]</div>
+              <div className="home__mod-label mono">
+                [SYS_MOD // 02: ANALYSIS]
+              </div>
               <span className="pill pill--accent">Offer Comparison</span>
               <h3 className="display-md home__feature-heading">
                 Compare every offer. Pick the best one.
@@ -252,15 +165,21 @@ export default function Home() {
               <div className="home__data-fragment">
                 <div className="home__data-fragment-row">
                   <span className="home__data-fragment-key">DSCR</span>
-                  <span className="home__data-fragment-val">1.72 — strong cash cycle coverage</span>
+                  <span className="home__data-fragment-val">
+                    1.72 — strong cash cycle coverage
+                  </span>
                 </div>
                 <div className="home__data-fragment-row">
                   <span className="home__data-fragment-key">ADB</span>
-                  <span className="home__data-fragment-val">22% of monthly revenue — healthy cushion</span>
+                  <span className="home__data-fragment-val">
+                    22% of monthly revenue — healthy cushion
+                  </span>
                 </div>
                 <div className="home__data-fragment-row">
                   <span className="home__data-fragment-key">Stacking</span>
-                  <span className="home__data-fragment-pill home__data-fragment-pill--clean">1st position — clean</span>
+                  <span className="home__data-fragment-pill home__data-fragment-pill--clean">
+                    1st position — clean
+                  </span>
                 </div>
               </div>
               <div className="screenshot">
@@ -276,7 +195,9 @@ export default function Home() {
 
             {/* Feature 3 */}
             <div className="home__bento-card">
-              <div className="home__mod-label mono">[SYS_MOD // 03: EXECUTION]</div>
+              <div className="home__mod-label mono">
+                [SYS_MOD // 03: EXECUTION]
+              </div>
               <span className="pill pill--accent">Deal Pipeline</span>
               <h3 className="display-md home__feature-heading">
                 See every deal. Know where it stands.
@@ -289,11 +210,15 @@ export default function Home() {
               <div className="home__data-fragment">
                 <div className="home__data-fragment-row">
                   <span className="home__data-fragment-key">Best Factor</span>
-                  <span className="home__data-fragment-val home__data-fragment-val--highlight">1.29x</span>
+                  <span className="home__data-fragment-val home__data-fragment-val--highlight">
+                    1.29x
+                  </span>
                 </div>
                 <div className="home__data-fragment-row">
                   <span className="home__data-fragment-key">Commission</span>
-                  <span className="home__data-fragment-val home__data-fragment-val--highlight">$4,200</span>
+                  <span className="home__data-fragment-val home__data-fragment-val--highlight">
+                    $4,200
+                  </span>
                 </div>
                 <div className="home__data-fragment-row">
                   <span className="home__data-fragment-key">Pull-Through</span>
@@ -381,15 +306,21 @@ export default function Home() {
             </div>
             <div className="home__note-card">
               <div className="home__note-card-glow" />
-              <div className="mono home__note-label">✎ Underwriter's Note</div>
+              <div className="mono home__note-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14, display: 'inline', verticalAlign: 'middle', marginRight: 4 }}><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" /></svg> Underwriter's Note</div>
               <p className="home__note-text">
                 Growing catering operation —{" "}
-                <strong style={{ color: "var(--a300)" }}><span className="mono">$95K/mo</span></strong> with
-                only{" "}
-                <strong style={{ color: "var(--a300)" }}><span className="mono">8.1%</span> stacking</strong>.
-                1 NSF was a timing issue (vendor payment). Well within tolerance
-                for most lenders.{" "}
-                <strong style={{ color: "var(--a300)" }}><span className="mono">93%</span> confidence</strong>{" "}
+                <strong style={{ color: "var(--a300)" }}>
+                  <span className="mono">$95K/mo</span>
+                </strong>{" "}
+                with only{" "}
+                <strong style={{ color: "var(--a300)" }}>
+                  <span className="mono">8.1%</span> stacking
+                </strong>
+                . 1 NSF was a timing issue (vendor payment). Well within
+                tolerance for most lenders.{" "}
+                <strong style={{ color: "var(--a300)" }}>
+                  <span className="mono">93%</span> confidence
+                </strong>{" "}
                 · Revenue: Growing
               </p>
               <div className="home__note-footer">
@@ -421,7 +352,14 @@ export default function Home() {
             {[
               {
                 icon: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     {/* Shield outline */}
                     <path d="M24 4L6 12v12c0 11 8 18 18 20 10-2 18-9 18-20V12L24 4z" />
                     {/* Keyhole circle */}
@@ -435,7 +373,14 @@ export default function Home() {
               },
               {
                 icon: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     {/* Data silo / vault cylinder */}
                     <ellipse cx="24" cy="12" rx="12" ry="4" />
                     <path d="M12 12v24c0 2.2 5.4 4 12 4s12-1.8 12-4V12" />
@@ -449,7 +394,14 @@ export default function Home() {
               },
               {
                 icon: (
-                  <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    viewBox="0 0 48 48"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     {/* Server rack unit */}
                     <rect x="8" y="8" width="24" height="12" rx="2" />
                     <rect x="8" y="24" width="24" height="12" rx="2" />
@@ -485,10 +437,14 @@ export default function Home() {
             <h2 className="display-lg home__section-header-mt">
               Built for the daily-remittance world.
             </h2>
-            <p className="text-lg home__section-sub" style={{ maxWidth: 680, margin: '10px auto 0' }}>
+            <p
+              className="text-lg home__section-sub"
+              style={{ maxWidth: 680, margin: "10px auto 0" }}
+            >
               Unlike generic CRMs adapted from sales pipelines, YieldStream is
               built specifically for the daily-remittance world of MCA. We
-              don&apos;t just store data&nbsp;&mdash; we audit it for underwriting risk.
+              don&apos;t just store data&nbsp;&mdash; we audit it for
+              underwriting risk.
             </p>
           </div>
 
@@ -496,28 +452,64 @@ export default function Home() {
             <table className="home__why-table">
               <thead>
                 <tr>
-                  <th className="home__why-th home__why-th--cap mono">Capability</th>
-                  <th className="home__why-th home__why-th--generic mono">Generic CRM</th>
-                  <th className="home__why-th home__why-th--ys mono">YieldStream</th>
+                  <th className="home__why-th home__why-th--cap mono">
+                    Capability
+                  </th>
+                  <th className="home__why-th home__why-th--generic mono">
+                    Generic CRM
+                  </th>
+                  <th className="home__why-th home__why-th--ys mono">
+                    YieldStream
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { cap: "Daily Remittance Tracking", generic: "Manual spreadsheet entry", ys: "Automatic ACH extraction & audit" },
-                  { cap: "Bank Statement Analysis", generic: "Human review, 2\u20134 hours", ys: "AI parse in <120 seconds, zero error" },
-                  { cap: "Lender Matching", generic: "Gut feel + spreadsheets", ys: "Three-layer scoring engine with deal rank" },
-                  { cap: "Offer Comparison", generic: "Side-by-side PDF review", ys: "Structured comparison with net funding & commission" },
-                  { cap: "Underwriting Risk Audit", generic: "Not available", ys: "Built-in remittance gap analysis" },
-                  { cap: "Debt Schedule Parsing", generic: "Manual calculation", ys: "Instant structured extraction" },
+                  {
+                    cap: "Daily Remittance Tracking",
+                    generic: "Manual spreadsheet entry",
+                    ys: "Automatic ACH extraction & audit",
+                  },
+                  {
+                    cap: "Bank Statement Analysis",
+                    generic: "Human review, 2\u20134 hours",
+                    ys: "AI parse in <120 seconds, zero error",
+                  },
+                  {
+                    cap: "Lender Matching",
+                    generic: "Gut feel + spreadsheets",
+                    ys: "Three-layer scoring engine with deal rank",
+                  },
+                  {
+                    cap: "Offer Comparison",
+                    generic: "Side-by-side PDF review",
+                    ys: "Structured comparison with net funding & commission",
+                  },
+                  {
+                    cap: "Underwriting Risk Audit",
+                    generic: "Not available",
+                    ys: "Built-in remittance gap analysis",
+                  },
+                  {
+                    cap: "Debt Schedule Parsing",
+                    generic: "Manual calculation",
+                    ys: "Instant structured extraction",
+                  },
                 ].map((row, i) => (
                   <tr key={i} className="home__why-row">
-                    <td className="home__why-td home__why-td--cap">{row.cap}</td>
+                    <td className="home__why-td home__why-td--cap">
+                      {row.cap}
+                    </td>
                     <td className="home__why-td home__why-td--generic">
-                      <span className="home__why-icon home__why-icon--x">✕</span>
+                      <span className="home__why-icon home__why-icon--x">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                      </span>
                       {row.generic}
                     </td>
                     <td className="home__why-td home__why-td--ys">
-                      <span className="home__why-icon home__why-icon--check">✓</span>
+                      <span className="home__why-icon home__why-icon--check">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                      </span>
                       {row.ys}
                     </td>
                   </tr>
@@ -552,26 +544,42 @@ export default function Home() {
           <div className="grid-3">
             {[
               {
-                quote: (<>We spent an hour per deal figuring out which lender to submit to. YieldStream cut that to <span className="mono">5</span> minutes — and our pull-through jumped from <span className="mono">32%</span> to <span className="mono">48%</span>.</>),
+                quote: (
+                  <>
+                    We spent an hour per deal figuring out which lender to
+                    submit to. YieldStream cut that to{" "}
+                    <span className="mono">5</span> minutes — and our
+                    pull-through jumped from <span className="mono">32%</span>{" "}
+                    to <span className="mono">48%</span>.
+                  </>
+                ),
                 name: "Mike R.",
                 role: "Managing Partner, Pacific Coast Funding",
                 initials: "MR",
               },
               {
-                quote: "The Underwriter's Notes are a game-changer. My junior reps make lender decisions like 10-year vets. The AI explains everything — and they trust it.",
+                quote:
+                  "The Underwriter's Notes are a game-changer. My junior reps make lender decisions like 10-year vets. The AI explains everything — and they trust it.",
                 name: "Sarah K.",
                 role: "COO, Meridian Capital Group",
                 initials: "SK",
               },
               {
-                quote: (<>Renewal alerts alone paid for the platform. We caught <span className="mono">$2.3M</span> in renewal opportunities in the first <span className="mono">60</span> days that would've walked to competitors.</>),
+                quote: (
+                  <>
+                    Renewal alerts alone paid for the platform. We caught{" "}
+                    <span className="mono">$2.3M</span> in renewal opportunities
+                    in the first <span className="mono">60</span> days that
+                    would've walked to competitors.
+                  </>
+                ),
                 name: "James T.",
                 role: "CEO, Summit Funding Partners",
                 initials: "JT",
               },
             ].map((t, i) => (
               <div key={i} className={`card reveal reveal-delay-${i + 1}`}>
-                <div className="home__testimonial-stars">★★★★★</div>
+                <div className="home__testimonial-stars">{[...Array(5)].map((_, j) => (<svg key={j} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>))}</div>
                 <p className="home__testimonial-quote">"{t.quote}"</p>
                 <div className="home__testimonial-author">
                   <div className="home__testimonial-avatar">{t.initials}</div>

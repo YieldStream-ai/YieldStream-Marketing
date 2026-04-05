@@ -25,12 +25,12 @@ const tiers = [
     wasMonthly: "$997/mo regular",
     wasAnnual: "$797/mo regular",
     highlights: [
-      { icon: "🔒", text: "Rate locked for life — never increases" },
-      { icon: "✦", text: "300 AI analyses / mo" },
-      { icon: "✦", text: "Unlimited team seats" },
-      { icon: "✦", text: "Priority onboarding & setup" },
-      { icon: "✦", text: "Direct Slack channel with founding team" },
-      { icon: "✦", text: "Influence the product roadmap" },
+      { text: "Rate locked for life — never increases", bold: true },
+      { text: "300 AI analyses / mo" },
+      { text: "Unlimited team seats" },
+      { text: "Priority onboarding & setup" },
+      { text: "Direct Slack channel with founding team" },
+      { text: "Influence the product roadmap" },
     ],
     note: "Rate locked forever. 30-day money-back guarantee. Not the right fit? Full refund, no questions asked.",
     cta: "Claim Founding Spot →",
@@ -57,9 +57,9 @@ const tiers = [
     wasMonthly: null,
     wasAnnual: "$1,197/mo if monthly",
     highlights: [
-      { icon: "✦", text: "600 AI analyses / mo" },
-      { icon: "✦", text: "Unlimited team seats" },
-      { icon: "✦", text: "Standard onboarding" },
+      { text: "600 AI analyses / mo" },
+      { text: "Unlimited team seats" },
+      { text: "Standard onboarding" },
     ],
     note: "30-day money-back guarantee. Not the right fit? Full refund, no questions asked.",
     cta: "Get Started →",
@@ -86,13 +86,13 @@ const tiers = [
     wasMonthly: null,
     wasAnnual: null,
     highlights: [
-      { icon: "✦", text: "High-volume AI analyses (custom allotment)" },
-      { icon: "✦", text: "Unlimited team seats" },
-      { icon: "✦", text: "Dedicated account manager" },
-      { icon: "✦", text: "Custom API integrations" },
-      { icon: "✦", text: "SSO & advanced security" },
-      { icon: "✦", text: "Priority support" },
-      { icon: "✦", text: "Custom lender network setup" },
+      { text: "High-volume AI analyses (custom allotment)" },
+      { text: "Unlimited team seats" },
+      { text: "Dedicated account manager" },
+      { text: "Custom API integrations" },
+      { text: "SSO & advanced security" },
+      { text: "Priority support" },
+      { text: "Custom lender network setup" },
     ],
     note: "Everything in Professional, plus the above.",
     cta: "Talk to Sales →",
@@ -303,19 +303,19 @@ export default function PricingTiers({ annual, setAnnual }) {
                   <span
                     style={{
                       color: "#047987",
-                      fontSize: 14,
                       marginTop: 1,
                       flexShrink: 0,
+                      display: "inline-flex",
                     }}
                   >
-                    ✓
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                   </span>
                   <span
                     style={{
                       fontSize: 13,
                       color: "#1a2e35",
                       lineHeight: 1.5,
-                      fontWeight: h.icon === "🔒" ? 500 : 400,
+                      fontWeight: h.bold ? 500 : 400,
                     }}
                   >
                     {h.text}
@@ -421,12 +421,12 @@ export default function PricingTiers({ annual, setAnnual }) {
               <span
                 style={{
                   color: "#047987",
-                  fontSize: 13,
                   flexShrink: 0,
                   marginTop: 1,
+                  display: "inline-flex",
                 }}
               >
-                ✓
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
               </span>
               <span style={{ fontSize: 13, color: "#5a6778", lineHeight: 1.5 }}>
                 {item}
