@@ -16,7 +16,7 @@
     width: 100%;
     max-width: 480px;
     background: #fff;
-    border-radius: 10px;
+    border-radius: 8px;
     padding: 32px;
     box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
     animation: entModalSlideUp 0.2s ease;
@@ -71,7 +71,7 @@
   &__textarea {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid var(--n200, #e2e8ed);
+    border: 1px solid var(--n200, #e2e8ed);
     border-radius: 8px;
     font-size: 0.9rem;
     font-family: inherit;

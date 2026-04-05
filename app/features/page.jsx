@@ -150,7 +150,7 @@ export default function FeaturesPage() {
                 )}
               </div>
               <div
-                className={`screenshot screenshot-elevated ${f.reverse ? "features__block-order-reverse" : ""}`}
+                className={`screenshot ${f.reverse ? "features__block-order-reverse" : ""}`}
               >
                 <Image src={f.image} alt={f.title} width={1400} height={800} priority />
               </div>
@@ -206,9 +206,9 @@ export default function FeaturesPage() {
                 desc: "Smart follow-up routing with LRU sorting. No merchant falls through the cracks.",
               },
               {
-                icon: "⚡",
-                title: "Onboarding Wizard",
-                desc: "Guided setup reduces time-to-value. Upload lenders, invite team, run first deal.",
+                icon: "🧠",
+                title: "Decline Intelligence",
+                desc: "Every declined deal makes your next submission smarter. Auto-adjusting lender scores from outcome data.",
               },
             ].map((cap, i) => (
               <div

@@ -40,9 +40,9 @@ const tiers = [
       border: "none",
     },
     cardStyle: {
-      border: "2px solid var(--p300, #5bc8d4)",
-      background: "linear-gradient(160deg, #f0fbfc, #fff)",
-      boxShadow: "0 6px 32px rgba(4, 121, 135, 0.12)",
+      border: "1px solid var(--p300, #5bc8d4)",
+      background: "#fff",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
     },
     featured: false,
     href: { name: "Founder", href: "/checkout?plan=founder" },
@@ -69,9 +69,9 @@ const tiers = [
       border: "none",
     },
     cardStyle: {
-      border: "2px solid var(--p600, #01313a)",
-      background: "linear-gradient(160deg, #e6f4f5, #fff)",
-      boxShadow: "0 6px 32px rgba(1, 49, 58, 0.14)",
+      border: "1px solid var(--p600, #01313a)",
+      background: "#fff",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
     },
     featured: true,
     href: { name: "Professional", href: "/checkout?plan=professional" },
@@ -99,12 +99,12 @@ const tiers = [
     ctaStyle: {
       background: "transparent",
       color: "#1a2e35",
-      border: "1.5px solid #c8cdd2",
+      border: "1px solid #c8cdd2",
     },
     cardStyle: {
       border: "1px solid #e8eaed",
       background: "#fff",
-      boxShadow: "0 4px 16px rgba(0, 0, 0, 0.06)",
+      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
     },
     featured: false,
     href: { name: "Enterprise", href: null }, // Get Notified, no checkout
@@ -204,8 +204,8 @@ export default function PricingTiers({ annual, setAnnual }) {
           <div
             key={tier.name}
             style={{
-              borderRadius: 14,
-              padding: "28px 24px 28px",
+              borderRadius: 8,
+              padding: "24px 20px 24px",
               position: "relative",
               ...tier.cardStyle,
             }}
@@ -335,7 +335,7 @@ export default function PricingTiers({ annual, setAnnual }) {
                     textDecoration: "none",
                     width: "100%",
                     padding: "12px 0",
-                    borderRadius: 8,
+                    borderRadius: 6,
                     fontSize: 14,
                     fontWeight: 500,
                     cursor: "pointer",
@@ -354,7 +354,7 @@ export default function PricingTiers({ annual, setAnnual }) {
                   style={{
                     width: "100%",
                     padding: "12px 0",
-                    borderRadius: 8,
+                    borderRadius: 6,
                     fontSize: 14,
                     fontWeight: 500,
                     cursor: "pointer",

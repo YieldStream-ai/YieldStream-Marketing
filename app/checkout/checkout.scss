@@ -42,7 +42,7 @@
   &__summary-card {
     background: white;
     border: 1px solid var(--n200);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 28px;
     position: sticky;
     top: 100px;
@@ -136,7 +136,7 @@
   &__form-wrap {
     background: white;
     border: 1px solid var(--n200);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 36px;
   }
 
@@ -160,7 +160,7 @@
   &__input {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid var(--n200);
+    border: 1px solid var(--n200);
     border-radius: 8px;
     font-size: 0.9rem;
     background: white;
@@ -245,7 +245,7 @@
   &__success-steps {
     background: white;
     border: 1px solid var(--n200);
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 24px 28px;
     text-align: left;
     margin-bottom: 28px;

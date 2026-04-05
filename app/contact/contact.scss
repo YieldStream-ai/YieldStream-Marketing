@@ -24,7 +24,7 @@
   &__success-box {
     padding: 40px;
     background: var(--a50);
-    border-radius: 12px;
+    border-radius: 8px;
     border: 1px solid var(--a200);
     text-align: center;
   }
@@ -63,7 +63,7 @@
   &__input {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid var(--n200);
+    border: 1px solid var(--n200);
     border-radius: 8px;
     font-size: 0.9rem;
     color: var(--n800);
@@ -73,7 +73,7 @@
   &__textarea {
     width: 100%;
     padding: 10px 14px;
-    border: 1.5px solid var(--n200);
+    border: 1px solid var(--n200);
     border-radius: 8px;
     font-size: 0.9rem;
     color: var(--n800);

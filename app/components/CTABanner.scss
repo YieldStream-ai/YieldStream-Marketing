@@ -18,12 +18,12 @@
 
   &__headline {
     color: white;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   &__sub {
     max-width: 520px;
-    margin: 0 auto 32px;
+    margin: 0 auto 24px;
     color: rgba(255, 255, 255, 0.55);
   }
 
@@ -35,7 +35,7 @@
   }
 
   &__secondary-btn {
-    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: white;
   }
 }

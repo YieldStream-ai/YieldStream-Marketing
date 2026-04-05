@@ -1,69 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="-14 -14 168 168">
-  <defs>
-    <!-- Y cutout mask -->
-    <mask id="ymask">
-      <rect width="140" height="140" fill="white"/>
-      <!-- Left arm: 225° → (70 + 60*cos(225°), 70 + 60*sin(225°)) = (27.6, 27.6) -->
-      <line x1="70" y1="70" x2="28" y2="28" stroke="black" stroke-width="14" stroke-linecap="square"/>
-      <!-- Right arm: 315° → (70 + 60*cos(315°), 70 + 60*sin(315°)) = (112.4, 27.6) -->
-      <line x1="70" y1="70" x2="112" y2="28" stroke="black" stroke-width="14" stroke-linecap="square"/>
-      <!-- Stem: straight down to (70, 130) -->
-      <line x1="70" y1="70" x2="70" y2="130" stroke="black" stroke-width="14" stroke-linecap="square"/>
-    </mask>
+<svg viewBox="-5 -5 110 110" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer ring — DARK GREEN -->
+  <circle cx="50" cy="50" r="44" fill="none" stroke="rgb(1,49,58)" stroke-width="2.8"
+          stroke-dasharray="262.46,14" stroke-dashoffset="27.56"/>
 
-    <!-- Gradient: top-left segment (dark center → teal outer) -->
-    <linearGradient id="g-tl" x1="70" y1="70" x2="14" y2="14" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#01313a"/>
-      <stop offset="100%" stop-color="#047987"/>
-    </linearGradient>
+  <!-- Middle ring — PRIMARY -->
+  <circle cx="50" cy="50" r="26" fill="none" stroke="rgb(4,121,135)" stroke-width="2.8"
+          stroke-dasharray="67.68,14,67.68,14" stroke-dashoffset="-68.26"/>
 
-    <!-- Gradient: top-right segment -->
-    <linearGradient id="g-tr" x1="70" y1="70" x2="126" y2="14" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#01313a"/>
-      <stop offset="100%" stop-color="#047987"/>
-    </linearGradient>
+  <!-- Inner center circle — ALL DARK GREEN -->
+  <circle cx="50" cy="50" r="9" fill="rgb(1,49,58)" stroke="rgb(1,49,58)" stroke-width="3"/>
 
-    <!-- Gradient: bottom segment -->
-    <linearGradient id="g-b" x1="70" y1="70" x2="70" y2="134" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#01313a"/>
-      <stop offset="100%" stop-color="#035d6a"/>
-    </linearGradient>
+  <!-- Connector bar — PRIMARY -->
+  <line x1="81.11" y1="18.89" x2="68.38" y2="31.62" 
+        stroke="rgb(4,121,135)" stroke-width="2.8" stroke-linecap="round"/>
 
-    <!--
-      Pie-slice clip paths.
-      Circle r=60, center (70,70).
-      Arms at 225°, 315°, 90°.
-      Points on circle:
-        225°: (28, 28)
-        315°: (112, 28)
-         90°: (70, 130)
-    -->
+  <!-- Outer ring node — PRIMARY -->
+  <circle cx="81.11" cy="18.89" r="4.5" fill="rgb(4,121,135)"/>
 
-    <!-- seg-tl: wedge from 90° → 225° -->
-    <clipPath id="clip-tl">
-      <path d="M70,70 L70,130 A60,60 0 0,1 28,28 Z"/>
-    </clipPath>
+  <!-- Middle ring node — PRIMARY -->
+  <circle cx="68.38" cy="31.62" r="4.5" fill="rgb(4,121,135)"/>
 
-    <!-- seg-tr: wedge from 315° → 90° -->
-    <clipPath id="clip-tr">
-      <path d="M70,70 L112,28 A60,60 0 0,1 70,130 Z"/>
-    </clipPath>
-
-    <!-- seg-b: wedge from 225° → 315° -->
-    <clipPath id="clip-b">
-      <path d="M70,70 L28,28 A60,60 0 0,1 112,28 Z"/>
-    </clipPath>
-  </defs>
-
-  <!-- Top-left segment -->
-  <circle cx="70" cy="70" r="60" fill="url(#g-tl)" clip-path="url(#clip-tl)" mask="url(#ymask)"/>
-
-  <!-- Top-right segment -->
-  <circle cx="70" cy="70" r="60" fill="url(#g-tr)" clip-path="url(#clip-tr)" mask="url(#ymask)"/>
-
-  <!-- Bottom segment -->
-  <circle cx="70" cy="70" r="60" fill="url(#g-b)" clip-path="url(#clip-b)" mask="url(#ymask)"/>
-
-  <!-- Border ring -->
-  <circle cx="70" cy="70" r="78" fill="none" stroke="#01313a" stroke-width="1" vector-effect="non-scaling-stroke"/>
+  <!-- Lower-left standalone node — DARK GREEN -->
+  <circle cx="31.62" cy="68.38" r="4.5" fill="rgb(1,49,58)"/>
 </svg>

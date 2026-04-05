@@ -62,7 +62,7 @@ export default function Home() {
 
             {/* Hero Screenshot */}
             <div className="reveal reveal-delay-2 home__hero-screenshot">
-              <div className="screenshot screenshot-elevated">
+              <div className="screenshot">
                 <Image
                   src="/images/Opportunities-Table.png"
                   alt="YieldStream Opportunities"
@@ -193,86 +193,122 @@ export default function Home() {
             </h2>
           </div>
 
-          {/* Feature 1 */}
-          <div className="grid-feature reveal home__feature-block">
-            <div>
-              <div className="label home__feature-label">
-                AI Lender Matching
+          <div className="home__bento-grid reveal">
+            {/* Feature 1 — Wide card */}
+            <div className="home__bento-card home__bento-card--wide">
+              <div className="home__bento-card-content">
+                <div className="home__mod-label mono">[SYS_MOD // 01: INTAKE]</div>
+                <span className="pill pill--accent">AI Lender Matching</span>
+                <h3 className="display-md home__feature-heading">
+                  Every lender scored. Every match explained.
+                </h3>
+                <p className="text-md home__feature-desc">
+                  Three-layer scoring weighs global performance, your relationship
+                  history, and buybox fit — then ranks by expected commission, not
+                  just approval probability.
+                </p>
+                {/* Data Fragment */}
+                <div className="home__data-fragment">
+                  <div className="home__data-fragment-row">
+                    <span className="home__data-fragment-key">A.I. Status</span>
+                    <span className="home__data-fragment-pill home__data-fragment-pill--verified">Verified</span>
+                  </div>
+                  <div className="home__data-fragment-row">
+                    <span className="home__data-fragment-key">Confidence</span>
+                    <span className="home__data-fragment-val">89%</span>
+                  </div>
+                  <div className="home__data-fragment-row">
+                    <span className="home__data-fragment-key">Match Score</span>
+                    <span className="home__data-fragment-val">645 FICO above floor · 3yr TiB — strong</span>
+                  </div>
+                </div>
+                <Link href="/intelligence" className="btn btn-outline btn-sm">
+                  Learn about the scoring engine →
+                </Link>
               </div>
-              <h3 className="display-md home__feature-heading">
-                Every lender scored. Every match explained.
-              </h3>
-              <p className="text-md home__feature-desc">
-                Three-layer scoring weighs global performance, your relationship
-                history, and buybox fit — then ranks by expected commission, not
-                just approval probability.
-              </p>
-              <Link href="/intelligence" className="btn btn-outline btn-sm">
-                Learn about the scoring engine →
-              </Link>
+              <div className="screenshot">
+                <Image
+                  src="/images/Lender-Edit.png"
+                  alt="AI Lender Matching"
+                  width={1400}
+                  height={800}
+                  priority
+                />
+              </div>
             </div>
-            <div className="screenshot screenshot-elevated">
-              <Image
-                src="/images/Lender-Edit.png"
-                alt="AI Lender Matching"
-                width={1400}
-                height={800}
-                priority
-              />
-            </div>
-          </div>
 
-          {/* Feature 2 */}
-          <div className="grid-feature reveal home__feature-block">
-            <div className="screenshot screenshot-elevated home__screenshot-order">
-              <Image
-                src="/images/Underwriting-Approval-Comparison.png"
-                alt="Offer Comparison"
-                width={1400}
-                height={800}
-                priority
-              />
-            </div>
-            <div>
-              <div className="label home__feature-label">Offer Comparison</div>
+            {/* Feature 2 */}
+            <div className="home__bento-card">
+              <div className="home__mod-label mono">[SYS_MOD // 02: ANALYSIS]</div>
+              <span className="pill pill--accent">Offer Comparison</span>
               <h3 className="display-md home__feature-heading">
                 Compare every offer. Pick the best one.
               </h3>
               <p className="text-md home__feature-desc">
                 Side-by-side comparison across advance amount, factor rate,
-                term, daily remittance, total payback, and commission. Automated
-                scoring with transparent reasoning.
+                term, daily remittance, total payback, and commission.
               </p>
-              <Link href="/features" className="btn btn-outline btn-sm">
-                See all features →
-              </Link>
+              {/* Data Fragment */}
+              <div className="home__data-fragment">
+                <div className="home__data-fragment-row">
+                  <span className="home__data-fragment-key">DSCR</span>
+                  <span className="home__data-fragment-val">1.72 — strong cash cycle coverage</span>
+                </div>
+                <div className="home__data-fragment-row">
+                  <span className="home__data-fragment-key">ADB</span>
+                  <span className="home__data-fragment-val">22% of monthly revenue — healthy cushion</span>
+                </div>
+                <div className="home__data-fragment-row">
+                  <span className="home__data-fragment-key">Stacking</span>
+                  <span className="home__data-fragment-pill home__data-fragment-pill--clean">1st position — clean</span>
+                </div>
+              </div>
+              <div className="screenshot">
+                <Image
+                  src="/images/Underwriting-Approval-Comparison.png"
+                  alt="Offer Comparison"
+                  width={1400}
+                  height={800}
+                  priority
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Feature 3 */}
-          <div className="grid-feature reveal home__feature-block home__feature-block--last">
-            <div>
-              <div className="label home__feature-label">Deal Pipeline</div>
+            {/* Feature 3 */}
+            <div className="home__bento-card">
+              <div className="home__mod-label mono">[SYS_MOD // 03: EXECUTION]</div>
+              <span className="pill pill--accent">Deal Pipeline</span>
               <h3 className="display-md home__feature-heading">
                 See every deal. Know where it stands.
               </h3>
               <p className="text-md home__feature-desc">
-                Kanban board or table view. Intake through Funded. Running
-                dollar totals per stage, stale deal alerts, and commission
-                estimates that update as offers arrive.
+                Kanban board or table view. Running dollar totals per stage,
+                stale deal alerts, and commission estimates.
               </p>
-              <Link href="/features" className="btn btn-outline btn-sm">
-                Explore the pipeline →
-              </Link>
-            </div>
-            <div className="screenshot screenshot-elevated">
-              <Image
-                src="/images/Opportunities-Kanban.png"
-                alt="Deal Pipeline"
-                width={1400}
-                height={800}
-                priority
-              />
+              {/* Data Fragment */}
+              <div className="home__data-fragment">
+                <div className="home__data-fragment-row">
+                  <span className="home__data-fragment-key">Best Factor</span>
+                  <span className="home__data-fragment-val home__data-fragment-val--highlight">1.29x</span>
+                </div>
+                <div className="home__data-fragment-row">
+                  <span className="home__data-fragment-key">Commission</span>
+                  <span className="home__data-fragment-val home__data-fragment-val--highlight">$4,200</span>
+                </div>
+                <div className="home__data-fragment-row">
+                  <span className="home__data-fragment-key">Pull-Through</span>
+                  <span className="home__data-fragment-val">72%</span>
+                </div>
+              </div>
+              <div className="screenshot">
+                <Image
+                  src="/images/Opportunities-Kanban.png"
+                  alt="Deal Pipeline"
+                  width={1400}
+                  height={800}
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -437,6 +473,67 @@ export default function Home() {
                 <p className="text-md">{c.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== WHY YIELDSTREAM ===== */}
+      <section className="section section-alt home__why">
+        <div className="container">
+          <div className="section-header center reveal">
+            <div className="label home__label-spacing">Why YieldStream</div>
+            <h2 className="display-lg home__section-header-mt">
+              Built for the daily-remittance world.
+            </h2>
+            <p className="text-lg home__section-sub" style={{ maxWidth: 680, margin: '10px auto 0' }}>
+              Unlike generic CRMs adapted from sales pipelines, YieldStream is
+              built specifically for the daily-remittance world of MCA. We
+              don&apos;t just store data&nbsp;&mdash; we audit it for underwriting risk.
+            </p>
+          </div>
+
+          <div className="home__why-table-wrap reveal">
+            <table className="home__why-table">
+              <thead>
+                <tr>
+                  <th className="home__why-th home__why-th--cap mono">Capability</th>
+                  <th className="home__why-th home__why-th--generic mono">Generic CRM</th>
+                  <th className="home__why-th home__why-th--ys mono">YieldStream</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { cap: "Daily Remittance Tracking", generic: "Manual spreadsheet entry", ys: "Automatic ACH extraction & audit" },
+                  { cap: "Bank Statement Analysis", generic: "Human review, 2\u20134 hours", ys: "AI parse in <120 seconds, zero error" },
+                  { cap: "Lender Matching", generic: "Gut feel + spreadsheets", ys: "Three-layer scoring engine with deal rank" },
+                  { cap: "Offer Comparison", generic: "Side-by-side PDF review", ys: "Structured comparison with net funding & commission" },
+                  { cap: "Underwriting Risk Audit", generic: "Not available", ys: "Built-in remittance gap analysis" },
+                  { cap: "Debt Schedule Parsing", generic: "Manual calculation", ys: "Instant structured extraction" },
+                ].map((row, i) => (
+                  <tr key={i} className="home__why-row">
+                    <td className="home__why-td home__why-td--cap">{row.cap}</td>
+                    <td className="home__why-td home__why-td--generic">
+                      <span className="home__why-icon home__why-icon--x">✕</span>
+                      {row.generic}
+                    </td>
+                    <td className="home__why-td home__why-td--ys">
+                      <span className="home__why-icon home__why-icon--check">✓</span>
+                      {row.ys}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="home__why-callout reveal">
+            <p className="home__why-callout-text">
+              Brokers who move from generic tools to YieldStream report a{" "}
+              <strong>3×</strong> reduction in deal-preparation time.
+            </p>
+            <Link href="/pricing" className="btn btn-primary">
+              Sign Up →
+            </Link>
           </div>
         </div>
       </section>
