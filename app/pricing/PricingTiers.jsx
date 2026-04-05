@@ -117,7 +117,7 @@ export default function PricingTiers({ annual, setAnnual }) {
   return (
     <div
       style={{
-        fontFamily: "'IBM Plex Sans', system-ui, sans-serif",
+        fontFamily: "var(--font-body)",
         padding: "48px 24px 64px",
         maxWidth: 1100,
         margin: "0 auto",
@@ -255,7 +255,7 @@ export default function PricingTiers({ annual, setAnnual }) {
                       fontSize: 36,
                       fontWeight: 600,
                       color: "#1a2e35",
-                      fontFamily: "'IBM Plex Mono', monospace",
+                      fontFamily: "var(--font-mono)",
                     }}
                   >
                     ${annual ? tier.annual : tier.monthly}

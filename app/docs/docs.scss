@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
-
 /* ===== ARCHITECTURAL DOCUMENTATION HERO ===== */
 .docs-hero {
   position: relative;
@@ -78,7 +76,7 @@
 
 .docs-page .docs-container {
   box-sizing: border-box;
-  font-family: 'IBM Plex Sans', var(--font-body);
+  font-family: var(--font-body);
   display: flex;
   min-height: calc(100vh - var(--nav-height, 64px));
 }
@@ -239,7 +237,7 @@
   }
 
   .docs-mono {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 12px;
     background: var(--n100);
     padding: 1px 5px;
@@ -252,7 +250,7 @@
     border: 0.5px solid var(--n150);
     border-radius: 8px;
     padding: 16px 20px;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 13px;
     color: var(--n800);
     margin: 16px 0;
@@ -472,7 +470,7 @@
   .docs-decay-pct {
     width: 30px;
     text-align: right;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     font-size: 11px;
     color: var(--n400);
   }
@@ -495,7 +493,7 @@
     font-size: 22px;
     font-weight: 400;
     color: var(--p600);
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
   }
 
   .docs-unlock-lbl {
@@ -537,7 +535,7 @@
   .docs-pg-price {
     font-size: 26px;
     font-weight: 400;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: var(--font-mono);
     color: var(--n800);
   }
 

@@ -78,7 +78,7 @@ export default function Home() {
                 </div>
                 <div className="mono home__floating-card-score">99 Score</div>
                 <div className="home__floating-card-detail">
-                  National Funding · $350K
+                  National Funding · <span className="mono">$350K</span>
                 </div>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function Home() {
       <section className="home__logo-bar">
         <div className="container home__logo-bar-inner">
           <div className="label home__logo-bar-label">
-            Built for brokerages moving $10M+ monthly
+            Built for brokerages moving <span className="mono">$10M+</span> monthly
           </div>
           <div className="home__logo-bar-names">
             {[
@@ -110,63 +110,71 @@ export default function Home() {
       </section>
 
       {/* ===== PROBLEM ===== */}
-      <section className="section section-alt">
+      <section className="home__problem">
         <div className="container">
-          <div className="section-header reveal">
-            <div className="label home__label-spacing">The Problem</div>
-            <h2 className="display-lg">
+          <div className="section-header center reveal">
+            <div className="label home__label-spacing">The Cost of Guesswork</div>
+            <h2 className="display-md">
               The MCA industry runs on spray and pray.
               <br />
               That costs real money.
             </h2>
-            <p className="text-lg home__section-sub">
+            <p className="text-lg home__section-sub" style={{ maxWidth: 640, margin: '10px auto 0' }}>
               Brokers lose commissions to mismatched submissions every day.
-              Relationship knowledge lives in one person's head. Lender
-              appetites shift and nobody tracks the change.
+              Relationship knowledge lives in one person&apos;s head. Lender appetites shift
+              and nobody tracks the change.
             </p>
           </div>
-          <div className="grid-3">
+          <div className="home__problem-columns">
             {[
               {
-                icon: "⚠",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                  </svg>
+                ),
                 stat: "$2.3B",
-                title: "Lost to Mismatched Submissions",
-                desc: "Brokers blast the same file to 10 lenders and hope something sticks. The industry bleeds revenue from preventable declines.",
-                bg: "#fef2f2",
-                color: "#dc2626",
+                statUnit: null,
+                title: "Lost to Blind Submissions",
+                desc: "Brokers blast the same file to 10 lenders and hope something sticks. Mismatched deals get declined on sight — and every decline burns a relationship.",
               },
               {
-                icon: "⏱",
-                stat: "45 min",
-                title: "Per Manual Underwrite",
-                desc: "Three statements per deal, ten deals a day. That's 22 hours a week of spreadsheet analysis.",
-                bg: "#fffbeb",
-                color: "#d97706",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                ),
+                stat: "45",
+                statUnit: "min",
+                title: "Burned Per Manual Underwrite",
+                desc: "Three bank statements, ten deals a day. Your team is spending 22+ hours a week on spreadsheet analysis that a machine should handle in seconds.",
               },
               {
-                icon: "∅",
-                stat: "0%",
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                  </svg>
+                ),
+                stat: "0",
+                statUnit: "%",
                 title: "Decline Intelligence Captured",
-                desc: "When a lender declines, the reason dies in an email. No feedback loop, no learning, no improvement.",
-                bg: "var(--n100)",
-                color: "var(--n600)",
+                desc: "When a lender passes, the reason dies in an email thread. No pattern recognition, no feedback loop — the same mistakes repeat deal after deal.",
               },
-            ].map((card, i) => (
-              <div key={i} className={`card reveal reveal-delay-${i + 1}`}>
-                <div
-                  className="home__card-icon"
-                  style={{ background: card.bg, color: card.color }}
-                >
-                  {card.icon}
+            ].map((col, i) => (
+              <div key={i} className={`home__problem-col reveal reveal-delay-${i + 1}`}>
+                <div className="home__problem-icon">
+                  {col.icon}
                 </div>
-                <div
-                  className="mono home__card-stat"
-                  style={{ color: card.color }}
-                >
-                  {card.stat}
+                <div className="home__problem-stat">
+                  {col.stat}
+                  {col.statUnit && <span className="home__problem-stat-unit">{col.statUnit}</span>}
                 </div>
-                <h3 className="home__card-title">{card.title}</h3>
-                <p className="text-sm">{card.desc}</p>
+                <h3 className="home__problem-col-title">{col.title}</h3>
+                <p className="home__problem-col-desc">{col.desc}</p>
               </div>
             ))}
           </div>
@@ -340,12 +348,12 @@ export default function Home() {
               <div className="mono home__note-label">✎ Underwriter's Note</div>
               <p className="home__note-text">
                 Growing catering operation —{" "}
-                <strong style={{ color: "var(--a300)" }}>$95K/mo</strong> with
+                <strong style={{ color: "var(--a300)" }}><span className="mono">$95K/mo</span></strong> with
                 only{" "}
-                <strong style={{ color: "var(--a300)" }}>8.1% stacking</strong>.
+                <strong style={{ color: "var(--a300)" }}><span className="mono">8.1%</span> stacking</strong>.
                 1 NSF was a timing issue (vendor payment). Well within tolerance
                 for most lenders.{" "}
-                <strong style={{ color: "var(--a300)" }}>93% confidence</strong>{" "}
+                <strong style={{ color: "var(--a300)" }}><span className="mono">93%</span> confidence</strong>{" "}
                 · Revenue: Growing
               </p>
               <div className="home__note-footer">
@@ -376,17 +384,49 @@ export default function Home() {
           <div className="grid-3">
             {[
               {
-                icon: "🔒",
+                icon: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    {/* Shield outline */}
+                    <path d="M24 4L6 12v12c0 11 8 18 18 20 10-2 18-9 18-20V12L24 4z" />
+                    {/* Keyhole circle */}
+                    <circle cx="24" cy="22" r="4" />
+                    {/* Keyhole slot */}
+                    <path d="M24 26v6" />
+                  </svg>
+                ),
                 title: "We don't own your relationships",
                 desc: "Your lender contacts, submission history, and pipeline are yours — we never reach out to your funders or merchants.",
               },
               {
-                icon: "🚫",
+                icon: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    {/* Data silo / vault cylinder */}
+                    <ellipse cx="24" cy="12" rx="12" ry="4" />
+                    <path d="M12 12v24c0 2.2 5.4 4 12 4s12-1.8 12-4V12" />
+                    <ellipse cx="24" cy="24" rx="12" ry="4" />
+                    {/* Strike-through diagonal */}
+                    <line x1="8" y1="8" x2="40" y2="40" strokeWidth="2" />
+                  </svg>
+                ),
                 title: "We don't sell your data",
                 desc: "No data resale, no shared blacklists, no monetizing your deal flow behind your back.",
               },
               {
-                icon: "📦",
+                icon: (
+                  <svg viewBox="0 0 48 48" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    {/* Server rack unit */}
+                    <rect x="8" y="8" width="24" height="12" rx="2" />
+                    <rect x="8" y="24" width="24" height="12" rx="2" />
+                    {/* Drive indicators */}
+                    <circle cx="14" cy="14" r="1.5" />
+                    <circle cx="14" cy="30" r="1.5" />
+                    <line x1="20" y1="14" x2="26" y2="14" />
+                    <line x1="20" y1="30" x2="26" y2="30" />
+                    {/* Outbound arrow */}
+                    <path d="M36 28l6-4-6-4" />
+                    <line x1="32" y1="24" x2="42" y2="24" />
+                  </svg>
+                ),
                 title: "You can leave with everything",
                 desc: "Full data export anytime. No lock-in, no hostage negotiations. Your business stays portable.",
               },
@@ -415,22 +455,19 @@ export default function Home() {
           <div className="grid-3">
             {[
               {
-                quote:
-                  "We spent an hour per deal figuring out which lender to submit to. YieldStream cut that to 5 minutes — and our pull-through jumped from 32% to 48%.",
+                quote: (<>We spent an hour per deal figuring out which lender to submit to. YieldStream cut that to <span className="mono">5</span> minutes — and our pull-through jumped from <span className="mono">32%</span> to <span className="mono">48%</span>.</>),
                 name: "Mike R.",
                 role: "Managing Partner, Pacific Coast Funding",
                 initials: "MR",
               },
               {
-                quote:
-                  "The Underwriter's Notes are a game-changer. My junior reps make lender decisions like 10-year vets. The AI explains everything — and they trust it.",
+                quote: "The Underwriter's Notes are a game-changer. My junior reps make lender decisions like 10-year vets. The AI explains everything — and they trust it.",
                 name: "Sarah K.",
                 role: "COO, Meridian Capital Group",
                 initials: "SK",
               },
               {
-                quote:
-                  "Renewal alerts alone paid for the platform. We caught $2.3M in renewal opportunities in the first 60 days that would've walked to competitors.",
+                quote: (<>Renewal alerts alone paid for the platform. We caught <span className="mono">$2.3M</span> in renewal opportunities in the first <span className="mono">60</span> days that would've walked to competitors.</>),
                 name: "James T.",
                 role: "CEO, Summit Funding Partners",
                 initials: "JT",

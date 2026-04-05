@@ -84,12 +84,14 @@
     font-size: 1.5rem;
     font-weight: 600;
     color: var(--p700);
+    letter-spacing: -0.01em;
+    font-variant-numeric: tabular-nums;
   }
 
   &__stat-label {
     font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.12em;
     color: var(--n400);
     font-weight: 500;
   }
@@ -113,7 +115,7 @@
   &__floating-card-label {
     font-size: 0.68rem;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.12em;
     color: var(--n400);
     font-weight: 500;
     margin-bottom: 2px;
@@ -167,29 +169,71 @@
     margin-top: 12px;
   }
 
-  /* Problem cards - icon box uses dynamic bg/color, keep inline */
-  &__card-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    font-size: 1.1rem;
-    font-weight: 600;
+  /* ===== PROBLEM SECTION ===== */
+  &__problem {
+    background-color: #f7f8f9;
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    padding: 56px 0 64px;
   }
 
-  &__card-stat {
+  &__problem .section-header {
+    margin-bottom: var(--space-2xl);
+  }
+
+  &__problem-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  &__problem-col {
+    /* no card styling — content sits directly on background */
+  }
+
+  &__problem-icon {
+    margin-bottom: 12px;
+    color: var(--p700);
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__problem-stat {
+    font-family: var(--font-mono);
     font-size: 1.6rem;
     font-weight: 600;
-    margin-bottom: 4px;
+    color: var(--p600);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
   }
 
-  &__card-title {
-    font-size: 1.05rem;
+  &__problem-stat-unit {
+    font-size: 0.96rem;
+    font-weight: 400;
+    margin-left: 2px;
+  }
+
+  &__problem-col-title {
+    font-size: 1rem;
     font-weight: 600;
-    margin-bottom: 6px;
+    color: var(--n900);
+    margin-top: 6px;
+  }
+
+  &__problem-col-desc {
+    font-size: 0.84rem;
+    color: var(--n500);
+    margin-top: 4px;
+    line-height: 1.55;
   }
 
   &__feature-block {
@@ -210,6 +254,7 @@
 
   &__feature-desc {
     margin-bottom: 20px;
+    line-height: 1.5;
   }
 
   &__how-step {
@@ -221,6 +266,8 @@
 
   &__how-step-num {
     font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
     color: var(--a400);
     margin-bottom: 14px;
   }
@@ -261,7 +308,7 @@
   &__note-label {
     font-size: 0.72rem;
     color: var(--a400);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 14px;
     position: relative;
@@ -354,12 +401,30 @@
   }
 
   &__trust-icon {
-    font-size: 2rem;
     margin-bottom: var(--space-md);
+    display: flex;
+    justify-content: center;
+
+    svg {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   &__trust-card .text-md {
     color: rgba(255, 255, 255, 0.6);
     margin-top: var(--space-sm);
+  }
+}
+
+/* Problem section mobile */
+@media (max-width: 768px) {
+  .home__problem {
+    padding: 40px 0 48px;
+  }
+
+  .home__problem-columns {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }

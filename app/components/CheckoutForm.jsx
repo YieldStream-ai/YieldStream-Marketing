@@ -50,7 +50,7 @@ function PaymentForm({ plan, interval, isFounder }) {
 const appearance = {
   theme: 'stripe',
   variables: {
-    fontFamily: "'IBM Plex Sans', sans-serif",
+    fontFamily: "var(--font-body)",
     colorPrimary: '#047987',
     borderRadius: '8px',
     colorBackground: '#ffffff',

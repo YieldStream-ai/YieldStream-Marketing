@@ -2,6 +2,8 @@ import './globals.css';
 import './Layout.scss';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
 export const metadata = {
   title: {
@@ -23,7 +25,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body>
         <Nav />
         <main className="layout__main">
