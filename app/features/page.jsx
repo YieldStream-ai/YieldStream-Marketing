@@ -70,21 +70,62 @@ export default function FeaturesPage() {
     },
     {
       num: "05",
-      label: "COMPLETE AUDIT TRAIL",
-      title: "Every action logged. Every decision traceable.",
-      desc: "Notes, calls, lender responses, system events — everything that happens on a deal is timestamped and attributed. The audit log is append-only and tamper-proof.",
+      label: "SUBMISSION HISTORY",
+      title: "Full deal history. One click from any merchant.",
+      desc: "Every submission, every lender response, every offer — organized under a single merchant record. Pull-through rate, offer rate, and funding speed update in real time so you always know where a deal stands and how a merchant has performed across past opportunities.",
       bullets: [
-        "Filterable by type: submissions, lender responses, notes, calls",
-        "System events track AI scoring, OCR, and enrichment",
-        "Append-only log that cannot be edited or deleted",
-        "Export-ready for GDPR/CCPA compliance requests",
+        "Complete lender-by-lender breakdown with factor, term, commission, and net",
+        "Filter by active, funded, or declined to find any deal instantly",
+        "KPI strip tracks pull-through, offer rate, and avg days to fund per merchant",
+        "Expandable rows reveal every approval, counter-offer, and expiration date",
       ],
-      image: "/images/Notes-Activities.png",
-      link: "/security",
-      linkText: "Security & compliance details →",
+      image: "/images/Submissions.png",
     },
     {
       num: "06",
+      label: "NOTES & ACTIVITY LOG",
+      title: "Every conversation tracked. Nothing falls through.",
+      desc: "YieldStream logs every call, voicemail, and note against the merchant record — building a complete contact history your whole team can see. No more sticky notes or \"did anyone call them back?\"",
+      bullets: [
+        "Call outcomes auto-logged — connected, voicemail, no answer, callback",
+        "Timestamped notes with rep attribution",
+        "Activity timeline shared across your entire ISO",
+        "Follow-up dates surface overdue outreach automatically",
+      ],
+      image: "/images/Activities.png",
+      reverse: true,
+      linkText: "See the activity timeline →",
+    },
+    {
+      num: "07",
+      label: "NOTES",
+      title: "Context that sticks to every merchant.",
+      desc: "Pin internal notes, call summaries, and deal context directly to the merchant record. Every note is timestamped and attributed — so your whole team sees the full picture before picking up the phone.",
+      bullets: [
+        "Pin notes to merchants, deals, or submissions",
+        "Timestamped with rep name for full accountability",
+        "Searchable across your entire portfolio",
+        "Visible inline on the outreach queue for quick context",
+      ],
+      image: "/images/Notes.png",
+    },
+    {
+      num: "08",
+      label: "OUTREACH QUEUE",
+      title: "A smart call list that knows who to dial next.",
+      desc: "YieldStream builds a prioritized outreach queue from your merchant pipeline — surfacing overdue follow-ups, new leads, renewal candidates, and cold re-engages so reps stop guessing and start closing.",
+      bullets: [
+        "Auto-prioritized by overdue, due today, new lead, and cold status",
+        "Click-to-copy phone numbers with one-tap call logging",
+        "Renewal candidates flagged when funded deals approach payoff",
+        "Per-rep queues — every broker sees only their book",
+      ],
+      image: "/images/Outreach.png",
+      reverse: true,
+      linkText: "How the outreach queue works →",
+    },
+    {
+      num: "09",
       label: "LENDER REGISTRY",
       title: "Your entire lender network. Always current.",
       desc: "Track every lender's minimum FICO, revenue requirements, max positions, and state restrictions in one place. Status indicators show when buybox data needs refreshing.",
@@ -95,7 +136,6 @@ export default function FeaturesPage() {
         "One-click add new lenders as your network grows",
       ],
       image: "/images/Lender-Registry.png",
-      reverse: true,
     },
   ];
 
@@ -112,7 +152,7 @@ export default function FeaturesPage() {
               Nothing they don't.
             </h1>
             <p className="text-lg features__hero-sub">
-              Six core capabilities that replace spreadsheets, gut feel, and
+              Nine core capabilities that replace spreadsheets, gut feel, and
               manual underwriting with data-driven intelligence that compounds
               with every deal.
             </p>
