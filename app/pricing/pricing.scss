@@ -10,7 +10,7 @@
   }
 
   &__hero-sub {
-    max-width: 500px;
+    max-width: 560px;
     margin: 16px auto 0;
   }
 
@@ -18,144 +18,399 @@
     padding: 0 0 var(--space-5xl);
   }
 
-  &__toggle-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 48px;
+  /* ── Unified container ── */
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--n0);
+    border: 1px solid var(--n200);
+    border-radius: 16px;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      0 4px 16px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
   }
 
-  &__toggle-label {
-    font-size: 0.88rem;
-    font-weight: 500;
+  /* ── Header bar ── */
+  &__header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 32px;
+    border-bottom: 1px solid #f0f1f3;
+  }
+
+  &__header-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--n400);
+  }
+
+  &__header-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* ── Toggle ── */
+  &__toggle-label {
+    font-size: 0.875rem;
+    color: var(--n400);
+    font-weight: 400;
+    transition: color 0.15s;
 
     &--active {
-      font-weight: 600;
       color: var(--n800);
+      font-weight: 500;
     }
   }
 
-  &__toggle-btn {
-    width: 48px;
-    height: 26px;
-    border-radius: 13px;
-    background: var(--p600);
+  &__toggle-switch {
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--n300);
     position: relative;
     cursor: pointer;
-    border: none;
+    transition: background 0.2s;
+    flex-shrink: 0;
+
+    &--active {
+      background: var(--p600);
+    }
   }
 
   &__toggle-knob {
     position: absolute;
     top: 3px;
-    width: 20px;
-    height: 20px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    background: white;
+    background: var(--n0);
     transition: left 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+
+    .pricing__toggle-switch--active & {
+      left: 23px;
+    }
   }
 
   &__toggle-badge {
-    font-size: 0.72rem;
-    background: var(--a100);
-    color: var(--a700);
-    padding: 2px 8px;
+    font-size: 0.6875rem;
+    background: var(--p50);
+    color: var(--p600);
+    padding: 2px 7px;
     border-radius: 4px;
-    font-weight: 600;
+    font-weight: 500;
+    margin-left: 4px;
   }
 
-  &__cards {
+  /* ── Plan columns ── */
+  &__plans {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1060px;
-    margin: 0 auto;
+    grid-template-rows: auto auto auto auto auto 1fr;
   }
 
-  &__cards > * {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  &__plan {
+    display: grid;
+    grid-row: span 6;
+    grid-template-rows: subgrid;
+    padding: 36px 32px;
+    position: relative;
 
     &:not(:last-child) {
-      cursor: pointer;
-    }
-
-    &:hover {
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      border-right: 1px solid #f0f1f3;
     }
   }
 
-  /* Card uses dynamic tier.bg, tier.border - keep inline */
-  &__card-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 4px 14px;
-    border-radius: 100px;
-    font-size: 0.72rem;
+  &__plan-spots {
+    display: inline-block;
+    font-size: 0.6875rem;
     font-weight: 600;
-    white-space: nowrap;
-    color: white;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--p600);
+    margin-bottom: 8px;
   }
 
-  &__card-mt {
-    margin-top: 8px;
+  /* ── Row 2: Plan name ── */
+  &__plan-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--n800);
+    margin-bottom: 12px;
   }
 
-  &__card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-
-  &__card-desc {
-    margin-bottom: 20px;
-    min-height: 44px;
-  }
-
-  &__card-price-wrap {
+  /* ── Row 3: Price ── */
+  &__plan-price {
     display: flex;
     align-items: baseline;
-    gap: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
+    min-height: 3.25rem;
   }
 
-  &__card-price {
+  &__plan-amount {
+    font-size: 2.5rem;
     font-weight: 700;
+    color: var(--n800);
+    font-family: var(--font-mono);
+    letter-spacing: -0.02em;
   }
 
-  &__card-features {
+  &__plan-pill {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--p600);
+    background: var(--p50);
+    padding: 6px 16px;
+    border-radius: 20px;
+    align-self: center;
+  }
+
+  &__plan-interval {
+    font-size: 1rem;
+    color: var(--n400);
+    margin-left: 4px;
+  }
+
+  /* ── Row 4: Description ── */
+  &__plan-desc {
+    font-size: 0.9375rem;
+    color: var(--n500);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* ── Row 5: CTA buttons ── */
+  &__plan-cta-wrap {
+    margin-bottom: 24px;
+  }
+
+  &__plan-cta {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    transition: opacity 0.15s;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    &--primary {
+      background: var(--p600);
+      color: var(--n0);
+      border: none;
+    }
+
+    &--dark {
+      background: var(--p600);
+      color: var(--n0);
+      border: none;
+    }
+
+    &--outline {
+      background: transparent;
+      color: var(--n800);
+      border: 1.5px solid #d1d5db;
+
+      &:hover {
+        opacity: 1;
+        border-color: var(--p300);
+        color: var(--p700);
+        background: var(--p50);
+      }
+    }
+  }
+
+  /* ── Row 6: Feature divider + label ── */
+  &__plan-divider {
+    border-top: 1px solid var(--n150);
+    padding-top: 16px;
+    margin-bottom: 12px;
+    min-height: 32px;
+  }
+
+  &__plan-divider-label {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--n500);
+  }
+
+  /* ── Row 7: Feature list ── */
+  &__plan-features {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px 0;
-    border-top: 1px solid var(--n100);
+    margin: 0;
+    padding: 0;
+  }
+
+  &__plan-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--n700);
+    line-height: 1.5;
+
+    svg {
+      color: var(--p600);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+  }
+
+  /* ── Shared guarantee line ── */
+  &__guarantee {
+    font-size: 0.875rem;
+    font-style: italic;
+    color: var(--n400);
+    text-align: center;
+    margin: 24px 32px 0;
+    padding-bottom: 48px;
+  }
+
+  /* ── All plans include ── */
+  &__all-plans {
+    padding: 32px 32px;
+    border-top: 1px solid var(--n200);
+    text-align: center;
+  }
+
+  &__all-plans-title {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--p600);
     margin-bottom: 20px;
   }
 
-  &__card-feature {
+  &__all-plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 32px;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  &__all-plans-feature {
     display: flex;
     align-items: flex-start;
     gap: 8px;
-    font-size: 0.85rem;
+    font-size: 0.8125rem;
     color: var(--n600);
+    line-height: 1.5;
+
+    svg {
+      color: var(--p600);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
   }
 
-  &__card-feature-check {
-    color: var(--a500);
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-
-  &__card-cta {
-    width: 100%;
+  /* ── ROI callout bar ── */
+  &__callout {
+    background: var(--p800);
+    color: var(--n0);
+    padding: 12px 24px;
+    text-align: center;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.5;
+    max-width: 1100px;
+    margin: 32px auto 0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
   }
 
+  &__callout-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--n0);
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    &__header-bar {
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 20px;
+    }
+
+    &__plans {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+    }
+
+    &__plan {
+      display: block;
+      grid-row: auto;
+      padding: 24px 20px;
+
+      &:not(:last-child) {
+        border-right: none;
+        border-bottom: 1px solid #f0f1f3;
+      }
+    }
+
+    &__all-plans-grid {
+      grid-template-columns: 1fr;
+    }
+
+    &__callout {
+      flex-direction: column;
+      padding: 20px 24px;
+      border-radius: 10px;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+
+    &__container {
+      border-radius: 12px;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+
+  /* ── Existing sections (hero, FAQ, ROI calculator) ── */
   &__section-title {
     margin-top: 12px;
   }

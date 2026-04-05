@@ -306,7 +306,26 @@ export default function Home() {
             </div>
             <div className="home__note-card">
               <div className="home__note-card-glow" />
-              <div className="mono home__note-label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: 14, height: 14, display: 'inline', verticalAlign: 'middle', marginRight: 4 }}><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" /></svg> Underwriter's Note</div>
+              <div className="mono home__note-label">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{
+                    width: 14,
+                    height: 14,
+                    display: "inline",
+                    verticalAlign: "middle",
+                    marginRight: 4,
+                  }}
+                >
+                  <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+                </svg>{" "}
+                Underwriter's Note
+              </div>
               <p className="home__note-text">
                 Growing catering operation —{" "}
                 <strong style={{ color: "var(--a300)" }}>
@@ -502,13 +521,32 @@ export default function Home() {
                     </td>
                     <td className="home__why-td home__why-td--generic">
                       <span className="home__why-icon home__why-icon--x">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
                       </span>
                       {row.generic}
                     </td>
                     <td className="home__why-td home__why-td--ys">
                       <span className="home__why-icon home__why-icon--check">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="20 6 9 17 4 12" />
+                        </svg>
                       </span>
                       {row.ys}
                     </td>
@@ -530,64 +568,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== TESTIMONIALS ===== */}
-      <section className="section section-alt">
+      {/* ===== BUILT BY ===== */}
+      <section className="section home__built-by">
         <div className="container">
           <div className="section-header center reveal">
-            <div className="label">Early Access Members</div>
+            <div className="label">Who We Are</div>
             <h2 className="display-lg home__section-header-mt">
-              What our early partners
-              <br />
-              are saying.
+              Built by operators, not outsiders.
             </h2>
+            <p className="home__built-by-body">
+              YieldStream exists because we watched the MCA submission process
+              break — over and over. Brokers spending hours on manual
+              underwriting, blasting files to lenders who'd never approve them,
+              losing deals to mismatched submissions with no way to learn from
+              the outcome. We built a system that turns bank statement data into
+              lender intelligence, matches every deal to the right funder, and
+              captures the institutional knowledge that usually walks out the
+              door.
+            </p>
           </div>
-          <div className="grid-3">
+          <div className="home__trust-bar reveal reveal-delay-1">
             {[
-              {
-                quote: (
-                  <>
-                    We spent an hour per deal figuring out which lender to
-                    submit to. YieldStream cut that to{" "}
-                    <span className="mono">5</span> minutes — and our
-                    pull-through jumped from <span className="mono">32%</span>{" "}
-                    to <span className="mono">48%</span>.
-                  </>
-                ),
-                name: "Mike R.",
-                role: "Managing Partner, Pacific Coast Funding",
-                initials: "MR",
-              },
-              {
-                quote:
-                  "The Underwriter's Notes are a game-changer. My junior reps make lender decisions like 10-year vets. The AI explains everything — and they trust it.",
-                name: "Sarah K.",
-                role: "COO, Meridian Capital Group",
-                initials: "SK",
-              },
-              {
-                quote: (
-                  <>
-                    Renewal alerts alone paid for the platform. We caught{" "}
-                    <span className="mono">$2.3M</span> in renewal opportunities
-                    in the first <span className="mono">60</span> days that
-                    would've walked to competitors.
-                  </>
-                ),
-                name: "James T.",
-                role: "CEO, Summit Funding Partners",
-                initials: "JT",
-              },
-            ].map((t, i) => (
-              <div key={i} className={`card reveal reveal-delay-${i + 1}`}>
-                <div className="home__testimonial-stars">{[...Array(5)].map((_, j) => (<svg key={j} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" /></svg>))}</div>
-                <p className="home__testimonial-quote">"{t.quote}"</p>
-                <div className="home__testimonial-author">
-                  <div className="home__testimonial-avatar">{t.initials}</div>
-                  <div>
-                    <div className="home__testimonial-name">{t.name}</div>
-                    <div className="home__testimonial-role">{t.role}</div>
-                  </div>
-                </div>
+              { stat: "MCA-Native", label: "Built for Daily Remittance" },
+              { stat: "AI-First", label: "Underwriting Engine" },
+              { stat: "Full Export", label: "Your Data, Always Yours" },
+              { stat: "30 Days", label: "Money-Back Guarantee" },
+            ].map((item) => (
+              <div key={item.label} className="home__trust-bar-item">
+                <div className="home__trust-bar-stat">{item.stat}</div>
+                <div className="home__trust-bar-label">{item.label}</div>
               </div>
             ))}
           </div>

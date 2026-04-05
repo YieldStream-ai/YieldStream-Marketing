@@ -13,14 +13,14 @@ import {
   LayoutGrid,
   BookOpen,
   Milestone,
-  User,
+  Users,
   Mail,
 } from "lucide-react";
 import "./Nav.scss";
 
 const ICON_PROPS = { size: 16, strokeWidth: 1.5 };
 
-const dropdownKeys = ["platform", "company", "resources"];
+const dropdownKeys = ["platform", "resources"];
 
 const dropdowns = {
   platform: {
@@ -52,13 +52,6 @@ const dropdowns = {
       },
     ],
   },
-  company: {
-    label: "Company",
-    items: [
-      { href: "/about", title: "About", desc: "Our story", icon: User },
-      { href: "/contact", title: "Contact", desc: "Get in touch", icon: Mail },
-    ],
-  },
   resources: {
     label: "Resources",
     items: [
@@ -74,6 +67,8 @@ const dropdowns = {
         desc: "Shape the product",
         icon: Milestone,
       },
+      { href: "/about", title: "About", desc: "Our story", icon: Users },
+      { href: "/contact", title: "Contact", desc: "Get in touch", icon: Mail },
     ],
   },
 };
@@ -228,7 +223,7 @@ export default function Nav() {
               href="/docs"
               className={`nav__dropdown-trigger ${pathname.startsWith("/docs") ? "nav__dropdown-trigger--active" : ""}`}
             >
-              Docs
+              Blueprint
             </Link>
             <Link
               href="/pricing"
@@ -433,7 +428,7 @@ export default function Nav() {
               className="nav__mobile-docs"
               onClick={() => setMobileOpen(false)}
             >
-              Docs
+              Blueprint
             </Link>
             <div className="nav__mobile-cta-wrap">
               <Link

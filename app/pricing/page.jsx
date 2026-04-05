@@ -18,13 +18,11 @@ export default function PricingPage() {
           <div className="section-header center reveal">
             <div className="label">Pricing</div>
             <h1 className="display-xl pricing__hero-title">
-              Simple pricing that
-              <br />
-              scales with you.
+              Pricing that scales with your pipeline.
             </h1>
             <p className="text-lg pricing__hero-sub">
-              No per-deal fees. No merchant limits. No hidden costs. Just a flat
-              monthly rate for your entire team.
+              Every plan includes unlimited merchants, unlimited deals, and full
+              platform access. Choose the volume that fits your operation.
             </p>
           </div>
         </div>

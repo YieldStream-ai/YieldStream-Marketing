@@ -1,6 +1,32 @@
-import { useState } from "react";
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import EnterpriseModal from "../components/EnterpriseModal";
+
+function AnimatedPrice({ value }) {
+  const motionValue = useMotionValue(value);
+  const displayed = useTransform(motionValue, (v) =>
+    "$" + Math.round(v).toLocaleString()
+  );
+
+  useEffect(() => {
+    const controls = animate(motionValue, value, {
+      duration: 0.5,
+      ease: "easeOut",
+    });
+    return () => controls.stop();
+  }, [value, motionValue]);
+
+  return <motion.span>{displayed}</motion.span>;
+}
+
+const CheckIcon = ({ size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
 
 const allPlansInclude = [
   "AI lender matching & scoring engine",
@@ -12,102 +38,70 @@ const allPlansInclude = [
   "Renewal forecasting & alerts",
   "Smart Underwriting & Deal insights",
   "Full audit log & compliance export",
+  "CSV import & export",
+  "Notes & internal comments",
+  "Activity logs & timeline",
+  "Contact & owner management",
+  "Email & communication tracking",
+  "Task management & follow-ups",
+  "Custom fields & tags",
+  "Role-based permissions",
 ];
 
 const tiers = [
   {
     name: "Founder",
-    badge: "Founding Member — 20 Spots",
-    badgeStyle: { background: "var(--p400)", color: "#fff" },
+    spotsRemaining: "20 SPOTS REMAINING",
     desc: "First 20 ISOs only. Locked-in rate forever — never increases regardless of future pricing.",
     monthly: 797,
     annual: 638,
-    wasMonthly: "$997/mo regular",
-    wasAnnual: "$797/mo regular",
+    featureLabel: null,
     highlights: [
-      { text: "Rate locked for life — never increases", bold: true },
-      { text: "300 AI analyses / mo" },
-      { text: "Unlimited team seats" },
-      { text: "Priority onboarding & setup" },
-      { text: "Direct Slack channel with founding team" },
-      { text: "Influence the product roadmap" },
+      "300 AI analyses / mo",
+      "Unlimited team seats",
+      "Priority onboarding & setup",
+      "Direct Slack channel with founding team",
+      "Influence the product roadmap",
+      "Rate locked for life — never increases",
     ],
-    note: "Rate locked forever. 30-day money-back guarantee. Not the right fit? Full refund, no questions asked.",
     cta: "Claim Founding Spot →",
-    ctaStyle: {
-      background: "var(--p400, #047987)",
-      color: "#fff",
-      border: "none",
-    },
-    cardStyle: {
-      border: "1px solid var(--p300, #5bc8d4)",
-      background: "#fff",
-      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
-    },
-    featured: false,
+    ctaVariant: "primary",
     href: { name: "Founder", href: "/checkout?plan=founder" },
   },
   {
     name: "Professional",
-    badge: "Most Popular",
-    badgeStyle: { background: "var(--p600, #01313a)", color: "#fff" },
+    spotsRemaining: null,
     desc: "For established ISOs running 20+ deals per month. Built for volume, designed for serious operations.",
     monthly: 1197,
     annual: 958,
-    wasMonthly: null,
-    wasAnnual: "$1,197/mo if monthly",
+    featureLabel: "Includes:",
     highlights: [
-      { text: "600 AI analyses / mo" },
-      { text: "Unlimited team seats" },
-      { text: "Standard onboarding" },
+      "600 AI analyses / mo",
+      "Unlimited team seats",
+      "Standard onboarding",
     ],
-    note: "30-day money-back guarantee. Not the right fit? Full refund, no questions asked.",
     cta: "Get Started →",
-    ctaStyle: {
-      background: "var(--p600, #01313a)",
-      color: "#fff",
-      border: "none",
-    },
-    cardStyle: {
-      border: "1px solid var(--p600, #01313a)",
-      background: "#fff",
-      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
-    },
-    featured: true,
+    ctaVariant: "dark",
     href: { name: "Professional", href: "/checkout?plan=professional" },
   },
   {
     name: "Enterprise",
-    badge: "Coming Soon",
-    badgeStyle: { background: "#e8eaed", color: "#444" },
+    spotsRemaining: null,
     desc: "For multi-office ISOs with high volume needs. Let's build the right plan for your team.",
     monthly: null,
     annual: null,
-    wasMonthly: null,
-    wasAnnual: null,
+    featureLabel: "Everything in Professional, plus:",
     highlights: [
-      { text: "High-volume AI analyses (custom allotment)" },
-      { text: "Unlimited team seats" },
-      { text: "Dedicated account manager" },
-      { text: "Custom API integrations" },
-      { text: "SSO & advanced security" },
-      { text: "Priority support" },
-      { text: "Custom lender network setup" },
+      "High-volume AI analyses (custom allotment)",
+      "Unlimited team seats",
+      "Dedicated account manager",
+      "Custom API integrations",
+      "SSO & advanced security",
+      "Priority support",
     ],
-    note: "Everything in Professional, plus the above.",
     cta: "Talk to Sales →",
-    ctaStyle: {
-      background: "transparent",
-      color: "#1a2e35",
-      border: "1px solid #c8cdd2",
-    },
-    cardStyle: {
-      border: "1px solid #e8eaed",
-      background: "#fff",
-      boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
-    },
-    featured: false,
-    href: { name: "Enterprise", href: null }, // Get Notified, no checkout
+    ctaVariant: "outline",
+    href: { name: "Enterprise", href: null },
   },
 ];
 
@@ -115,326 +109,123 @@ export default function PricingTiers({ annual, setAnnual }) {
   const [showEnterprise, setShowEnterprise] = useState(false);
 
   return (
-    <div
-      style={{
-        fontFamily: "var(--font-body)",
-        padding: "48px 24px 64px",
-        maxWidth: 1100,
-        margin: "0 auto",
-      }}
-    >
-      {/* Toggle */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: 12,
-          marginBottom: 48,
-        }}
-      >
-        <span
-          style={{
-            fontSize: 14,
-            color: !annual ? "#1a2e35" : "#9aa5b4",
-            fontWeight: !annual ? 500 : 400,
-          }}
-        >
-          Monthly
-        </span>
-        <div
-          onClick={() => setAnnual(!annual)}
-          style={{
-            width: 44,
-            height: 24,
-            borderRadius: 12,
-            cursor: "pointer",
-            position: "relative",
-            transition: "background 0.2s",
-            background: annual ? "#047987" : "#d0d6de",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              top: 3,
-              left: annual ? 23 : 3,
-              width: 18,
-              height: 18,
-              borderRadius: "50%",
-              background: "#fff",
-              transition: "left 0.2s",
-              boxShadow: "0 1px 3px rgba(0,0,0,0.15)",
-            }}
-          />
-        </div>
-        <span
-          style={{
-            fontSize: 14,
-            color: annual ? "#1a2e35" : "#9aa5b4",
-            fontWeight: annual ? 500 : 400,
-          }}
-        >
-          Annual{" "}
-          <span
-            style={{
-              fontSize: 11,
-              background: "#e6f4f5",
-              color: "#047987",
-              padding: "2px 7px",
-              borderRadius: 4,
-              fontWeight: 500,
-              marginLeft: 4,
-            }}
-          >
-            Save 20%
-          </span>
-        </span>
-      </div>
-      {/* Cards */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-          gap: 20,
-          alignItems: "start",
-        }}
-      >
-        {tiers.map((tier) => (
-          <div
-            key={tier.name}
-            style={{
-              borderRadius: 8,
-              padding: "24px 20px 24px",
-              position: "relative",
-              ...tier.cardStyle,
-            }}
-          >
-            {/* Badge */}
+    <div style={{ padding: "48px 24px 0", maxWidth: 1100, margin: "0 auto" }}>
+      <div className="pricing__container">
+        {/* Header bar */}
+        <div className="pricing__header-bar">
+          <span className="pricing__header-label">Compare Plans</span>
+          <div className="pricing__header-toggle">
+            <span className={`pricing__toggle-label ${!annual ? "pricing__toggle-label--active" : ""}`}>
+              Monthly
+            </span>
             <div
-              style={{
-                position: "absolute",
-                top: -13,
-                left: "50%",
-                transform: "translateX(-50%)",
-                fontSize: 11,
-                fontWeight: 600,
-                padding: "3px 12px",
-                borderRadius: 20,
-                whiteSpace: "nowrap",
-                letterSpacing: "0.03em",
-                ...tier.badgeStyle,
-              }}
+              className={`pricing__toggle-switch ${annual ? "pricing__toggle-switch--active" : ""}`}
+              onClick={() => setAnnual(!annual)}
             >
-              {tier.badge}
+              <div className="pricing__toggle-knob" />
             </div>
-
-            {/* Name + desc */}
-            <div style={{ marginTop: 8, marginBottom: 16 }}>
-              <div
-                style={{
-                  fontSize: 20,
-                  fontWeight: 600,
-                  color: "#1a2e35",
-                  marginBottom: 6,
-                }}
-              >
-                {tier.name}
-              </div>
-              <div style={{ fontSize: 13, color: "#6b7a8d", lineHeight: 1.6 }}>
-                {tier.desc}
-              </div>
-            </div>
-
-            {/* Price */}
-            <div style={{ marginBottom: 6 }}>
-              {tier.monthly ? (
-                <>
-                  <span
-                    style={{
-                      fontSize: 36,
-                      fontWeight: 600,
-                      color: "#1a2e35",
-                      fontFamily: "var(--font-mono)",
-                    }}
-                  >
-                    ${annual ? tier.annual : tier.monthly}
-                  </span>
-                  <span
-                    style={{ fontSize: 13, color: "#9aa5b4", marginLeft: 4 }}
-                  >
-                    /month
-                  </span>
-                </>
-              ) : (
-                <span
-                  style={{ fontSize: 36, fontWeight: 600, color: "#1a2e35" }}
-                >
-                  Custom
-                </span>
-              )}
-            </div>
-
-            {/* Was price */}
-            <div
-              style={{
-                fontSize: 12,
-                color: "#b0b8c4",
-                textDecoration: "line-through",
-                marginBottom: 20,
-                minHeight: 18,
-              }}
-            >
-              {annual ? tier.wasAnnual : tier.wasMonthly}
-            </div>
-
-            {/* Tier-specific highlights */}
-            <div style={{ marginBottom: 16 }}>
-              {tier.highlights.map((h, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: "flex",
-                    alignItems: "flex-start",
-                    gap: 8,
-                    marginBottom: 8,
-                  }}
-                >
-                  <span
-                    style={{
-                      color: "#047987",
-                      marginTop: 1,
-                      flexShrink: 0,
-                      display: "inline-flex",
-                    }}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-                  </span>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      color: "#1a2e35",
-                      lineHeight: 1.5,
-                      fontWeight: h.bold ? 500 : 400,
-                    }}
-                  >
-                    {h.text}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* CTA */}
-            <>
-              {tier.href?.href ? (
-                <Link
-                  href={`${tier.href.href}&interval=${annual ? "annual" : "monthly"}`}
-                  style={{
-                    display: "block",
-                    textAlign: "center",
-                    textDecoration: "none",
-                    width: "100%",
-                    padding: "12px 0",
-                    borderRadius: 6,
-                    fontSize: 14,
-                    fontWeight: 500,
-                    cursor: "pointer",
-                    letterSpacing: "0.01em",
-                    transition: "opacity 0.15s",
-                    ...tier.ctaStyle,
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                >
-                  {tier.cta}
-                </Link>
-              ) : (
-                <button
-                  onClick={tier.name === "Enterprise" ? () => setShowEnterprise(true) : undefined}
-                  style={{
-                    width: "100%",
-                    padding: "12px 0",
-                    borderRadius: 6,
-                    fontSize: 14,
-                    fontWeight: 500,
-                    cursor: "pointer",
-                    letterSpacing: "0.01em",
-                    transition: "opacity 0.15s",
-                    ...tier.ctaStyle,
-                  }}
-                  onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-                  onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-                >
-                  {tier.cta}
-                </button>
-              )}
-            </>
-
-            {/* Note linking to all-plans */}
-            {tier.note && (
-              <div
-                style={{
-                  fontSize: 12,
-                  color: "#7a8a95",
-                  fontStyle: "italic",
-                  borderTop: "0.5px solid #e8eaed",
-                  paddingTop: 12,
-                  marginBottom: 20,
-                  lineHeight: 1.5,
-                }}
-              >
-                {tier.note}
-              </div>
-            )}
+            <span className={`pricing__toggle-label ${annual ? "pricing__toggle-label--active" : ""}`}>
+              Annual
+              <span className="pricing__toggle-badge">Save 20%</span>
+            </span>
           </div>
-        ))}
-      </div>
-      {/* All plans include */}
-      <div style={{ marginTop: 56, textAlign: "center" }}>
-        <div
-          style={{
-            fontSize: 11,
-            fontWeight: 600,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: "#9aa5b4",
-            marginBottom: 20,
-          }}
-        >
-          All plans include
         </div>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, minmax(0,1fr))",
-            gap: "10px 32px",
-            maxWidth: 860,
-            margin: "0 auto",
-            textAlign: "left",
-          }}
-        >
-          {allPlansInclude.map((item, i) => (
-            <div
-              key={i}
-              style={{ display: "flex", alignItems: "flex-start", gap: 8 }}
-            >
-              <span
-                style={{
-                  color: "#047987",
-                  flexShrink: 0,
-                  marginTop: 1,
-                  display: "inline-flex",
-                }}
-              >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
-              </span>
-              <span style={{ fontSize: 13, color: "#5a6778", lineHeight: 1.5 }}>
-                {item}
-              </span>
+
+        {/* Plan columns */}
+        <div className="pricing__plans">
+          {tiers.map((tier) => (
+            <div key={tier.name} className="pricing__plan">
+              {/* Row 1: Plan name */}
+              <h3 className="pricing__plan-name">{tier.name}</h3>
+
+              {/* Row 2: Price */}
+              <div className="pricing__plan-price">
+                {tier.monthly ? (
+                  <>
+                    <span className="pricing__plan-amount">
+                      <AnimatedPrice value={annual ? tier.annual : tier.monthly} />
+                    </span>
+                    <span className="pricing__plan-interval">/month</span>
+                  </>
+                ) : (
+                  <span className="pricing__plan-pill">Custom Pricing</span>
+                )}
+              </div>
+
+              {/* Row 3: Description */}
+              <p className="pricing__plan-desc">{tier.desc}</p>
+
+              {/* Row 4: CTA */}
+              <div className="pricing__plan-cta-wrap">
+                {tier.href?.href ? (
+                  <Link
+                    href={`${tier.href.href}&interval=${annual ? "annual" : "monthly"}`}
+                    className={`pricing__plan-cta pricing__plan-cta--${tier.ctaVariant}`}
+                  >
+                    {tier.cta}
+                  </Link>
+                ) : (
+                  <button
+                    onClick={tier.name === "Enterprise" ? () => setShowEnterprise(true) : undefined}
+                    className={`pricing__plan-cta pricing__plan-cta--${tier.ctaVariant}`}
+                  >
+                    {tier.cta}
+                  </button>
+                )}
+              </div>
+
+              {/* Row 5: Feature divider + label/badge */}
+              <div className="pricing__plan-divider">
+                {tier.spotsRemaining && (
+                  <span className="pricing__plan-spots">{tier.spotsRemaining}</span>
+                )}
+                {tier.featureLabel ? (
+                  <span className="pricing__plan-divider-label">{tier.featureLabel}</span>
+                ) : null}
+              </div>
+
+              {/* Row 7: Feature list */}
+              <ul className="pricing__plan-features">
+                {tier.highlights.map((text, i) => (
+                  <li key={i} className="pricing__plan-feature">
+                    <CheckIcon size={16} />
+                    <span>{text}</span>
+                  </li>
+                ))}
+              </ul>
+
             </div>
           ))}
         </div>
+
+        <p className="pricing__guarantee">
+          All plans include a 30-day money-back guarantee. Not the right fit? Full refund, no questions asked.
+        </p>
+
+        {/* All plans include */}
+        <div className="pricing__all-plans">
+          <div className="pricing__all-plans-title">All plans include</div>
+          <div className="pricing__all-plans-grid">
+            {allPlansInclude.map((item, i) => (
+              <div key={i} className="pricing__all-plans-feature">
+                <CheckIcon size={14} />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* ROI callout bar */}
+      <div className="pricing__callout">
+        <span>
+          Your team spends 22+ hours a week on manual underwriting. YieldStream gives that time back.
+        </span>
+        <Link href="/checkout?plan=founder" className="pricing__callout-cta">
+          Sign Up →
+        </Link>
+      </div>
+
       <EnterpriseModal isOpen={showEnterprise} onClose={() => setShowEnterprise(false)} />
     </div>
   );
