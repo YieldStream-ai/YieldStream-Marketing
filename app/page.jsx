@@ -13,85 +13,47 @@ export default function Home() {
     <>
       {/* ===== HERO ===== */}
       <section className="home__hero">
-        <div className="home__hero-glow" />
+        <div className="home__hero-mesh" />
         <div className="container home__hero-inner">
-          <div className="grid-feature grid-feature-hero">
-            <div>
-              {/* Badge */}
-              <div className="reveal home__badge">
-                <span className="home__badge-dot" />
-                <span className="home__badge-text">
-                  Now accepting founding members
-                </span>
-              </div>
+          <div className="label-mono reveal">Submission Intelligence</div>
 
-              <h1 className="display-xl reveal home__hero-headline">
-                MCA Submission
-                <em className="italic teal-gradient"> Intelligence.</em>
-              </h1>
+          <h1 className="display-xl reveal">
+            Submission Intelligence
+            <br />
+            for the High-Volume Broker.
+          </h1>
 
-              <p className="text-lg reveal reveal-delay-1 home__hero-sub">
-                Decode lender appetite and predict funding outcomes with
-                precision underwriting. Compare offers, identify high-yield
-                routes, and automate the manual chaos of the submission desk.
-              </p>
+          <p className="text-lg reveal reveal-delay-1 home__hero-sub">
+            Automate MCA underwriting and lender matching,
+            from submission to funding.
+          </p>
 
-              <div className="reveal reveal-delay-2 home__hero-actions">
-                <Link href="/pricing" className="btn btn-primary btn-lg">
-                  Get Started →
-                </Link>
-                <Link href="/features" className="btn btn-outline btn-lg">
-                  Platform Overview
-                </Link>
-              </div>
+          <div className="reveal reveal-delay-2 home__hero-actions">
+            <Link href="/pricing" className="btn btn-primary btn-lg">
+              Get Started
+            </Link>
+          </div>
+        </div>
 
-              {/* Proof stats */}
-              <div className="reveal reveal-delay-3 home__hero-stats">
-                {[
-                  { num: "~120s", label: "PDF to Scored Intelligence" },
-                  { num: "20+", label: "Risk Signals Extracted" },
-                  { num: "5", label: "Lender Matches Per Deal" },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <div className="mono home__stat-num">{s.num}</div>
-                    <div className="home__stat-label">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Hero Screenshot */}
-            <div className="reveal reveal-delay-2 home__hero-screenshot">
-              <div className="screenshot">
-                <Image
-                  src="/images/Opportunities-Table.png"
-                  alt="YieldStream Opportunities"
-                  width={1400}
-                  height={800}
-                  priority
-                />
-              </div>
-              {/* Floating card */}
-              <div className="home__floating-card">
-                <div className="home__floating-card-label">
-                  Top Lender Match
-                </div>
-                <div className="mono home__floating-card-score">99 Score</div>
-                <div className="home__floating-card-detail">
-                  National Funding · <span className="mono">$350K</span>
-                </div>
-              </div>
-            </div>
+        <div className="container reveal reveal-delay-3">
+          <div className="home__hero-mockup">
+            <Image
+              src="/images/Opportunities-Table.png"
+              alt="YieldStream Opportunities Dashboard"
+              width={1400}
+              height={800}
+              priority
+            />
           </div>
         </div>
       </section>
 
-      {/* ===== FEATURE HIGHLIGHTS ===== */}
+      {/* ===== PLATFORM OUTCOMES — BENTO GRID ===== */}
       <section className="section">
         <div className="container">
-          <div className="section-header reveal">
-            <div className="label home__label-spacing">Platform</div>
-            <h2 className="display-lg">
+          <div className="section-header center reveal">
+            <div className="label-mono">Platform</div>
+            <h2 className="display-lg" style={{ marginTop: 12 }}>
               Intelligence at every stage
               <br />
               of the deal lifecycle.
@@ -99,44 +61,44 @@ export default function Home() {
           </div>
 
           <div className="home__bento-grid reveal">
-            {/* Feature 1 — Wide card */}
+            {/* Card 1 — Wide */}
             <div className="home__bento-card home__bento-card--wide">
               <div className="home__bento-card-content">
-                <div className="home__mod-label mono">
-                  [SYS_MOD // 01: INTAKE]
-                </div>
-                <span className="pill pill--accent">AI Lender Matching</span>
+                <div className="label-mono">Extraction Precision</div>
                 <h3 className="display-md home__feature-heading">
-                  Every lender scored. Every match explained.
+                  Upload a PDF. Get an underwrite in minutes.
                 </h3>
                 <p className="text-md home__feature-desc">
-                  Three-layer scoring weighs global performance, your
-                  relationship history, and buybox fit — then ranks by expected
-                  commission, not just approval probability.
+                  AI extracts revenue trends, NSF patterns, stacking signals,
+                  and 20+ risk indicators from bank statements — with audit-ready
+                  verified data.
                 </p>
-                {/* Data Fragment */}
-                <div className="home__data-fragment">
-                  <div className="home__data-fragment-row">
-                    <span className="home__data-fragment-key">A.I. Status</span>
-                    <span className="home__data-fragment-pill home__data-fragment-pill--verified">
-                      Verified
-                    </span>
-                  </div>
-                  <div className="home__data-fragment-row">
-                    <span className="home__data-fragment-key">Confidence</span>
-                    <span className="home__data-fragment-val">89%</span>
-                  </div>
-                  <div className="home__data-fragment-row">
-                    <span className="home__data-fragment-key">Match Score</span>
-                    <span className="home__data-fragment-val">
-                      645 FICO above floor · 3yr TiB — strong
-                    </span>
-                  </div>
-                </div>
-                <Link href="/intelligence" className="btn btn-outline btn-sm">
-                  Learn about the scoring engine →
+                <Link href="/underwriting" className="btn btn-outline btn-sm">
+                  Learn about underwriting →
                 </Link>
               </div>
+              <div className="screenshot">
+                <Image
+                  src="/images/Underwriting-Intelligence.png"
+                  alt="AI Bank Statement Analysis"
+                  width={1400}
+                  height={800}
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="home__bento-card">
+              <div className="label-mono">Market Matching</div>
+              <span className="pill pill--accent">AI Lender Matching</span>
+              <h3 className="display-md home__feature-heading">
+                Every lender scored. Every match explained.
+              </h3>
+              <p className="text-md home__feature-desc">
+                Three-layer scoring weighs global performance, your
+                relationship history, and buybox fit — ranked by expected yield.
+              </p>
               <div className="screenshot">
                 <Image
                   src="/images/Lender-Edit.png"
@@ -148,83 +110,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Feature 2 */}
+            {/* Card 3 */}
             <div className="home__bento-card">
-              <div className="home__mod-label mono">
-                [SYS_MOD // 02: ANALYSIS]
-              </div>
-              <span className="pill pill--accent">Offer Comparison</span>
-              <h3 className="display-md home__feature-heading">
-                Compare every offer. Pick the best one.
-              </h3>
-              <p className="text-md home__feature-desc">
-                Side-by-side comparison across advance amount, factor rate,
-                term, daily remittance, total payback, and commission.
-              </p>
-              {/* Data Fragment */}
-              <div className="home__data-fragment">
-                <div className="home__data-fragment-row">
-                  <span className="home__data-fragment-key">DSCR</span>
-                  <span className="home__data-fragment-val">
-                    1.72 — strong cash cycle coverage
-                  </span>
-                </div>
-                <div className="home__data-fragment-row">
-                  <span className="home__data-fragment-key">ADB</span>
-                  <span className="home__data-fragment-val">
-                    22% of monthly revenue — healthy cushion
-                  </span>
-                </div>
-                <div className="home__data-fragment-row">
-                  <span className="home__data-fragment-key">Stacking</span>
-                  <span className="home__data-fragment-pill home__data-fragment-pill--clean">
-                    1st position — clean
-                  </span>
-                </div>
-              </div>
-              <div className="screenshot">
-                <Image
-                  src="/images/Underwriting-Approval-Comparison.png"
-                  alt="Offer Comparison"
-                  width={1400}
-                  height={800}
-                  priority
-                />
-              </div>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="home__bento-card">
-              <div className="home__mod-label mono">
-                [SYS_MOD // 03: EXECUTION]
-              </div>
+              <div className="label-mono">Unified Workflow</div>
               <span className="pill pill--accent">Deal Pipeline</span>
               <h3 className="display-md home__feature-heading">
                 See every deal. Know where it stands.
               </h3>
               <p className="text-md home__feature-desc">
-                Kanban board or table view. Running dollar totals per stage,
+                Kanban or table view with running dollar totals per stage,
                 stale deal alerts, and commission estimates.
               </p>
-              {/* Data Fragment */}
-              <div className="home__data-fragment">
-                <div className="home__data-fragment-row">
-                  <span className="home__data-fragment-key">Best Factor</span>
-                  <span className="home__data-fragment-val home__data-fragment-val--highlight">
-                    1.29x
-                  </span>
-                </div>
-                <div className="home__data-fragment-row">
-                  <span className="home__data-fragment-key">Commission</span>
-                  <span className="home__data-fragment-val home__data-fragment-val--highlight">
-                    $4,200
-                  </span>
-                </div>
-                <div className="home__data-fragment-row">
-                  <span className="home__data-fragment-key">Pull-Through</span>
-                  <span className="home__data-fragment-val">72%</span>
-                </div>
-              </div>
               <div className="screenshot">
                 <Image
                   src="/images/Opportunities-Kanban.png"
@@ -239,45 +135,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== HOW IT WORKS ===== */}
+      {/* ===== INTELLIGENCE LAYER — DARK SECTION ===== */}
       <section className="section section-dark">
         <div className="container">
-          <div className="section-header reveal">
-            <div className="label">How It Works</div>
+          <div className="section-header center reveal">
+            <div className="label-mono" style={{ color: "var(--a400)" }}>
+              Intelligence Layer
+            </div>
             <h2 className="display-lg home__section-header-title">
-              From intake to funded in four steps.
+              From raw PDF to funded deal.
+              <br />
+              Every signal extracted. Every lender scored.
             </h2>
           </div>
-          <div className="grid-4">
+          <div className="home__intelligence-grid">
             {[
               {
                 num: "01",
-                title: "Upload & Enrich",
-                desc: "Drop bank statements. AI extracts 20+ risk signals — revenue trends, NSF patterns, stacking, DSCR — in under 2 minutes.",
+                title: "Clarity",
+                desc: "Upload bank statements. AI extracts 20+ risk signals — revenue trends, NSF patterns, stacking, DSCR — in under 120 seconds.",
               },
               {
                 num: "02",
-                title: "Score & Match",
-                desc: "Three-layer engine scores every lender against the deal. Global data, your relationships, and buybox fit — ranked by expected yield.",
+                title: "Match",
+                desc: "Three-layer scoring engine ranks every lender by expected yield. Global data, your relationships, and buybox fit.",
               },
               {
                 num: "03",
-                title: "Submit & Track",
-                desc: "Generate deal packages, submit to matched lenders, and track responses. Every approval, decline, and counteroffer logged.",
-              },
-              {
-                num: "04",
-                title: "Learn & Improve",
-                desc: "Outcomes feed back into the model. Funded deals strengthen scores. Declines trigger smart penalties. The system compounds.",
+                title: "Funding",
+                desc: "Submit to matched lenders, track responses, and close. Every outcome feeds back into the model.",
               },
             ].map((step, i) => (
               <div
                 key={i}
-                className={`reveal reveal-delay-${i + 1} home__how-step`}
+                className={`reveal reveal-delay-${i + 1} home__intelligence-step`}
               >
-                <div className="mono home__how-step-num">{step.num}</div>
-                <h3 className="home__how-step-title">{step.title}</h3>
-                <p className="home__how-step-desc">{step.desc}</p>
+                <span className="mono">{step.num}</span>
+                <h3>{step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== STATS BAR ===== */}
+      <section className="section home__stats">
+        <div className="container">
+          <div className="home__stats-grid reveal">
+            {[
+              { num: "~120s", label: "PDF to Scored Intelligence" },
+              { num: "20+", label: "Risk Signals Extracted" },
+              { num: "3x", label: "Faster Deal Preparation" },
+              { num: "97%", label: "Extraction Accuracy" },
+            ].map((s) => (
+              <div key={s.label} className="home__stats-item">
+                <div className="display-stat">{s.num}</div>
+                <div className="label-mono">{s.label}</div>
               </div>
             ))}
           </div>
@@ -289,14 +203,16 @@ export default function Home() {
         <div className="container">
           <div className="grid-feature reveal">
             <div>
-              <div className="label home__feature-label">Transparent AI</div>
+              <div className="label-mono home__feature-label">Transparent AI</div>
               <h2 className="display-lg">
-                Every recommendation comes with a reason.
+                Every recommendation
+                <br />
+                comes with a reason.
               </h2>
               <p className="text-lg" style={{ marginTop: 12 }}>
-                Other platforms give you a score and say "trust us." YieldStream
-                generates a human-readable Underwriter's Note for every match —
-                explaining the structural logic. No black boxes.
+                YieldStream generates a human-readable Underwriter&apos;s Note
+                for every match — explaining the structural logic behind the
+                score. No black boxes.
               </p>
               <div className="home__note-section">
                 <Link href="/underwriting" className="btn btn-outline">
@@ -324,7 +240,7 @@ export default function Home() {
                 >
                   <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
                 </svg>{" "}
-                Underwriter's Note
+                Underwriter&apos;s Note
               </div>
               <p className="home__note-text">
                 Growing catering operation —{" "}
@@ -353,257 +269,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== DATA TRUST ===== */}
-      <section className="section section-dark">
-        <div className="container">
-          <div className="section-header center reveal">
-            <div className="label">Data Trust</div>
-            <h2 className="display-lg home__section-header-title">
-              Your data stays yours.
-            </h2>
-            <p className="text-lg home__section-sub">
-              Your lender list is proprietary. We never contact funders or
-              merchants on your behalf. No data resale. No shared blacklists.
-              Full export anytime.
-            </p>
-          </div>
-          <div className="grid-3">
-            {[
-              {
-                icon: (
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {/* Shield outline */}
-                    <path d="M24 4L6 12v12c0 11 8 18 18 20 10-2 18-9 18-20V12L24 4z" />
-                    {/* Keyhole circle */}
-                    <circle cx="24" cy="22" r="4" />
-                    {/* Keyhole slot */}
-                    <path d="M24 26v6" />
-                  </svg>
-                ),
-                title: "We don't own your relationships",
-                desc: "Your lender contacts, submission history, and pipeline are yours — we never reach out to your funders or merchants.",
-              },
-              {
-                icon: (
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {/* Data silo / vault cylinder */}
-                    <ellipse cx="24" cy="12" rx="12" ry="4" />
-                    <path d="M12 12v24c0 2.2 5.4 4 12 4s12-1.8 12-4V12" />
-                    <ellipse cx="24" cy="24" rx="12" ry="4" />
-                    {/* Strike-through diagonal */}
-                    <line x1="8" y1="8" x2="40" y2="40" strokeWidth="2" />
-                  </svg>
-                ),
-                title: "We don't sell your data",
-                desc: "No data resale, no shared blacklists, no monetizing your deal flow behind your back.",
-              },
-              {
-                icon: (
-                  <svg
-                    viewBox="0 0 48 48"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {/* Server rack unit */}
-                    <rect x="8" y="8" width="24" height="12" rx="2" />
-                    <rect x="8" y="24" width="24" height="12" rx="2" />
-                    {/* Drive indicators */}
-                    <circle cx="14" cy="14" r="1.5" />
-                    <circle cx="14" cy="30" r="1.5" />
-                    <line x1="20" y1="14" x2="26" y2="14" />
-                    <line x1="20" y1="30" x2="26" y2="30" />
-                    {/* Outbound arrow */}
-                    <path d="M36 28l6-4-6-4" />
-                    <line x1="32" y1="24" x2="42" y2="24" />
-                  </svg>
-                ),
-                title: "You can leave with everything",
-                desc: "Full data export anytime. No lock-in, no hostage negotiations. Your business stays portable.",
-              },
-            ].map((c, i) => (
-              <div className="home__trust-card reveal" key={i}>
-                <div className="home__trust-icon">{c.icon}</div>
-                <h3 className="text-lg fw-600">{c.title}</h3>
-                <p className="text-md">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== WHY YIELDSTREAM ===== */}
-      <section className="section section-alt home__why">
-        <div className="container">
-          <div className="section-header center reveal">
-            <div className="label home__label-spacing">Why YieldStream</div>
-            <h2 className="display-lg home__section-header-mt">
-              Built for the daily-remittance world.
-            </h2>
-            <p
-              className="text-lg home__section-sub"
-              style={{ maxWidth: 680, margin: "10px auto 0" }}
-            >
-              Unlike generic CRMs adapted from sales pipelines, YieldStream is
-              built specifically for the daily-remittance world of MCA. We
-              don&apos;t just store data&nbsp;&mdash; we audit it for
-              underwriting risk.
-            </p>
-          </div>
-
-          <div className="home__why-table-wrap reveal">
-            <table className="home__why-table">
-              <thead>
-                <tr>
-                  <th className="home__why-th home__why-th--cap mono">
-                    Capability
-                  </th>
-                  <th className="home__why-th home__why-th--generic mono">
-                    Generic CRM
-                  </th>
-                  <th className="home__why-th home__why-th--ys mono">
-                    YieldStream
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  {
-                    cap: "Daily Remittance Tracking",
-                    generic: "Manual spreadsheet entry",
-                    ys: "Automatic ACH extraction & audit",
-                  },
-                  {
-                    cap: "Bank Statement Analysis",
-                    generic: "Human review, 2\u20134 hours",
-                    ys: "AI parse in <120 seconds, zero error",
-                  },
-                  {
-                    cap: "Lender Matching",
-                    generic: "Gut feel + spreadsheets",
-                    ys: "Three-layer scoring engine with deal rank",
-                  },
-                  {
-                    cap: "Offer Comparison",
-                    generic: "Side-by-side PDF review",
-                    ys: "Structured comparison with net funding & commission",
-                  },
-                  {
-                    cap: "Underwriting Risk Audit",
-                    generic: "Not available",
-                    ys: "Built-in remittance gap analysis",
-                  },
-                  {
-                    cap: "Debt Schedule Parsing",
-                    generic: "Manual calculation",
-                    ys: "Instant structured extraction",
-                  },
-                ].map((row, i) => (
-                  <tr key={i} className="home__why-row">
-                    <td className="home__why-td home__why-td--cap">
-                      {row.cap}
-                    </td>
-                    <td className="home__why-td home__why-td--generic">
-                      <span className="home__why-icon home__why-icon--x">
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <line x1="18" y1="6" x2="6" y2="18" />
-                          <line x1="6" y1="6" x2="18" y2="18" />
-                        </svg>
-                      </span>
-                      {row.generic}
-                    </td>
-                    <td className="home__why-td home__why-td--ys">
-                      <span className="home__why-icon home__why-icon--check">
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </span>
-                      {row.ys}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="home__why-callout reveal">
-            <p className="home__why-callout-text">
-              Brokers who move from generic tools to YieldStream report a{" "}
-              <strong>3×</strong> reduction in deal-preparation time.
-            </p>
-            <Link href="/pricing" className="btn btn-primary">
-              Sign Up →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== BUILT BY ===== */}
-      <section className="section home__built-by">
-        <div className="container">
-          <div className="section-header center reveal">
-            <div className="label">Who We Are</div>
-            <h2 className="display-lg home__section-header-mt">
-              Built by operators, not outsiders.
-            </h2>
-            <p className="home__built-by-body">
-              YieldStream exists because we watched the MCA submission process
-              break — over and over. Brokers spending hours on manual
-              underwriting, blasting files to lenders who'd never approve them,
-              losing deals to mismatched submissions with no way to learn from
-              the outcome. We built a system that turns bank statement data into
-              lender intelligence, matches every deal to the right funder, and
-              captures the institutional knowledge that usually walks out the
-              door.
-            </p>
-          </div>
-          <div className="home__trust-bar reveal reveal-delay-1">
-            {[
-              { stat: "MCA-Native", label: "Built for Daily Remittance" },
-              { stat: "AI-First", label: "Underwriting Engine" },
-              { stat: "Full Export", label: "Your Data, Always Yours" },
-              { stat: "30 Days", label: "Money-Back Guarantee" },
-            ].map((item) => (
-              <div key={item.label} className="home__trust-bar-item">
-                <div className="home__trust-bar-stat">{item.stat}</div>
-                <div className="home__trust-bar-label">{item.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTABanner />
+      <CTABanner
+        headline="Start closing smarter."
+        sub="Join brokers automating their submission desk with AI-powered lender matching."
+        primaryText="Get Started"
+        primaryHref="/pricing"
+        secondaryText="Schedule a Demo"
+        secondaryHref="/contact"
+      />
     </>
   );
 }

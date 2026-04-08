@@ -1,8 +1,8 @@
 /* Resources page - BEM */
 .resources {
   &__hero {
-    padding: 80px 0 40px;
-    background: var(--n50);
+    padding: var(--space-6xl) 0 var(--space-3xl);
+    background: var(--n0);
   }
 
   &__hero-title {

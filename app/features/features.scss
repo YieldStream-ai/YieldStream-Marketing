@@ -1,8 +1,8 @@
 /* Features page - BEM */
 .features {
   &__hero {
-    padding: 64px 0 48px;
-    background: var(--n50);
+    padding: var(--space-6xl) 0 var(--space-3xl);
+    background: var(--n0);
   }
 
   &__hero-title {

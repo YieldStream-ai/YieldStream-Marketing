@@ -11,7 +11,6 @@ export default function CTABanner({
 }) {
   return (
     <section className="cta-banner section-dark section">
-      <div className="cta-banner__glow" />
       <div className="container cta-banner__inner">
         <h2 className="display-lg cta-banner__headline">{headline}</h2>
         <p className="text-lg cta-banner__sub">{sub}</p>

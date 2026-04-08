@@ -24,16 +24,24 @@
   --space-xs: 4px; --space-sm: 8px; --space-md: 16px;
   --space-lg: 20px; --space-xl: 24px; --space-2xl: 36px;
   --space-3xl: 48px; --space-4xl: 72px; --space-5xl: 80px;
+  --space-6xl: 120px; --space-7xl: 160px;
 
   /* Surfaces */
   --surface-muted: #f4f6f8;
   --surface-muted-hover: #edf0f3;
   --surface-elevated: #ffffff;
+  --surface-dark: #0a0e27;
+  --surface-dark-secondary: #111631;
   --border-subtle: var(--n150);
   --border-default: var(--n200);
+  --border-card: #eceef1;
+
+  /* Mesh Gradient */
+  --mesh-teal: rgba(4, 121, 135, 0.04);
+  --mesh-blue: rgba(59, 130, 246, 0.03);
 
   /* Layout */
-  --container-max: 1200px;
+  --container-max: 1280px;
   --container-narrow: 800px;
   --nav-height: 56px;
 
@@ -73,20 +81,20 @@ input, textarea, select { font-family: inherit; }
 /* ===== TYPOGRAPHY ===== */
 .display-xl {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   color: var(--n900);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .display-lg {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3vw, 2.4rem);
-  line-height: 1.08;
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
+  line-height: 1.06;
   letter-spacing: -0.025em;
   color: var(--n900);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .display-md {
@@ -98,7 +106,7 @@ input, textarea, select { font-family: inherit; }
   font-weight: 600;
 }
 
-.text-lg { font-size: 1.0625rem; line-height: 1.6; color: var(--n500); }
+.text-lg { font-size: 1.0625rem; line-height: 1.6; color: var(--n400); }
 .text-md { font-size: 0.9375rem; line-height: 1.6; color: var(--n600); }
 .text-sm { font-size: 0.8125rem; line-height: 1.55; color: var(--n500); }
 
@@ -123,6 +131,34 @@ input, textarea, select { font-family: inherit; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.display-stat {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--n900);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--n400);
+}
+
+.mesh-gradient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 80% 20%, var(--mesh-teal) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, var(--mesh-blue) 0%, transparent 70%);
 }
 
 /* ===== BUTTONS ===== */
@@ -183,15 +219,22 @@ input, textarea, select { font-family: inherit; }
   background: var(--p50);
 }
 
-.btn-lg { padding: 10px 18px; font-size: 0.8125rem; border-radius: 6px; }
+.btn-emerald {
+  background: var(--a500);
+  color: white;
+  box-shadow: 0 1px 2px rgba(16,185,129,0.2);
+}
+.btn-emerald:hover { background: var(--a600); }
+
+.btn-lg { padding: 12px 24px; font-size: 0.875rem; border-radius: 8px; }
 .btn-sm { padding: 6px 12px; font-size: 0.75rem; border-radius: 6px; }
 
 /* ===== SECTIONS ===== */
-.section { padding: var(--space-5xl) 0; }
-.section-sm { padding: var(--space-4xl) 0; }
-.section-alt { background: var(--n50); }
+.section { padding: var(--space-6xl) 0; }
+.section-sm { padding: var(--space-5xl) 0; }
+.section-alt { background: var(--n0); }
 .section-dark {
-  background: var(--p900);
+  background: linear-gradient(180deg, var(--surface-dark) 0%, #060919 100%);
   color: white;
 }
 .section-dark .text-lg,
@@ -211,14 +254,14 @@ input, textarea, select { font-family: inherit; }
 /* ===== CARDS ===== */
 .card {
   background: white;
-  border: 1px solid var(--n200);
-  border-radius: 8px;
-  padding: var(--space-xl);
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: var(--space-2xl);
   transition: border-color 0.15s var(--ease-out), box-shadow 0.15s var(--ease-out);
 }
 .card:hover {
-  border-color: var(--n300);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  border-color: var(--n200);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.03);
 }
 
 /* ===== PRODUCT SCREENSHOTS ===== */
@@ -359,8 +402,9 @@ input, textarea, select { font-family: inherit; }
 /* ===== FOOTER ===== */
 .footer {
   padding: var(--space-4xl) 0 var(--space-2xl);
-  background: var(--n900);
-  color: white;
+  background: var(--n0);
+  color: var(--n800);
+  border-top: 1px solid var(--border-subtle);
 }
 .footer-grid {
   display: grid;
@@ -380,19 +424,19 @@ input, textarea, select { font-family: inherit; }
   margin-bottom: var(--space-md);
 }
 .footer-col a {
-  display: block; font-size: 0.875rem; color: var(--n300);
+  display: block; font-size: 0.875rem; color: var(--n600);
   padding: 3px 0; transition: color 0.15s;
 }
-.footer-col a:hover { color: var(--a400); }
+.footer-col a:hover { color: var(--p600); }
 .footer-bottom {
   display: flex; justify-content: space-between; align-items: center;
   padding-top: var(--space-xl);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid var(--border-subtle);
 }
-.footer-bottom p { font-size: 0.78rem; color: var(--n500); }
+.footer-bottom p { font-size: 0.78rem; color: var(--n400); }
 .footer-bottom-links { display: flex; gap: 20px; }
-.footer-bottom-links a { font-size: 0.78rem; color: var(--n500); }
-.footer-bottom-links a:hover { color: var(--n300); }
+.footer-bottom-links a { font-size: 0.78rem; color: var(--n400); }
+.footer-bottom-links a:hover { color: var(--p600); }
 
 /* ===== PILL / BADGE ===== */
 .pill {
@@ -420,14 +464,14 @@ input, textarea, select { font-family: inherit; }
 }
 .bento-card {
   background: var(--n0);
-  border: 1px solid var(--n200);
-  border-radius: 8px;
-  padding: 24px;
+  border: 1px solid var(--border-card);
+  border-radius: 12px;
+  padding: 32px;
   overflow: hidden;
   transition: border-color 0.15s;
 }
 .bento-card:hover {
-  border-color: var(--n300);
+  border-color: var(--n200);
 }
 .bento-card--span-2 {
   grid-column: span 2;
@@ -444,6 +488,8 @@ input, textarea, select { font-family: inherit; }
   :root {
     --space-5xl: 64px;
     --space-4xl: 56px;
+    --space-6xl: 80px;
+    --space-7xl: 100px;
   }
   .nav-links { display: none; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }

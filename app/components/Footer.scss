@@ -1,13 +1,10 @@
 /* Footer - BEM */
 .footer {
   &__logo {
-    color: white;
+    color: var(--n800);
   }
 
   &__logo-container {
-    padding: 4px;
-    background: white;
-    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;

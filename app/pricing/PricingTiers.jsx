@@ -111,6 +111,28 @@ export default function PricingTiers({ annual, setAnnual }) {
   return (
     <div style={{ padding: "48px 24px 0", maxWidth: 1100, margin: "0 auto" }}>
       <div className="pricing__container">
+        {/* Beta banner */}
+        <div className="pricing__beta-banner">
+          <span className="pricing__beta-label">INSTITUTIONAL BETA</span>
+          <h2 className="pricing__beta-heading">Try YieldStream Free During Beta</h2>
+          <p className="pricing__beta-desc">
+            No credit card. No commitments. Create a free account and explore the full platform — your feedback will directly shape what we build next.
+          </p>
+          <div className="pricing__beta-trust">
+            <span className="pricing__beta-trust-item">No credit card required</span>
+            <span className="pricing__beta-trust-sep" aria-hidden="true">·</span>
+            <span className="pricing__beta-trust-item">Cancel anytime</span>
+            <span className="pricing__beta-trust-sep" aria-hidden="true">·</span>
+            <span className="pricing__beta-trust-item">Your feedback shapes the product</span>
+          </div>
+          <button
+            className="pricing__beta-cta"
+            onClick={() => console.log('Beta CTA clicked')}
+          >
+            Create Free Account →
+          </button>
+        </div>
+
         {/* Header bar */}
         <div className="pricing__header-bar">
           <span className="pricing__header-label">Compare Plans</span>
@@ -132,7 +154,7 @@ export default function PricingTiers({ annual, setAnnual }) {
         </div>
 
         {/* Plan columns */}
-        <div className="pricing__plans">
+        <div className="pricing__plans pricing__plans--blurred">
           {tiers.map((tier) => (
             <div key={tier.name} className="pricing__plan">
               {/* Row 1: Plan name */}
@@ -198,7 +220,7 @@ export default function PricingTiers({ annual, setAnnual }) {
           ))}
         </div>
 
-        <p className="pricing__guarantee">
+        <p className="pricing__guarantee pricing__guarantee--blurred">
           All plans include a 30-day money-back guarantee. Not the right fit? Full refund, no questions asked.
         </p>
 

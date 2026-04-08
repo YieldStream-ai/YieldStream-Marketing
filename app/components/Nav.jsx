@@ -330,12 +330,12 @@ export default function Nav() {
           <div className="nav-cta">
             <Link
               href="https://app.yieldstream.ai"
-              className="btn btn-ghost btn-sm"
+              className="nav__signin-link"
             >
               Sign in
             </Link>
             <Link href="/pricing" className="btn btn-primary btn-sm">
-              Get Early Access
+              Get Started
             </Link>
           </div>
 
@@ -443,7 +443,7 @@ export default function Nav() {
                 className="btn btn-primary btn-lg nav__mobile-cta-btn"
                 onClick={() => setMobileOpen(false)}
               >
-                Get Early Access →
+                Get Started
               </Link>
             </div>
           </div>

@@ -109,6 +109,44 @@ export default function SecurityPage() {
         </div>
       </section>
 
+      {/* Data Trust */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header center reveal">
+            <div className="label-mono">Data Trust</div>
+            <h2 className="display-lg security__section-title">
+              Your data stays yours.
+            </h2>
+            <p className="text-lg" style={{ maxWidth: 600, margin: "12px auto 0" }}>
+              Your lender list is proprietary. We never contact funders or
+              merchants on your behalf. No data resale. No shared blacklists.
+              Full export anytime.
+            </p>
+          </div>
+          <div className="grid-3">
+            {[
+              {
+                title: "We don\u2019t own your relationships",
+                desc: "Your lender contacts, submission history, and pipeline are yours \u2014 we never reach out to your funders or merchants.",
+              },
+              {
+                title: "We don\u2019t sell your data",
+                desc: "No data resale, no shared blacklists, no monetizing your deal flow behind your back.",
+              },
+              {
+                title: "You can leave with everything",
+                desc: "Full data export anytime. No lock-in, no hostage negotiations. Your business stays portable.",
+              },
+            ].map((c, i) => (
+              <div key={i} className={`card reveal reveal-delay-${i + 1}`}>
+                <h3 className="security__card-title">{c.title}</h3>
+                <p className="text-sm">{c.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTABanner
         headline="Questions about security?"
         sub="We're happy to walk through our security architecture, provide documentation, or discuss enterprise requirements."

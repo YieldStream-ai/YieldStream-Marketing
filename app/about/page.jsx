@@ -81,7 +81,7 @@ export default function AboutPage() {
             <div className="about__author-inner">
               <div className="about__author-avatar">JHD</div>
               <div className="about__author-info">
-                <div className="about__author-name">J.H. Dinh</div>
+                <div className="about__author-name">Joshua H. Dinh</div>
                 <div className="about__author-role">Founder & CEO</div>
                 <div className="about__author-subtitle">
                   Former Submission Specialist & ISO Consultant
@@ -92,8 +92,27 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Built By Operators */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header center reveal">
+            <div className="label-mono">Who We Are</div>
+            <h2 className="display-lg about__section-title">
+              Built by operators, not outsiders.
+            </h2>
+            <p className="text-lg" style={{ maxWidth: 680, margin: "12px auto 0" }}>
+              YieldStream exists because we watched the MCA submission process
+              break — over and over. Brokers spending hours on manual
+              underwriting, blasting files to lenders who&apos;d never approve them,
+              losing deals to mismatched submissions with no way to learn from
+              the outcome.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
-      <section className="section section-alt">
+      <section className="section">
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Our Principles</div>
