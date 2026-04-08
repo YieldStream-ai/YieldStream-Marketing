@@ -67,13 +67,13 @@ export default function EnterpriseModal({ isOpen, onClose }) {
               <circle cx="24" cy="24" r="24" fill="#047987" />
               <path d="M14 24l7 7 13-13" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <h3 className="enterprise-modal__success-title">We&apos;ll be in touch soon.</h3>
+            <h3 className="enterprise-modal__success-title">You&apos;re on the list. We&apos;ll set up your account shortly.</h3>
           </div>
         ) : (
           <>
-            <h2 className="enterprise-modal__heading">Enterprise Access</h2>
+            <h2 className="enterprise-modal__heading">Request Beta Access</h2>
             <p className="enterprise-modal__subheading">
-              Tell us about your operation and we&apos;ll be in touch.
+              Get free access to the full platform. No credit card required.
             </p>
 
             <form onSubmit={handleSubmit} className="enterprise-modal__form">
@@ -120,11 +120,11 @@ export default function EnterpriseModal({ isOpen, onClose }) {
               {error && <div className="enterprise-modal__error">{error}</div>}
 
               <button type="submit" disabled={loading} className="enterprise-modal__submit">
-                {loading ? 'Submitting...' : 'Request Enterprise Access'}
+                {loading ? 'Submitting...' : 'Request Beta Access'}
               </button>
 
               <p className="enterprise-modal__footer">
-                No commitment. We&apos;ll reach out to schedule a call.
+                No credit card required. We&apos;ll send your login details via email.
               </p>
             </form>
           </>

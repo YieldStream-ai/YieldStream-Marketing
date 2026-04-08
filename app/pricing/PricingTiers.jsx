@@ -127,9 +127,9 @@ export default function PricingTiers({ annual, setAnnual }) {
           </div>
           <button
             className="pricing__beta-cta"
-            onClick={() => console.log('Beta CTA clicked')}
+            onClick={() => setShowEnterprise(true)}
           >
-            Create Free Account →
+            Get Access →
           </button>
         </div>
 
