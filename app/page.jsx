@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import CTABanner from "./components/CTABanner";
+import { Zap, Cpu, ChevronRight } from "lucide-react";
 import "./page.scss";
 
 export default function Home() {
@@ -13,37 +14,69 @@ export default function Home() {
     <>
       {/* ===== HERO ===== */}
       <section className="home__hero">
-        <div className="home__hero-mesh" />
-        <div className="container home__hero-inner">
-          <div className="label-mono reveal">Submission Intelligence</div>
+        <div className="home__hero-card">
+          <div className="home__hero-glow home__hero-glow--1" />
+          <div className="home__hero-glow home__hero-glow--2" />
 
-          <h1 className="display-xl reveal">
-            Submission Intelligence
-            <br />
-            for the High-Volume Broker.
-          </h1>
+          <div className="container home__hero-layout">
+            {/* Left column — copy */}
+            <div className="home__hero-copy">
+              <Link href="/pricing" className="home__hero-badge reveal">
+                <span className="home__hero-badge-icon">
+                  <Zap size={13} />
+                </span>
+                <span className="home__hero-badge-text">
+                  Request beta access
+                </span>
+                <ChevronRight size={14} />
+              </Link>
 
-          <p className="text-lg reveal reveal-delay-1 home__hero-sub">
-            Automate MCA underwriting and lender matching,
-            from submission to funding.
-          </p>
+              <h1 className="home__hero-title reveal">
+                Submission Intelligence
+                <br />
+                for the High-Volume{" "}
+                <span className="home__hero-accent">Broker.</span>
+              </h1>
 
-          <div className="reveal reveal-delay-2 home__hero-actions">
-            <Link href="/pricing" className="btn btn-primary btn-lg">
-              Get Started
-            </Link>
-          </div>
-        </div>
+              <p className="home__hero-sub reveal reveal-delay-1">
+                Automate MCA underwriting and lender routing, from submission to
+                funding.
+              </p>
 
-        <div className="container reveal reveal-delay-3">
-          <div className="home__hero-mockup">
-            <Image
-              src="/images/Opportunities-Table.png"
-              alt="YieldStream Opportunities Dashboard"
-              width={1400}
-              height={800}
-              priority
-            />
+              <div className="home__hero-actions reveal reveal-delay-2">
+                <Link href="/pricing" className="btn btn-primary btn-lg">
+                  Get Started
+                </Link>
+                <Link href="/contact" className="home__hero-link">
+                  Book a Demo
+                </Link>
+              </div>
+
+              <div className="home__hero-divider reveal reveal-delay-2" />
+
+              <div className="home__hero-features reveal reveal-delay-3">
+                <div className="home__hero-feature">
+                  <span className="home__hero-feature-icon">
+                    <Zap size={15} />
+                  </span>
+                  <div>
+                    <strong>120s Processing</strong>
+                    <span>PDF to scored intelligence</span>
+                  </div>
+                </div>
+                <div className="home__hero-feature">
+                  <span className="home__hero-feature-icon">
+                    <Cpu size={15} />
+                  </span>
+                  <div>
+                    <strong>AI-Powered Matching/Routing</strong>
+                    <span>Every lender scored & ranked</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right column — reserved for future visual */}
           </div>
         </div>
       </section>
@@ -70,8 +103,8 @@ export default function Home() {
                 </h3>
                 <p className="text-md home__feature-desc">
                   AI extracts revenue trends, NSF patterns, stacking signals,
-                  and 20+ risk indicators from bank statements — with audit-ready
-                  verified data.
+                  and 20+ risk indicators from bank statements — with
+                  audit-ready verified data.
                 </p>
                 <Link href="/underwriting" className="btn btn-outline btn-sm">
                   Learn about underwriting →
@@ -96,8 +129,8 @@ export default function Home() {
                 Every lender scored. Every match explained.
               </h3>
               <p className="text-md home__feature-desc">
-                Three-layer scoring weighs global performance, your
-                relationship history, and buybox fit — ranked by expected yield.
+                Three-layer scoring weighs global performance, your relationship
+                history, and buybox fit — ranked by expected yield.
               </p>
               <div className="screenshot">
                 <Image
@@ -118,8 +151,8 @@ export default function Home() {
                 See every deal. Know where it stands.
               </h3>
               <p className="text-md home__feature-desc">
-                Kanban or table view with running dollar totals per stage,
-                stale deal alerts, and commission estimates.
+                Kanban or table view with running dollar totals per stage, stale
+                deal alerts, and commission estimates.
               </p>
               <div className="screenshot">
                 <Image
@@ -203,7 +236,9 @@ export default function Home() {
         <div className="container">
           <div className="grid-feature reveal">
             <div>
-              <div className="label-mono home__feature-label">Transparent AI</div>
+              <div className="label-mono home__feature-label">
+                Transparent AI
+              </div>
               <h2 className="display-lg">
                 Every recommendation
                 <br />
