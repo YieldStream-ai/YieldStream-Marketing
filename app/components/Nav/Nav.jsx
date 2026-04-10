@@ -184,6 +184,7 @@ export default function Nav() {
       <motion.nav
         className={`nav ${scrolled ? "scrolled" : ""}`}
         ref={navRef}
+        initial={false}
         animate={
           scrolled
             ? {
