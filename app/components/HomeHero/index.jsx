@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { Zap, Cpu, ChevronRight } from "lucide-react";
 import HeroAmbientSVG from "./HeroAmbientSVG";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import "./styles.scss";
 
 const fadeUp = {
@@ -20,6 +21,77 @@ const fadeUp = {
     },
   }),
 };
+
+const lines = [
+  "MCA Brokers don't just want automation; they want to stop wasting time on dead deals.",
+  "Bad expectations kill deals before they start.",
+  "Stop sending deals to lenders who were never going to approve them.",
+  "Your best reps shouldn't be doing data entry — they should be closing.",
+];
+
+const wordContainer = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.045, delayChildren: 0 },
+  },
+  exit: {
+    transition: { staggerChildren: 0.025, staggerDirection: -1 },
+  },
+};
+
+const wordItem = {
+  hidden: { opacity: 0, y: -16, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { type: "spring", stiffness: 80, damping: 16 },
+  },
+  exit: {
+    opacity: 0,
+    y: 8,
+    filter: "blur(3px)",
+    transition: { duration: 0.2, ease: "easeIn" },
+  },
+};
+
+function CyclingSubtitle() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % lines.length);
+    }, 4200);
+    return () => clearInterval(id);
+  }, []);
+
+  const words = lines[index].split(" ");
+
+  return (
+    <div className="home__hero-sub-wrap">
+      <AnimatePresence mode="wait">
+        <motion.p
+          key={index}
+          className="home__hero-sub"
+          variants={wordContainer}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          {words.map((word, i) => (
+            <motion.span
+              key={i}
+              variants={wordItem}
+              style={{ display: "inline-block", marginRight: "0.28em" }}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.p>
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function HomeHero() {
   return (
@@ -61,17 +133,14 @@ export default function HomeHero() {
               <span className="home__hero-accent">Broker.</span>
             </motion.h1>
 
-            <motion.p
-              className="home__hero-sub"
+            <motion.div
               initial="hidden"
               animate="visible"
               custom={0.2}
               variants={fadeUp}
             >
-              <span style={{ color: "var(--p600)" }}>MCA</span> Brokers don&apos;t
-              just want automation; they want to stop wasting time on dead
-              deals.
-            </motion.p>
+              <CyclingSubtitle />
+            </motion.div>
 
             <motion.div
               className="home__hero-actions"

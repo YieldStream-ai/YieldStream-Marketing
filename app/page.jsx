@@ -69,111 +69,8 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <HomeHero />
 
-      {/* ===== THE PROBLEM ===== */}
-      <section className="home__problem">
-        <div className="container">
-          <div className="home__problem-layout">
-            <div className="home__problem-panel home__problem-panel--without">
-              <p className="home__problem-panel-label">WITHOUT YIELDSTREAM</p>
-              <h3 className="home__problem-panel-title">Blind</h3>
-              <p className="home__problem-panel-body">
-                Manage expectations with experience alone. Find out the real
-                picture after you've already invested the time.
-              </p>
-            </div>
-            <div className="home__problem-center">
-              <p className="home__problem-label">THE PROBLEM</p>
-              <h2 className="home__problem-headline">
-                Bad expectations kill deals before they start.
-              </h2>
-              <p className="home__problem-body">
-                You know the call — the merchant wants $500K, their bank
-                statements tell a different story, and by the time offers come
-                back, they've already anchored on a number you couldn't deliver.
-                Three weeks wasted.
-              </p>
-            </div>
-            <div className="home__problem-panel home__problem-panel--with">
-              <p className="home__problem-panel-label">WITH YIELDSTREAM</p>
-              <h3 className="home__problem-panel-title">Informed</h3>
-              <p className="home__problem-panel-body">
-                See the score, revenue profile, and lender fit within minutes of
-                receiving docs — so you can steer the conversation early.
-              </p>
-            </div>
-          </div>
-          <div className="home__grid-connector" />
-        </div>
-      </section>
-
       {/* ===== HOW IT WORKS — STEPS ===== */}
       <HowItWorks />
-
-      {/* ===== INTELLIGENCE LAYER — DARK SECTION ===== */}
-      <section className="section section-dark">
-        <div className="container">
-          <div className="section-header center reveal">
-            <div className="label-mono" style={{ color: "var(--a400)" }}>
-              Intelligence Layer
-            </div>
-            <h2 className="display-lg home__section-header-title">
-              From raw PDF to funded deal.
-              <br />
-              Every signal extracted. Every lender scored.
-            </h2>
-          </div>
-          <div className="home__intelligence-grid">
-            {[
-              {
-                num: "01",
-                title: "Clarity",
-                desc: "Upload bank statements. AI extracts 20+ risk signals — revenue trends, NSF patterns, stacking, DSCR — in under 120 seconds.",
-              },
-              {
-                num: "02",
-                title: "Match",
-                desc: "Three-layer scoring engine ranks every lender by expected yield. Global data, your relationships, and buybox fit.",
-              },
-              {
-                num: "03",
-                title: "Funding",
-                desc: "Submit to matched lenders, track responses, and close. Every outcome feeds back into the model.",
-              },
-            ].map((step, i) => (
-              <div
-                key={i}
-                className={`reveal reveal-delay-${i + 1} home__intelligence-step`}
-              >
-                <span className="mono">{step.num}</span>
-                <h3>{step.title}</h3>
-                <p>{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== STATS BAR ===== */}
-      <section className="section home__stats">
-        <div className="container">
-          <div className="home__stats-grid reveal">
-            {[
-              { num: "~120s", label: "PDF to Scored Intelligence" },
-              { num: "20+", label: "Risk Signals Extracted" },
-              { num: "3x", label: "Faster Deal Preparation" },
-              { num: "97%", label: "Extraction Accuracy" },
-            ].map((s) => (
-              <div key={s.label} className="home__stats-item">
-                <div className="display-stat">{s.num}</div>
-                <div className="label-mono">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== BENTO SHOWCASE ===== */}
-      <BentoShowcase />
 
       {/* ===== UNDERWRITER'S NOTE ===== */}
       <section className="section">
@@ -201,7 +98,7 @@ export default function Home() {
             </div>
             <div className="home__note-card">
               <div className="home__note-card-glow" />
-              <div className="mono home__note-label">
+              <div className="mono home__note-label" style={{ color: "var(--p400)" }}>
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -223,16 +120,16 @@ export default function Home() {
               </div>
               <p className="home__note-text">
                 Growing catering operation —{" "}
-                <strong style={{ color: "var(--a300)" }}>
+                <strong style={{ color: "var(--p300)" }}>
                   <span className="mono">$95K/mo</span>
                 </strong>{" "}
                 with only{" "}
-                <strong style={{ color: "var(--a300)" }}>
+                <strong style={{ color: "var(--p300)" }}>
                   <span className="mono">8.1%</span> stacking
                 </strong>
                 . 1 NSF was a timing issue (vendor payment). Well within
                 tolerance for most lenders.{" "}
-                <strong style={{ color: "var(--a300)" }}>
+                <strong style={{ color: "var(--p300)" }}>
                   <span className="mono">93%</span> confidence
                 </strong>{" "}
                 · Revenue: Growing
@@ -247,6 +144,28 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== STATS BAR ===== */}
+      <section className="section home__stats">
+        <div className="container">
+          <div className="home__stats-grid reveal">
+            {[
+              { num: "~120s", label: "PDF to Scored Intelligence" },
+              { num: "20+", label: "Risk Signals Extracted" },
+              { num: "3x", label: "Faster Deal Preparation" },
+              { num: "97%", label: "Extraction Accuracy" },
+            ].map((s) => (
+              <div key={s.label} className="home__stats-item">
+                <div className="display-stat">{s.num}</div>
+                <div className="label-mono">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== BENTO SHOWCASE ===== */}
+      <BentoShowcase />
 
       <CTABanner
         headline="Start closing smarter."
