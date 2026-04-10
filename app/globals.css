@@ -333,15 +333,12 @@ input, textarea, select { font-family: inherit; }
 
 /* ===== NAV ===== */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  height: var(--nav-height);
+  position: fixed; z-index: 100;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid transparent;
-  transition: all 0.3s var(--ease-out);
+  border: 1px solid transparent;
 }
 .nav.scrolled {
-  border-bottom-color: var(--n150);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -352,7 +349,12 @@ input, textarea, select { font-family: inherit; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
   height: 100%;
+}
+.nav.scrolled .nav-inner {
+  padding: 0;
+  gap: 80px;
 }
 .nav-logo {
   display: flex; align-items: center; gap: 10px;

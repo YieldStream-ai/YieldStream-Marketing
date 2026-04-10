@@ -181,11 +181,55 @@ export default function Nav() {
 
   return (
     <>
-      <nav className={`nav ${scrolled ? "scrolled" : ""}`} ref={navRef}>
+      <motion.nav
+        className={`nav ${scrolled ? "scrolled" : ""}`}
+        ref={navRef}
+        animate={
+          scrolled
+            ? {
+                top: 20,
+                left: "50%",
+                x: "-50%",
+                width: 820,
+                height: 48,
+                borderRadius: 14,
+                paddingLeft: 24,
+                paddingRight: 24,
+                boxShadow:
+                  "0 4px 24px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
+                borderColor: "var(--n150)",
+              }
+            : {
+                top: 0,
+                left: "50%",
+                x: "-50%",
+                width: "100vw",
+                height: 56,
+                borderRadius: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
+                boxShadow: "0 0 0 rgba(0,0,0,0)",
+                borderColor: "transparent",
+              }
+        }
+        transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
+      >
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
             <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" priority />
-            YieldStream
+            <AnimatePresence>
+              {!scrolled && (
+                <motion.span
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "auto" }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
+                  style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+                >
+                  YieldStream
+                </motion.span>
+              )}
+            </AnimatePresence>
           </Link>
 
           {/* Desktop */}
@@ -328,12 +372,24 @@ export default function Nav() {
           </div>
 
           <div className="nav-cta">
-            <Link
-              href="https://app.yieldstream.ai"
-              className="nav__signin-link"
-            >
-              Sign in
-            </Link>
+            <AnimatePresence>
+              {!scrolled && (
+                <motion.div
+                  initial={{ opacity: 0, width: 0 }}
+                  animate={{ opacity: 1, width: "auto" }}
+                  exit={{ opacity: 0, width: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
+                  style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+                >
+                  <Link
+                    href="https://app.yieldstream.ai"
+                    className="nav__signin-link"
+                  >
+                    Sign in
+                  </Link>
+                </motion.div>
+              )}
+            </AnimatePresence>
             <Link href="/pricing" className="btn btn-primary btn-sm">
               Get Started
             </Link>
@@ -354,7 +410,21 @@ export default function Nav() {
             </span>
           </button>
         </div>
-      </nav>
+      </motion.nav>
+
+      {/* Stripe-style page overlay when dropdown is open */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="nav__page-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            onClick={() => setOpen(null)}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Mobile drawer */}
       {mobileOpen && (
