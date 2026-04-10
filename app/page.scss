@@ -526,6 +526,16 @@
     justify-content: center;
   }
 
+  /* Generate link dropzone */
+  &__sv-dropzone {
+    transition: border-color 0.18s ease, background 0.18s ease;
+
+    &:hover {
+      border-color: hsl(186 94% 27%);
+      background: hsla(186, 94%, 27%, 0.03);
+    }
+  }
+
   /* Generate link screenshot peek */
   &__sv-link-peek {
     position: absolute;
