@@ -13,7 +13,7 @@
     border-radius: 24px;
     padding: var(--space-4xl) var(--space-4xl) var(--space-5xl);
     position: relative;
-    overflow: visible;
+    overflow: hidden;
   }
 
   &__hero-glow {
@@ -59,6 +59,8 @@
   }
 
   &__hero-copy {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -232,14 +234,17 @@
 
   &__hero-visual {
     position: absolute;
-    right: -40px;
-    top: 0px;
-    width: 44%;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+    max-width: 750px;
     min-width: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    z-index: 1;
   }
 
 
@@ -1064,13 +1069,10 @@
   }
 
   .home__hero-visual {
-    position: relative;
-    right: auto;
-    top: auto;
-    width: 100%;
-    max-width: 520px;
-    margin: 0 auto;
-    pointer-events: auto;
+    width: 80%;
+    max-width: 600px;
+    right: -40px;
+    opacity: 0.5;
   }
 
   .home__intelligence-grid {
@@ -1100,6 +1102,10 @@
   .home__hero-card {
     border-radius: 16px;
     padding: 32px var(--space-lg) var(--space-2xl);
+  }
+
+  .home__hero-visual {
+    display: none;
   }
 
   .home__hero-form {
@@ -1181,5 +1187,39 @@
 @media (max-width: 639px) {
   .home__hero-dash-wrap .uw-hero__metric-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== HERO SCREENSHOT PEEK ===== */
+.home__hero-screenshot-peek {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 58%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px 0 24px 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home__hero-screenshot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.home__hero-screenshot-fade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, #0a0e1a 0%, transparent 18%),
+    linear-gradient(to bottom, transparent 55%, rgba(8, 12, 21, 0.7) 100%);
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .home__hero-screenshot-peek {
+    display: none;
   }
 }

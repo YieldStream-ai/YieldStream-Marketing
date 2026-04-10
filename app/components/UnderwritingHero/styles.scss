@@ -1,0 +1,350 @@
+@use "./variables" as *;
+
+// ═══════════════════════════════════════════════════════════════════════════
+// UNDERWRITING HERO — Static marketing reproduction of the underwriting view
+// Mirrors .uw-memo styles but scoped to .uw-hero to avoid conflicts
+// ═══════════════════════════════════════════════════════════════════════════
+
+$uw-green: #1d9e75;
+$topbar-bg: #0f1a2e;
+
+.uw-hero {
+  background: $color-neutral-0;
+  border-radius: $radius-xl;
+  overflow: hidden;
+  font-family: $font-body;
+  color: $color-neutral-900;
+  max-width: 960px;
+  box-shadow: $card-shadow;
+  border: $card-border;
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Top Nav Bar
+  // ═══════════════════════════════════════════════════════════════════════
+
+  &__topbar {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    background: $topbar-bg;
+    padding: 0 $space-4;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  &__topbar-left {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__topbar-back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border-radius: $radius-base;
+    cursor: default;
+    padding: 0;
+  }
+
+  &__topbar-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    height: 30px;
+    width: 40%;
+    min-width: 200px;
+    max-width: 360px;
+    padding: 0 $space-3;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+  }
+
+  &__search-icon {
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  &__search-text {
+    flex: 1;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.4);
+    white-space: nowrap;
+  }
+
+  &__search-kbd {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+
+    kbd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 18px;
+      padding: 0 4px;
+      font-family: $font-body;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+    }
+  }
+
+  &__topbar-right {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  &__topbar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-2;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: default;
+  }
+
+  &__topbar-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    background: $color-primary-600;
+    color: #fff;
+    font-size: 11px;
+    font-weight: $font-weight-semibold;
+    margin-left: $space-1;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Content area (below topbar)
+  // ═══════════════════════════════════════════════════════════════════════
+
+  &__strip,
+  &__section {
+    padding-left: $space-12;
+    padding-right: $space-12;
+  }
+
+  &__strip {
+    padding-top: $space-8;
+  }
+
+  // ── Divider ──
+  &__divider {
+    border: none;
+    border-top: 0.5px solid $color-neutral-200;
+    margin: $space-6 $space-12;
+  }
+
+  // ── Section label ──
+  &__section-label {
+    font-size: 12px;
+    font-family: $font-body;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    color: $color-neutral-400;
+    margin: 0 0 $space-3 0;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Intelligence Strip
+  // ═══════════════════════════════════════════════════════════════════════
+
+  &__strip-row {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    flex-wrap: wrap;
+  }
+
+  &__strip-score {
+    font-family: $font-body;
+    font-size: 26px;
+    font-weight: $font-weight-medium;
+    color: $color-neutral-900;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    border-radius: 2px;
+    line-height: 1.4;
+
+    &--clean {
+      background: rgba($uw-green, 0.1);
+      color: $uw-green;
+    }
+  }
+
+  &__strip-signals {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    font-size: 14px;
+    color: $color-neutral-500;
+    font-weight: $font-weight-regular;
+  }
+
+  &__strip-dot {
+    color: $color-neutral-300;
+    margin: 0 2px;
+  }
+
+  &__strip-summary {
+    margin: $space-3 0 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $color-neutral-600;
+    max-width: 680px;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Cash Flow Metric Grid
+  // ═══════════════════════════════════════════════════════════════════════
+
+  &__metric-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $space-3;
+    margin-bottom: $space-8;
+  }
+
+  &__metric-block {
+    padding: $space-4;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    background: $color-neutral-0;
+    border: 1px solid $color-neutral-200;
+    border-radius: $radius-xl;
+    transition: border-color 0.15s ease;
+  }
+
+  &__metric-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+  }
+
+  &__metric-label {
+    font-size: 12px;
+    font-weight: $font-weight-medium;
+    color: $color-neutral-400;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+  }
+
+  &__metric-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: $radius-full;
+    font-size: 14px;
+    font-weight: $font-weight-medium;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    line-height: 1.5;
+
+    &--positive {
+      background: $color-accent-50;
+      color: $color-accent-700;
+      border: 1px solid rgba(16, 185, 129, 0.15);
+    }
+
+    &--neutral {
+      background: $color-neutral-100;
+      color: $color-neutral-500;
+      border: 1px solid $color-neutral-200;
+    }
+  }
+
+  &__metric-value {
+    font-family: $font-body;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-semibold;
+    color: $color-neutral-900;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.2;
+  }
+
+  &__metric-sparkline {
+    margin-top: $space-2;
+    height: 36px;
+    width: 100%;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Active Debt Stack Table
+  // ═══════════════════════════════════════════════════════════════════════
+
+  &__section--last {
+    padding-bottom: $space-8;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  &__th {
+    font-size: 10px;
+    font-weight: $font-weight-medium;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-wider;
+    color: $color-neutral-400;
+    padding: 6px 8px;
+    border-bottom: 0.5px solid $color-neutral-200;
+    text-align: left;
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__td {
+    padding: 6px 8px;
+    color: $color-neutral-900;
+    border-bottom: 0.5px solid rgba(15, 23, 42, 0.04);
+
+    &--right {
+      text-align: right;
+    }
+
+    &--mono {
+      font-variant-numeric: tabular-nums;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
