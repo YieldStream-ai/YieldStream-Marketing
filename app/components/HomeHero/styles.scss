@@ -243,6 +243,8 @@
     justify-content: center;
     pointer-events: none;
     z-index: 1;
+    mask-image: radial-gradient(ellipse 80% 75% at 45% 50%, black 35%, transparent 72%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 75% at 45% 50%, black 35%, transparent 72%);
   }
 
   /* UnderwritingHero wrapper */

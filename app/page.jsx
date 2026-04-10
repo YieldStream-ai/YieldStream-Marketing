@@ -1099,16 +1099,15 @@ function StepVisual({ step }) {
           style={{
             display: "flex",
             alignItems: "flex-start",
-            justifyContent: "center",
-            padding: "1.5rem",
+            justifyContent: "flex-start",
+            padding: "1.5rem 0 0 1.5rem",
             width: "100%",
             height: "100%",
           }}
         >
           <div
             style={{
-              width: "100%",
-              maxWidth: "960px",
+              width: "130%",
               background: "white",
               borderRadius: "12px",
               border: "1px solid hsl(210 15% 90%)",
@@ -1116,7 +1115,8 @@ function StepVisual({ step }) {
               boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
               fontFamily: "inherit",
               transform: "scale(0.92)",
-              transformOrigin: "top center",
+              transformOrigin: "top left",
+              flexShrink: 0,
             }}
           >
             {/* Header */}
@@ -1920,12 +1920,14 @@ export default function Home() {
               </p>
             </div>
           </div>
+          <div className="home__grid-connector" />
         </div>
       </section>
 
       {/* ===== HOW IT WORKS — STEPS ===== */}
-      <section className="section">
+      <section className="section home__steps-section">
         <div className="container">
+          <div className="home__steps-frame">
           <div className="section-header center reveal">
             <div className="label-mono">Steps to Get Funding</div>
             <h2 className="display-lg" style={{ marginTop: 12 }}>
@@ -1994,92 +1996,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ===== PLATFORM OUTCOMES — BENTO GRID ===== */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header center reveal">
-            <div className="label-mono">Platform</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>
-              Intelligence at every stage
-              <br />
-              of the deal lifecycle.
-            </h2>
-          </div>
-
-          <div className="home__bento-grid reveal">
-            {/* Card 1 — Wide */}
-            <div className="home__bento-card home__bento-card--wide">
-              <div className="home__bento-card-content">
-                <div className="label-mono">Extraction Precision</div>
-                <h3 className="display-md home__feature-heading">
-                  Upload a PDF. Get an underwrite in minutes.
-                </h3>
-                <p className="text-md home__feature-desc">
-                  AI extracts revenue trends, NSF patterns, stacking signals,
-                  and 20+ risk indicators from bank statements — with
-                  audit-ready verified data.
-                </p>
-                <Link href="/underwriting" className="btn btn-outline btn-sm">
-                  Learn about underwriting →
-                </Link>
-              </div>
-              <div className="screenshot">
-                <Image
-                  src="/images/Underwriting-Intelligence.png"
-                  alt="AI Bank Statement Analysis"
-                  width={1400}
-                  height={800}
-                  priority
-                />
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="home__bento-card">
-              <div className="label-mono">Market Matching</div>
-              <span className="pill pill--accent">AI Lender Matching</span>
-              <h3 className="display-md home__feature-heading">
-                Every lender scored. Every match explained.
-              </h3>
-              <p className="text-md home__feature-desc">
-                Three-layer scoring weighs global performance, your relationship
-                history, and buybox fit — ranked by expected yield.
-              </p>
-              <div className="screenshot">
-                <Image
-                  src="/images/Lender-Edit.png"
-                  alt="AI Lender Matching"
-                  width={1400}
-                  height={800}
-                  priority
-                />
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="home__bento-card">
-              <div className="label-mono">Unified Workflow</div>
-              <span className="pill pill--accent">Deal Pipeline</span>
-              <h3 className="display-md home__feature-heading">
-                See every deal. Know where it stands.
-              </h3>
-              <p className="text-md home__feature-desc">
-                Kanban or table view with running dollar totals per stage, stale
-                deal alerts, and commission estimates.
-              </p>
-              <div className="screenshot">
-                <Image
-                  src="/images/Opportunities-Kanban.png"
-                  alt="Deal Pipeline"
-                  width={1400}
-                  height={800}
-                  priority
-                />
-              </div>
-            </div>
           </div>
         </div>
       </section>
