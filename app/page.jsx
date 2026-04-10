@@ -363,8 +363,8 @@ export default function Home() {
           {/* Bottom-right screenshot peek */}
           <div className="home__hero-screenshot-peek">
             <Image
-              src="/images/opportunities-cta.png"
-              alt="YieldStream opportunities dashboard"
+              src="/images/underwritting-cta.png"
+              alt="YieldStream underwriting dashboard"
               width={1920}
               height={1080}
               className="home__hero-screenshot-img"
