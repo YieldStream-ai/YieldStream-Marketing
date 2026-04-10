@@ -1,8 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link2, BrainCircuit, GitCompareArrows, Send, BarChart3 } from "lucide-react";
+import {
+  Link2,
+  BrainCircuit,
+  GitCompareArrows,
+  Send,
+  BarChart3,
+  Info,
+} from "lucide-react";
 import useScrollPlay from "../useScrollPlay";
 import "./styles.scss";
 
@@ -12,7 +19,11 @@ const staggerContainer = {
 };
 const staggerItem = {
   hidden: { opacity: 0, y: -10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.38, ease: "easeOut" } },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.38, ease: "easeOut" },
+  },
 };
 // Case 4: card slides in from the right, then children stagger
 const compareCard = {
@@ -52,7 +63,7 @@ const STEPS = [
     id: "lender-match",
     num: "03",
     icon: GitCompareArrows,
-    tab: "Lender Match",
+    tab: "Lender Routing",
     title: "Lender Routing",
     desc: "Our three-layer scoring engine matches the deal to the best-fit lenders based on global data, your relationships, and buybox criteria.",
     cta: { text: "Learn about matching", href: "/lender-marketplace" },
@@ -89,10 +100,10 @@ function GenerateLinkVisual() {
   useEffect(() => {
     setPhase(0);
     const timers = [
-      setTimeout(() => setPhase(1), 700),   // cursor moves
-      setTimeout(() => setPhase(2), 2500),  // file drops — grey/processing
-      setTimeout(() => setPhase(3), 3900),  // confirmed — green
-      setTimeout(() => setPhase(0), 7200),  // reset
+      setTimeout(() => setPhase(1), 700), // cursor moves
+      setTimeout(() => setPhase(2), 2500), // file drops — grey/processing
+      setTimeout(() => setPhase(3), 3900), // confirmed — green
+      setTimeout(() => setPhase(0), 7200), // reset
     ];
     return () => timers.forEach(clearTimeout);
   }, [playKey]);
@@ -313,7 +324,9 @@ function GenerateLinkVisual() {
                   padding: "0.625rem 0.75rem",
                   border: `1px solid ${fileConfirmed ? "hsl(142 50% 80%)" : "hsl(210 15% 88%)"}`,
                   borderRadius: "8px",
-                  background: fileConfirmed ? "hsl(142 60% 97%)" : "hsl(210 10% 97%)",
+                  background: fileConfirmed
+                    ? "hsl(142 60% 97%)"
+                    : "hsl(210 10% 97%)",
                   transition: "border-color 0.4s ease, background 0.4s ease",
                 }}
               >
@@ -324,7 +337,9 @@ function GenerateLinkVisual() {
                   height="18"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke={fileConfirmed ? "hsl(186 94% 27%)" : "hsl(210 10% 70%)"}
+                  stroke={
+                    fileConfirmed ? "hsl(186 94% 27%)" : "hsl(210 10% 70%)"
+                  }
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -341,7 +356,9 @@ function GenerateLinkVisual() {
                     style={{
                       fontSize: "0.75rem",
                       fontWeight: 500,
-                      color: fileConfirmed ? "hsl(210 10% 20%)" : "hsl(210 10% 55%)",
+                      color: fileConfirmed
+                        ? "hsl(210 10% 20%)"
+                        : "hsl(210 10% 55%)",
                       margin: 0,
                       whiteSpace: "nowrap",
                       overflow: "hidden",
@@ -379,7 +396,9 @@ function GenerateLinkVisual() {
                       border: "1px solid hsl(210 15% 85%)",
                       borderRadius: "6px",
                       fontSize: "0.68rem",
-                      color: fileConfirmed ? "hsl(210 10% 20%)" : "hsl(210 10% 70%)",
+                      color: fileConfirmed
+                        ? "hsl(210 10% 20%)"
+                        : "hsl(210 10% 70%)",
                       background: "white",
                       opacity: fileConfirmed ? 0.5 : 0.35,
                       cursor: "not-allowed",
@@ -542,7 +561,8 @@ function StepVisual({ step }) {
             }}
           >
             {/* Cash Flow label */}
-            <motion.p variants={staggerItem}
+            <motion.p
+              variants={staggerItem}
               style={{
                 fontSize: "0.6rem",
                 fontWeight: 600,
@@ -2027,34 +2047,49 @@ export default function HowItWorks() {
         <div className="home__steps-frame">
           <div className="section-header center reveal">
             <div className="label-mono">Steps to Get Funding</div>
-            <h2 className="display-lg" style={{ marginTop: 12 }}>
+            <h2
+              className="display-lg"
+              style={{
+                marginTop: 12,
+                position: "relative",
+                display: "inline-block",
+              }}
+            >
               How it works
+              <Info
+                size={22}
+                style={{
+                  position: "absolute",
+                  top: 4,
+                  right: -28,
+                  color: "var(--p600)",
+                }}
+              />
             </h2>
           </div>
 
-          <div
-            className="home__steps-tabs reveal reveal-delay-1"
-            ref={tabsRef}
-          >
+          <div className="home__steps-tabs reveal reveal-delay-1" ref={tabsRef}>
             <div
               className="home__steps-indicator"
               style={{ left: indicator.left, width: indicator.width }}
             />
             {STEPS.map((step, i) => (
-              <button
-                key={step.id}
-                className={`home__steps-tab${activeStep === i ? " home__steps-tab--active" : ""}`}
-                onClick={() => {
-                  directionRef.current = i > activeStep ? 1 : -1;
-                  setActiveStep(i);
-                }}
-              >
-                <span className="home__steps-tab-icon">
-                  <step.icon size={16} />
-                </span>
-                <span className="home__steps-tab-label">{step.tab}</span>
-                <span className="home__steps-tab-num">{step.num}</span>
-              </button>
+              <React.Fragment key={step.id}>
+                {i > 0 && <span className="home__steps-divider" />}
+                <button
+                  className={`home__steps-tab${activeStep === i ? " home__steps-tab--active" : ""}`}
+                  onClick={() => {
+                    directionRef.current = i > activeStep ? 1 : -1;
+                    setActiveStep(i);
+                  }}
+                >
+                  <span className="home__steps-tab-icon">
+                    <step.icon size={16} />
+                  </span>
+                  <span className="home__steps-tab-label">{step.tab}</span>
+                  <span className="home__steps-tab-num">{step.num}</span>
+                </button>
+              </React.Fragment>
             ))}
           </div>
 

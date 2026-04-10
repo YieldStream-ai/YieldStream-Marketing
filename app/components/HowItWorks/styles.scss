@@ -1,10 +1,10 @@
 .home {
   &__steps-section {
     padding-top: 0;
+    background: linear-gradient(to bottom, #e8ecf0 0%, transparent 120px);
   }
 
   &__steps-frame {
-    border: 1px solid #c2c8d0;
     border-radius: 0 0 12px 12px;
     overflow: hidden;
     padding-top: var(--space-2xl);
@@ -31,13 +31,10 @@
 
   &__steps-indicator {
     position: absolute;
-    top: 1rem;
-    height: calc(100% - 2rem);
-    border-radius: 8px;
-    background: var(--n100);
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.06),
-      0 0 0 1px rgba(0, 0, 0, 0.04);
+    bottom: 0;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
+    background: var(--p600);
     transition:
       left 0.35s cubic-bezier(0.4, 0, 0.2, 1),
       width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -51,7 +48,7 @@
     gap: 8px;
     padding: 14px 24px;
     border: none;
-    border-radius: 8px;
+    border-radius: 0;
     font-size: 0.875rem;
     font-weight: 500;
     font-family: var(--font-body);
@@ -93,6 +90,14 @@
     .home__steps-tab--active & {
       color: var(--p600);
     }
+  }
+
+  &__steps-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--n200);
+    flex-shrink: 0;
+    align-self: center;
   }
 
   &__steps-panel {

@@ -2,6 +2,16 @@
 /* Institutional Minimalism Refactor */
 
 .home {
+  /* ===== ALSO INCLUDED ===== */
+  &__also-icon {
+    margin-bottom: 10px;
+    color: var(--p600);
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
   /* ===== BENTO GRID — PLATFORM OUTCOMES ===== */
   &__bento-grid {
     display: grid;
@@ -249,7 +259,7 @@
   }
 
   &__note-card {
-    background: var(--surface-dark);
+    background: var(--surface-navy);
     border-radius: 12px;
     padding: 32px;
     color: white;

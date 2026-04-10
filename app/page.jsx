@@ -5,15 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import CTABanner from "./components/CTABanner/CTABanner";
-import BentoShowcase from "./components/BentoShowcase";
 import HomeHero from "./components/HomeHero/index";
 import HowItWorks from "./components/HowItWorks/index";
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from "framer-motion";
+import PlatformFeatures from "./components/PlatformFeatures/index";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import "./page.scss";
 
 function CtaTiltImage() {
@@ -59,8 +54,6 @@ function CtaTiltImage() {
   );
 }
 
-
-
 export default function Home() {
   useReveal();
 
@@ -72,6 +65,9 @@ export default function Home() {
       {/* ===== HOW IT WORKS — STEPS ===== */}
       <HowItWorks />
 
+      {/* ===== PLATFORM FEATURES ===== */}
+      <PlatformFeatures />
+
       {/* ===== UNDERWRITER'S NOTE ===== */}
       <section className="section">
         <div className="container">
@@ -81,14 +77,16 @@ export default function Home() {
                 Transparent AI
               </div>
               <h2 className="display-lg">
-                Every recommendation
+                Every underwrite
                 <br />
                 comes with a reason.
               </h2>
               <p className="text-lg" style={{ marginTop: 12 }}>
-                YieldStream generates a human-readable Underwriter&apos;s Note
-                for every match — explaining the structural logic behind the
-                score. No black boxes.
+                YieldStream generates human-readable Underwriter Notes for every
+                file—explaining the structural logic behind the score. This
+                provides strategic sales positioning for your reps, allowing
+                them to defend offers with data and close with certainty. No
+                black boxes.
               </p>
               <div className="home__note-section">
                 <Link href="/underwriting" className="btn btn-outline">
@@ -98,7 +96,10 @@ export default function Home() {
             </div>
             <div className="home__note-card">
               <div className="home__note-card-glow" />
-              <div className="mono home__note-label" style={{ color: "var(--p400)" }}>
+              <div
+                className="mono home__note-label"
+                style={{ color: "var(--p400)" }}
+              >
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -163,9 +164,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ===== BENTO SHOWCASE ===== */}
-      <BentoShowcase />
 
       <CTABanner
         headline="Start closing smarter."
