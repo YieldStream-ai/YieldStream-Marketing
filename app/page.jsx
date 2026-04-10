@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import CTABanner from "./components/CTABanner";
+import BentoShowcase from "./components/BentoShowcase";
 import {
   Zap,
   Cpu,
@@ -311,18 +312,163 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right column — hero visual */}
+            {/* Hero flow diagram */}
             <div className="home__hero-visual reveal reveal-delay-2">
-              <div className="home__hero-mockup">
-                <Image
-                  src="/images/underwriting-hero.png"
-                  alt="YieldStream Underwriting Dashboard"
-                  width={1400}
-                  height={900}
-                  priority
-                />
-              </div>
-              <div className="home__hero-mockup-fade" />
+              <svg width="100%" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg">
+                <title>YieldStream intelligence system</title>
+                <style>{`
+                  @keyframes pulse1 { 0%,100%{opacity:.08} 50%{opacity:.2} }
+                  @keyframes pulse2 { 0%,100%{opacity:.06} 50%{opacity:.15} }
+                  @keyframes flowDash { to { stroke-dashoffset: -48; } }
+                  @keyframes nodeGlow { 0%,100%{opacity:.4} 50%{opacity:1} }
+                  @keyframes fadeFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+                  @keyframes ringPulse { 0%,100%{r:38;opacity:.08} 50%{r:50;opacity:.04} }
+                  @keyframes dataFlow { 0%{offset-distance:0%} 100%{offset-distance:100%} }
+                  @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+                `}</style>
+                <defs>
+                  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </marker>
+                  <radialGradient id="cg1"><stop offset="0%" stopColor="#047987" stopOpacity=".12"/><stop offset="100%" stopColor="#047987" stopOpacity="0"/></radialGradient>
+                  <radialGradient id="cg2"><stop offset="0%" stopColor="#14B8A6" stopOpacity=".08"/><stop offset="100%" stopColor="#14B8A6" stopOpacity="0"/></radialGradient>
+                </defs>
+
+                {/* Background glow rings */}
+                <circle cx="340" cy="200" r="140" fill="url(#cg1)" style={{animation:"pulse1 4.5s ease-in-out infinite"}}/>
+                <circle cx="340" cy="200" r="90" fill="url(#cg2)" style={{animation:"pulse2 3.5s ease-in-out infinite .5s"}}/>
+                <circle cx="340" cy="200" r="52" fill="none" stroke="#047987" strokeWidth=".5" opacity=".08" style={{animation:"ringPulse 4s ease-in-out infinite"}}/>
+
+                {/* Orbital rings */}
+                <ellipse cx="340" cy="200" rx="150" ry="150" fill="none" stroke="#047987" strokeWidth=".4" opacity=".06" strokeDasharray="4 8"/>
+                <ellipse cx="340" cy="200" rx="100" ry="100" fill="none" stroke="#14B8A6" strokeWidth=".3" opacity=".05" strokeDasharray="3 6"/>
+
+                {/* LEFT: Input documents */}
+                <g style={{animation:"fadeFloat 5s ease-in-out infinite"}}>
+                  <rect x="30" y="100" width="60" height="72" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth=".8"/>
+                  <line x1="40" y1="118" x2="80" y2="118" stroke="#047987" strokeWidth="2.5" opacity=".6" strokeLinecap="round"/>
+                  <line x1="40" y1="128" x2="74" y2="128" stroke="#CBD5E1" strokeWidth="1.2" opacity=".6" strokeLinecap="round"/>
+                  <line x1="40" y1="136" x2="78" y2="136" stroke="#CBD5E1" strokeWidth="1.2" opacity=".5" strokeLinecap="round"/>
+                  <line x1="40" y1="144" x2="70" y2="144" stroke="#CBD5E1" strokeWidth="1.2" opacity=".4" strokeLinecap="round"/>
+                  <line x1="40" y1="152" x2="76" y2="152" stroke="#CBD5E1" strokeWidth="1.2" opacity=".35" strokeLinecap="round"/>
+                  <text x="60" y="188" textAnchor="middle" fill="#FFFFFF" style={{fontSize:"10px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>Bank stmt</text>
+                </g>
+
+                <g style={{animation:"fadeFloat 5.5s ease-in-out infinite .8s"}}>
+                  <rect x="44" y="230" width="60" height="72" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth=".8"/>
+                  <rect x="54" y="244" width="22" height="14" rx="3" fill="#047987" opacity=".12"/>
+                  <line x1="54" y1="268" x2="94" y2="268" stroke="#CBD5E1" strokeWidth="1.2" opacity=".6" strokeLinecap="round"/>
+                  <line x1="54" y1="276" x2="88" y2="276" stroke="#CBD5E1" strokeWidth="1.2" opacity=".45" strokeLinecap="round"/>
+                  <line x1="54" y1="284" x2="82" y2="284" stroke="#CBD5E1" strokeWidth="1.2" opacity=".35" strokeLinecap="round"/>
+                  <text x="74" y="318" textAnchor="middle" fill="#FFFFFF" style={{fontSize:"10px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>Application</text>
+                </g>
+
+                <g style={{animation:"fadeFloat 6s ease-in-out infinite 1.4s"}}>
+                  <rect x="16" y="340" width="52" height="60" rx="5" fill="#FFFFFF" stroke="#CBD5E1" strokeWidth=".8"/>
+                  <line x1="26" y1="356" x2="58" y2="356" stroke="#047987" strokeWidth="1.8" opacity=".45" strokeLinecap="round"/>
+                  <line x1="26" y1="364" x2="54" y2="364" stroke="#CBD5E1" strokeWidth="1.2" opacity=".4" strokeLinecap="round"/>
+                  <line x1="26" y1="372" x2="50" y2="372" stroke="#CBD5E1" strokeWidth="1.2" opacity=".3" strokeLinecap="round"/>
+                  <text x="42" y="414" textAnchor="middle" fill="#FFFFFF" style={{fontSize:"10px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>Tax return</text>
+                </g>
+
+                {/* Flow lines: docs to center */}
+                <path d="M90 136 C160 136, 200 178, 275 193" fill="none" stroke="#047987" strokeWidth="1.5" opacity=".3" strokeDasharray="4 4" style={{animation:"flowDash 1.2s linear infinite"}}/>
+                <path d="M104 266 C170 266, 210 228, 275 207" fill="none" stroke="#047987" strokeWidth="1.5" opacity=".25" strokeDasharray="4 4" style={{animation:"flowDash 1.5s linear infinite .3s"}}/>
+                <path d="M68 365 C140 355, 190 260, 275 215" fill="none" stroke="#047987" strokeWidth="1" opacity=".2" strokeDasharray="4 4" style={{animation:"flowDash 1.8s linear infinite .6s"}}/>
+
+                {/* Data particles left */}
+                <circle r="3.5" fill="#047987" opacity=".85" style={{offsetPath:"path('M90 136 C160 136, 200 178, 275 193')",animation:"dataFlow 1.8s linear infinite"}}/>
+                <circle r="3" fill="#14B8A6" opacity=".75" style={{offsetPath:"path('M104 266 C170 266, 210 228, 275 207')",animation:"dataFlow 2.2s linear infinite .4s"}}/>
+                <circle r="2.5" fill="#047987" opacity=".65" style={{offsetPath:"path('M68 365 C140 355, 190 260, 275 215')",animation:"dataFlow 2.6s linear infinite .8s"}}/>
+
+                {/* CENTER: AI core */}
+                <polygon points="340,148 386,172 386,228 340,252 294,228 294,172" fill="#FFFFFF" stroke="#047987" strokeWidth="1.5"/>
+                <polygon points="340,158 378,178 378,222 340,242 302,222 302,178" fill="none" stroke="#14B8A6" strokeWidth=".5" opacity=".4"/>
+
+                {/* Inner circuitry */}
+                <line x1="318" y1="186" x2="340" y2="198" stroke="#047987" strokeWidth="1.2" opacity=".5"/>
+                <line x1="340" y1="198" x2="362" y2="186" stroke="#047987" strokeWidth="1.2" opacity=".5"/>
+                <line x1="340" y1="198" x2="340" y2="222" stroke="#14B8A6" strokeWidth="1.2" opacity=".4"/>
+                <line x1="322" y1="214" x2="358" y2="214" stroke="#047987" strokeWidth=".8" opacity=".25"/>
+                <line x1="314" y1="200" x2="366" y2="200" stroke="#14B8A6" strokeWidth=".5" opacity=".18"/>
+                <circle cx="340" cy="198" r="4" fill="#047987" style={{animation:"nodeGlow 2s ease-in-out infinite"}}/>
+                <circle cx="318" cy="186" r="2.5" fill="#14B8A6" opacity=".7"/>
+                <circle cx="362" cy="186" r="2.5" fill="#14B8A6" opacity=".7"/>
+                <circle cx="340" cy="222" r="2.5" fill="#047987" opacity=".6"/>
+                <circle cx="322" cy="214" r="1.5" fill="#14B8A6" opacity=".4"/>
+                <circle cx="358" cy="214" r="1.5" fill="#14B8A6" opacity=".4"/>
+
+                {/* Score badge */}
+                <g style={{animation:"fadeFloat 3.5s ease-in-out infinite .2s"}}>
+                  <rect x="313" y="112" width="54" height="28" rx="14" fill="#047987"/>
+                  <text x="340" y="129" textAnchor="middle" dominantBaseline="central" fill="#FFFFFF" style={{fontSize:"14px",fontWeight:500,fontFamily:"monospace"}}>100</text>
+                </g>
+
+                {/* CLEAN badge */}
+                <g style={{animation:"fadeFloat 4s ease-in-out infinite 1s"}}>
+                  <rect x="374" y="118" width="42" height="18" rx="9" fill="#E6F7F5" stroke="#14B8A6" strokeWidth=".5"/>
+                  <text x="395" y="130" textAnchor="middle" dominantBaseline="central" fill="#047987" style={{fontSize:"8px",fontWeight:500,letterSpacing:".04em",fontFamily:"system-ui,sans-serif"}}>CLEAN</text>
+                </g>
+
+                {/* Orbiting dots */}
+                <circle cx="248" cy="158" r="2" fill="#14B8A6" opacity=".3" style={{animation:"nodeGlow 3s ease-in-out infinite .5s"}}/>
+                <circle cx="432" cy="162" r="1.5" fill="#047987" opacity=".25" style={{animation:"nodeGlow 2.5s ease-in-out infinite 1s"}}/>
+                <circle cx="270" cy="268" r="1.5" fill="#14B8A6" opacity=".2" style={{animation:"nodeGlow 4s ease-in-out infinite 1.5s"}}/>
+                <circle cx="412" cy="258" r="2" fill="#047987" opacity=".25" style={{animation:"nodeGlow 3.5s ease-in-out infinite .8s"}}/>
+                <circle cx="300" cy="280" r="1" fill="#14B8A6" opacity=".15"/>
+                <circle cx="385" cy="145" r="1" fill="#047987" opacity=".15"/>
+                <circle cx="240" cy="210" r="1.5" fill="#047987" opacity=".12"/>
+                <circle cx="440" cy="230" r="1" fill="#14B8A6" opacity=".12"/>
+
+                {/* Flow lines: center to right */}
+                <path d="M410 182 C470 172, 500 130, 540 118" fill="none" stroke="#047987" strokeWidth="1.5" opacity=".3" strokeDasharray="4 4" style={{animation:"flowDash 1.3s linear infinite .2s"}}/>
+                <path d="M410 200 C460 200, 500 200, 540 200" fill="none" stroke="#047987" strokeWidth="1.8" opacity=".35" strokeDasharray="4 4" style={{animation:"flowDash 1s linear infinite"}}/>
+                <path d="M410 218 C470 228, 500 272, 540 282" fill="none" stroke="#047987" strokeWidth="1.2" opacity=".25" strokeDasharray="4 4" style={{animation:"flowDash 1.6s linear infinite .4s"}}/>
+                <path d="M410 228 C480 260, 510 340, 548 352" fill="none" stroke="#047987" strokeWidth="1" opacity=".18" strokeDasharray="4 4" style={{animation:"flowDash 2s linear infinite .7s"}}/>
+
+                {/* Particles right */}
+                <circle r="3.5" fill="#047987" opacity=".85" style={{offsetPath:"path('M410 200 C460 200, 500 200, 540 200')",animation:"dataFlow 1.5s linear infinite .2s"}}/>
+                <circle r="3" fill="#14B8A6" opacity=".7" style={{offsetPath:"path('M410 182 C470 172, 500 130, 540 118')",animation:"dataFlow 2s linear infinite"}}/>
+                <circle r="2.5" fill="#047987" opacity=".6" style={{offsetPath:"path('M410 218 C470 228, 500 272, 540 282')",animation:"dataFlow 2.4s linear infinite .5s"}}/>
+
+                {/* Lender 1: Top match */}
+                <g style={{animation:"fadeFloat 4.5s ease-in-out infinite .3s"}}>
+                  <rect x="544" y="90" width="148" height="56" rx="8" fill="#FFFFFF" stroke="#047987" strokeWidth="1"/>
+                  <text x="560" y="112" fill="#0F172A" style={{fontSize:"12px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>Capital Plus</text>
+                  <rect x="560" y="120" width="36" height="16" rx="8" fill="#E6F7F5"/>
+                  <text x="578" y="131" textAnchor="middle" dominantBaseline="central" fill="#047987" style={{fontSize:"10px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>98%</text>
+                  <text x="602" y="131" fill="#94A3B8" style={{fontSize:"10px",fontFamily:"system-ui,sans-serif"}}>match</text>
+                  <circle cx="672" cy="118" r="9" fill="#047987" opacity=".08"/>
+                  <text x="672" y="122" textAnchor="middle" dominantBaseline="central" fill="#047987" style={{fontSize:"9px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>1</text>
+                </g>
+
+                {/* Lender 2 */}
+                <g style={{animation:"fadeFloat 5s ease-in-out infinite 1s"}}>
+                  <rect x="548" y="174" width="144" height="52" rx="8" fill="#FFFFFF" stroke="#E2E8F0" strokeWidth=".8"/>
+                  <text x="562" y="196" fill="#1E293B" style={{fontSize:"12px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>Apex Lending</text>
+                  <rect x="562" y="204" width="36" height="16" rx="8" fill="#F0FDFA"/>
+                  <text x="580" y="215" textAnchor="middle" dominantBaseline="central" fill="#047987" style={{fontSize:"10px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>84%</text>
+                  <text x="604" y="215" fill="#94A3B8" style={{fontSize:"10px",fontFamily:"system-ui,sans-serif"}}>match</text>
+                </g>
+
+                {/* Lender 3 */}
+                <g style={{animation:"fadeFloat 4s ease-in-out infinite 1.6s"}}>
+                  <rect x="544" y="256" width="148" height="52" rx="8" fill="#FFFFFF" stroke="#E2E8F0" strokeWidth=".8"/>
+                  <text x="560" y="278" fill="#1E293B" style={{fontSize:"12px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>Swift Capital</text>
+                  <rect x="560" y="286" width="36" height="16" rx="8" fill="#F8FAFC"/>
+                  <text x="578" y="297" textAnchor="middle" dominantBaseline="central" fill="#047987" style={{fontSize:"10px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>71%</text>
+                  <text x="604" y="297" fill="#94A3B8" style={{fontSize:"10px",fontFamily:"system-ui,sans-serif"}}>match</text>
+                </g>
+
+                {/* Lender 4 (faded) */}
+                <g style={{animation:"fadeFloat 5.5s ease-in-out infinite 2s"}} opacity=".45">
+                  <rect x="552" y="332" width="140" height="48" rx="8" fill="#FFFFFF" stroke="#E2E8F0" strokeWidth=".5"/>
+                  <text x="566" y="354" fill="#94A3B8" style={{fontSize:"11px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>BlueLine Fund</text>
+                  <rect x="566" y="362" width="34" height="14" rx="7" fill="#F8FAFC"/>
+                  <text x="583" y="371" textAnchor="middle" dominantBaseline="central" fill="#94A3B8" style={{fontSize:"9px",fontWeight:500,fontFamily:"system-ui,sans-serif"}}>62%</text>
+                </g>
+
+              </svg>
             </div>
           </div>
         </div>
@@ -538,6 +684,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===== BENTO SHOWCASE ===== */}
+      <BentoShowcase />
 
       {/* ===== UNDERWRITER'S NOTE ===== */}
       <section className="section">

@@ -3,17 +3,17 @@
 
 .home {
   &__hero {
-    padding: var(--space-3xl) var(--space-lg) var(--space-5xl);
+    padding: var(--space-3xl) var(--space-sm) var(--space-5xl);
   }
 
   &__hero-card {
-    max-width: 1360px;
+    max-width: 1600px;
     margin: 0 auto;
     background: linear-gradient(165deg, #0f1629 0%, #0a0e1a 40%, #080c15 100%);
     border-radius: 24px;
     padding: var(--space-4xl) var(--space-4xl) var(--space-5xl);
     position: relative;
-    overflow: clip;
+    overflow: visible;
   }
 
   &__hero-glow {
@@ -50,9 +50,12 @@
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: var(--space-3xl);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
     align-items: center;
+    overflow: visible;
+    max-width: none;
+    padding: 0;
   }
 
   &__hero-copy {
@@ -195,7 +198,7 @@
 
   &__hero-feature {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
 
     strong {
@@ -228,38 +231,65 @@
   }
 
   &__hero-visual {
-    position: relative;
-    align-self: center;
-    margin-right: calc(var(--space-4xl) * -1 - 80px);
-    margin-bottom: calc(var(--space-5xl) * -1);
-    overflow: visible;
+    position: absolute;
+    right: -40px;
+    top: 0px;
+    width: 44%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
   }
 
-  &__hero-mockup {
-    border-radius: 16px 0 0 16px;
+
+  /* UnderwritingHero wrapper */
+  &__hero-dash-wrap {
+    position: relative;
+    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-right: none;
     box-shadow:
-      -30px 30px 80px rgba(0, 0, 0, 0.5),
-      0 0 40px rgba(0, 0, 0, 0.3);
-    transform: scale(2.2) translate(-2%, 11%);
-    transform-origin: left top;
-    transition: transform 0.4s var(--ease-out);
+      0 30px 80px -20px rgba(0, 0, 0, 0.5),
+      -20px 0 60px -10px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+      transform 0.35s var(--ease-out),
+      box-shadow 0.35s var(--ease-out);
+    width: 100%;
+    z-index: 1;
 
     &:hover {
-      transform: scale(1.5) translate(-15%, 3%);
+      transform: translateY(-4px);
+      box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.65);
     }
 
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
+    // Teal radial glow behind the card
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(
+        circle at center,
+        rgba(13, 148, 136, 0.12) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: -1;
     }
-  }
 
-  &__hero-mockup-fade {
-    display: none;
+    // Reset component's own border/radius/shadow — wrapper handles these
+    .uw-hero {
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      max-width: none;
+    }
+
+    // Summary fade — targets component class without modifying internals
+    .uw-hero__strip-summary {
+      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    }
   }
 
   /* ===== BENTO GRID — PLATFORM OUTCOMES ===== */
@@ -386,7 +416,7 @@
     cursor: pointer;
     transition: color 0.2s var(--ease-out);
     flex: 1;
-    justify-content: center;
+    justify-content: flex-start;
     position: relative;
     z-index: 1;
 
@@ -413,6 +443,7 @@
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     color: var(--n400);
+    margin-left: auto;
 
     .home__steps-tab--active & {
       color: var(--p600);
@@ -1033,15 +1064,13 @@
   }
 
   .home__hero-visual {
-    margin-right: 0;
-    margin-bottom: 0;
-    max-height: 400px;
-  }
-
-  .home__hero-mockup {
-    transform: none !important;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
+    right: auto;
+    top: auto;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    pointer-events: auto;
   }
 
   .home__intelligence-grid {
@@ -1070,12 +1099,32 @@
 
   .home__hero-card {
     border-radius: 16px;
-    padding: var(--space-4xl) var(--space-lg) var(--space-3xl);
+    padding: 32px var(--space-lg) var(--space-2xl);
   }
 
-  .home__hero-features {
+  .home__hero-form {
+    flex-direction: column;
+  }
+
+  .home__hero-stats {
     flex-direction: column;
     gap: var(--space-lg);
+  }
+
+  .home__hero-stat {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: var(--space-lg);
+
+    &:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  .home__hero-dash-wrap {
+    border-radius: 12px;
   }
 
   .home__bento-grid {
@@ -1126,5 +1175,11 @@
   .home__stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 639px) {
+  .home__hero-dash-wrap .uw-hero__metric-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
