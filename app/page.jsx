@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import CTABanner from "./components/CTABanner";
 import BentoShowcase from "./components/BentoShowcase";
-import HeroAmbientSVG from "./components/HeroAmbientSVG";
+import HomeHero from "./components/HomeHero/index";
 import {
   Zap,
   Cpu,
@@ -1408,7 +1408,7 @@ function StepVisual({ step }) {
                         whiteSpace: "nowrap",
                       }}
                     >
-                      National Funding Corp
+                      National Funding
                     </span>
                     <span
                       style={{
@@ -1885,86 +1885,40 @@ export default function Home() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="home__hero">
-        <div className="home__hero-card">
-          <div className="home__hero-glow home__hero-glow--1" />
-          <div className="home__hero-glow home__hero-glow--2" />
+      <HomeHero />
 
-          <div className="container home__hero-layout">
-            {/* Left column — copy */}
-            <div className="home__hero-copy">
-              <Link href="/pricing" className="home__hero-badge reveal">
-                <span className="home__hero-badge-icon">
-                  <Zap size={13} />
-                </span>
-                <span className="home__hero-badge-text">
-                  Request beta access
-                </span>
-                <ChevronRight size={14} />
-              </Link>
-
-              <h1 className="home__hero-title reveal">
-                Submission Intelligence
-                <br />
-                for the High-Volume{" "}
-                <span className="home__hero-accent">Broker.</span>
-              </h1>
-
-              <p className="home__hero-sub reveal reveal-delay-1">
-                <span style={{ color: "var(--p600)" }}>MCA</span> Brokers don't
-                just want automation; they want to stop wasting time on dead
-                deals.
+      {/* ===== THE PROBLEM ===== */}
+      <section className="home__problem">
+        <div className="container">
+          <div className="home__problem-layout">
+            <div className="home__problem-panel home__problem-panel--without">
+              <p className="home__problem-panel-label">WITHOUT YIELDSTREAM</p>
+              <h3 className="home__problem-panel-title">Blind</h3>
+              <p className="home__problem-panel-body">
+                Manage expectations with experience alone. Find out the real
+                picture after you've already invested the time.
               </p>
-
-              <div className="home__hero-actions reveal reveal-delay-2">
-                <Link href="/pricing" className="btn btn-primary btn-lg">
-                  Get Started
-                </Link>
-                <Link href="/contact" className="home__hero-link">
-                  Book a Demo
-                </Link>
-              </div>
-
-              <div className="home__hero-divider reveal reveal-delay-2" />
-
-              <div className="home__hero-features reveal reveal-delay-3">
-                <div className="home__hero-feature">
-                  <span className="home__hero-feature-icon">
-                    <Zap size={15} />
-                  </span>
-                  <div>
-                    <strong>120s Processing</strong>
-                    <span>PDF to scored intelligence</span>
-                  </div>
-                </div>
-                <div className="home__hero-feature">
-                  <span className="home__hero-feature-icon">
-                    <Cpu size={15} />
-                  </span>
-                  <div>
-                    <strong>AI-Powered Matching/Routing</strong>
-                    <span>Every lender scored & ranked</span>
-                  </div>
-                </div>
-              </div>
             </div>
-
-            {/* Hero ambient illustration */}
-            <div className="home__hero-visual">
-              <HeroAmbientSVG />
+            <div className="home__problem-center">
+              <p className="home__problem-label">THE PROBLEM</p>
+              <h2 className="home__problem-headline">
+                Bad expectations kill deals before they start.
+              </h2>
+              <p className="home__problem-body">
+                You know the call — the merchant wants $500K, their bank
+                statements tell a different story, and by the time offers come
+                back, they've already anchored on a number you couldn't deliver.
+                Three weeks wasted.
+              </p>
             </div>
-          </div>
-
-          {/* Bottom-right screenshot peek */}
-          <div className="home__hero-screenshot-peek">
-            <Image
-              src="/images/underwritting-cta.png"
-              alt="YieldStream underwriting dashboard"
-              width={1920}
-              height={1080}
-              className="home__hero-screenshot-img"
-            />
-            <div className="home__hero-screenshot-fade" />
+            <div className="home__problem-panel home__problem-panel--with">
+              <p className="home__problem-panel-label">WITH YIELDSTREAM</p>
+              <h3 className="home__problem-panel-title">Informed</h3>
+              <p className="home__problem-panel-body">
+                See the score, revenue profile, and lender fit within minutes of
+                receiving docs — so you can steer the conversation early.
+              </p>
+            </div>
           </div>
         </div>
       </section>
