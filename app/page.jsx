@@ -17,7 +17,7 @@ import {
   Send,
   BarChart3,
 } from "lucide-react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion";
 import "./page.scss";
 
 function CtaTiltImage() {
@@ -110,40 +110,7 @@ const STEPS = [
 function StepVisual({ step }) {
   switch (step) {
     case 0:
-      return (
-        <div className="home__sv home__sv--link">
-          <div className="home__sv-urlbar">
-            <div className="home__sv-lock">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            </div>
-            <div className="home__sv-url">
-              <span className="home__sv-url-protocol">https://</span>
-              upload.yieldstream.io/s/m8kx2...
-            </div>
-            <button className="home__sv-copy">Copy</button>
-          </div>
-          <div className="home__sv-status">
-            <div className="home__sv-dot home__sv-dot--green" />
-            Encrypted &middot; Expires in 48h
-          </div>
-          <div className="home__sv-files">
-            <div className="home__sv-file">
-              <div className="home__sv-file-icon">PDF</div>
-              <div className="home__sv-file-info">
-                <div className="home__sv-file-name">bank_statements_q4.pdf</div>
-                <div className="home__sv-file-size">2.4 MB</div>
-              </div>
-            </div>
-            <div className="home__sv-file">
-              <div className="home__sv-file-icon">PDF</div>
-              <div className="home__sv-file-info">
-                <div className="home__sv-file-name">bank_statements_q3.pdf</div>
-                <div className="home__sv-file-size">1.8 MB</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      );
+      return null;
     case 1:
       return (
         <div className="home__sv home__sv--underwrite">
@@ -263,6 +230,7 @@ function StepVisual({ step }) {
 export default function Home() {
   useReveal();
   const [activeStep, setActiveStep] = useState(0);
+  const directionRef = useRef(1);
   const tabsRef = useRef(null);
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
 
@@ -393,7 +361,7 @@ export default function Home() {
               <button
                 key={step.id}
                 className={`home__steps-tab${activeStep === i ? " home__steps-tab--active" : ""}`}
-                onClick={() => setActiveStep(i)}
+                onClick={() => { directionRef.current = i > activeStep ? 1 : -1; setActiveStep(i); }}
               >
                 <span className="home__steps-tab-icon">
                   <step.icon size={16} />
@@ -405,31 +373,39 @@ export default function Home() {
           </div>
 
           <div className="home__steps-panel reveal reveal-delay-2">
-            <div className="home__steps-track" style={{ transform: `translateX(-${activeStep * 100}%)` }}>
-              {STEPS.map((step, i) => (
-                <div className="home__steps-slide" key={step.id}>
-                  <div className="home__steps-content">
-                    <div className="home__steps-text">
-                      <span className="home__steps-num">{step.num}.</span>
-                      <h3 className="display-md home__steps-title">
-                        {step.title}
-                      </h3>
-                      <p className="text-md home__steps-desc">
-                        {step.desc}
-                      </p>
-                      <Link
-                        href={step.cta.href}
-                        className="btn btn-primary"
-                      >
-                        {step.cta.text}
-                      </Link>
-                    </div>
-                    <div className="home__steps-visual">
-                      <StepVisual step={i} />
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div className="home__steps-content">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={activeStep}
+                  className="home__steps-text"
+                  initial={{ opacity: 0, x: directionRef.current * 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: directionRef.current * -24 }}
+                  transition={{ duration: 0.22, ease: "easeInOut" }}
+                >
+                  <span className="home__steps-num">{STEPS[activeStep].num}.</span>
+                  <h3 className="display-md home__steps-title">
+                    {STEPS[activeStep].title}
+                  </h3>
+                  <p className="text-md home__steps-desc">
+                    {STEPS[activeStep].desc}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+              <div className="home__steps-visual">
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.div
+                    key={activeStep}
+                    className="home__steps-visual-fade"
+                    initial={{ opacity: 0, x: directionRef.current * 32 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: directionRef.current * -32 }}
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                  >
+                    <StepVisual step={activeStep} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
           </div>
         </div>
