@@ -1,14 +1,249 @@
 "use client";
 
+import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import CTABanner from "./components/CTABanner";
-import { Zap, Cpu, ChevronRight } from "lucide-react";
+import {
+  Zap,
+  Cpu,
+  ChevronRight,
+  Link2,
+  BrainCircuit,
+  GitCompareArrows,
+  Send,
+  BarChart3,
+} from "lucide-react";
 import "./page.scss";
+
+const STEPS = [
+  {
+    id: "generate-link",
+    num: "01",
+    icon: Link2,
+    tab: "Generate Link",
+    title: "Generate Secure Link",
+    desc: "Create a unique, encrypted upload link for your merchant. Documents stay secure and organized from the start.",
+    cta: { text: "Try it free", href: "/pricing" },
+  },
+  {
+    id: "ai-parse",
+    num: "02",
+    icon: BrainCircuit,
+    tab: "AI Underwrite",
+    title: "AI Parse & Underwrite",
+    desc: "Bank statements are automatically extracted and analyzed. 20+ risk signals scored — revenue trends, NSFs, stacking, DSCR — in under 120 seconds.",
+    cta: { text: "See underwriting", href: "/underwriting" },
+  },
+  {
+    id: "lender-match",
+    num: "03",
+    icon: GitCompareArrows,
+    tab: "Lender Match",
+    title: "Lender Matching",
+    desc: "Our three-layer scoring engine routes the deal to the best-fit lenders based on global data, your relationships, and buybox criteria.",
+    cta: { text: "Learn about matching", href: "/lender-marketplace" },
+  },
+  {
+    id: "submit",
+    num: "04",
+    icon: Send,
+    tab: "Submit",
+    title: "One-Click Submit",
+    desc: "Submit a professionally packaged PDF to matched lenders with a single click. No manual formatting, no copy-paste.",
+    cta: { text: "Get started", href: "/pricing" },
+  },
+  {
+    id: "compare",
+    num: "05",
+    icon: BarChart3,
+    tab: "Compare & Close",
+    title: "Compare & Close",
+    desc: "Review competing offers side-by-side, track lender responses in real time, and close the deal — all from one dashboard.",
+    cta: { text: "Book a demo", href: "/contact" },
+  },
+];
+
+function StepVisual({ step }) {
+  switch (step) {
+    case 0:
+      return (
+        <div className="home__sv home__sv--link">
+          <div className="home__sv-urlbar">
+            <div className="home__sv-lock">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <div className="home__sv-url">
+              <span className="home__sv-url-protocol">https://</span>
+              upload.yieldstream.io/s/m8kx2...
+            </div>
+            <button className="home__sv-copy">Copy</button>
+          </div>
+          <div className="home__sv-status">
+            <div className="home__sv-dot home__sv-dot--green" />
+            Encrypted &middot; Expires in 48h
+          </div>
+          <div className="home__sv-files">
+            <div className="home__sv-file">
+              <div className="home__sv-file-icon">PDF</div>
+              <div className="home__sv-file-info">
+                <div className="home__sv-file-name">bank_statements_q4.pdf</div>
+                <div className="home__sv-file-size">2.4 MB</div>
+              </div>
+            </div>
+            <div className="home__sv-file">
+              <div className="home__sv-file-icon">PDF</div>
+              <div className="home__sv-file-info">
+                <div className="home__sv-file-name">bank_statements_q3.pdf</div>
+                <div className="home__sv-file-size">1.8 MB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    case 1:
+      return (
+        <div className="home__sv home__sv--underwrite">
+          {/* Score header */}
+          <div className="home__sv-uw-top">
+            <span className="home__sv-uw-score">100</span>
+            <span className="home__sv-uw-tag home__sv-uw-tag--green">CLEAN</span>
+            <span className="home__sv-uw-tag">Growing revenue</span>
+            <span className="home__sv-uw-tag">No stacking</span>
+            <span className="home__sv-uw-tag">1st position</span>
+          </div>
+
+          {/* Cash flow cards */}
+          <div className="home__sv-uw-cards">
+            <div className="home__sv-uw-card">
+              <div className="home__sv-uw-card-label">Monthly Revenue <span className="home__sv-uw-up">+13%</span></div>
+              <div className="home__sv-uw-card-value">$175,000</div>
+            </div>
+            <div className="home__sv-uw-card">
+              <div className="home__sv-uw-card-label">Avg Daily Balance <span className="home__sv-uw-dim">28% of rev</span></div>
+              <div className="home__sv-uw-card-value">$49,000</div>
+            </div>
+            <div className="home__sv-uw-card">
+              <div className="home__sv-uw-card-label">DSCR</div>
+              <div className="home__sv-uw-card-value">7.46</div>
+            </div>
+            <div className="home__sv-uw-card">
+              <div className="home__sv-uw-card-label">Daily Payment Cap</div>
+              <div className="home__sv-uw-card-value">$6,888</div>
+            </div>
+          </div>
+
+          {/* Key metrics */}
+          <div className="home__sv-uw-metrics">
+            <div className="home__sv-uw-row"><span>Deposit velocity</span><strong>27 deposits</strong></div>
+            <div className="home__sv-uw-row"><span>Revenue trend</span><strong>Growing (+13%)</strong></div>
+            <div className="home__sv-uw-row"><span>NSF count</span><strong>0</strong></div>
+            <div className="home__sv-uw-row"><span>Debt burden ratio</span><strong>1.2%</strong></div>
+          </div>
+
+          {/* Signals */}
+          <div className="home__sv-uw-signals">
+            <div className="home__sv-uw-signal"><span className="home__sv-uw-dot" />DSCR 7.46 — strong cash cycle coverage</div>
+            <div className="home__sv-uw-signal"><span className="home__sv-uw-dot" />No NSF events in statement period</div>
+            <div className="home__sv-uw-signal"><span className="home__sv-uw-dot" />1st position — clean stack</div>
+          </div>
+        </div>
+      );
+    case 2:
+      return (
+        <div className="home__sv home__sv--match">
+          {[
+            { name: "Velocity Capital", score: 98, tier: "Tier 1" },
+            { name: "Summit Funding", score: 94, tier: "Tier 1" },
+            { name: "BlueHarbor Finance", score: 87, tier: "Tier 2" },
+          ].map((l, i) => (
+            <div key={l.name} className={`home__sv-lender ${i === 0 ? "home__sv-lender--top" : ""}`}>
+              <div className="home__sv-lender-info">
+                <div className="home__sv-lender-name">{l.name}</div>
+                <div className="home__sv-lender-tier">{l.tier}</div>
+              </div>
+              <div className={`home__sv-score ${i === 0 ? "home__sv-score--top" : ""}`}>
+                {l.score}%
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    case 3:
+      return (
+        <div className="home__sv home__sv--submit">
+          <div className="home__sv-doc">
+            <div className="home__sv-doc-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div className="home__sv-doc-label">Submission_Package.pdf</div>
+            <div className="home__sv-doc-meta">12 pages &middot; Auto-generated</div>
+          </div>
+          <div className="home__sv-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+          <div className="home__sv-badge-sent">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Submitted
+          </div>
+        </div>
+      );
+    case 4:
+      return (
+        <div className="home__sv home__sv--compare">
+          <div className="home__sv-offer home__sv-offer--best">
+            <div className="home__sv-offer-badge">Best</div>
+            <div className="home__sv-offer-name">Velocity Capital</div>
+            <div className="home__sv-offer-amount">$150,000</div>
+            <div className="home__sv-offer-details">
+              <div><span>Factor</span><strong>1.29</strong></div>
+              <div><span>Term</span><strong>12 mo</strong></div>
+              <div><span>Frequency</span><strong>Daily</strong></div>
+            </div>
+          </div>
+          <div className="home__sv-offer">
+            <div className="home__sv-offer-name">Summit Funding</div>
+            <div className="home__sv-offer-amount">$140,000</div>
+            <div className="home__sv-offer-details">
+              <div><span>Factor</span><strong>1.35</strong></div>
+              <div><span>Term</span><strong>10 mo</strong></div>
+              <div><span>Frequency</span><strong>Daily</strong></div>
+            </div>
+          </div>
+        </div>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function Home() {
   useReveal();
+  const [activeStep, setActiveStep] = useState(0);
+  const tabsRef = useRef(null);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0 });
+
+  const updateIndicator = useCallback((index) => {
+    const tabs = tabsRef.current;
+    if (!tabs) return;
+    const tab = tabs.children[index + 1]; // +1 to skip the indicator div
+    if (!tab) return;
+    setIndicator({
+      left: tab.offsetLeft,
+      width: tab.offsetWidth,
+    });
+  }, []);
+
+  useEffect(() => {
+    updateIndicator(activeStep);
+  }, [activeStep, updateIndicator]);
+
+  useEffect(() => {
+    const onResize = () => updateIndicator(activeStep);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [activeStep, updateIndicator]);
 
   return (
     <>
@@ -76,7 +311,80 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right column — reserved for future visual */}
+            {/* Right column — hero visual */}
+            <div className="home__hero-visual reveal reveal-delay-2">
+              <div className="home__hero-mockup">
+                <Image
+                  src="/images/underwriting-hero.png"
+                  alt="YieldStream Underwriting Dashboard"
+                  width={1400}
+                  height={900}
+                  priority
+                />
+              </div>
+              <div className="home__hero-mockup-fade" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS — STEPS ===== */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header center reveal">
+            <div className="label-mono">Steps to Get Funding</div>
+            <h2 className="display-lg" style={{ marginTop: 12 }}>
+              How it works
+            </h2>
+          </div>
+
+          <div className="home__steps-tabs reveal reveal-delay-1" ref={tabsRef}>
+            <div
+              className="home__steps-indicator"
+              style={{ left: indicator.left, width: indicator.width }}
+            />
+            {STEPS.map((step, i) => (
+              <button
+                key={step.id}
+                className={`home__steps-tab${activeStep === i ? " home__steps-tab--active" : ""}`}
+                onClick={() => setActiveStep(i)}
+              >
+                <span className="home__steps-tab-icon">
+                  <step.icon size={16} />
+                </span>
+                <span className="home__steps-tab-label">{step.tab}</span>
+                <span className="home__steps-tab-num">{step.num}</span>
+              </button>
+            ))}
+          </div>
+
+          <div className="home__steps-panel reveal reveal-delay-2">
+            <div className="home__steps-track" style={{ transform: `translateX(-${activeStep * 100}%)` }}>
+              {STEPS.map((step, i) => (
+                <div className="home__steps-slide" key={step.id}>
+                  <div className="home__steps-content">
+                    <div className="home__steps-text">
+                      <span className="home__steps-num">{step.num}.</span>
+                      <h3 className="display-md home__steps-title">
+                        {step.title}
+                      </h3>
+                      <p className="text-md home__steps-desc">
+                        {step.desc}
+                      </p>
+                      <Link
+                        href={step.cta.href}
+                        className="btn btn-primary"
+                      >
+                        {step.cta.text}
+                      </Link>
+                    </div>
+                    <div className="home__steps-visual">
+                      <StepVisual step={i} />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
