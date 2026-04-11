@@ -1,6 +1,70 @@
 /* Home page - BEM: home__element--modifier */
 /* Institutional Minimalism Refactor */
 
+.home__first-fold {
+  height: calc(100vh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 2;
+  background: var(--n0);
+}
+
+.home__reveal-container {
+  height: 200vh;
+  margin-top: -100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.home__reveal-quote {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.home__reveal-quote-text {
+  max-width: 900px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 56px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: rgb(160, 170, 180);
+  font-weight: 500;
+  position: relative;
+
+  &::before,
+  &::after {
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 1.4em;
+    opacity: 0.2;
+    position: absolute;
+  }
+
+  &::before {
+    content: "\201C";
+    top: 0;
+    left: -0.25em;
+  }
+
+  &::after {
+    content: "\201D";
+    margin-left: 0.08em;
+  }
+}
+
+.home__gradient-fade {
+  background: linear-gradient(to bottom, #dde3ea 0%, #fff 100px);
+  position: relative;
+  z-index: 2;
+}
+
 .home {
   /* ===== ALSO INCLUDED ===== */
   &__also-icon {
@@ -238,15 +302,22 @@
 
   /* ===== STATS BAR ===== */
   &__stats {
-    border-top: 1px solid var(--border-card);
-    border-bottom: 1px solid #c2c8d0;
+    padding: var(--space-2xl) 0;
   }
 
   &__stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: var(--space-xl);
     text-align: center;
+  }
+
+  &__stats-pipe {
+    width: 1px;
+    height: 32px;
+    background: var(--n200);
+    flex-shrink: 0;
   }
 
   &__stats-item .label-mono {
@@ -259,12 +330,14 @@
   }
 
   &__note-card {
-    background: var(--surface-navy);
+    background: #fff;
+    border: 1px solid var(--border-card);
     border-radius: 12px;
     padding: 32px;
-    color: white;
+    color: var(--n800);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 2px 12px rgba(4, 121, 135, 0.06);
   }
 
   &__note-card-glow {
@@ -272,15 +345,15 @@
     inset: 0;
     background: radial-gradient(
       circle at 0% 100%,
-      rgba(16, 185, 129, 0.1) 0%,
-      transparent 50%
+      rgba(4, 121, 135, 0.10) 0%,
+      transparent 70%
     );
     pointer-events: none;
   }
 
   &__note-label {
     font-size: 0.72rem;
-    color: var(--a400);
+    color: var(--p600);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 14px;
@@ -290,14 +363,14 @@
   &__note-text {
     font-size: 0.98rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--n600);
     position: relative;
   }
 
   &__note-footer {
     margin-top: 20px;
     padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--n150);
     display: flex;
     gap: 20px;
     position: relative;
@@ -305,7 +378,7 @@
 
   &__note-meta {
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--n400);
   }
 
   &__feature-label {
@@ -320,10 +393,8 @@
   }
 
   .home__stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-2xl);
+    flex-wrap: wrap;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -347,8 +418,6 @@
   }
 
   .home__stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
+    flex-wrap: wrap;
   }
 }
-

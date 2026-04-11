@@ -1,11 +1,11 @@
 .platform {
   &__section {
-    background: linear-gradient(to bottom, #e8ecf0 0%, transparent 120px);
     padding: var(--space-5xl) 0;
     min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: #fff;
 
     .container {
       flex: 1;
@@ -25,7 +25,7 @@
 
   /* ===== CARD BASE ===== */
   &__card {
-    background: var(--n0);
+    background: var(--n50);
     border: 1px solid var(--border-card);
     border-radius: 16px;
     padding: 28px;
@@ -40,18 +40,18 @@
   }
 
   &__card--ai {
-    background: linear-gradient(145deg, #e8f6f8 0%, #f0fafb 100%);
-    border-color: rgba(4, 121, 135, 0.15);
-  }
-
-  &__card--match {
     background: #ffffff;
     border-color: var(--border-card);
   }
 
+  &__card--match {
+    background: var(--n50);
+    border-color: var(--border-card);
+  }
+
   &__card--pipeline {
-    background: linear-gradient(145deg, #e8f6f8 0%, #f0fafb 100%);
-    border-color: rgba(4, 121, 135, 0.15);
+    background: var(--n50);
+    border-color: var(--border-card);
     gap: 16px;
     padding-bottom: 0;
   }
@@ -351,32 +351,32 @@
   overflow: hidden;
   border-radius: 10px;
   box-shadow:
-    0 0 0 1px rgba(0,0,0,0.08),
-    0 8px 32px rgba(0,0,0,0.14),
-    0 2px 8px rgba(0,0,0,0.08);
+    0 0 0 1px rgba(0, 0, 0, 0.08),
+    0 8px 32px rgba(0, 0, 0, 0.14),
+    0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-$ap-teal:         #12a8bc;
-$ap-teal-dark:    #047987;
-$ap-teal-light:   #eaf6f7;
-$ap-success:      #059669;
-$ap-success-bg:   #ecfdf5;
-$ap-orange:       #ff7a00;
-$ap-orange-bg:    #fff7ed;
-$ap-error:        #dc2626;
-$ap-n0:           #ffffff;
-$ap-n50:          #f8fafc;
-$ap-n100:         #f1f5f9;
-$ap-n200:         #e2e8f0;
-$ap-n300:         #cbd5e1;
-$ap-n400:         #94a3b8;
-$ap-n500:         #64748b;
-$ap-n600:         #475569;
-$ap-n700:         #334155;
-$ap-n800:         #1e293b;
-$ap-n900:         #0f172a;
-$ap-font-sans:    'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
-$ap-font-mono:    'Geist Mono', ui-monospace, monospace;
+$ap-teal: #12a8bc;
+$ap-teal-dark: #047987;
+$ap-teal-light: #eaf6f7;
+$ap-success: #059669;
+$ap-success-bg: #ecfdf5;
+$ap-orange: #ff7a00;
+$ap-orange-bg: #fff7ed;
+$ap-error: #dc2626;
+$ap-n0: #ffffff;
+$ap-n50: #f8fafc;
+$ap-n100: #f1f5f9;
+$ap-n200: #e2e8f0;
+$ap-n300: #cbd5e1;
+$ap-n400: #94a3b8;
+$ap-n500: #64748b;
+$ap-n600: #475569;
+$ap-n700: #334155;
+$ap-n800: #1e293b;
+$ap-n900: #0f172a;
+$ap-font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+$ap-font-mono: "Geist Mono", ui-monospace, monospace;
 
 .app-preview {
   width: 1680px;
@@ -436,8 +436,8 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
     max-width: 520px;
     height: 32px;
     border-radius: 6px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     padding: 0 12px;
@@ -447,13 +447,13 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
   &__chrome-search-icon {
     width: 14px;
     height: 14px;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
     flex-shrink: 0;
   }
 
   &__chrome-search-text {
     font-size: 13px;
-    color: rgba(255,255,255,0.3);
+    color: rgba(255, 255, 255, 0.3);
     flex: 1;
   }
 
@@ -468,9 +468,9 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
       width: 18px;
       height: 18px;
       border-radius: 3px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       font-size: 10px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(255, 255, 255, 0.35);
       font-family: $ap-font-mono;
     }
   }
@@ -486,12 +486,12 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 12px;
   }
 
@@ -515,7 +515,6 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
     min-height: 0;
     height: 600px;
   }
-
 
   &__main {
     flex: 1;
@@ -566,7 +565,9 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
     border: none;
     border-bottom: 2px solid transparent;
     cursor: pointer;
-    transition: color 100ms, border-color 100ms;
+    transition:
+      color 100ms,
+      border-color 100ms;
     font-family: $ap-font-sans;
 
     &--active {
@@ -870,8 +871,12 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
     height: 6px;
     border-radius: 50%;
 
-    &--on  { background: $ap-teal; }
-    &--off { background: $ap-n200; }
+    &--on {
+      background: $ap-teal;
+    }
+    &--off {
+      background: $ap-n200;
+    }
   }
 }
 
@@ -901,7 +906,7 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
 
   &__header {
     padding: 8px 10px;
-    border-bottom: 1px solid rgba(15,23,42,0.06);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
     background: $ap-n0;
   }
 
@@ -918,7 +923,9 @@ $ap-font-mono:    'Geist Mono', ui-monospace, monospace;
     letter-spacing: 0.05em;
     color: $ap-n600;
 
-    &--stale { color: $ap-error; }
+    &--stale {
+      color: $ap-error;
+    }
   }
 
   &__count {

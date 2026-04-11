@@ -45,8 +45,8 @@ const STEPS = [
     id: "generate-link",
     num: "01",
     icon: Link2,
-    tab: "Generate Link",
-    title: "Generate Secure Link",
+    tab: "Generate Portal",
+    title: "Generate Secure Upload Link",
     desc: "Create a unique, encrypted upload link for your merchant. Documents stay secure and organized from the start.",
     cta: { text: "Try it free", href: "/pricing" },
   },
@@ -54,7 +54,7 @@ const STEPS = [
     id: "ai-parse",
     num: "02",
     icon: BrainCircuit,
-    tab: "AI Underwrite",
+    tab: "Automated Underwriting",
     title: "AI Parse & Underwrite",
     desc: "Bank statements are automatically extracted and analyzed. 20+ risk signals scored — revenue trends, NSFs, stacking, DSCR — in under 120 seconds.",
     cta: { text: "See underwriting", href: "/underwriting" },
@@ -72,7 +72,7 @@ const STEPS = [
     id: "submit",
     num: "04",
     icon: Send,
-    tab: "Submit",
+    tab: "Submission",
     title: "One-Click Submit",
     desc: "Submit a professionally packaged PDF to matched lenders with a single click. No manual formatting, no copy-paste.",
     cta: { text: "Get started", href: "/pricing" },
@@ -82,7 +82,7 @@ const STEPS = [
     num: "05",
     icon: BarChart3,
     tab: "Compare & Close",
-    title: "Compare & Close",
+    title: "Leverage & Close",
     desc: "Review competing offers side-by-side, track lender responses in real time, and close the deal — all from one dashboard.",
     cta: { text: "Book a demo", href: "/contact" },
   },
@@ -981,17 +981,6 @@ function StepVisual({ step }) {
                 </svg>
               </button>
             </motion.div>
-            <motion.p
-              variants={staggerItem}
-              style={{
-                fontSize: "0.7rem",
-                color: "hsl(210 8% 50%)",
-                margin: "0 0 1rem",
-              }}
-            >
-              Angela Martinez · 3 lenders already submitted · 1 approval
-              received — select additional lenders below
-            </motion.p>
 
             {/* Already Submitted */}
             <motion.p
@@ -1119,7 +1108,7 @@ function StepVisual({ step }) {
                   sub: "$4,200",
                 },
                 {
-                  name: "Summit Merchant Solutions",
+                  name: "Merchant M. Solutions",
                   score: "78",
                   scoreColor: "#047987",
                   sub: "$3,150",
@@ -2046,7 +2035,7 @@ export default function HowItWorks() {
       <div className="container">
         <div className="home__steps-frame">
           <div className="section-header center reveal">
-            <div className="label-mono">Steps to Get Funding</div>
+            <div className="label-mono">Deal Workflow</div>
             <h2
               className="display-lg"
               style={{

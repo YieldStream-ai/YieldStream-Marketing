@@ -2,8 +2,10 @@ import './globals.css';
 import './Layout.scss';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import { GeistSans } from 'geist/font/sans';
+import { Inter } from 'next/font/google';
 import { GeistMono } from 'geist/font/mono';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata = {
   title: {
@@ -25,13 +27,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${GeistMono.variable}`}>
       <body>
+        <div className="layout__rail layout__rail--left" />
+        <div className="layout__rail layout__rail--right" />
         <Nav />
         <main className="layout__main">
           {children}
+          <Footer />
         </main>
-        <Footer />
       </body>
     </html>
   );

@@ -362,7 +362,7 @@ function PipelineVisual() {
         left: 0,
         right: 0,
         height: "45%",
-        background: "linear-gradient(to bottom, transparent 0%, #f0fafb 85%)",
+        background: "linear-gradient(to bottom, transparent 0%, var(--n50) 85%)",
         zIndex: 5,
         pointerEvents: "none",
       }} />

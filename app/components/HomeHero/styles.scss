@@ -1,14 +1,11 @@
 .home {
   &__hero {
-    padding: var(--space-3xl) var(--space-sm) var(--space-5xl);
   }
 
   &__hero-card {
     max-width: 1600px;
-    margin: 0 auto;
     min-height: 50vh;
     background: var(--surface-navy);
-    border-radius: 24px;
     padding: var(--space-4xl) var(--space-4xl) var(--space-5xl);
     position: relative;
     overflow: hidden;

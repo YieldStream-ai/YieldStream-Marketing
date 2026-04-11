@@ -40,8 +40,8 @@
   --n900: #0f172a;
 
   /* Typography */
-  --font-display: var(--font-geist-sans), -apple-system, sans-serif;
-  --font-body: var(--font-geist-sans), -apple-system, sans-serif;
+  --font-display: var(--font-inter), -apple-system, sans-serif;
+  --font-body: var(--font-inter), -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), "Menlo", monospace;
 
   /* Spacing Scale */
@@ -75,7 +75,8 @@
   /* Layout */
   --container-max: 1280px;
   --container-narrow: 800px;
-  --nav-height: 56px;
+  --nav-height: 76px;
+  --rail-width: clamp(0px, calc((100vw - 1200px) / 2 - 16px), 180px);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -100,7 +101,7 @@ html {
 body {
   font-family: var(--font-body);
   color: var(--n800);
-  background: #f8fafc;
+  background: rgb(248, 248, 248);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -220,7 +221,7 @@ select {
 
 .display-stat {
   font-family: var(--font-mono);
-  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   line-height: 1;
   letter-spacing: -0.03em;
   color: var(--n900);
@@ -343,6 +344,7 @@ select {
 /* ===== SECTIONS ===== */
 .section {
   padding: var(--space-6xl) 0;
+  background: #fff;
 }
 .section-sm {
   padding: var(--space-5xl) 0;
@@ -583,9 +585,9 @@ select {
 /* ===== FOOTER ===== */
 .footer {
   padding: var(--space-4xl) 0 var(--space-2xl);
-  background: var(--n0);
+  background: #fff;
   color: var(--n800);
-  border-top: 1px solid var(--border-subtle);
+  border-top: none;
 }
 .footer-grid {
   display: grid;
