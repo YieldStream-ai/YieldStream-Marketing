@@ -1,11 +1,18 @@
 /* Home page - BEM: home__element--modifier */
 /* Institutional Minimalism Refactor */
 
+.home__first-fold-wrapper {
+  height: 200vh;
+  position: relative;
+  z-index: 2;
+}
+
 .home__first-fold {
   height: calc(100vh - var(--nav-height));
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: sticky;
+  top: var(--nav-height);
   z-index: 2;
   background: var(--n0);
 }
@@ -15,6 +22,7 @@
   margin-top: -100vh;
   position: relative;
   z-index: 1;
+  pointer-events: none;
 }
 
 .home__reveal-quote {
@@ -25,6 +33,7 @@
   align-items: center;
   justify-content: center;
   background: #fff;
+  pointer-events: auto;
 }
 
 .home__reveal-quote-text {

@@ -100,18 +100,39 @@ function CtaTiltImage() {
   );
 }
 
+function FirstFold() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const blur = useTransform(scrollYProgress, [0, 0.15], [0, 24]);
+  const filter = useTransform(blur, (v) => `blur(${v}px)`);
+  const visibility = useTransform(scrollYProgress, (v) =>
+    v > 0.25 ? "hidden" : "visible",
+  );
+
+  return (
+    <div ref={ref} className="home__first-fold-wrapper">
+      <motion.div className="home__first-fold" style={{ filter, opacity, visibility }}>
+        <HomeHero />
+        <FundingFlow />
+      </motion.div>
+    </div>
+  );
+}
+
 export default function Home() {
   useReveal();
 
   return (
     <>
-      {/* ===== FIRST FOLD ===== */}
-      <div className="home__first-fold">
-        <HomeHero />
-        <FundingFlow />
-      </div>
+      {/* ===== FIRST FOLD (blur-fades on scroll) ===== */}
+      <FirstFold />
 
-      {/* ===== REVEAL QUOTE (tucked behind hero, revealed on scroll) ===== */}
+      {/* ===== REVEAL QUOTE (appears as hero dissolves) ===== */}
       <RevealQuote />
 
       {/* ===== HOW IT WORKS — STEPS ===== */}
