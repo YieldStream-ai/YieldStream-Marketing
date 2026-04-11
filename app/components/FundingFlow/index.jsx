@@ -7,28 +7,43 @@ import "./styles.scss";
 const STEPS = [
   {
     label: "Upload",
+    stat: "12+",
+    statLabel: "formats supported",
     sub: "Bank statements & PDFs",
     detail: "Secure portal ingestion",
+    pill: true,
   },
   {
     label: "Ingestion",
-    sub: "120s / 99.8% accuracy",
+    stat: "~120s",
+    statLabel: "processing time",
+    sub: "99.8% accuracy",
     detail: "OCR + transaction tagging",
+    pill: true,
   },
   {
     label: "Underwrite",
-    sub: "20+ risk signals scored",
-    detail: "Structural logic extraction",
+    stat: "20+",
+    statLabel: "risk signals scored",
+    sub: "Structural logic extraction",
+    detail: "Confidence-scored output",
+    pill: true,
   },
   {
     label: "Match",
+    stat: "97%",
+    statLabel: "match accuracy",
     sub: "Appetite-aware routing",
     detail: "3-layer scoring engine",
+    pill: true,
   },
   {
     label: "Funded",
+    stat: "3x",
+    statLabel: "faster to close",
     sub: "Offers compared & closed",
     detail: "One-click submission",
+    pill: true,
   },
 ];
 
@@ -43,65 +58,18 @@ const FADE_DURATION = 0.4; // seconds per card fade
 const STAGGER_TOTAL_MS =
   (HERO_SETTLE + STEPS.length * STAGGER_DELAY + FADE_DURATION) * 1000 + 200;
 
-/* Curved connector SVG paths between steps */
-function CurvedConnector({ index, sparkProgress }) {
-  const h = 40;
-  const w = 100;
-  const goesDown = index % 2 === 0;
-
-  const d = goesDown
-    ? `M 0,${h / 2} C ${w * 0.35},${h / 2} ${w * 0.35},${h - 4} ${w / 2},${h - 4} C ${w * 0.65},${h - 4} ${w * 0.65},${h / 2} ${w},${h / 2}`
-    : `M 0,${h / 2} C ${w * 0.35},${h / 2} ${w * 0.35},4 ${w / 2},4 C ${w * 0.65},4 ${w * 0.65},${h / 2} ${w},${h / 2}`;
-
+/* Straight connector between steps */
+function Connector({ sparkProgress }) {
   return (
     <div className="funding-flow__connector">
-      <svg
-        viewBox={`0 0 ${w} ${h}`}
-        fill="none"
-        preserveAspectRatio="none"
-        className="funding-flow__connector-svg"
-      >
-        {/* Dashed track */}
-        <path
-          d={d}
-          stroke="rgba(4,121,135,0.18)"
-          strokeWidth="1.5"
-          strokeDasharray="5 4"
-          fill="none"
+      <div className="funding-flow__connector-line" />
+      {sparkProgress !== null && (
+        <div
+          className="funding-flow__connector-spark"
+          style={{ left: `${sparkProgress * 100}%` }}
         />
-        {/* Spark — only visible when actively traversing this connector */}
-        {sparkProgress !== null && (
-          <SparkOnPath d={d} progress={sparkProgress} />
-        )}
-      </svg>
+      )}
     </div>
-  );
-}
-
-/* Renders the 4-pointed star at a given 0-1 progress along a path */
-function SparkOnPath({ d, progress }) {
-  const pathRef = useRef(null);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const path = pathRef.current;
-    if (!path) return;
-    const len = path.getTotalLength();
-    const pt = path.getPointAtLength(len * Math.min(1, Math.max(0, progress)));
-    setPos({ x: pt.x, y: pt.y });
-  }, [progress]);
-
-  return (
-    <>
-      <path ref={pathRef} d={d} fill="none" stroke="none" />
-      <g transform={`translate(${pos.x},${pos.y})`}>
-        <path
-          d="M0,-4 L0.5,-0.5 4,0 0.5,0.5 0,4 -0.5,0.5 -4,0 -0.5,-0.5Z"
-          fill="#0f1a2e"
-          opacity="0.7"
-        />
-      </g>
-    </>
   );
 }
 
@@ -199,13 +167,22 @@ export default function FundingFlow() {
                 </div>
                 <div className="funding-flow__label">{step.label}</div>
               </div>
+              {step.stat && (
+                <div className="funding-flow__stat">
+                  <span className="funding-flow__stat-num">{step.stat}</span>
+                  <span className="funding-flow__stat-label">{step.statLabel}</span>
+                </div>
+              )}
               <div className="funding-flow__sub">{step.sub}</div>
-              <div className="funding-flow__detail">{step.detail}</div>
+              <div
+                className={`funding-flow__detail${step.pill ? " funding-flow__detail--pill" : ""}`}
+              >
+                {step.detail}
+              </div>
             </motion.div>
 
             {i < STEPS.length - 1 && (
-              <CurvedConnector
-                index={i}
+              <Connector
                 sparkProgress={sparkConnector === i ? sparkProgress : null}
               />
             )}

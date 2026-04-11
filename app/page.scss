@@ -15,6 +15,7 @@
   top: var(--nav-height);
   z-index: 2;
   background: var(--n0);
+  overflow: hidden;
 }
 
 .home__reveal-container {

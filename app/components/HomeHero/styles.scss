@@ -226,7 +226,7 @@
   }
 
   &__hero-feature-icon {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     width: 32px;
