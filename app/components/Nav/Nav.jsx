@@ -192,8 +192,10 @@ export default function Nav() {
                 left: "50%",
                 x: "-50%",
                 width: 820,
-                height: 48,
-                borderRadius: 14,
+                height: 56,
+                borderRadius: 32,
+                paddingTop: 12,
+                paddingBottom: 12,
                 paddingLeft: 24,
                 paddingRight: 24,
                 boxShadow:
@@ -207,6 +209,8 @@ export default function Nav() {
                 width: "calc(100vw - 2 * var(--rail-width))",
                 height: 76,
                 borderRadius: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
                 paddingLeft: 0,
                 paddingRight: 0,
                 boxShadow: "0 0 0 rgba(0,0,0,0)",
@@ -393,9 +397,15 @@ export default function Nav() {
                 </motion.div>
               )}
             </AnimatePresence>
-            <Link href="/pricing" className="btn btn-primary btn-sm">
-              Get Started
-            </Link>
+            <motion.div
+              animate={{ borderRadius: scrolled ? 999 : 6 }}
+              transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
+              style={{ overflow: "hidden", display: "inline-flex" }}
+            >
+              <Link href="/pricing" className="btn btn-primary btn-sm" style={{ borderRadius: "inherit" }}>
+                Get Started
+              </Link>
+            </motion.div>
           </div>
 
           {/* Mobile toggle */}

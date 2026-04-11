@@ -1,9 +1,10 @@
 .home {
   &__hero {
+    width: 100%;
   }
 
   &__hero-card {
-    max-width: 1600px;
+    width: 100%;
     min-height: 50vh;
     background: var(--surface-navy);
     padding: var(--space-4xl) var(--space-4xl) var(--space-5xl);

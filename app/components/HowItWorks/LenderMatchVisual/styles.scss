@@ -1,0 +1,52 @@
+.lmv {
+  width: 100%;
+  min-width: 0;
+  font-size: 0.875rem;
+  color: var(--n600);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__lender {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: var(--n0);
+    border: 1px solid var(--border-card);
+    border-radius: 10px;
+    transition: border-color 0.15s;
+
+    &--top {
+      border-color: var(--p600);
+      box-shadow: 0 0 0 1px rgba(18, 168, 188, 0.1);
+    }
+  }
+
+  &__lender-name {
+    font-weight: 600;
+    font-size: 0.8125rem;
+    color: var(--n800);
+  }
+
+  &__lender-tier {
+    font-size: 0.6875rem;
+    color: var(--n400);
+    margin-top: 2px;
+  }
+
+  &__score {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--n500);
+    padding: 4px 10px;
+    background: var(--n50);
+    border-radius: 6px;
+
+    &--top {
+      color: var(--p600);
+      background: rgba(18, 168, 188, 0.08);
+    }
+  }
+}

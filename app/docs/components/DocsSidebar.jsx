@@ -36,11 +36,6 @@ export default function DocsSidebar({ activeSection, onNavigate }) {
     <aside className="docs-sidebar">
       <div className="docs-sidebar-hd">
         <div className="docs-logo">
-          <div className="docs-logo-mark">
-            <svg viewBox="0 0 10 10" fill="none">
-              <path d="M5 1L1.5 5h2.5v4h2V5h2.5L5 1z" fill="white" />
-            </svg>
-          </div>
           YieldStream
           <span className="docs-badge">Docs</span>
         </div>

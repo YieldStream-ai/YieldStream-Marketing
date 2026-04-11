@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Zap, Cpu, ChevronRight } from "lucide-react";
 import HeroAmbientSVG from "./HeroAmbientSVG";
+import EnterpriseModal from "../EnterpriseModal";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import "./styles.scss";
@@ -94,6 +95,8 @@ function CyclingSubtitle() {
 }
 
 export default function HomeHero() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <section className="home__hero">
       <div className="home__hero-card">
@@ -109,7 +112,7 @@ export default function HomeHero() {
               custom={0}
               variants={fadeUp}
             >
-              <Link href="/pricing" className="home__hero-badge">
+              <button onClick={() => setShowModal(true)} className="home__hero-badge">
                 <span className="home__hero-badge-icon">
                   <Zap size={13} />
                 </span>
@@ -117,7 +120,7 @@ export default function HomeHero() {
                   Request beta access
                 </span>
                 <ChevronRight size={14} />
-              </Link>
+              </button>
             </motion.div>
 
             <motion.h1
@@ -221,6 +224,7 @@ export default function HomeHero() {
           <div className="home__hero-screenshot-fade" />
         </motion.div>
       </div>
+      <EnterpriseModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </section>
   );
 }

@@ -6,10 +6,9 @@ import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import CTABanner from "./components/CTABanner/CTABanner";
 import HomeHero from "./components/HomeHero";
-import FundingFlow from "./components/FundingFlow";
-import Hero from "./components/LandingPage/hero";
 import HowItWorks from "./components/HowItWorks/index";
 import PlatformFeatures from "./components/PlatformFeatures/index";
+import FundingFlow from "./components/FundingFlow/index";
 import {
   motion,
   useMotionValue,
@@ -18,21 +17,6 @@ import {
   useScroll,
 } from "framer-motion";
 import "./page.scss";
-
-const QUOTES = [
-  {
-    num: "01",
-    text: "Expectations win deals, but only data sets them with the authority to close.",
-  },
-  {
-    num: "02",
-    text: "Speed without precision is just faster failure.",
-  },
-  {
-    num: "03",
-    text: "The best brokers don\u2019t guess which lender fits \u2014 they already know.",
-  },
-];
 
 function RevealQuote() {
   const ref = useRef(null);
@@ -49,7 +33,7 @@ function RevealQuote() {
   const color = useTransform(
     scrollYProgress,
     [0.05, 0.35],
-    ["rgb(160, 170, 180)", "rgb(15, 23, 42)"],
+    ["rgb(100, 116, 139)", "rgb(15, 23, 42)"],
   );
 
   return (
@@ -60,12 +44,13 @@ function RevealQuote() {
             className="home__reveal-quote-list"
             style={{ opacity, scale, y, filter, color }}
           >
-            {QUOTES.map((q) => (
-              <div key={q.num} className="home__reveal-quote-item">
-                <span className="home__reveal-quote-num">{q.num}.</span>
-                <p className="home__reveal-quote-text">{q.text}</p>
-              </div>
-            ))}
+            <span className="home__reveal-quote-heading">
+              Intelligent infrastructure for the MCA industry.
+            </span>
+            <p className="home__reveal-quote-text">
+              Standardize document ingestion, automate underwriting, and
+              understand your deal before the first submission.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -132,7 +117,10 @@ function FirstFold() {
 
   return (
     <div ref={ref} className="home__first-fold-wrapper">
-      <motion.div className="home__first-fold" style={{ filter, opacity, visibility }}>
+      <motion.div
+        className="home__first-fold"
+        style={{ filter, opacity, visibility }}
+      >
         <HomeHero />
         <FundingFlow />
       </motion.div>
@@ -231,28 +219,6 @@ export default function Home() {
                 <span className="mono home__note-meta">$150K requested</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== STATS BAR ===== */}
-      <section className="section home__stats">
-        <div className="container">
-          <div className="home__stats-grid reveal">
-            {[
-              { num: "~120s", label: "PDF to Scored Intelligence" },
-              { num: "20+", label: "Risk Signals Extracted" },
-              { num: "3x", label: "Faster Deal Preparation" },
-              { num: "97%", label: "Extraction Accuracy" },
-            ].map((s, i) => (
-              <React.Fragment key={s.label}>
-                {i > 0 && <div className="home__stats-pipe" />}
-                <div className="home__stats-item">
-                  <div className="display-stat">{s.num}</div>
-                  <div className="label-mono">{s.label}</div>
-                </div>
-              </React.Fragment>
-            ))}
           </div>
         </div>
       </section>
