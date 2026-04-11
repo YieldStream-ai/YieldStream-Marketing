@@ -37,36 +37,34 @@
   pointer-events: auto;
 }
 
+.home__reveal-quote-list {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 720px;
+}
+
+.home__reveal-quote-item {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.home__reveal-quote-num {
+  font-family: var(--font-mono);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--n200);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
 .home__reveal-quote-text {
-  max-width: 900px;
-  text-align: center;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 56px);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: rgb(160, 170, 180);
-  font-weight: 500;
-  position: relative;
-
-  &::before,
-  &::after {
-    font-family: Georgia, serif;
-    font-weight: 700;
-    font-size: 1.4em;
-    opacity: 0.2;
-    position: absolute;
-  }
-
-  &::before {
-    content: "\201C";
-    top: 0;
-    left: -0.25em;
-  }
-
-  &::after {
-    content: "\201D";
-    margin-left: 0.08em;
-  }
+  font-size: clamp(1.85rem, 3.2vw, 1.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  font-weight: 600;
 }
 
 .home__gradient-fade {
@@ -355,7 +353,7 @@
     inset: 0;
     background: radial-gradient(
       circle at 0% 100%,
-      rgba(4, 121, 135, 0.10) 0%,
+      rgba(4, 121, 135, 0.1) 0%,
       transparent 70%
     );
     pointer-events: none;

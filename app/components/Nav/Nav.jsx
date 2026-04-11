@@ -217,7 +217,9 @@ export default function Nav() {
       >
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
-            <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" priority />
+            <div className="nav-logo-container">
+              <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" priority />
+            </div>
             <AnimatePresence>
               {!scrolled && (
                 <motion.span

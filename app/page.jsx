@@ -19,6 +19,21 @@ import {
 } from "framer-motion";
 import "./page.scss";
 
+const QUOTES = [
+  {
+    num: "01",
+    text: "Expectations win deals, but only data sets them with the authority to close.",
+  },
+  {
+    num: "02",
+    text: "Speed without precision is just faster failure.",
+  },
+  {
+    num: "03",
+    text: "The best brokers don\u2019t guess which lender fits \u2014 they already know.",
+  },
+];
+
 function RevealQuote() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -26,9 +41,6 @@ function RevealQuote() {
     offset: ["start start", "end start"],
   });
 
-  // Container is 200vh with -100vh margin (hidden behind hero).
-  // Animate in the [0.05, 0.35] range so the quote is fully
-  // revealed by the time the hero scrolls away.
   const opacity = useTransform(scrollYProgress, [0.05, 0.35], [0, 1]);
   const scale = useTransform(scrollYProgress, [0.05, 0.35], [0.92, 1]);
   const y = useTransform(scrollYProgress, [0.05, 0.35], [40, 0]);
@@ -37,20 +49,24 @@ function RevealQuote() {
   const color = useTransform(
     scrollYProgress,
     [0.05, 0.35],
-    ["rgb(160, 170, 180)", "rgb(20, 24, 30)"],
+    ["rgb(160, 170, 180)", "rgb(15, 23, 42)"],
   );
 
   return (
     <div className="home__reveal-container" ref={ref}>
       <section className="home__reveal-quote">
         <div className="container">
-          <motion.p
-            className="home__reveal-quote-text"
+          <motion.div
+            className="home__reveal-quote-list"
             style={{ opacity, scale, y, filter, color }}
           >
-            Expectations win deals, but only data sets them with the authority
-            to close.
-          </motion.p>
+            {QUOTES.map((q) => (
+              <div key={q.num} className="home__reveal-quote-item">
+                <span className="home__reveal-quote-num">{q.num}.</span>
+                <p className="home__reveal-quote-text">{q.text}</p>
+              </div>
+            ))}
+          </motion.div>
         </div>
       </section>
     </div>

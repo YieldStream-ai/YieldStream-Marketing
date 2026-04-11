@@ -524,13 +524,25 @@ select {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--p600), var(--p800));
+  background: linear-gradient(135deg, var(--p600), var(--surface-navy));
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   font-weight: 700;
   font-size: 0.95rem;
+}
+.nav-logo-container,
+.footer__logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--n50);
+  border: 1px solid var(--p600);
+  border-radius: 8px;
+  flex-shrink: 0;
 }
 .nav-logo-image {
   width: 32px;
