@@ -2,11 +2,27 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Zap, Cpu, ChevronRight } from "lucide-react";
+import {
+  Zap,
+  Cpu,
+  ChevronRight,
+  FileText,
+  Target,
+  BarChart3,
+} from "lucide-react";
 import HeroAmbientSVG from "./HeroAmbientSVG";
 import EnterpriseModal from "../EnterpriseModal";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import DocumentFlowViz from "./visualizations/DocumentFlowViz";
+import LenderMatchViz from "./visualizations/LenderMatchViz";
+import UnderwritingSignalViz from "./visualizations/UnderwritingSignalViz";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import "./styles.scss";
 
 const fadeUp = {
@@ -96,6 +112,24 @@ function CyclingSubtitle() {
 
 export default function HomeHero() {
   const [showModal, setShowModal] = useState(false);
+  const tiltRef = useRef(null);
+  const rawX = useMotionValue(0.5);
+  const rawY = useMotionValue(0.5);
+  const springX = useSpring(rawX, { stiffness: 120, damping: 20 });
+  const springY = useSpring(rawY, { stiffness: 120, damping: 20 });
+  const rotateY = useTransform(springX, [0, 1], [-10, 10]);
+  const rotateX = useTransform(springY, [0, 1], [6, -6]);
+
+  function handleMouseMove(e) {
+    const rect = tiltRef.current.getBoundingClientRect();
+    rawX.set((e.clientX - rect.left) / rect.width);
+    rawY.set((e.clientY - rect.top) / rect.height);
+  }
+
+  function handleMouseLeave() {
+    rawX.set(0.5);
+    rawY.set(0.5);
+  }
 
   return (
     <section className="home__hero">
@@ -112,7 +146,10 @@ export default function HomeHero() {
               custom={0}
               variants={fadeUp}
             >
-              <button onClick={() => setShowModal(true)} className="home__hero-badge">
+              <button
+                onClick={() => setShowModal(true)}
+                className="home__hero-badge"
+              >
                 <span className="home__hero-badge-icon">
                   <Zap size={13} />
                 </span>
@@ -213,17 +250,78 @@ export default function HomeHero() {
             damping: 18,
             delay: 0.5,
           }}
+          ref={tiltRef}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          style={{ perspective: 1200 }}
         >
-          <Image
-            src="/images/underwritting-cta.png"
-            alt="YieldStream underwriting dashboard"
-            width={1920}
-            height={1080}
-            className="home__hero-screenshot-img"
-          />
-          <div className="home__hero-screenshot-fade" />
+          <motion.div
+            className="home__hero-screenshot-tilt"
+            style={{ rotateX, rotateY }}
+          >
+            <Image
+              src="/images/underwritting-cta.png"
+              alt="YieldStream underwriting dashboard"
+              width={1920}
+              height={1080}
+              className="home__hero-screenshot-img"
+            />
+            <div className="home__hero-screenshot-fade" />
+          </motion.div>
         </motion.div>
       </div>
+
+      {/* Value prop boxes */}
+      <motion.div
+        className="home__hero-value-props"
+        initial="hidden"
+        animate="visible"
+        custom={0.6}
+        variants={fadeUp}
+      >
+        <div className="home__hero-value-prop">
+          <div className="home__hero-value-prop-label">
+            <span className="home__hero-value-prop-icon">
+              <FileText size={14} />
+            </span>
+            Extraction Architecture
+          </div>
+          <h3>Document Intelligence</h3>
+          <p>
+            Automated extraction from secure upload links. Turn raw statements
+            into structured, validated data sets ready for underwriting in
+            seconds.
+          </p>
+        </div>
+        <div className="home__hero-value-prop">
+          <div className="home__hero-value-prop-label">
+            <span className="home__hero-value-prop-icon">
+              <Target size={14} />
+            </span>
+            Submission Logic
+          </div>
+          <h3>Lender Matching</h3>
+          <p>
+            Every deal is instantly ranked against lender buy box criteria and
+            your previously funded deals. Match merchant profiles to specific
+            funding criteria to eliminate submission friction.
+          </p>
+        </div>
+        <div className="home__hero-value-prop">
+          <div className="home__hero-value-prop-label">
+            <span className="home__hero-value-prop-icon">
+              <BarChart3 size={14} />
+            </span>
+            Data Enrichment
+          </div>
+          <h3>Underwriting Analysis</h3>
+          <p>
+            High-fidelity risk signaling with automated NSF detection,
+            debt-stacking analysis, and automated file scoring.
+          </p>
+        </div>
+      </motion.div>
+
       <EnterpriseModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </section>
   );

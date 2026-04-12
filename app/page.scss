@@ -19,7 +19,7 @@
 }
 
 .home__reveal-container {
-  height: 200vh;
+  height: 300vh;
   margin-top: -100vh;
   position: relative;
   z-index: 1;
@@ -33,10 +33,40 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(248, 248, 248);
   background-image: radial-gradient(var(--n50) 1px, transparent 1px);
   background-size: 24px 24px;
   pointer-events: auto;
+}
+
+.home__reveal-quote-icon {
+  position: absolute;
+  pointer-events: none;
+  color: var(--n700);
+  z-index: 0;
+
+  svg {
+    width: 140px;
+    height: 140px;
+  }
+
+  &--top-left {
+    top: 12%;
+    left: 8%;
+  }
+
+  &--right {
+    top: 38%;
+    right: 6%;
+  }
+
+  &--bottom-left {
+    bottom: 14%;
+    left: 12%;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .home__reveal-quote-list {
@@ -44,6 +74,8 @@
   flex-direction: column;
   gap: 48px;
   max-width: 720px;
+  position: relative;
+  z-index: 1;
 }
 
 .home__reveal-quote-item {
@@ -73,8 +105,31 @@
   font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2.5rem);
   font-weight: 700;
-  color: var(--n900);
+  color: var(--n600, #475569);
   line-height: 1.2;
+}
+
+.home__reveal-quote-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  // margin-top: 24px;
+}
+
+.home__reveal-quote-rule {
+  width: 48px;
+  border: none;
+  border-top: 2px solid var(--p600);
+  margin: 0 0 20px;
+}
+
+.home__reveal-quote-desc {
+  font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
+  font-weight: 400;
+  color: var(--n400, #94a3b8);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
 }
 
 .home__gradient-fade {
@@ -463,6 +518,122 @@
 
   &__feature-label {
     margin-bottom: 12px;
+  }
+}
+
+/* ===== BUYING SIGNAL ===== */
+.home__buying-signal {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    #162033 0%,
+    var(--surface-navy) 40%,
+    #0f1e35 70%,
+    #132440 100%
+  );
+  padding: var(--space-6xl) 0;
+  text-align: center;
+}
+
+.home__buying-signal-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+
+  &--1 {
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    right: -100px;
+    background: radial-gradient(
+      circle,
+      rgba(4, 121, 135, 0.1) 0%,
+      transparent 70%
+    );
+  }
+
+  &--2 {
+    width: 500px;
+    height: 500px;
+    bottom: -150px;
+    left: -100px;
+    background: radial-gradient(
+      circle,
+      rgba(4, 121, 135, 0.07) 0%,
+      transparent 70%
+    );
+  }
+}
+
+.home__buying-signal-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__buying-signal-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--p600);
+  margin-bottom: var(--space-xl);
+}
+
+.home__buying-signal-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: white;
+  margin: 0 0 var(--space-xl);
+  max-width: 720px;
+}
+
+.home__buying-signal-sub {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 520px;
+  margin: 0 0 var(--space-2xl);
+}
+
+.home__buying-signal-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .btn-primary {
+    background: var(--p600);
+    border-color: var(--p600);
+    &:hover {
+      background: var(--p700);
+      border-color: var(--p700);
+    }
+  }
+}
+
+.home__buying-signal-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s;
+  &:hover {
+    color: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .home__buying-signal-title br {
+    display: none;
   }
 }
 

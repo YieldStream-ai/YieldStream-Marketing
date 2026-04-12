@@ -1,0 +1,54 @@
+.pricing-modal {
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 24px;
+    overflow-y: auto;
+    animation: pricingModalFadeIn 0.2s ease;
+  }
+
+  &__dialog {
+    position: relative;
+    width: 100%;
+    max-width: 1160px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 0 0;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+    animation: pricingModalSlideUp 0.25s ease;
+    overflow: hidden;
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--n500, #64748b);
+    padding: 4px;
+    line-height: 0;
+    z-index: 2;
+    transition: color 0.15s;
+
+    &:hover {
+      color: var(--n800, #1e293b);
+    }
+  }
+}
+
+@keyframes pricingModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pricingModalSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
