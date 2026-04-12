@@ -76,7 +76,7 @@
   --container-max: 1280px;
   --container-narrow: 800px;
   --nav-height: 76px;
-  --rail-width: clamp(0px, calc((100vw - 1200px) / 2 - 16px), 180px);
+  --rail-width: clamp(0px, calc((100vw - 1200px) / 2 - 16px), 300px);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -322,12 +322,12 @@ select {
 }
 
 .btn-emerald {
-  background: var(--a500);
+  background: #0d9488;
   color: white;
-  box-shadow: 0 1px 2px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 1px 2px rgba(13, 148, 136, 0.2);
 }
 .btn-emerald:hover {
-  background: var(--a600);
+  background: #0f766e;
 }
 
 .btn-lg {
@@ -347,25 +347,39 @@ select {
   background: #fff;
 }
 .section-sm {
-  padding: var(--space-5xl) 0;
+  padding: var(--space-3xl) 0;
+  background: #fff;
 }
 .section-alt {
-  background: var(--n0);
+  background-color: var(--n0);
+  background-image: radial-gradient(var(--n150) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
-.section-dark {
-  background: linear-gradient(180deg, var(--surface-dark) 0%, #060919 100%);
-  color: white;
+
+/* Noise grain overlay for dark sections */
+.grain {
+  position: relative;
 }
-.section-dark .text-lg,
-.section-dark .text-md {
-  color: rgba(255, 255, 255, 0.6);
-}
-.section-dark .label {
-  color: var(--a400);
+.grain::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  opacity: 0.04;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  z-index: 1;
+  border-radius: inherit;
 }
 
 .section-header {
   margin-bottom: var(--space-2xl);
+}
+.section-header .display-xl,
+.section-header .display-lg,
+.section-header .display-md {
+  margin-top: 12px;
 }
 .section-header.center {
   text-align: center;

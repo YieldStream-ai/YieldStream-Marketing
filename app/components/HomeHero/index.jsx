@@ -133,7 +133,7 @@ export default function HomeHero() {
 
   return (
     <section className="home__hero">
-      <div className="home__hero-card">
+      <div className="home__hero-card grain">
         <div className="home__hero-glow home__hero-glow--1" />
         <div className="home__hero-glow home__hero-glow--2" />
 

@@ -13,7 +13,7 @@ export async function POST(request) {
     const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
 
     if (supabaseUrl && supabaseKey) {
-      await fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
+      const sbRes = await fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,13 +26,19 @@ export async function POST(request) {
           data: { email, volume, notes },
         }),
       });
+      if (!sbRes.ok) {
+        const sbBody = await sbRes.text();
+        console.error('Supabase insert failed:', sbRes.status, sbBody);
+      }
+    } else {
+      console.warn('Supabase credentials missing — skipping lead storage');
     }
 
     // Send notification email via Resend
     const resendKey = process.env.RESEND_API_KEY;
 
     if (resendKey) {
-      await fetch('https://api.resend.com/emails', {
+      const emailRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,6 +51,12 @@ export async function POST(request) {
           text: `New enterprise interest submission:\n\nEmail: ${email}\nMonthly Deal Volume: ${volume || 'Not specified'}\nNotes: ${notes || 'None'}`,
         }),
       });
+      if (!emailRes.ok) {
+        const emailBody = await emailRes.text();
+        console.error('Resend email failed:', emailRes.status, emailBody);
+      }
+    } else {
+      console.warn('RESEND_API_KEY missing — skipping email notification');
     }
 
     return NextResponse.json({ success: true });

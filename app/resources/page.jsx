@@ -22,7 +22,7 @@ export default function ResourcesPage() {
         <div className="container">
           <div className="section-header center reveal">
             <div className="label">Resources</div>
-            <h1 className="display-xl resources__hero-title">Insights for MCA brokers<br />who think in systems.</h1>
+            <h1 className="display-xl resources__hero-title">Insights for <span style={{ color: 'var(--p600)' }}>MCA</span> brokers<br />who think in systems.</h1>
             <p className="text-lg resources__hero-sub">
               Deep dives on submission intelligence, lender matching, underwriting automation, and building a data-driven brokerage.
             </p>
@@ -43,7 +43,7 @@ export default function ResourcesPage() {
               <p className="resources__featured-desc">
                 A comprehensive breakdown of how data-driven lender matching works, why relationship weighting is the key differentiator, and how to evaluate whether your brokerage is ready for AI-powered submissions.
               </p>
-              <span className="btn btn-emerald">Read the Guide →</span>
+              <span className="btn btn-primary">Read the Guide →</span>
             </div>
           </Link>
 
@@ -61,23 +61,6 @@ export default function ResourcesPage() {
                 </div>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <section className="section section-alt">
-        <div className="container-narrow resources__newsletter">
-          <div className="reveal">
-            <div className="label resources__newsletter-label">Stay Informed</div>
-            <h2 className="display-md">Get the MCA intelligence briefing.</h2>
-            <p className="text-lg resources__newsletter-desc">
-              Weekly insights on lender trends, submission strategies, and product updates. No spam, unsubscribe anytime.
-            </p>
-            <div className="resources__newsletter-form">
-              <input type="email" placeholder="you@yourbrokerage.com" className="resources__newsletter-input" />
-              <button className="btn btn-primary">Subscribe</button>
-            </div>
           </div>
         </div>
       </section>
