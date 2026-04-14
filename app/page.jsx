@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import PricingModal from "./components/PricingModal";
-import HomeHero from "./components/HomeHero";
+import Hero from "./components/Hero";
 import HowItWorks from "./components/HowItWorks/index";
 import PlatformFeatures from "./components/PlatformFeatures/index";
 import FundingFlow from "./components/FundingFlow/index";
@@ -68,7 +68,11 @@ function RevealQuote() {
   const ruleEnd = ruleStart + 0.25 / total + 0.06;
   const ruleBlur = useTransform(scrollYProgress, [ruleStart, ruleEnd], [8, 0]);
   const ruleFilter = useTransform(ruleBlur, (v) => `blur(${v}px)`);
-  const ruleOpacity = useTransform(scrollYProgress, [ruleStart, ruleEnd], [0.3, 1]);
+  const ruleOpacity = useTransform(
+    scrollYProgress,
+    [ruleStart, ruleEnd],
+    [0.3, 1],
+  );
 
   // Icon 1 — PDF doc, top-left
   const icon1X = useTransform(scrollYProgress, [0.12, 0.38], [-80, 0]);
@@ -83,10 +87,10 @@ function RevealQuote() {
   const icon2Opacity = useTransform(scrollYProgress, [0.16, 0.42], [0, 0.4]);
 
   // Icon 3 — stacked cards, bottom-left
-  const icon3X = useTransform(scrollYProgress, [0.20, 0.44], [-60, 0]);
-  const icon3Y = useTransform(scrollYProgress, [0.20, 0.44], [80, 0]);
-  const icon3Rotate = useTransform(scrollYProgress, [0.20, 0.44], [-360, 0]);
-  const icon3Opacity = useTransform(scrollYProgress, [0.20, 0.44], [0, 0.4]);
+  const icon3X = useTransform(scrollYProgress, [0.2, 0.44], [-60, 0]);
+  const icon3Y = useTransform(scrollYProgress, [0.2, 0.44], [80, 0]);
+  const icon3Rotate = useTransform(scrollYProgress, [0.2, 0.44], [-360, 0]);
+  const icon3Opacity = useTransform(scrollYProgress, [0.2, 0.44], [0, 0.4]);
 
   return (
     <div className="home__reveal-container" ref={ref}>
@@ -97,55 +101,345 @@ function RevealQuote() {
         {/* Decorative scroll-animated SVG icons */}
         <motion.div
           className="home__reveal-quote-icon home__reveal-quote-icon--top-left"
-          style={{ x: icon1X, y: icon1Y, rotate: icon1Rotate, opacity: icon1Opacity }}
+          style={{
+            x: icon1X,
+            y: icon1Y,
+            rotate: icon1Rotate,
+            opacity: icon1Opacity,
+          }}
         >
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="6" width="40" height="52" rx="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <rect x="16" y="11" width="32" height="6" rx="2" fill="currentColor" opacity="0.12" />
-            <line x1="16" y1="24" x2="40" y2="24" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-            <line x1="16" y1="30" x2="36" y2="30" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-            <line x1="16" y1="36" x2="42" y2="36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-            <line x1="16" y1="42" x2="34" y2="42" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-            <path d="M43 34 L45.5 37 L50 32" stroke="hsl(174, 84%, 32%)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <rect x="38" y="48" width="12" height="7" rx="1.5" fill="currentColor" opacity="0.08" stroke="currentColor" strokeWidth="1" />
-            <text x="44" y="54" textAnchor="middle" fontSize="5" fontWeight="600" fill="currentColor" opacity="0.6" fontFamily="DM Sans, sans-serif">PDF</text>
+          <svg
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="12"
+              y="6"
+              width="40"
+              height="52"
+              rx="4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <rect
+              x="16"
+              y="11"
+              width="32"
+              height="6"
+              rx="2"
+              fill="currentColor"
+              opacity="0.12"
+            />
+            <line
+              x1="16"
+              y1="24"
+              x2="40"
+              y2="24"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            <line
+              x1="16"
+              y1="30"
+              x2="36"
+              y2="30"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            <line
+              x1="16"
+              y1="36"
+              x2="42"
+              y2="36"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            <line
+              x1="16"
+              y1="42"
+              x2="34"
+              y2="42"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            <path
+              d="M43 34 L45.5 37 L50 32"
+              stroke="hsl(174, 84%, 32%)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            <rect
+              x="38"
+              y="48"
+              width="12"
+              height="7"
+              rx="1.5"
+              fill="currentColor"
+              opacity="0.08"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
+            <text
+              x="44"
+              y="54"
+              textAnchor="middle"
+              fontSize="5"
+              fontWeight="600"
+              fill="currentColor"
+              opacity="0.6"
+              fontFamily="DM Sans, sans-serif"
+            >
+              PDF
+            </text>
           </svg>
         </motion.div>
 
         <motion.div
           className="home__reveal-quote-icon home__reveal-quote-icon--right"
-          style={{ x: icon2X, y: icon2Y, rotate: icon2Rotate, opacity: icon2Opacity }}
+          style={{
+            x: icon2X,
+            y: icon2Y,
+            rotate: icon2Rotate,
+            opacity: icon2Opacity,
+          }}
         >
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="12" y="6" width="40" height="52" rx="4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="18" y1="16" x2="38" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-            <line x1="18" y1="22" x2="34" y2="22" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
-            <line x1="18" y1="44" x2="46" y2="44" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-            <path d="M20 42 Q23 34 26 40 Q29 46 32 38 Q34 34 36 40 Q38 44 40 38 L42 36" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.7" />
-            <circle cx="44" cy="50" r="5" fill="hsl(174, 84%, 32%)" opacity="0.15" stroke="hsl(174, 84%, 32%)" strokeWidth="1.5" />
-            <path d="M41.5 50 L43 51.5 L46.5 48" stroke="hsl(174, 84%, 32%)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <svg
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="12"
+              y="6"
+              width="40"
+              height="52"
+              rx="4"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="18"
+              y1="16"
+              x2="38"
+              y2="16"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            <line
+              x1="18"
+              y1="22"
+              x2="34"
+              y2="22"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.5"
+            />
+            <line
+              x1="18"
+              y1="44"
+              x2="46"
+              y2="44"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <path
+              d="M20 42 Q23 34 26 40 Q29 46 32 38 Q34 34 36 40 Q38 44 40 38 L42 36"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+              opacity="0.7"
+            />
+            <circle
+              cx="44"
+              cy="50"
+              r="5"
+              fill="hsl(174, 84%, 32%)"
+              opacity="0.15"
+              stroke="hsl(174, 84%, 32%)"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M41.5 50 L43 51.5 L46.5 48"
+              stroke="hsl(174, 84%, 32%)"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
           </svg>
         </motion.div>
 
         <motion.div
           className="home__reveal-quote-icon home__reveal-quote-icon--bottom-left"
-          style={{ x: icon3X, y: icon3Y, rotate: icon3Rotate, opacity: icon3Opacity }}
+          style={{
+            x: icon3X,
+            y: icon3Y,
+            rotate: icon3Rotate,
+            opacity: icon3Opacity,
+          }}
         >
-          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="10" y="34" width="44" height="22" rx="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-            <line x1="16" y1="42" x2="22" y2="42" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-            <line x1="16" y1="46" x2="20" y2="46" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-            <circle cx="40" cy="45" r="5" stroke="currentColor" strokeWidth="1.5" opacity="0.15" />
-            <rect x="12" y="26" width="44" height="22" rx="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="hsl(210, 20%, 98%)" />
-            <line x1="18" y1="34" x2="24" y2="34" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-            <line x1="18" y1="38" x2="22" y2="38" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-            <circle cx="42" cy="37" r="5" stroke="currentColor" strokeWidth="1.5" opacity="0.15" />
-            <rect x="14" y="18" width="44" height="22" rx="3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="hsl(210, 20%, 98%)" />
-            <line x1="20" y1="26" x2="26" y2="26" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-            <line x1="20" y1="30" x2="24" y2="30" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.3" />
-            <circle cx="44" cy="29" r="5" stroke="currentColor" strokeWidth="1.5" opacity="0.15" />
-            <rect x="26" y="22" width="16" height="30" rx="1" stroke="hsl(174, 84%, 32%)" strokeWidth="2" fill="hsl(174, 84%, 32%)" opacity="0.12" />
-            <rect x="26" y="22" width="16" height="30" rx="1" stroke="hsl(174, 84%, 32%)" strokeWidth="2" fill="none" />
+          <svg
+            viewBox="0 0 64 64"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="10"
+              y="34"
+              width="44"
+              height="22"
+              rx="3"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+            <line
+              x1="16"
+              y1="42"
+              x2="22"
+              y2="42"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <line
+              x1="16"
+              y1="46"
+              x2="20"
+              y2="46"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <circle
+              cx="40"
+              cy="45"
+              r="5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              opacity="0.15"
+            />
+            <rect
+              x="12"
+              y="26"
+              width="44"
+              height="22"
+              rx="3"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="hsl(210, 20%, 98%)"
+            />
+            <line
+              x1="18"
+              y1="34"
+              x2="24"
+              y2="34"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <line
+              x1="18"
+              y1="38"
+              x2="22"
+              y2="38"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <circle
+              cx="42"
+              cy="37"
+              r="5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              opacity="0.15"
+            />
+            <rect
+              x="14"
+              y="18"
+              width="44"
+              height="22"
+              rx="3"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              fill="hsl(210, 20%, 98%)"
+            />
+            <line
+              x1="20"
+              y1="26"
+              x2="26"
+              y2="26"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <line
+              x1="20"
+              y1="30"
+              x2="24"
+              y2="30"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              opacity="0.3"
+            />
+            <circle
+              cx="44"
+              cy="29"
+              r="5"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              opacity="0.15"
+            />
+            <rect
+              x="26"
+              y="22"
+              width="16"
+              height="30"
+              rx="1"
+              stroke="hsl(174, 84%, 32%)"
+              strokeWidth="2"
+              fill="hsl(174, 84%, 32%)"
+              opacity="0.12"
+            />
+            <rect
+              x="26"
+              y="22"
+              width="16"
+              height="30"
+              rx="1"
+              stroke="hsl(174, 84%, 32%)"
+              strokeWidth="2"
+              fill="none"
+            />
           </svg>
         </motion.div>
 
@@ -174,7 +468,10 @@ function RevealQuote() {
               ))}
             </p>
             <div className="home__reveal-quote-footer">
-              <motion.hr className="home__reveal-quote-rule" style={{ filter: ruleFilter, opacity: ruleOpacity }} />
+              <motion.hr
+                className="home__reveal-quote-rule"
+                style={{ filter: ruleFilter, opacity: ruleOpacity }}
+              />
               <p className="home__reveal-quote-desc">
                 {descWords.map((word, i) => (
                   <RevealWord
@@ -257,7 +554,7 @@ function FirstFold() {
         className="home__first-fold"
         style={{ filter, opacity, visibility }}
       >
-        <HomeHero />
+        <Hero />
       </motion.div>
     </div>
   );
@@ -269,7 +566,9 @@ function BuyingSignal({ onOpenPricing }) {
       <div className="home__buying-signal-glow home__buying-signal-glow--1" />
       <div className="home__buying-signal-glow home__buying-signal-glow--2" />
       <div className="container home__buying-signal-inner">
-        <span className="home__buying-signal-label">Simple &amp; Transparent</span>
+        <span className="home__buying-signal-label">
+          Simple &amp; Transparent
+        </span>
         <h2 className="home__buying-signal-title">
           Take a look at the pricing.
         </h2>
@@ -388,7 +687,10 @@ export default function Home() {
 
       {/* ===== BUYING SIGNAL ===== */}
       <BuyingSignal onOpenPricing={() => setShowPricing(true)} />
-      <PricingModal isOpen={showPricing} onClose={() => setShowPricing(false)} />
+      <PricingModal
+        isOpen={showPricing}
+        onClose={() => setShowPricing(false)}
+      />
     </>
   );
 }

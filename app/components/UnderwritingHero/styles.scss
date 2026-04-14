@@ -5,18 +5,18 @@
 // Mirrors .uw-memo styles but scoped to .uw-hero to avoid conflicts
 // ═══════════════════════════════════════════════════════════════════════════
 
-$uw-green: #1d9e75;
+$uw-green: $ds-status-advance;
 $topbar-bg: #0f1a2e;
 
 .uw-hero {
-  background: $color-neutral-0;
-  border-radius: $radius-xl;
+  background: $ds-surface;
+  border-radius: $ds-radius-lg;
   overflow: hidden;
-  font-family: $font-body;
-  color: $color-neutral-900;
+  font-family: $ds-font-sans;
+  color: $ds-ink-primary;
   max-width: 960px;
-  box-shadow: $card-shadow;
-  border: $card-border;
+  box-shadow: $ds-elevation-raised-shadow;
+  border: 1px solid $ds-border-standard;
 
   // ═══════════════════════════════════════════════════════════════════════
   // Top Nav Bar
@@ -27,7 +27,7 @@ $topbar-bg: #0f1a2e;
     align-items: center;
     height: 48px;
     background: $topbar-bg;
-    padding: 0 $space-4;
+    padding: 0 $ds-space-4;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
 
@@ -46,7 +46,7 @@ $topbar-bg: #0f1a2e;
     border: none;
     background: transparent;
     color: rgba(255, 255, 255, 0.6);
-    border-radius: $radius-base;
+    border-radius: $ds-radius-base;
     cursor: default;
     padding: 0;
   }
@@ -60,12 +60,12 @@ $topbar-bg: #0f1a2e;
   &__search {
     display: flex;
     align-items: center;
-    gap: $space-2;
+    gap: $ds-space-2;
     height: 30px;
     width: 40%;
     min-width: 200px;
     max-width: 360px;
-    padding: 0 $space-3;
+    padding: 0 $ds-space-3;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 6px;
@@ -95,7 +95,7 @@ $topbar-bg: #0f1a2e;
       min-width: 20px;
       height: 18px;
       padding: 0 4px;
-      font-family: $font-body;
+      font-family: $ds-font-sans;
       font-size: 11px;
       color: rgba(255, 255, 255, 0.3);
       background: rgba(255, 255, 255, 0.06);
@@ -108,14 +108,14 @@ $topbar-bg: #0f1a2e;
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    gap: $space-1;
+    gap: $ds-space-1;
   }
 
   &__topbar-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $space-2;
+    padding: $ds-space-2;
     border: none;
     background: transparent;
     color: rgba(255, 255, 255, 0.6);
@@ -130,11 +130,11 @@ $topbar-bg: #0f1a2e;
     height: 28px;
     border-radius: 50%;
     border: 2px solid rgba(255, 255, 255, 0.7);
-    background: $color-primary-600;
+    background: $ds-accent;
     color: #fff;
     font-size: 11px;
-    font-weight: $font-weight-semibold;
-    margin-left: $space-1;
+    font-weight: $ds-font-weight-announce;
+    margin-left: $ds-space-1;
   }
 
   // ═══════════════════════════════════════════════════════════════════════
@@ -143,30 +143,28 @@ $topbar-bg: #0f1a2e;
 
   &__strip,
   &__section {
-    padding-left: $space-12;
-    padding-right: $space-12;
+    padding-left: $ds-space-12;
+    padding-right: $ds-space-12;
   }
 
   &__strip {
-    padding-top: $space-8;
+    padding-top: $ds-space-8;
   }
 
-  // ── Divider ──
   &__divider {
     border: none;
-    border-top: 0.5px solid $color-neutral-200;
-    margin: $space-6 $space-12;
+    border-top: 0.5px solid $ds-border-standard;
+    margin: $ds-space-6 $ds-space-12;
   }
 
-  // ── Section label ──
   &__section-label {
     font-size: 12px;
-    font-family: $font-body;
-    font-weight: $font-weight-medium;
+    font-family: $ds-font-sans;
+    font-weight: $ds-font-weight-ui;
     text-transform: uppercase;
-    letter-spacing: $letter-spacing-wider;
-    color: $color-neutral-400;
-    margin: 0 0 $space-3 0;
+    letter-spacing: $ds-letter-spacing-wider;
+    color: $ds-ink-quaternary;
+    margin: 0 0 $ds-space-3 0;
   }
 
   // ═══════════════════════════════════════════════════════════════════════
@@ -176,15 +174,15 @@ $topbar-bg: #0f1a2e;
   &__strip-row {
     display: flex;
     align-items: center;
-    gap: $space-3;
+    gap: $ds-space-3;
     flex-wrap: wrap;
   }
 
   &__strip-score {
-    font-family: $font-body;
+    font-family: $ds-font-sans;
     font-size: 26px;
-    font-weight: $font-weight-medium;
-    color: $color-neutral-900;
+    font-weight: $ds-font-weight-ui;
+    color: $ds-ink-primary;
     line-height: 1;
     font-variant-numeric: tabular-nums;
   }
@@ -194,37 +192,37 @@ $topbar-bg: #0f1a2e;
     align-items: center;
     padding: 2px 8px;
     font-size: 10px;
-    font-weight: $font-weight-semibold;
+    font-weight: $ds-font-weight-announce;
     text-transform: uppercase;
-    letter-spacing: $letter-spacing-wider;
-    border-radius: 2px;
+    letter-spacing: $ds-letter-spacing-wider;
+    border-radius: $ds-radius-pill;
     line-height: 1.4;
 
     &--clean {
-      background: rgba($uw-green, 0.1);
-      color: $uw-green;
+      background: $ds-status-advance-wash;
+      color: $ds-status-advance;
     }
   }
 
   &__strip-signals {
     display: flex;
     align-items: center;
-    gap: $space-1;
+    gap: $ds-space-1;
     font-size: 14px;
-    color: $color-neutral-500;
-    font-weight: $font-weight-regular;
+    color: $ds-ink-tertiary;
+    font-weight: $ds-font-weight-read;
   }
 
   &__strip-dot {
-    color: $color-neutral-300;
+    color: $ds-border-strong;
     margin: 0 2px;
   }
 
   &__strip-summary {
-    margin: $space-3 0 0 0;
+    margin: $ds-space-3 0 0 0;
     font-size: 14px;
     line-height: 1.5;
-    color: $color-neutral-600;
+    color: $ds-ink-secondary;
     max-width: 680px;
   }
 
@@ -235,18 +233,18 @@ $topbar-bg: #0f1a2e;
   &__metric-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: $space-3;
-    margin-bottom: $space-8;
+    gap: $ds-space-3;
+    margin-bottom: $ds-space-8;
   }
 
   &__metric-block {
-    padding: $space-4;
+    padding: $ds-space-4;
     display: flex;
     flex-direction: column;
-    gap: $space-1;
-    background: $color-neutral-0;
-    border: 1px solid $color-neutral-200;
-    border-radius: $radius-xl;
+    gap: $ds-space-1;
+    background: $ds-surface;
+    border: 1px solid $ds-border-hairline;
+    border-radius: $ds-radius-lg;
     transition: border-color 0.15s ease;
   }
 
@@ -254,52 +252,52 @@ $topbar-bg: #0f1a2e;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: $space-2;
+    gap: $ds-space-2;
   }
 
   &__metric-label {
     font-size: 12px;
-    font-weight: $font-weight-medium;
-    color: $color-neutral-400;
+    font-weight: $ds-font-weight-ui;
+    color: $ds-ink-quaternary;
     text-transform: uppercase;
-    letter-spacing: $letter-spacing-wider;
+    letter-spacing: $ds-letter-spacing-wider;
   }
 
   &__metric-badge {
     display: inline-flex;
     align-items: center;
     padding: 1px 6px;
-    border-radius: $radius-full;
+    border-radius: $ds-radius-pill;
     font-size: 14px;
-    font-weight: $font-weight-medium;
+    font-weight: $ds-font-weight-ui;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
     line-height: 1.5;
 
     &--positive {
-      background: $color-accent-50;
-      color: $color-accent-700;
-      border: 1px solid rgba(16, 185, 129, 0.15);
+      background: $ds-status-advance-wash;
+      color: $ds-status-advance;
+      border: 1px solid rgba(47, 125, 79, 0.15);
     }
 
     &--neutral {
-      background: $color-neutral-100;
-      color: $color-neutral-500;
-      border: 1px solid $color-neutral-200;
+      background: $ds-surface-sunken;
+      color: $ds-ink-tertiary;
+      border: 1px solid $ds-border-hairline;
     }
   }
 
   &__metric-value {
-    font-family: $font-body;
-    font-size: $font-size-2xl;
-    font-weight: $font-weight-semibold;
-    color: $color-neutral-900;
+    font-family: $ds-font-sans;
+    font-size: $ds-font-size-2xl;
+    font-weight: $ds-font-weight-announce;
+    color: $ds-ink-primary;
     font-variant-numeric: tabular-nums;
     line-height: 1.2;
   }
 
   &__metric-sparkline {
-    margin-top: $space-2;
+    margin-top: $ds-space-2;
     height: 36px;
     width: 100%;
   }
@@ -309,7 +307,7 @@ $topbar-bg: #0f1a2e;
   // ═══════════════════════════════════════════════════════════════════════
 
   &__section--last {
-    padding-bottom: $space-8;
+    padding-bottom: $ds-space-8;
   }
 
   &__table {
@@ -320,12 +318,12 @@ $topbar-bg: #0f1a2e;
 
   &__th {
     font-size: 10px;
-    font-weight: $font-weight-medium;
+    font-weight: $ds-font-weight-ui;
     text-transform: uppercase;
-    letter-spacing: $letter-spacing-wider;
-    color: $color-neutral-400;
+    letter-spacing: $ds-letter-spacing-wider;
+    color: $ds-ink-quaternary;
     padding: 6px 8px;
-    border-bottom: 0.5px solid $color-neutral-200;
+    border-bottom: 0.5px solid $ds-border-standard;
     text-align: left;
 
     &--right {
@@ -335,8 +333,8 @@ $topbar-bg: #0f1a2e;
 
   &__td {
     padding: 6px 8px;
-    color: $color-neutral-900;
-    border-bottom: 0.5px solid rgba(15, 23, 42, 0.04);
+    color: $ds-ink-primary;
+    border-bottom: 0.5px solid $ds-border-hairline;
 
     &--right {
       text-align: right;
@@ -344,7 +342,7 @@ $topbar-bg: #0f1a2e;
 
     &--mono {
       font-variant-numeric: tabular-nums;
-      font-weight: $font-weight-medium;
+      font-weight: $ds-font-weight-ui;
     }
   }
 }

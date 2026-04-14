@@ -1,0 +1,1002 @@
+// ========================================
+// MIXINS — YieldStream Design System
+// ========================================
+
+@use "sass:color";
+@use "sass:map";
+@use "variables" as *;
+
+// ==================== TYPOGRAPHY ====================
+
+@mixin text-display($size: '2xl', $weight: 'announce') {
+  font-family: $ds-font-sans;
+  font-size: map.get($font-sizes, $size);
+  font-weight: map.get($font-weights, $weight);
+  letter-spacing: $ds-letter-spacing-tight;
+}
+
+@mixin text-body($size: 'base', $weight: 'read') {
+  font-family: $ds-font-sans;
+  font-size: map.get($font-sizes, $size);
+  font-weight: map.get($font-weights, $weight);
+  line-height: $ds-line-height-relaxed;
+}
+
+@mixin text-mono($size: 'sm') {
+  font-family: $ds-font-mono;
+  font-size: map.get($font-sizes, $size);
+}
+
+// ==================== LAYOUT ====================
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column($gap: $ds-space-4) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flex-row($gap: $ds-space-4) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+}
+
+@mixin grid($columns: 3, $gap: $ds-space-4) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+@mixin container($max-width: 1280px) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $ds-space-4;
+  padding-right: $ds-space-4;
+
+  @include sm {
+    padding-left: $ds-space-6;
+    padding-right: $ds-space-6;
+  }
+
+  @include lg {
+    padding-left: $ds-space-8;
+    padding-right: $ds-space-8;
+  }
+}
+
+@mixin app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: $ds-canvas;
+}
+
+@mixin main-content {
+  flex: 1;
+  padding: $ds-space-6;
+  overflow-y: auto;
+
+  @include md {
+    padding: $ds-space-8;
+  }
+}
+
+// ==================== RESPONSIVE ====================
+
+@mixin respond-to($breakpoint) {
+  @if map.has-key($ds-breakpoints, $breakpoint) {
+    @media (min-width: map.get($ds-breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in $ds-breakpoints map.";
+  }
+}
+
+@mixin sm {
+  @media (min-width: $ds-breakpoint-sm) { @content; }
+}
+
+@mixin md {
+  @media (min-width: $ds-breakpoint-md) { @content; }
+}
+
+@mixin lg {
+  @media (min-width: $ds-breakpoint-lg) { @content; }
+}
+
+@mixin xl {
+  @media (min-width: $ds-breakpoint-xl) { @content; }
+}
+
+// ==================== SIDEBAR ====================
+
+@mixin sidebar-collapsed {
+  width: 60px;
+  transition: width $ds-transition-base $ds-easing-out;
+}
+
+@mixin sidebar-expanded {
+  width: 240px;
+  transition: width $ds-transition-base $ds-easing-out;
+}
+
+@mixin sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: $ds-space-3;
+  padding: $ds-space-3 $ds-space-4;
+  color: $ds-ink-tertiary;
+  font-size: $ds-font-size-sm;
+  font-weight: $ds-font-weight-ui;
+  border-radius: $ds-radius-base;
+  transition: all $ds-transition-fast $ds-easing-out;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba(20, 20, 20, 0.03);
+    color: $ds-ink-primary;
+  }
+
+  &.active {
+    background: $ds-accent-wash;
+    color: $ds-accent;
+    border-left: 2px solid $ds-accent;
+  }
+}
+
+// ==================== SELECTABLE ROW ====================
+
+@mixin selectable-row-base {
+  border-left: 2px solid transparent;
+  transition:
+    background-color $ds-transition-fast $ds-easing-out,
+    border-left-color $ds-transition-fast $ds-easing-out;
+
+  &:hover {
+    background-color: $ds-surface-sunken;
+  }
+}
+
+@mixin selectable-row-active {
+  background-color: $ds-accent-wash;
+  border-left-color: $ds-accent;
+
+  &:hover {
+    background-color: rgba(27, 58, 95, 0.07);
+  }
+}
+
+// ==================== BUTTONS ====================
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  gap: $ds-space-1;
+  font-family: $ds-font-sans;
+  font-weight: $ds-font-weight-ui;
+  border: none;
+  border-radius: $ds-radius-sm;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all $ds-transition-fast $ds-easing-out;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  svg {
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@mixin btn-filled {
+  @include btn-base;
+  background-color: $ds-accent;
+  color: #ffffff;
+
+  &:hover:not(:disabled) {
+    background-color: $ds-accent-hover;
+  }
+}
+
+@mixin btn-outline {
+  @include btn-base;
+  background: $ds-surface;
+  border: 1px solid $ds-border-standard;
+  border-radius: $ds-radius-base;
+  color: $ds-ink-primary;
+
+  &:hover:not(:disabled) {
+    background: $ds-accent-wash;
+    border-color: $ds-accent;
+    color: $ds-accent;
+  }
+}
+
+@mixin btn-sm {
+  height: 26px;
+  padding: 0 $ds-space-2;
+  font-size: $ds-font-size-xs;
+}
+
+@mixin btn-md {
+  height: 30px;
+  padding: 0 $ds-space-3;
+  font-size: $ds-font-size-sm;
+}
+
+@mixin btn-lg {
+  height: 34px;
+  padding: 0 $ds-space-5;
+  font-size: $ds-font-size-sm;
+}
+
+// ==================== CARDS ====================
+
+@mixin card {
+  background-color: $ds-surface;
+  border-radius: $ds-radius-md;
+  padding: $ds-space-6;
+  border: 1px solid $ds-border-hairline;
+  transition: border-color $ds-transition-base $ds-easing-out;
+}
+
+@mixin card-hover {
+  &:hover {
+    border-color: $ds-border-standard;
+  }
+}
+
+@mixin card-interactive {
+  @include card;
+  @include card-hover;
+  cursor: pointer;
+}
+
+// ==================== TABLES ====================
+
+@mixin table-base {
+  width: 100%;
+  background: $ds-surface;
+  border: 1px solid $ds-border-hairline;
+  border-radius: $ds-radius-md;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  thead {
+    background: $ds-surface-sunken;
+    border-bottom: 1px solid $ds-border-standard;
+
+    th {
+      padding: $ds-space-3 $ds-space-4;
+      color: $ds-ink-tertiary;
+      font-weight: $ds-font-weight-ui;
+      font-size: $ds-font-size-xs;
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: $ds-letter-spacing-wider;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $ds-border-hairline;
+      transition: background $ds-transition-fast $ds-easing-out;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: $ds-surface-sunken;
+      }
+    }
+
+    td {
+      padding: $ds-space-4;
+      color: $ds-ink-primary;
+      font-size: $ds-font-size-base;
+
+      &.amount,
+      &.number {
+        font-weight: $ds-font-weight-ui;
+        font-variant-numeric: tabular-nums;
+        font-family: $ds-font-mono;
+        text-align: right;
+      }
+    }
+  }
+}
+
+// ==================== BADGES ====================
+
+@mixin badge-base {
+  display: inline-flex;
+  align-items: center;
+  padding: $ds-space-1 $ds-space-3;
+  font-size: $ds-font-size-xs;
+  font-weight: $ds-font-weight-ui;
+  border-radius: $ds-radius-pill;
+  text-transform: uppercase;
+  letter-spacing: $ds-letter-spacing-widest;
+}
+
+@mixin badge-approved {
+  @include badge-base;
+  background: $ds-status-advance-wash;
+  color: $ds-status-advance;
+}
+
+@mixin badge-pending {
+  @include badge-base;
+  background: $ds-status-caution-wash;
+  color: $ds-status-caution;
+}
+
+@mixin badge-rejected {
+  @include badge-base;
+  background: $ds-status-decline-wash;
+  color: $ds-status-decline;
+}
+
+// ==================== NUMBER FORMATTING ====================
+
+@mixin financial-number {
+  font-family: $ds-font-mono;
+  font-weight: $ds-font-weight-ui;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: $ds-letter-spacing-tight;
+}
+
+@mixin stat-number {
+  @include financial-number;
+  font-size: $ds-font-size-4xl;
+  line-height: $ds-line-height-tight;
+  color: $ds-ink-primary;
+}
+
+// ==================== INPUTS ====================
+
+@mixin input-base {
+  width: 100%;
+  padding: $ds-space-3 $ds-space-4;
+  font-family: $ds-font-sans;
+  font-size: $ds-font-size-base;
+  color: $ds-ink-primary;
+  background-color: $ds-surface;
+  border: 1px solid $ds-border-standard;
+  border-radius: $ds-radius-base;
+  transition: all $ds-transition-base $ds-easing-out;
+
+  &:focus {
+    outline: none;
+    border-color: $ds-focus-border;
+    box-shadow: 0 0 0 3px $ds-focus-ring;
+  }
+
+  &::placeholder {
+    color: $ds-ink-quaternary;
+  }
+
+  &:disabled {
+    background-color: $ds-surface-sunken;
+    cursor: not-allowed;
+  }
+}
+
+// ==================== PREMIUM INSTITUTIONAL ====================
+
+@mixin premium-card {
+  background: $ds-surface;
+  border: 1px solid $ds-border-hairline;
+  border-radius: $ds-radius-md;
+  box-shadow: $ds-elevation-raised-shadow;
+}
+
+@mixin premium-card-accented {
+  @include premium-card;
+  border-top: 2px solid $ds-accent;
+}
+
+@mixin label-muted {
+  font-size: 10px;
+  font-weight: $ds-font-weight-ui;
+  color: $ds-ink-quaternary;
+  text-transform: uppercase;
+  letter-spacing: $ds-letter-spacing-wider;
+}
+
+@mixin data-value {
+  font-family: $ds-font-mono;
+  font-weight: $ds-font-weight-ui;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: $ds-letter-spacing-tight;
+  color: $ds-ink-primary;
+}
+
+@mixin toolbar-surface {
+  background: rgba(250, 250, 247, 0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid $ds-border-hairline;
+  border-radius: $ds-radius-md $ds-radius-md 0 0;
+}
+
+// ==================== UTILITIES ====================
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin line-clamp($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@mixin list-reset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin focus-ring($color: $ds-focus-border) {
+  outline: 2px solid $color;
+  outline-offset: 2px;
+}
+
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+@mixin hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin custom-scrollbar(
+  $size: 8px,
+  $track-color: $ds-surface-sunken,
+  $thumb-color: $ds-ink-quaternary
+) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track-color;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb-color;
+    border-radius: 9999px;
+
+    &:hover {
+      background: color.adjust($thumb-color, $lightness: -10%);
+    }
+  }
+}
+
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// ==================== ANIMATIONS ====================
+
+@mixin fade-in($duration: $ds-transition-base) {
+  animation: fadeIn $duration $ds-easing-out;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+}
+
+@mixin slide-up($duration: $ds-transition-base, $distance: 20px) {
+  animation: slideUp $duration $ds-easing-out;
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY($distance); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@mixin pulse($duration: 2s) {
+  animation: pulse $duration $ds-easing-in-out infinite;
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.5; }
+  }
+}
+
+
+// ========================================
+// DS2 MIXINS
+// Use these for all new component work.
+// ========================================
+
+// ==================== DS2: TYPOGRAPHY ====================
+
+@mixin ds-text-kpi-display {
+  font-size: 36px;
+  font-weight: $ds-font-weight-announce;
+  line-height: 1.05;
+  letter-spacing: -0.72px;
+  font-variant-numeric: tabular-nums;
+}
+
+@mixin ds-text-deal-name {
+  font-size: 24px;
+  font-weight: $ds-font-weight-announce;
+  line-height: 1.20;
+  letter-spacing: -0.36px;
+}
+
+@mixin ds-text-section-heading {
+  font-size: 18px;
+  font-weight: $ds-font-weight-announce;
+  line-height: 1.30;
+  letter-spacing: -0.18px;
+}
+
+@mixin ds-text-body {
+  font-size: 14px;
+  font-weight: $ds-font-weight-read;
+  line-height: 1.55;
+}
+
+@mixin ds-text-body-emphasis {
+  font-size: 14px;
+  font-weight: $ds-font-weight-ui;
+  line-height: 1.55;
+}
+
+@mixin ds-text-table-header {
+  font-size: 11px;
+  font-weight: $ds-font-weight-ui;
+  line-height: 1.40;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: $ds-ink-tertiary;
+}
+
+@mixin ds-text-table-cell {
+  font-size: 13px;
+  font-weight: $ds-font-weight-read;
+  line-height: 1.45;
+}
+
+@mixin ds-text-table-cell-numeric {
+  font-size: 13px;
+  font-weight: $ds-font-weight-ui;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+@mixin ds-text-label {
+  font-size: 12px;
+  font-weight: $ds-font-weight-ui;
+  line-height: 1.40;
+  color: $ds-ink-tertiary;
+}
+
+@mixin ds-text-caption {
+  font-size: 12px;
+  font-weight: $ds-font-weight-read;
+  line-height: 1.45;
+  color: $ds-ink-tertiary;
+}
+
+@mixin ds-text-mono {
+  font-family: $ds-font-mono;
+  font-size: 12px;
+  font-weight: $ds-font-weight-read;
+  line-height: 1.40;
+}
+
+// ==================== DS2: EDITORIAL ====================
+
+@mixin ds-text-memo-body {
+  font-family: $ds-font-editorial;
+  font-size: 16px;
+  font-weight: $ds-font-weight-memo-body;
+  line-height: 1.65;
+}
+
+@mixin ds-text-memo-h1 {
+  font-family: $ds-font-editorial;
+  font-size: 28px;
+  font-weight: $ds-font-weight-memo-heading;
+  line-height: 1.25;
+  letter-spacing: -0.28px;
+}
+
+@mixin ds-text-memo-h2 {
+  font-family: $ds-font-editorial;
+  font-size: 20px;
+  font-weight: $ds-font-weight-memo-heading;
+  line-height: 1.35;
+  letter-spacing: -0.10px;
+}
+
+// ==================== DS2: ELEVATION ====================
+
+@mixin ds-elevation-sunken {
+  background: $ds-surface-sunken;
+}
+
+@mixin ds-elevation-surface {
+  background: $ds-surface;
+}
+
+@mixin ds-elevation-raised {
+  background: $ds-surface;
+  box-shadow: $ds-elevation-raised-shadow;
+}
+
+@mixin ds-elevation-overlay {
+  background: $ds-surface;
+  box-shadow: $ds-elevation-overlay-shadow;
+}
+
+// ==================== DS2: PILL ====================
+
+@mixin ds-pill-base {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: $ds-font-sans;
+  font-size: 12px;
+  font-weight: $ds-font-weight-ui;
+  border: none;
+  white-space: nowrap;
+}
+
+@mixin ds-pill-advance {
+  @include ds-pill-base;
+  background: $ds-status-advance-wash;
+  color: $ds-status-advance;
+}
+
+@mixin ds-pill-caution {
+  @include ds-pill-base;
+  background: $ds-status-caution-wash;
+  color: $ds-status-caution;
+}
+
+@mixin ds-pill-decline {
+  @include ds-pill-base;
+  background: $ds-status-decline-wash;
+  color: $ds-status-decline;
+}
+
+@mixin ds-pill-neutral {
+  @include ds-pill-base;
+  background: rgba(107, 107, 102, 0.08);
+  color: $ds-status-neutral;
+}
+
+@mixin ds-pill-accent {
+  @include ds-pill-base;
+  background: $ds-accent-wash;
+  color: $ds-accent;
+}
+
+// ==================== DS2: BUTTONS ====================
+
+@mixin ds-btn-primary {
+  @include btn-base;
+  background: $ds-accent;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: $ds-font-weight-ui;
+
+  &:hover:not(:disabled) {
+    background: $ds-accent-hover;
+  }
+}
+
+@mixin ds-btn-secondary {
+  @include btn-base;
+  background: transparent;
+  border: 1px solid $ds-border-standard;
+  color: $ds-ink-primary;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: $ds-font-weight-ui;
+
+  &:hover:not(:disabled) {
+    background: rgba(20, 20, 20, 0.04);
+  }
+}
+
+@mixin ds-btn-ghost {
+  @include btn-base;
+  background: transparent;
+  border: none;
+  color: $ds-ink-secondary;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: $ds-font-weight-ui;
+
+  &:hover:not(:disabled) {
+    background: rgba(20, 20, 20, 0.04);
+  }
+}
+
+@mixin ds-btn-destructive {
+  @include btn-base;
+  background: $ds-status-decline;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: $ds-font-weight-ui;
+
+  &:hover:not(:disabled) {
+    background: color.adjust($ds-status-decline, $lightness: -8%);
+  }
+}
+
+// ==================== DS2: FOCUS ====================
+
+@mixin ds-focus-border {
+  outline: none;
+  border-color: $ds-focus-border;
+  box-shadow: 0 0 0 3px $ds-focus-ring;
+}
+
+@mixin ds-focus-ring {
+  outline: 2px solid $ds-focus-border;
+  outline-offset: 2px;
+}
+
+// ==================== DS2: INPUTS ====================
+
+@mixin ds-input {
+  background: $ds-surface;
+  border: 1px solid $ds-border-standard;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: $ds-font-sans;
+  font-size: 13px;
+  font-weight: $ds-font-weight-read;
+  color: $ds-ink-primary;
+  transition: border-color $ds-transition-fast $ds-easing-out,
+              box-shadow $ds-transition-fast $ds-easing-out;
+
+  &:focus {
+    @include ds-focus-border;
+  }
+
+  &::placeholder {
+    color: $ds-ink-quaternary;
+  }
+
+  &:disabled {
+    background: $ds-surface-sunken;
+    cursor: not-allowed;
+  }
+}
+
+// ==================== DS2: KPI CARD ====================
+
+@mixin ds-kpi-card {
+  background: $ds-surface;
+  border: none;
+  border-radius: 8px;
+  padding: 16px;
+
+  &__label {
+    @include ds-text-table-header;
+  }
+
+  &__value {
+    @include ds-text-kpi-display;
+    color: $ds-ink-primary;
+  }
+
+  &__delta {
+    font-family: $ds-font-sans;
+    font-size: 12px;
+    font-weight: $ds-font-weight-ui;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+// ==================== DS2: RECORD PANEL ====================
+
+@mixin ds-record-panel {
+  background: $ds-surface;
+  border: none;
+  padding: 24px 32px;
+}
+
+@mixin ds-tab-strip {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid $ds-border-hairline;
+
+  &__tab {
+    font-family: $ds-font-sans;
+    font-size: 13px;
+    font-weight: $ds-font-weight-ui;
+    color: $ds-ink-tertiary;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color $ds-transition-fast $ds-easing-out,
+                border-color $ds-transition-fast $ds-easing-out;
+
+    &:hover {
+      color: $ds-ink-primary;
+    }
+
+    &--active {
+      color: $ds-ink-primary;
+      border-bottom-color: $ds-accent;
+    }
+  }
+}
+
+// ==================== DS2: SIDE RAIL ====================
+
+@mixin ds-side-rail {
+  width: 240px;
+  background: $ds-surface-sunken;
+  // No border-right — tone shift is the boundary
+}
+
+@mixin ds-side-rail-item {
+  font-family: $ds-font-sans;
+  font-size: 13px;
+  font-weight: $ds-font-weight-ui;
+  padding: 8px 12px;
+  color: $ds-ink-secondary;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: background $ds-transition-fast $ds-easing-out,
+              color $ds-transition-fast $ds-easing-out;
+
+  &:hover {
+    background: rgba(20, 20, 20, 0.03);
+  }
+
+  &--active {
+    background: $ds-accent-wash;
+    color: $ds-accent;
+    border-left-color: $ds-accent;
+  }
+}
+
+// ==================== DS2: TABLE ====================
+
+@mixin ds-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  thead {
+    th {
+      @include ds-text-table-header;
+      padding: 8px 16px;
+      border-bottom: 1px solid $ds-border-standard;
+      text-align: left;
+      white-space: nowrap;
+      position: sticky;
+      top: 0;
+      background: $ds-surface;
+      z-index: 1;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid $ds-border-hairline;
+      transition: background $ds-transition-fast $ds-easing-out;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &:hover {
+        background: $ds-surface-sunken;
+      }
+    }
+
+    td {
+      @include ds-text-table-cell;
+      padding: 8px 16px;
+      color: $ds-ink-secondary;
+
+      &.numeric {
+        @include ds-text-table-cell-numeric;
+      }
+    }
+  }
+
+  tr.selected {
+    background: $ds-accent-wash;
+    border-left: 2px solid $ds-accent;
+  }
+}
+
+// ==================== DS2: MEMO ====================
+
+@mixin ds-memo {
+  max-width: 680px;
+
+  p, li {
+    @include ds-text-memo-body;
+  }
+
+  h1 {
+    @include ds-text-memo-h1;
+  }
+
+  h2 {
+    @include ds-text-memo-h2;
+    margin-top: 32px;
+  }
+
+  .memo-number {
+    font-family: $ds-font-sans;
+    font-variant-numeric: tabular-nums;
+  }
+
+  blockquote {
+    border-left: 4px solid $ds-accent;
+    padding-left: 16px;
+    font-style: italic;
+  }
+
+  .risk-callout {
+    border-left: 4px solid $ds-status-caution;
+    padding-left: 16px;
+    font-style: italic;
+  }
+}
