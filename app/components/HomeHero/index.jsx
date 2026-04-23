@@ -24,7 +24,7 @@ import {
 } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import "./styles.scss";
-
+import WorldSVG from "./WorldSVG";
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: (delay) => ({
@@ -204,71 +204,14 @@ export default function HomeHero() {
               custom={0.4}
               variants={fadeUp}
             />
-
-            <motion.div
-              className="home__hero-features"
-              initial="hidden"
-              animate="visible"
-              custom={0.4}
-              variants={fadeUp}
-            >
-              <div className="home__hero-feature">
-                <span className="home__hero-feature-icon">
-                  <Zap size={15} />
-                </span>
-                <div>
-                  <strong>120s Processing</strong>
-                  <span>PDF to scored intelligence</span>
-                </div>
-              </div>
-              <div className="home__hero-feature">
-                <span className="home__hero-feature-icon">
-                  <Cpu size={15} />
-                </span>
-                <div>
-                  <strong>AI-Powered Matching/Routing</strong>
-                  <span>Every lender scored &amp; ranked</span>
-                </div>
-              </div>
-            </motion.div>
           </div>
 
           {/* Hero ambient illustration */}
           <div className="home__hero-visual">
-            <HeroAmbientSVG />
+            {/* <HeroAmbientSVG /> */}
+            <WorldSVG className="home__hero-world" />
           </div>
         </div>
-
-        {/* Bottom-right screenshot peek */}
-        <motion.div
-          className="home__hero-screenshot-peek"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 45,
-            damping: 18,
-            delay: 0.5,
-          }}
-          ref={tiltRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          style={{ perspective: 1200 }}
-        >
-          <motion.div
-            className="home__hero-screenshot-tilt"
-            style={{ rotateX, rotateY }}
-          >
-            <Image
-              src="/images/underwritting-cta.png"
-              alt="YieldStream underwriting dashboard"
-              width={1920}
-              height={1080}
-              className="home__hero-screenshot-img"
-            />
-            <div className="home__hero-screenshot-fade" />
-          </motion.div>
-        </motion.div>
       </div>
 
       {/* Value prop boxes */}
@@ -280,6 +223,34 @@ export default function HomeHero() {
         variants={fadeUp}
       >
         <div className="home__hero-value-prop">
+          <div className="home__hero-value-prop-viz">
+            <svg
+              viewBox="-80 -75 160 130"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <style>{`.t1ln{fill:none;stroke:#0f172a;stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round}.t1lnf{fill:none;stroke:#0f172a;stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round;opacity:0.55}`}</style>
+              <g transform="translate(0, 0)">
+                <g transform="translate(0, -55)">
+                  <polygon className="t1ln" points="0,-20 50,-5 0,10 -50,-5" />
+                  <line className="t1lnf" x1="-18" y1="-8" x2="18" y2="-8" />
+                  <line className="t1lnf" x1="-20" y1="-4" x2="20" y2="-4" />
+                  <line className="t1lnf" x1="-14" y1="0" x2="14" y2="0" />
+                </g>
+                <line className="t1lnf" x1="-50" y1="-60" x2="-50" y2="-9" />
+                <line className="t1lnf" x1="50" y1="-60" x2="50" y2="-9" />
+                <g transform="translate(0, -10)">
+                  <polygon className="t1ln" points="0,-14 50,1 0,16 -50,1" />
+                </g>
+                <g transform="translate(0, 14)">
+                  <polygon className="t1ln" points="0,-14 50,1 0,16 -50,1" />
+                </g>
+                <g transform="translate(0, 38)">
+                  <polygon className="t1ln" points="0,-14 50,1 0,16 -50,1" />
+                </g>
+              </g>
+            </svg>
+          </div>
           <div className="home__hero-value-prop-label">
             <span className="home__hero-value-prop-icon">
               <FileText size={14} />
@@ -294,13 +265,50 @@ export default function HomeHero() {
           </p>
         </div>
         <div className="home__hero-value-prop">
+          <div className="home__hero-value-prop-viz">
+            <svg
+              viewBox="-80 -75 160 130"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <style>{`.t2ln{fill:none;stroke:#0f172a;stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round}.t2lnf{fill:none;stroke:#0f172a;stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round;opacity:0.55}`}</style>
+              <g transform="translate(0, 0)">
+                <g transform="translate(0, -60)">
+                  <polygon className="t2ln" points="0,-14 22,-2 0,10 -22,-2" />
+                  <polygon className="t2ln" points="-22,-2 -22,12 0,24 0,10" />
+                  <polygon className="t2ln" points="22,-2 22,12 0,24 0,10" />
+                </g>
+                <line className="t2lnf" x1="-22" y1="-40" x2="-56" y2="-12" />
+                <line className="t2lnf" x1="0" y1="-36" x2="0" y2="-8" />
+                <line className="t2lnf" x1="22" y1="-40" x2="56" y2="-12" />
+                <g transform="translate(-56, 2)">
+                  <polygon className="t2ln" points="0,-14 18,-4 0,6 -18,-4" />
+                  <polygon className="t2ln" points="-18,-4 -18,8 0,18 0,6" />
+                  <polygon className="t2ln" points="18,-4 18,8 0,18 0,6" />
+                </g>
+                <g transform="translate(0, 6)">
+                  <polygon className="t2ln" points="0,-14 18,-4 0,6 -18,-4" />
+                  <polygon className="t2ln" points="-18,-4 -18,8 0,18 0,6" />
+                  <polygon className="t2ln" points="18,-4 18,8 0,18 0,6" />
+                </g>
+                <g transform="translate(56, 2)">
+                  <polygon className="t2ln" points="0,-14 18,-4 0,6 -18,-4" />
+                  <polygon className="t2ln" points="-18,-4 -18,8 0,18 0,6" />
+                  <polygon className="t2ln" points="18,-4 18,8 0,18 0,6" />
+                </g>
+                <line className="t2lnf" x1="-56" y1="22" x2="0" y2="44" />
+                <line className="t2lnf" x1="0" y1="26" x2="0" y2="44" />
+                <line className="t2lnf" x1="56" y1="22" x2="0" y2="44" />
+              </g>
+            </svg>
+          </div>
           <div className="home__hero-value-prop-label">
             <span className="home__hero-value-prop-icon">
               <Target size={14} />
             </span>
             Submission Logic
           </div>
-          <h3>Lender Matching</h3>
+          <h3>AI-Powered Lender Matching</h3>
           <p>
             Every deal is instantly ranked against lender buy box criteria and
             your previously funded deals. Match merchant profiles to specific
@@ -308,6 +316,54 @@ export default function HomeHero() {
           </p>
         </div>
         <div className="home__hero-value-prop">
+          <div className="home__hero-value-prop-viz">
+            <svg
+              viewBox="-80 -75 160 130"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <style>{`.t3ln{fill:none;stroke:#0f172a;stroke-width:0.9;stroke-linecap:round;stroke-linejoin:round}.t3lnf{fill:none;stroke:#0f172a;stroke-width:0.7;stroke-linecap:round;stroke-linejoin:round;opacity:0.55}`}</style>
+              <g transform="translate(4, -15)">
+                <g transform="translate(-50, 10)">
+                  <polygon className="t3ln" points="0,-12 16,-4 0,4 -16,-4" />
+                  <polygon className="t3ln" points="-16,-4 -16,8 0,16 0,4" />
+                  <polygon className="t3ln" points="16,-4 16,8 0,16 0,4" />
+                </g>
+                <line className="t3lnf" x1="-30" y1="8" x2="-6" y2="2" />
+                <line className="t3lnf" x1="-12" y1="-1" x2="-6" y2="2" />
+                <line className="t3lnf" x1="-12" y1="7" x2="-6" y2="2" />
+                <g transform="translate(28, 0)">
+                  <polygon className="t3ln" points="0,-26 30,-11 0,4 -30,-11" />
+                  <polygon className="t3ln" points="-30,-11 -30,15 0,30 0,4" />
+                  <polygon className="t3ln" points="30,-11 30,15 0,30 0,4" />
+                  <line
+                    className="t3lnf"
+                    x1="-15"
+                    y1="-18.5"
+                    x2="15"
+                    y2="-3.5"
+                  />
+                  <line
+                    className="t3lnf"
+                    x1="15"
+                    y1="-18.5"
+                    x2="-15"
+                    y2="-3.5"
+                  />
+                  <line
+                    className="t3lnf"
+                    x1="-15"
+                    y1="-3.5"
+                    x2="-15"
+                    y2="22.5"
+                  />
+                  <line className="t3lnf" x1="-30" y1="2" x2="0" y2="17" />
+                  <line className="t3lnf" x1="15" y1="-3.5" x2="15" y2="22.5" />
+                  <line className="t3lnf" x1="30" y1="2" x2="0" y2="17" />
+                </g>
+              </g>
+            </svg>
+          </div>
           <div className="home__hero-value-prop-label">
             <span className="home__hero-value-prop-icon">
               <BarChart3 size={14} />

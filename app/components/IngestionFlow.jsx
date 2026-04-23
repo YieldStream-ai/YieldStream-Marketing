@@ -31,9 +31,9 @@ const pathVariant = {
 /* ── palette ── */
 const COLORS = {
   gray:   { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#1e293b" },
-  teal:   { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#035d6a" },
+  teal:   { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#1B3A5F" },
   purple: { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#0f1a2e" },
-  final:  { fill: "#047987", stroke: "#035d6a", divider: "rgba(255,255,255,0.2)", text: "#ffffff" },
+  final:  { fill: "#1B3A5F", stroke: "#264F7E", divider: "rgba(255,255,255,0.2)", text: "#ffffff" },
 };
 
 /* ── node data ── */
@@ -208,7 +208,7 @@ export default function IngestionFlow() {
         <filter id="tealGlow" x="-40%" y="-40%" width="180%" height="180%">
           <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur" />
           <feColorMatrix in="blur" type="matrix"
-            values="0 0 0 0 0.016  0 0 0 0 0.475  0 0 0 0 0.529  0 0 0 0.45 0"
+            values="0 0 0 0 0.106  0 0 0 0 0.227  0 0 0 0 0.373  0 0 0 0.45 0"
           />
           <feMerge>
             <feMergeNode />

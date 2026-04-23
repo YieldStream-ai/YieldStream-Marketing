@@ -69,8 +69,8 @@ export default function UnderwritingSignalViz() {
     >
       <defs>
         <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#047987" />
-          <stop offset="100%" stopColor="#10b981" />
+          <stop offset="0%" stopColor="#1B3A5F" />
+          <stop offset="100%" stopColor="#2F7D4F" />
         </linearGradient>
         <filter id="scoreGlow">
           <feGaussianBlur stdDeviation="3" result="blur" />
@@ -149,7 +149,7 @@ export default function UnderwritingSignalViz() {
         fontFamily="var(--font-mono)"
         fontSize="22"
         fontWeight="700"
-        fill="#047987"
+        fill="#1B3A5F"
         filter={count >= 98 ? "url(#textGlow)" : "none"}
       >
         {count}%
@@ -199,7 +199,7 @@ export default function UnderwritingSignalViz() {
       {/* Signal wave */}
       <motion.path
         d={WAVE_PATH}
-        stroke="#10b981"
+        stroke="#2F7D4F"
         strokeWidth="2"
         fill="none"
         strokeLinecap="round"
@@ -221,7 +221,7 @@ export default function UnderwritingSignalViz() {
         fontFamily="var(--font-mono)"
         fontSize="7"
         letterSpacing="0.1em"
-        fill="#10b981"
+        fill="#2F7D4F"
         variants={{
           hidden: { opacity: 0 },
           visible: { opacity: 0.6, transition: { delay: 2.5 } },

@@ -19,7 +19,7 @@ const ALREADY_SUBMITTED = [
     sub: "Apr 3",
   },
   {
-    name: "Pinnacle Business Capital",
+    name: "Pinnacle Funding",
     badge: "Sent",
     badgeClass: "smv__badge--sent",
     sub: "Mar 29",
@@ -27,9 +27,24 @@ const ALREADY_SUBMITTED = [
 ];
 
 const AVAILABLE_LENDERS = [
-  { name: "Velocity Funding Group", score: "94", scoreClass: "smv__lender-score--high", sub: "$4,200" },
-  { name: "Merchant M. Solutions", score: "78", scoreClass: "smv__lender-score--mid", sub: "$3,150" },
-  { name: "Fox Capital Group", score: "52", scoreClass: "smv__lender-score--low", sub: "$1,800" },
+  {
+    name: "Velocity Funding Group",
+    score: "94",
+    scoreClass: "smv__lender-score--high",
+    sub: "$4,200",
+  },
+  {
+    name: "Merchant M. Solutions",
+    score: "78",
+    scoreClass: "smv__lender-score--mid",
+    sub: "$3,150",
+  },
+  {
+    name: "Fox Capital Group",
+    score: "52",
+    scoreClass: "smv__lender-score--low",
+    sub: "$1,800",
+  },
 ];
 
 export default function SubmissionVisual() {
@@ -68,7 +83,10 @@ export default function SubmissionVisual() {
         </motion.p>
         <motion.div variants={staggerItem} className="smv__grid">
           {ALREADY_SUBMITTED.map(({ name, badge, badgeClass, sub }) => (
-            <div key={name} className="smv__lender-card smv__lender-card--submitted">
+            <div
+              key={name}
+              className="smv__lender-card smv__lender-card--submitted"
+            >
               <span className="smv__lender-name">{name}</span>
               <span className={`smv__badge ${badgeClass}`}>{badge}</span>
               <span className="smv__lender-sub">{sub}</span>
@@ -82,13 +100,12 @@ export default function SubmissionVisual() {
         </motion.p>
         <motion.div variants={staggerItem} className="smv__grid">
           {AVAILABLE_LENDERS.map(({ name, score, scoreClass, sub }) => (
-            <div key={name} className="smv__lender-card smv__lender-card--available">
+            <div
+              key={name}
+              className="smv__lender-card smv__lender-card--available"
+            >
               <span className={`smv__lender-score ${scoreClass}`}>{score}</span>
-              <input
-                type="checkbox"
-                readOnly
-                className="smv__lender-check"
-              />
+              <input type="checkbox" readOnly className="smv__lender-check" />
               <span className="smv__lender-name">{name}</span>
               <span className="smv__lender-sub">{sub}</span>
             </div>

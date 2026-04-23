@@ -101,11 +101,11 @@
     font-weight: 700;
 
     &--high {
-      color: hsl(186 94% 27%);
+      color: #1b3a5f;
     }
 
     &--mid {
-      color: #047987;
+      color: #264f7e;
     }
 
     &--low {
@@ -119,7 +119,7 @@
     left: 6px;
     width: 13px;
     height: 13px;
-    accent-color: #047987;
+    accent-color: #1b3a5f;
   }
 
   &__badge {
@@ -141,8 +141,8 @@
     }
 
     &--sent {
-      background: rgba(4, 121, 135, 0.08);
-      color: rgba(4, 121, 135, 0.75);
+      background: rgba(27, 58, 95, 0.08);
+      color: rgba(27, 58, 95, 0.75);
     }
   }
 
@@ -168,7 +168,7 @@
     padding: 0 14px;
     border-radius: 6px;
     border: none;
-    background: #047987;
+    background: #1b3a5f;
     color: white;
     font-size: 11px;
     font-weight: 600;

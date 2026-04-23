@@ -228,8 +228,8 @@ function CardIntel({ intel }) {
     return (
       <div className="ap-intel__clean">
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-          <circle cx="5" cy="5" r="4.5" stroke="#059669" />
-          <path d="M3 5l1.5 1.5L7 3.5" stroke="#059669" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="5" cy="5" r="4.5" stroke="#2F7D4F" />
+          <path d="M3 5l1.5 1.5L7 3.5" stroke="#2F7D4F" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <span>Clean</span>
       </div>
@@ -239,8 +239,8 @@ function CardIntel({ intel }) {
     return (
       <div className="ap-intel__complete">
         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-          <circle cx="5" cy="5" r="4.5" stroke="#059669" />
-          <path d="M3 5l1.5 1.5L7 3.5" stroke="#059669" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="5" cy="5" r="4.5" stroke="#2F7D4F" />
+          <path d="M3 5l1.5 1.5L7 3.5" stroke="#2F7D4F" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
         <span>Complete</span>
       </div>

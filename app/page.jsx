@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "./components/useReveal";
 import PricingModal from "./components/PricingModal";
-import Hero from "./components/Hero";
+import HomeHero from "./components/HomeHero";
 import HowItWorks from "./components/HowItWorks/index";
 import PlatformFeatures from "./components/PlatformFeatures/index";
 import FundingFlow from "./components/FundingFlow/index";
@@ -554,7 +554,7 @@ function FirstFold() {
         className="home__first-fold"
         style={{ filter, opacity, visibility }}
       >
-        <Hero />
+        <HomeHero />
       </motion.div>
     </div>
   );

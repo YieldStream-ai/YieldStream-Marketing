@@ -89,22 +89,20 @@ export default function HowItWorks() {
               style={{ left: indicator.left, width: indicator.width }}
             />
             {STEPS.map((step, i) => (
-              <React.Fragment key={step.id}>
-                {i > 0 && <span className="home__steps-divider" />}
-                <button
-                  className={`home__steps-tab${activeStep === i ? " home__steps-tab--active" : ""}`}
-                  onClick={() => {
-                    directionRef.current = i > activeStep ? 1 : -1;
-                    setActiveStep(i);
-                  }}
-                >
-                  <span className="home__steps-tab-icon">
-                    <step.icon size={16} />
-                  </span>
-                  <span className="home__steps-tab-label">{step.tab}</span>
-                  <span className="home__steps-tab-num">{step.num}</span>
-                </button>
-              </React.Fragment>
+              <button
+                key={step.id}
+                className={`home__steps-tab${activeStep === i ? " home__steps-tab--active" : ""}`}
+                onClick={() => {
+                  directionRef.current = i > activeStep ? 1 : -1;
+                  setActiveStep(i);
+                }}
+              >
+                <span className="home__steps-tab-icon">
+                  <step.icon size={16} />
+                </span>
+                <span className="home__steps-tab-label">{step.tab}</span>
+                <span className="home__steps-tab-num">{step.num}</span>
+              </button>
             ))}
           </div>
 

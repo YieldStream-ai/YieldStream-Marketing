@@ -1,5 +1,7 @@
 /* Layout - BEM */
-$rail-bg: var(--surface-sunken);
+@use "variables" as *;
+
+$rail-bg: $ds-surface-sunken;
 
 .layout {
   background: $rail-bg;
@@ -25,11 +27,11 @@ $rail-bg: var(--surface-sunken);
 
     &--left {
       left: 0;
-      border-right: 1px solid var(--border-hairline);
+      border-right: 1px solid $ds-border-hairline;
     }
     &--right {
       right: 0;
-      border-left: 1px solid var(--border-hairline);
+      border-left: 1px solid $ds-border-hairline;
     }
   }
 }

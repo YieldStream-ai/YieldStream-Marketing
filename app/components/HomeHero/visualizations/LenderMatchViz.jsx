@@ -85,7 +85,7 @@ export default function LenderMatchViz() {
             cx={CX}
             cy={CY}
             fill="none"
-            stroke="#12a8bc"
+            stroke="#1B3A5F"
             strokeWidth="1"
             initial={{ r: 0, opacity: 0 }}
             animate={{ r: [0, 85], opacity: [0.3, 0] }}
@@ -100,7 +100,7 @@ export default function LenderMatchViz() {
             cx={CX}
             cy={CY}
             fill="none"
-            stroke="#12a8bc"
+            stroke="#1B3A5F"
             strokeWidth="0.5"
             initial={{ r: 0, opacity: 0 }}
             animate={{ r: [0, 85], opacity: [0.15, 0] }}
@@ -124,7 +124,7 @@ export default function LenderMatchViz() {
             y1={CY}
             x2={pos.x}
             y2={pos.y}
-            stroke={lender.matched ? "#047987" : "#cbd5de"}
+            stroke={lender.matched ? "#1B3A5F" : "#cbd5de"}
             strokeWidth={lender.matched ? 2 : 1}
             strokeDasharray={lender.matched ? "none" : "4 3"}
             custom={lender.matched}
@@ -141,7 +141,7 @@ export default function LenderMatchViz() {
             <motion.circle
               key={`flow-${lender.label}`}
               r="2.5"
-              fill="#12a8bc"
+              fill="#1B3A5F"
               initial={{ cx: CX, cy: CY, opacity: 0 }}
               animate={{
                 cx: [CX, pos.x],
@@ -171,7 +171,7 @@ export default function LenderMatchViz() {
                 cy={pos.y}
                 r="18"
                 fill="none"
-                stroke="#12a8bc"
+                stroke="#1B3A5F"
                 strokeWidth="0.75"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{
@@ -190,8 +190,8 @@ export default function LenderMatchViz() {
               cx={pos.x}
               cy={pos.y}
               r="14"
-              fill={lender.matched ? "#eaf6f7" : "#f8fafc"}
-              stroke={lender.matched ? "#047987" : "#e2e8ed"}
+              fill={lender.matched ? "rgba(27, 58, 95, 0.06)" : "#f8fafc"}
+              stroke={lender.matched ? "#1B3A5F" : "#e2e8ed"}
               strokeWidth="1.5"
               filter={lender.matched ? "url(#matchGlow)" : "none"}
             />
@@ -202,7 +202,7 @@ export default function LenderMatchViz() {
               fontFamily="var(--font-mono)"
               fontSize="8"
               fontWeight="600"
-              fill={lender.matched ? "#047987" : "#94a3b3"}
+              fill={lender.matched ? "#1B3A5F" : "#94a3b3"}
             >
               {lender.label}
             </text>
@@ -216,8 +216,8 @@ export default function LenderMatchViz() {
           cx={CX}
           cy={CY}
           r="20"
-          fill="#eaf6f7"
-          stroke="#047987"
+          fill="rgba(27, 58, 95, 0.06)"
+          stroke="#1B3A5F"
           strokeWidth="2"
           filter="url(#matchGlow)"
         />
@@ -228,7 +228,7 @@ export default function LenderMatchViz() {
           fontFamily="var(--font-mono)"
           fontSize="11"
           fontWeight="700"
-          fill="#047987"
+          fill="#1B3A5F"
         >
           M
         </text>

@@ -5,6 +5,10 @@
   height: 200vh;
   position: relative;
   z-index: 2;
+  /* Expand to the inner edge of the layout rails on wide viewports.
+     Gap between layout__main edge and rail = (100vw - container-max) / 10 */
+  width: calc(100% + 2 * max(0px, (100vw - var(--container-max)) / 10));
+  margin-left: calc(-1 * max(0px, (100vw - var(--container-max)) / 10));
 }
 
 .home__first-fold {
@@ -74,6 +78,7 @@
   flex-direction: column;
   gap: 48px;
   max-width: 720px;
+  margin: 0 auto;
   position: relative;
   z-index: 1;
 }

@@ -17,7 +17,7 @@ function SuccessContent() {
         <div className="checkout__success-content reveal">
           <div className="checkout__success-check">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="24" fill="#10b981" />
+              <circle cx="24" cy="24" r="24" fill="#2F7D4F" />
               <path
                 d="M14 24l7 7 13-13"
                 stroke="white"

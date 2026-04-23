@@ -143,8 +143,8 @@ export default function UnderwritingHero() {
                   x2="0"
                   y2="1"
                 >
-                  <stop offset="0%" stopColor="#059669" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#059669" stopOpacity="0.03" />
+                  <stop offset="0%" stopColor="#2F7D4F" stopOpacity="0.35" />
+                  <stop offset="100%" stopColor="#2F7D4F" stopOpacity="0.03" />
                 </linearGradient>
               </defs>
               <path
@@ -154,7 +154,7 @@ export default function UnderwritingHero() {
               <polyline
                 points="0,30 8,28 16,26 24,24 32,25 40,22 48,19 56,17 64,14 72,12 80,10 88,7 100,4"
                 fill="none"
-                stroke="#059669"
+                stroke="#2F7D4F"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -184,8 +184,8 @@ export default function UnderwritingHero() {
                   x2="0"
                   y2="1"
                 >
-                  <stop offset="0%" stopColor="#059669" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#059669" stopOpacity="0.03" />
+                  <stop offset="0%" stopColor="#2F7D4F" stopOpacity="0.35" />
+                  <stop offset="100%" stopColor="#2F7D4F" stopOpacity="0.03" />
                 </linearGradient>
               </defs>
               <path
@@ -195,7 +195,7 @@ export default function UnderwritingHero() {
               <polyline
                 points="0,26 10,24 20,22 30,19 40,20 50,17 60,14 70,13 80,11 90,9 100,6"
                 fill="none"
-                stroke="#059669"
+                stroke="#2F7D4F"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"

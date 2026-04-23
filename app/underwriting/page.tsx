@@ -17,10 +17,12 @@ export default function UnderwritingPage() {
           <div className="section-header center reveal">
             <div className="label">AI Underwriting</div>
             <h1 className="display-xl underwriting__hero-title">
-              The Submission <em className="italic teal-gradient">Logic Engine.</em>
+              The Submission{" "}
+              <em className="italic teal-gradient">Logic Engine.</em>
             </h1>
             <p className="text-lg underwriting__hero-sub">
-              12 months of high-density data. Extracted, scored, and matched in &lt;120s.
+              12 months of high-density data. Extracted, scored, and matched in
+              &lt;120s.
             </p>
           </div>
         </div>
@@ -38,8 +40,11 @@ export default function UnderwritingPage() {
           <div className="grid-feature underwriting__audit-grid reveal">
             <div>
               <p className="text-md underwriting__audit-callout">
-                Most underwriters spend <strong>30 minutes</strong> manually reviewing files.
-                YieldStream <strong>extracts every transaction</strong> and <strong>scores risk signals</strong> simultaneously — in under <strong>120 seconds</strong>.
+                Most underwriters spend <strong>30 minutes</strong> manually
+                reviewing files. YieldStream{" "}
+                <strong>extracts every transaction</strong> and{" "}
+                <strong>scores risk signals</strong> simultaneously — in under{" "}
+                <strong>120 seconds</strong>.
               </p>
               <AuditAccordion />
             </div>
@@ -54,7 +59,7 @@ export default function UnderwritingPage() {
           <div className="section-header center reveal">
             <div className="label-mono">20+ Risk Signals</div>
             <h2 className="display-lg">
-              Everything a human underwriter checks. Automatically.
+              From PDF statements to structured underwriting signals.
             </h2>
           </div>
           <div className="grid-4">
@@ -109,7 +114,9 @@ export default function UnderwritingPage() {
         <div className="container">
           <div className="section-header center reveal">
             <div className="label-mono">The Underwriter's Note</div>
-            <h2 className="display-lg">AI you can read, verify, and trust.</h2>
+            <h2 className="display-lg">
+              Underwriting intelligence you can read, verify, and trust.
+            </h2>
           </div>
           <div className="grid-feature reveal">
             <div className="screenshot screenshot-elevated">
@@ -123,10 +130,10 @@ export default function UnderwritingPage() {
             </div>
             <div>
               <p className="text-md" style={{ marginTop: 0, marginBottom: 20 }}>
-                Every AI analysis generates a single human-readable sentence
+                Every analysis generates a single human-readable sentence
                 explaining the structural assessment. Your team reads the note,
-                checks it against the data, and builds confidence in the system
-                over time.
+                checks it against the data, and walks into every deal knowing
+                exactly how to position it.
               </p>
               <div className="underwriting__note-card">
                 <div className="mono underwriting__note-label">

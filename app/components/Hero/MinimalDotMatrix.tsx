@@ -53,6 +53,8 @@ type Props = {
   maskSoftness?: number;
   /** Enable subtle time-based shimmer on the dots */
   shimmer?: boolean;
+  /** Show dots edge-to-edge with no porthole mask */
+  fullWidth?: boolean;
 };
 
 export const MinimalDotMatrix: React.FC<Props> = ({
@@ -67,7 +69,12 @@ export const MinimalDotMatrix: React.FC<Props> = ({
   maskRadius = 0.35,
   maskSoftness = 0.35,
   shimmer = true,
+  fullWidth = false,
 }) => {
+  // Push the mask radius well outside the viewport so every dot is visible
+  const resolvedRadius = fullWidth ? 2.0 : maskRadius;
+  const resolvedSoftness = fullWidth ? 0.0 : maskSoftness;
+
   return (
     <div
       className={cn("relative h-full w-full overflow-hidden", className)}
@@ -84,8 +91,8 @@ export const MinimalDotMatrix: React.FC<Props> = ({
           maxOpacity={maxOpacity}
           revealDuration={revealDuration}
           maskCenter={maskCenter}
-          maskRadius={maskRadius}
-          maskSoftness={maskSoftness}
+          maskRadius={resolvedRadius}
+          maskSoftness={resolvedSoftness}
           shimmer={shimmer}
         />
       </Canvas>

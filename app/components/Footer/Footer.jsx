@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import './Footer.scss';
 
 export default function Footer() {
@@ -10,7 +9,12 @@ export default function Footer() {
           <div className="footer-brand">
             <Link href="/" className="nav-logo footer__logo">
               <div className="footer__logo-container">
-                <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" priority />
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width={32} height={32} className="nav-logo-image" aria-hidden="true">
+                  <circle cx="50" cy="50" r="40" fill="#fefefe" stroke="#1B3A5F" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M 68 32 A 25 25 0 0 1 78 50" fill="none" stroke="#1B3A5F" strokeWidth="3" strokeLinecap="round" />
+                  <path d="M 63 37 A 18 18 0 0 1 70 50" fill="none" stroke="#1B3A5F" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
+                  <circle cx="58" cy="28" r="2" fill="#1B3A5F" />
+                </svg>
               </div>
               YieldStream
             </Link>

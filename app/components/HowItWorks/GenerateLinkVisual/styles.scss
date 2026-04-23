@@ -79,13 +79,13 @@
       background 0.3s ease;
 
     &--active {
-      border-color: hsl(186 94% 27%);
-      background: hsla(186, 94%, 27%, 0.03);
+      border-color: #1b3a5f;
+      background: rgba(27, 58, 95, 0.04);
     }
 
     &:hover {
-      border-color: hsl(186 94% 27%);
-      background: hsla(186, 94%, 27%, 0.03);
+      border-color: #1b3a5f;
+      background: rgba(27, 58, 95, 0.04);
     }
   }
 
@@ -127,8 +127,8 @@
       background 0.4s ease;
 
     &--confirmed {
-      border-color: hsl(142 50% 80%);
-      background: hsl(142 60% 97%);
+      border-color: rgba(27, 58, 95, 0.20);
+      background: rgba(27, 58, 95, 0.04);
     }
   }
 
@@ -228,7 +228,7 @@
     font-size: 0.8rem;
     font-weight: 500;
     color: white;
-    background: hsl(186 94% 27%);
+    background: #1b3a5f;
     opacity: 0.5;
     cursor: not-allowed;
     transition: opacity 0.4s ease;

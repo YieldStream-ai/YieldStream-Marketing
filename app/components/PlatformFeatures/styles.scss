@@ -350,16 +350,13 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.08),
-    0 8px 32px rgba(0, 0, 0, 0.14),
-    0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(15, 23, 42, 0.10);
 }
 
-$ap-teal: #12a8bc;
-$ap-teal-dark: #047987;
-$ap-teal-light: #eaf6f7;
-$ap-success: #059669;
+$ap-teal: #1B3A5F;
+$ap-teal-dark: #264F7E;
+$ap-teal-light: rgba(27, 58, 95, 0.06);
+$ap-success: #2F7D4F;
 $ap-success-bg: #ecfdf5;
 $ap-orange: #ff7a00;
 $ap-orange-bg: #fff7ed;
@@ -757,7 +754,7 @@ $ap-font-mono: "Geist Mono", ui-monospace, monospace;
   cursor: pointer;
 
   &--active {
-    background: rgba($ap-teal, 0.1);
+    background: rgba(27, 58, 95, 0.1);
     color: $ap-teal;
   }
 }
@@ -804,7 +801,7 @@ $ap-font-mono: "Geist Mono", ui-monospace, monospace;
   }
 
   &--offers {
-    color: darken($ap-teal, 10%);
+    color: #152E4A;
     background: $ap-teal-light;
   }
 
@@ -829,7 +826,7 @@ $ap-font-mono: "Geist Mono", ui-monospace, monospace;
   }
 
   &--pending {
-    color: darken($ap-teal, 5%);
+    color: #172F4D;
     background: $ap-teal-light;
   }
 }
