@@ -187,18 +187,18 @@ export default function Nav() {
         animate={
           scrolled
             ? {
-                top: 20,
+                top: 0,
                 left: "50%",
                 x: "-50%",
-                width: 820,
+                width: "calc(100vw - 2 * var(--rail-width))",
                 height: 56,
-                borderRadius: 32,
-                paddingTop: 12,
-                paddingBottom: 12,
-                paddingLeft: 24,
-                paddingRight: 24,
+                borderRadius: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
                 boxShadow:
-                  "0 4px 24px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
+                  "0 1px 0 rgba(0,0,0,0.06)",
                 borderColor: "var(--n150)",
               }
             : {
@@ -222,10 +222,10 @@ export default function Nav() {
           <Link href="/" className="nav-logo">
             <div className="nav-logo-container">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width={32} height={32} className="nav-logo-image" aria-hidden="true">
-                <circle cx="50" cy="50" r="40" fill="#fefefe" stroke="#1B3A5F" strokeWidth="3" strokeLinecap="round" />
-                <path d="M 68 32 A 25 25 0 0 1 78 50" fill="none" stroke="#1B3A5F" strokeWidth="3" strokeLinecap="round" />
-                <path d="M 63 37 A 18 18 0 0 1 70 50" fill="none" stroke="#1B3A5F" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
-                <circle cx="58" cy="28" r="2" fill="#1B3A5F" />
+                <circle cx="50" cy="50" r="40" fill="#fefefe" stroke="#1f2937" strokeWidth="3" strokeLinecap="round" />
+                <path d="M 68 32 A 25 25 0 0 1 78 50" fill="none" stroke="#1f2937" strokeWidth="3" strokeLinecap="round" />
+                <path d="M 63 37 A 18 18 0 0 1 70 50" fill="none" stroke="#1f2937" strokeWidth="2.5" strokeLinecap="round" opacity="0.7" />
+                <circle cx="58" cy="28" r="2" fill="#1f2937" />
               </svg>
             </div>
             <AnimatePresence>
@@ -401,15 +401,9 @@ export default function Nav() {
                 </motion.div>
               )}
             </AnimatePresence>
-            <motion.div
-              animate={{ borderRadius: scrolled ? 999 : 6 }}
-              transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
-              style={{ overflow: "hidden", display: "inline-flex" }}
-            >
-              <Link href="/pricing" className="btn btn-primary btn-sm" style={{ borderRadius: "inherit" }}>
-                Get Started
-              </Link>
-            </motion.div>
+            <Link href="/pricing" className="btn btn-primary btn-sm">
+              Get Started
+            </Link>
           </div>
 
           {/* Mobile toggle */}

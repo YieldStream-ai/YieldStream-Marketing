@@ -140,7 +140,7 @@ export default function Hero() {
           Submission Intelligence
           <br />
           for the High-Volume{" "}
-          <span className="hero__accent">Broker.</span>
+          <em className="hero__accent">Broker.</em>
         </motion.h1>
 
         <motion.div

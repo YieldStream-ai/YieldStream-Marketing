@@ -31,9 +31,9 @@ const pathVariant = {
 /* ── palette ── */
 const COLORS = {
   gray:   { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#1e293b" },
-  teal:   { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#1B3A5F" },
-  purple: { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#0f1a2e" },
-  final:  { fill: "#1B3A5F", stroke: "#264F7E", divider: "rgba(255,255,255,0.2)", text: "#ffffff" },
+  teal:   { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#1f2937" },
+  purple: { fill: "#ffffff", stroke: "#d1d5db", divider: "#e5e7eb", text: "#0e0f11" },
+  final:  { fill: "#1f2937", stroke: "#111827", divider: "rgba(255,255,255,0.2)", text: "#ffffff" },
 };
 
 /* ── node data ── */

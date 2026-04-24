@@ -353,9 +353,9 @@
   border: 1px solid rgba(15, 23, 42, 0.10);
 }
 
-$ap-teal: #1B3A5F;
-$ap-teal-dark: #264F7E;
-$ap-teal-light: rgba(27, 58, 95, 0.06);
+$ap-teal: #1f2937;
+$ap-teal-dark: #111827;
+$ap-teal-light: rgba(31, 41, 55, 0.06);
 $ap-success: #2F7D4F;
 $ap-success-bg: #ecfdf5;
 $ap-orange: #ff7a00;
@@ -754,7 +754,7 @@ $ap-font-mono: "Geist Mono", ui-monospace, monospace;
   cursor: pointer;
 
   &--active {
-    background: rgba(27, 58, 95, 0.1);
+    background: rgba(31, 41, 55, 0.1);
     color: $ap-teal;
   }
 }
@@ -801,7 +801,7 @@ $ap-font-mono: "Geist Mono", ui-monospace, monospace;
   }
 
   &--offers {
-    color: #152E4A;
+    color: #111827;
     background: $ap-teal-light;
   }
 

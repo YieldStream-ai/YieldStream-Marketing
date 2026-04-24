@@ -51,7 +51,7 @@ const appearance = {
   theme: 'stripe',
   variables: {
     fontFamily: "var(--font-body)",
-    colorPrimary: '#047987',
+    colorPrimary: '#1f2937',
     borderRadius: '8px',
     colorBackground: '#ffffff',
     colorText: '#1a1a2e',
@@ -62,8 +62,8 @@ const appearance = {
       padding: '10px 14px',
     },
     '.Input:focus': {
-      borderColor: '#047987',
-      boxShadow: '0 0 0 1px #047987',
+      borderColor: '#1f2937',
+      boxShadow: '0 0 0 1px #1f2937',
     },
     '.Label': {
       fontWeight: '600',

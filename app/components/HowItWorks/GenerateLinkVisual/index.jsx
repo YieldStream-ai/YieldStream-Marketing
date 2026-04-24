@@ -73,7 +73,7 @@ export default function GenerateLinkVisual() {
               height="12"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="#1b3a5f"
+              stroke="#1f2937"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -136,7 +136,7 @@ export default function GenerateLinkVisual() {
                   height="18"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke={fileConfirmed ? "#1b3a5f" : "hsl(210 10% 70%)"}
+                  stroke={fileConfirmed ? "#1f2937" : "hsl(210 10% 70%)"}
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"

@@ -615,6 +615,7 @@ export default function PlatformFeatures() {
     <section className="platform__section">
       <div className="container">
         <div className="section-header center reveal">
+          <div className="section-rule" />
           <div className="label-mono">Platform</div>
           <h2 className="display-lg" style={{ marginTop: 12 }}>
             The Operating System for High-Volume ISOs

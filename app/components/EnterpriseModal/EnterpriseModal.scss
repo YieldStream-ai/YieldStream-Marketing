@@ -81,8 +81,8 @@
 
     &:focus {
       outline: none;
-      border-color: var(--p600, #047987);
-      box-shadow: 0 0 0 1px var(--p600, #047987);
+      border-color: var(--p600, #1f2937);
+      box-shadow: 0 0 0 1px var(--p600, #1f2937);
     }
   }
 
@@ -101,7 +101,7 @@
   &__submit {
     width: 100%;
     padding: 12px;
-    background: var(--p600, #047987);
+    background: var(--p600, #1f2937);
     color: #fff;
     border: none;
     border-radius: 8px;

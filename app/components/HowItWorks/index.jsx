@@ -61,6 +61,7 @@ export default function HowItWorks() {
       <div className="container">
         <div className="home__steps-frame">
           <div className="section-header center reveal">
+            <div className="section-rule" />
             <div className="label-mono">Deal Workflow</div>
             <h2
               className="display-lg"

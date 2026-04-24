@@ -1,7 +1,5 @@
 # YieldStream Design System
 
-> Build instructions and guardrails are in [CLAUDE.md](./CLAUDE.md).
-
 A data-dense underwriting environment for credit and lending professionals. Synthesized from three references: **Linear** (information architecture, density, dark-surface discipline), **Attio** (record-as-object hierarchy, restrained pill system, progressive disclosure), and **Mercury** (financial tone, warmth without softness, calm under density).
 
 The point of YieldStream is judgment, not lookup. Every design decision is evaluated against one question: _does this help an underwriter form an opinion on a deal faster and with more confidence?_
@@ -12,21 +10,21 @@ The point of YieldStream is judgment, not lookup. Every design decision is evalu
 
 YieldStream is **light-mode-primary with a first-class dark mode** — this is the most important departure from Linear. Linear's near-black canvas reads as engineering tooling; an underwriter at a credit desk reading a memo at 9am needs the calm authority of paper, not the focus-mode aesthetic of an IDE. Mercury proves a financial tool can be light, dense, and trustworthy at the same time. Dark mode exists for late-night review sessions and is a peer, not an afterthought.
 
-The atmosphere is **paper-precise**: a near-white canvas (`#fefefe`), generous internal whitespace inside record panels, and almost no chrome. Borders are hairline and nearly absent. Shadows are forbidden except on true overlays (popovers, modals). Elevation is communicated through background tone, not depth.
+The atmosphere is **paper-precise**: a near-white canvas (`lch(98.94% 0.5 282)` — cool-tinted off-white), generous internal whitespace inside record panels, and almost no chrome. Borders are hairline and nearly absent. Shadows are forbidden except on true overlays (popovers, modals). Elevation is communicated through background tone, not depth.
 
-Color is rationed. The interface is achromatic — warm grays and off-white — with **one chromatic accent** (a deep ink blue, not Linear's indigo-violet, which reads too consumer). Status colors (green, amber, red) appear _only_ on data and only when they encode underwriting meaning. A green pill on a YieldStream screen means something specific about a deal; it is never decoration.
+Color is rationed. The interface is achromatic — warm grays and off-white — with **one chromatic accent** (a deep charcoal, not Linear's indigo-violet, which reads too consumer). Status colors (green, amber, red) appear _only_ on data and only when they encode underwriting meaning. A green pill on a YieldStream screen means something specific about a deal; it is never decoration.
 
 **Key characteristics:**
 
 - Light-primary, dark-peer. Neither is "the" mode.
-- Cool neutrals: `#fefefe` canvas, `#111827` ink — clean, crisp, Bloomberg/Linear feel without warmth
+- Cool neutrals: `lch(98.94% 0.5 282)` canvas, `#111827` ink — clean, crisp, Bloomberg/Linear feel without warmth (LCH color space for perceptual uniformity)
 - Inter Variable with `cv11, ss01, ss03` enabled globally — `cv11` gives the single-story `a` that reads as financial-document-modern
 - Tabular numerals (`font-variant-numeric: tabular-nums`) on **every number, everywhere** — this is non-negotiable for an underwriting tool
 - Source Serif 4 for memo prose and long-form narrative sections (the "editorial layer" Attio lacks) — used sparingly, only inside deal memos and analyst notes
 - JetBrains Mono for IDs, hashes, and structured data
-- One accent: `#1B3A5F` (deep ink blue). Hover `#264F7E`. That is the entire chromatic palette outside of status.
+- One accent: `#1f2937` (slate 800). Hover `#111827` (darker). Active `#030712`. That is the entire chromatic palette outside of status.
 - Status semantics: `#2F7D4F` (advance), `#B8860B` (caution), `#A8321E` (decline) — muted, never neon
-- Borders are `rgba(15,23,42,0.06)` light / `rgba(255,255,255,0.07)` dark. Hairline. Often absent in favor of spacing.
+- Borders use LCH: `lch(96 1 250)` hairline / `lch(92 1.5 250)` standard / `lch(85 2 250)` strong. Dark mode: `rgba(255,255,255,0.07)`. Hairline. Often absent in favor of spacing.
 
 ---
 
@@ -34,13 +32,13 @@ Color is rationed. The interface is achromatic — warm grays and off-white — 
 
 ### Light Mode (Primary)
 
-**Surfaces**
+**Surfaces (LCH color space)**
 
-- `--canvas`: `#fefefe` — page background. Near-white (not pure white, not cool-tinted).
-- `--surface`: `#FFFFFF` — record panels, the "card" that holds a deal
-- `--surface-sunken`: `#F3F4F6` — page-level left content rails, table row alternates, recessed section backgrounds
-- `--surface-sunken-subtle`: `#F6F7F9` — drop zone hover, input section backgrounds (between surface and sunken)
-- `--surface-raised`: `#FFFFFF` + `0 1px 2px rgba(15,23,42,0.04)` — popovers, dropdowns
+- `--canvas`: `lch(98.94% 0.5 282)` — page background. Near-white with subtle cool tint.
+- `--surface`: `lch(100% 0.5 282)` — record panels, the "card" that holds a deal
+- `--surface-sunken`: `lch(95.94% 0.5 282)` — page-level left content rails, table row alternates, recessed section backgrounds
+- `--surface-sunken-subtle`: `lch(90.94% 0.5 282)` — drop zone hover, input section backgrounds (more pronounced sunken effect)
+- `--surface-raised`: `lch(100% 0.5 282)` + `0 1px 2px rgba(15,23,42,0.04)` — popovers, dropdowns
 
 **Ink (Text)**
 
@@ -51,9 +49,13 @@ Color is rationed. The interface is achromatic — warm grays and off-white — 
 
 **Accent (the only chromatic UI color)**
 
-- `--accent`: `#1B3A5F` — primary CTAs, active tab underline, focused field ring, link text
-- `--accent-hover`: `#264F7E`
-- `--accent-wash`: `#1B3A5F0D` (5% alpha) — selected row background, active nav item
+- `--accent`: `#1f2937` (slate 800) — primary CTAs, active tab underline, focused field ring, link text
+- `--accent-hover`: `#111827` (slate 900, darker on hover)
+- `--accent-active`: `#030712` (slate 950, pressed state)
+- `--accent-wash`: `rgba(31, 41, 55, 0.04)` — selected row background, active nav item
+- `--accent-wash-hover`: `rgba(31, 41, 55, 0.06)` — hover on washed elements
+- `--accent-border`: `rgba(31, 41, 55, 0.12)` — active tab underlines, focus rings
+- `--accent-text-on`: `#ffffff` — text on accent fills
 
 **Status (data semantics only — never decoration)**
 
@@ -65,11 +67,11 @@ Color is rationed. The interface is achromatic — warm grays and off-white — 
 - `--status-decline-wash`: `#A8321E10`
 - `--status-neutral`: `#6B7280` — draft, archived, inactive
 
-**Borders & Lines**
+**Borders & Lines (LCH color space)**
 
-- `--border-hairline`: `rgba(15,23,42,0.06)` — default; nearly invisible
-- `--border-standard`: `rgba(15,23,42,0.10)` — inputs, prominent containers
-- `--border-strong`: `rgba(15,23,42,0.16)` — focused inputs, table headers
+- `--border-hairline`: `lch(96 1 250)` — softest separation, almost invisible
+- `--border-standard`: `lch(92 1.5 250)` — standard surface and component border
+- `--border-strong`: `lch(85 2 250)` — stronger contrast for interactive elements
 
 ### Dark Mode (Peer)
 
@@ -84,7 +86,7 @@ Color is rationed. The interface is achromatic — warm grays and off-white — 
 - `--accent`: `#6FA3D9` (lifted for contrast)
 - `--accent-wash`: `#6FA3D914`
 - Status colors lift ~15% in luminance; otherwise identical semantics
-- `--border-hairline`: `rgba(255,255,255,0.07)`
+- `--border-hairline`: `rgba(255, 255, 255, 0.07)`
 
 ---
 
@@ -184,9 +186,9 @@ For the pattern where a raw number sits next to its qualitative band: "760 ● E
 
 There are two distinct rail elements — they use different surface tokens intentionally:
 
-**App nav sidebar** (collapsed: 48px / expanded: 240px): `--canvas` background (`#fefefe`) — intentionally merges with the shell. The visual boundary comes from the page-level content shift, not a tone step. Nav items 13px/520, 8px vertical padding, 12px horizontal. Active item: `--accent-wash` background, `--accent` text, `2px` left bar in `--accent`. Hover: background lifts to `rgba(20,20,20,0.03)`.
+**App nav sidebar** (collapsed: 48px / expanded: 240px): `--canvas` background (`$ds-canvas`) — intentionally merges with the shell. The visual boundary comes from the page-level content shift, not a tone step. Nav items 13px/520, 8px vertical padding, 12px horizontal. Active item: `--accent-wash` background, `--accent` text, `2px` left bar in `--accent`. Hover: background lifts to `$ds-accent-wash`.
 
-**Page-level left content rail** (`LeftRailAccordion`): `--surface-sunken` background (`#f3f4f6`) — the visually distinct gray panel in merchant/submission detail views. No border-right; the tone shift from `#f3f4f6` to `#fefefe` is the boundary. Used for merchant profile, lender buy-box, deal intelligence sidebar panels.
+**Page-level left content rail** (`LeftRailAccordion`): `--surface-sunken` background (`$ds-surface-sunken`) — the visually distinct gray panel in merchant/submission detail views. No border-right; the tone shift from sunken to canvas is the boundary. Used for merchant profile, lender buy-box, deal intelligence sidebar panels.
 
 ### Tables (the heart of the product)
 
@@ -273,8 +275,8 @@ Five levels, mostly tone-based. Shadows only on true overlays.
 | 0 Canvas  | `--canvas`, no border                                                             | Page background                            |
 | 1 Sunken  | `--surface-sunken`                                                                | Side rail, table row alternate, section bg |
 | 2 Surface | `--surface`                                                                       | Record panel, KPI card                     |
-| 3 Raised  | `--surface` + `0 1px 2px rgba(20,20,20,0.04), 0 0 0 1px var(--border-hairline)`   | Popovers, dropdowns                        |
-| 4 Overlay | `--surface` + `0 12px 32px rgba(20,20,20,0.12), 0 0 0 1px var(--border-standard)` | Modals, command palette                    |
+| 3 Raised  | `--surface` + `0 1px 2px rgba(15,23,42,0.04), 0 0 0 1px var(--border-hairline)`   | Popovers, dropdowns                        |
+| 4 Overlay | `--surface` + `0 12px 32px rgba(15,23,42,0.12), 0 0 0 1px var(--border-standard)` | Modals, command palette                    |
 
 Linear uses background-luminance stepping on dark; YieldStream uses **tone stepping with warmth** on light. Shadows in light mode are warm-gray (`rgba(20,20,20,...)`), never pure black.
 
@@ -287,20 +289,20 @@ Linear uses background-luminance stepping on dark; YieldStream uses **tone stepp
 - Use tabular-nums on every number, including dates, IDs, percentages, and ratios
 - Reserve color for data semantics. If a color isn't carrying underwriting meaning, remove it.
 - Use Source Serif only inside memos. Mixing it into UI chrome breaks the system.
-- Lead with the near-white canvas — it's what makes YieldStream feel like a financial document, not a developer tool
+- Lead with the warm off-white canvas — it's what makes YieldStream feel like a financial document, not a developer tool
 - Use 4px-radius pills with washes, not full-pills with solid fills
 - Right-align all numeric table columns
 - Keep borders hairline; prefer spacing and tone shifts over visible lines
 
 **Don't**
 
-- Don't use Linear's indigo-violet — `#1B3A5F` ink blue is the YieldStream accent
+- Don't use Linear's indigo-violet — `#1f2937` slate 800 is the YieldStream accent
 - Don't use full-pill (9999px) badges for status — too consumer
 - Don't use shadows for elevation outside of true overlays
 - Don't use bold (700+); 620 is the ceiling
 - Don't use serif in tables, labels, buttons, or any chrome
 - Don't decorate with status colors. A green pill must mean "advance."
-- Don't use pure white `#FFFFFF` as the page canvas — use `$ds-canvas` (`#fefefe`). The near-white tone is intentional; hardcoding `#FFFFFF` bypasses the token.
+- Don't use pure white `#FFFFFF` as the page canvas — use `$ds-canvas` (`lch(98.94% 0.5 282)`). The near-white LCH tone is intentional; hardcoding hex bypasses the token.
 - Don't use icons larger than 16px in tables; underwriters scan, they don't browse
 
 ---
@@ -369,84 +371,110 @@ Fonts are loaded via `next/font/google` in `src/app/layout.tsx` and exposed as C
 New design system tokens follow this naming pattern in `_variables.scss`:
 
 ```scss
-// Surfaces (DS2 — use $ds- prefix)
-$ds-canvas: #fefefe; // Near-white page background
-$ds-surface: #ffffff; // Record panels, cards
-$ds-surface-sunken: #f3f4f6; // Page-level left rails, table row alternates
-$ds-surface-sunken-subtle: #f6f7f9; // Drop zone hover, input section backgrounds
-$ds-surface-raised: #ffffff; // Popovers, dropdowns (+ shadow)
+// Surfaces (DS2 — use $ds- prefix, LCH color space)
+$ds-canvas: lch(98.94% 0.5 282); // Near-white with subtle cool tint
+$ds-surface: lch(100% 0.5 282); // Record panels, cards
+$ds-surface-sunken: lch(
+  95.94% 0.5 282
+); // Page-level left rails, table row alternates
+$ds-surface-sunken-subtle: lch(
+  90.94% 0.5 282
+); // Drop zone hover, input section backgrounds
+$ds-surface-raised: lch(100% 0.5 282); // Popovers, dropdowns (+ shadow)
 
 // Ink (text hierarchy)
-$ink-primary: #111827;
-$ink-secondary: #374151;
-$ink-tertiary: #6b7280;
-$ink-quaternary: #9ca3af;
+$ds-ink-primary: #111827;
+$ds-ink-secondary: #374151;
+$ds-ink-tertiary: lch(38.376% 1.25 282 / 1);
+$ds-ink-quaternary: #9ca3af;
 
-// Accent (single chromatic color)
-$accent: #1b3a5f;
-$accent-hover: #264f7e;
-$accent-wash: rgba(27, 58, 95, 0.05);
+// Accent (single chromatic color — slate ramp)
+$ds-accent: #1f2937; // Slate 800 — primary
+$ds-accent-hover: #111827; // Slate 900 — darker on hover
+$ds-accent-active: #030712; // Slate 950 — pressed
+$ds-accent-wash: rgba(31, 41, 55, 0.04); // Same hue, 4% tint
+$ds-accent-wash-hover: rgba(31, 41, 55, 0.06);
+$ds-accent-border: rgba(31, 41, 55, 0.12); // Active tab underlines, focus rings
+$ds-accent-text-on: #ffffff; // Text on accent fills
 
 // Status (data semantics only)
-$status-advance: #2f7d4f;
-$status-advance-wash: rgba(47, 125, 79, 0.07);
-$status-caution: #b8860b;
-$status-caution-wash: rgba(184, 134, 11, 0.08);
-$status-decline: #a8321e;
-$status-decline-wash: rgba(168, 50, 30, 0.06);
-$status-neutral: #6b7280;
+$ds-status-advance: #2f7d4f;
+$ds-status-advance-wash: rgba(47, 125, 79, 0.07);
+$ds-status-caution: #b8860b;
+$ds-status-caution-wash: rgba(184, 134, 11, 0.08);
+$ds-status-decline: #a8321e;
+$ds-status-decline-wash: rgba(168, 50, 30, 0.06);
+$ds-status-neutral: #6b7280;
 
-// Borders
-$border-hairline: rgba(15, 23, 42, 0.06);
-$border-standard: rgba(15, 23, 42, 0.1);
-$border-strong: rgba(15, 23, 42, 0.16);
+// Borders (LCH color space)
+$ds-border-hairline: lch(96 1 250); // Softest separation, almost invisible
+$ds-border-standard: lch(92 1.5 250); // Standard surface and component border
+$ds-border-strong: lch(85 2 250); // Stronger contrast for interactive elements
+
+// Focus
+$ds-focus-border: $ds-accent;
+$ds-focus-ring: rgba(
+  27,
+  58,
+  95,
+  0.12
+); // Stronger than accent-wash for focus visibility
 
 // Typography
-$font-sans: var(--font-inter), "Inter Variable", system-ui, sans-serif;
-$font-editorial:
+$ds-font-sans: var(--font-inter), "Inter Variable", system-ui, sans-serif;
+$ds-font-editorial:
   var(--font-source-serif), "Source Serif 4", Charter, Georgia, serif;
-$font-mono:
+$ds-font-mono:
   var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
 
 // Weight ceiling: 620 (never bold/700+)
-$font-weight-read: 400;
-$font-weight-ui: 520; // Workhorse — labels, table headers, emphasis
-$font-weight-announce: 620; // KPIs, deal names, section headings
+$ds-font-weight-read: 400;
+$ds-font-weight-ui: 520; // Workhorse — labels, table headers, emphasis
+$ds-font-weight-announce: 620; // KPIs, deal names, section headings
 ```
 
 ### CSS Custom Properties (exported in `design-system.scss`)
 
 ```scss
 :root {
-  // Surfaces
-  --canvas: #{$canvas};
-  --surface: #{$surface};
-  --surface-sunken: #{$surface-sunken};
-  --surface-raised: #{$surface-raised};
+  // Surfaces (LCH)
+  --canvas: #{$ds-canvas};
+  --surface: #{$ds-surface};
+  --surface-sunken: #{$ds-surface-sunken};
+  --surface-sunken-subtle: #{$ds-surface-sunken-subtle};
+  --surface-raised: #{$ds-surface-raised};
 
   // Ink
-  --ink-primary: #{$ink-primary};
-  --ink-secondary: #{$ink-secondary};
-  --ink-tertiary: #{$ink-tertiary};
-  --ink-quaternary: #{$ink-quaternary};
+  --ink-primary: #{$ds-ink-primary};
+  --ink-secondary: #{$ds-ink-secondary};
+  --ink-tertiary: #{$ds-ink-tertiary};
+  --ink-quaternary: #{$ds-ink-quaternary};
 
   // Accent
-  --accent: #{$accent};
-  --accent-hover: #{$accent-hover};
-  --accent-wash: #{$accent-wash};
+  --accent: #{$ds-accent};
+  --accent-hover: #{$ds-accent-hover};
+  --accent-active: #{$ds-accent-active};
+  --accent-wash: #{$ds-accent-wash};
+  --accent-wash-hover: #{$ds-accent-wash-hover};
+  --accent-border: #{$ds-accent-border};
+  --accent-text-on: #{$ds-accent-text-on};
 
   // Status
-  --status-advance: #{$status-advance};
-  --status-advance-wash: #{$status-advance-wash};
-  --status-caution: #{$status-caution};
-  --status-caution-wash: #{$status-caution-wash};
-  --status-decline: #{$status-decline};
-  --status-decline-wash: #{$status-decline-wash};
+  --status-advance: #{$ds-status-advance};
+  --status-advance-wash: #{$ds-status-advance-wash};
+  --status-caution: #{$ds-status-caution};
+  --status-caution-wash: #{$ds-status-caution-wash};
+  --status-decline: #{$ds-status-decline};
+  --status-decline-wash: #{$ds-status-decline-wash};
 
-  // Borders
-  --border-hairline: #{$border-hairline};
-  --border-standard: #{$border-standard};
-  --border-strong: #{$border-strong};
+  // Borders (LCH)
+  --border-hairline: #{$ds-border-hairline};
+  --border-standard: #{$ds-border-standard};
+  --border-strong: #{$ds-border-strong};
+
+  // Focus
+  --focus-border: #{$ds-focus-border};
+  --focus-ring: #{$ds-focus-ring};
 }
 ```
 
@@ -612,7 +640,7 @@ Build in this sequence — each unlocks the next:
 3. **Mixins** — Add typography, elevation, pill, and button mixins to `_mixins.scss`.
 4. **`<Pill>`** — BEM component with SCSS, 4px radius, wash backgrounds. The smallest brick — get this right and everything downstream is easier.
 5. **`<DataCell>`** — BEM component with built-in tabular-nums and right-align for numerics.
-6. **`<Table>`** — BEM component using `<DataCell>`, following the table spec (36px/44px rows, sticky header).
+6. **`<Table>`** — BEM component using `<DataCell>`, following the table spec (36px/44px rows). No sticky headers — scroll is always bounded within a flex container, so headers remain in view naturally.
 7. **`<KpiCard>`** — BEM component, 36px/620 value, 11px uppercase label.
 8. **`<RecordPanel>`** — BEM component with tab strip (13px/520 labels, 2px accent underline).
 9. **`<Memo>`** — BEM component that scopes Source Serif 4. Never let serif leak outside this component.
@@ -626,203 +654,3 @@ Build in this sequence — each unlocks the next:
 - **Weight ceiling**: No SCSS variable or mixin may set `font-weight` above 620. The old `$font-weight-bold: 700` is deprecated.
 - **Feature components use BEM + SCSS only**: Tailwind classes are forbidden in feature component SCSS/TSX. Tailwind is permitted only inside `src/components/ui/` for shadcn primitives.
 - **Dark mode is a peer**: Every new component must define dark-mode token overrides. Use a `[data-theme="dark"]` or `.dark` selector scope in `design-system.scss`.
-
----
-
-## 10. Status Indicators & Visual Emphasis
-
-YieldStream uses a **two-tier visual indicator system**. Each element on a page has a job (state, emphasis, or fact), and each job has a correct container. Never mix them.
-
-### Three Visual Tiers
-
-| Job                     | Container                                    | Example                                                                         |
-| ----------------------- | -------------------------------------------- | ------------------------------------------------------------------------------- |
-| **Enumerated state**    | Pill (`StatusPillFilled` or `StatusPillDot`) | Funded, Approved, Low Risk, Clean, Technology                                   |
-| **Narrative emphasis**  | Highlighter wash (no border, no radius)      | Key phrases in Underwriter's Notes, active comparison column, best-in-row cells |
-| **Facts & identifiers** | Plain text (no container)                    | Merchant name, EIN, dollar amounts in tables, dates                             |
-
-### Pill Variants — When to Use Each
-
-**Colored pill** (`StatusPillFilled`) — use when the state is the focal element the user came to see:
-
-- 1–3 pills in a hero/focal position (e.g., `CLEAN` on underwriting score, risk level on profile, `4 expiring soon` alert)
-- The user is **reading** this pill, not scanning across many
-
-**White pill + colored dot** (`StatusPillDot`) — use when the state is supplementary metadata in a scanning context:
-
-- 4+ pills in lists, grids, tables, or Kanban cards (e.g., `APPROVED` / `SUBMITTED` across lender columns, deal status on Kanban cards)
-- The user is **scanning** across multiple pills to compare
-
-**Decision rule:** scan vs read. Scanning = dot pill. Reading = colored pill.
-
-### Pill Styling Rules
-
-- **4px radius** — `rounded-[4px]`, not full-pill (`rounded-full`). Full-pill reads consumer; 4px reads document
-- **Low saturation** — background at the 50-stop, text at the 800-stop from the same color ramp. The text leads; the background is a faint wash defining the container
-- **6 tones:** `neutral`, `info`, `success`, `warning`, `danger`, `accent` — defined as CSS custom properties (`--status-{tone}-bg/dot/text`)
-- **No bright/saturated pills** — the difference between tasteful and fatigued is entirely in saturation, not shape
-
-### Highlighter Usage
-
-- Reserved for **narrative emphasis on prose content** — Underwriter's Notes, AI-generated summaries
-- Also used for **region emphasis** — active comparison column wash, best-in-row cell highlights in tables
-- Zero radius, no border — pure text emphasis. The moment you add a border, it becomes a container and should be a pill instead
-- **Never use highlighters for enumerated states**
-
-### What NOT to Do
-
-- **Don't border highlighters** — collapses the two-tier system into one ambiguous thing
-- **Don't use full-pill radius (`rounded-full`)** — reads consumer; 4px radius is the correct document-grade treatment
-- **Don't use saturated/bright pill backgrounds** — emerald-on-white is the single most fatigued SaaS element
-- **Don't pillify continuous values** — computed deltas (`+$117`, `-0.04x`), deal rank bars, and numeric scores stay as plain text with color encoding
-
-### Status Pill Components
-
-| Component          | File                                              | Purpose                                                              |
-| ------------------ | ------------------------------------------------- | -------------------------------------------------------------------- |
-| `StatusPillFilled` | `src/components/ui/status/status-pill-filled.tsx` | Colored background pill for focal states                             |
-| `StatusPillDot`    | `src/components/ui/status/status-pill-dot.tsx`    | White pill with colored dot for scanning                             |
-| `StatusDot`        | `src/components/ui/status/status-dot.tsx`         | Standalone dot indicator                                             |
-| `StatusTone` type  | `src/components/ui/status/types.ts`               | `neutral \| info \| success \| warning \| danger \| accent`          |
-| Tone mappers       | `src/features/merchants/utils/statusTones.ts`     | `lifecycleTone()`, `riskTone()`, `ficoTone()` — domain status → tone |
-
-## 9. Marketing Surface
-
-YieldStream's marketing site and the app share one design system, one set of tokens, and one set of primitive components. They are not two products — they are two compositions of the same vocabulary. A prospect who sees the marketing site and then logs into the app should feel zero seam. This section defines the handful of places where the marketing surface is _permitted_ to compose the system differently from the app, and what stays locked.
-
-### What stays locked (do not diverge)
-
-- **Tokens.** Canvas, surface, ink, accent, status, border — all identical. If you find yourself wanting a "marketing blue" or a "warmer canvas for the landing page," stop. Mercury and Linear both run one palette across their entire surface area and it is a huge part of why they read as serious products.
-- **Type families.** Inter Variable for UI, Source Serif 4 for editorial, JetBrains Mono for IDs and structured data. No marketing-exclusive display faces. Using a separate face on marketing is the most common way a product stops feeling like itself.
-- **Type features.** `font-feature-settings: "cv11", "ss01", "ss03", "calt"` and `font-variant-numeric: tabular-nums` on numbers still apply everywhere, including inside hero headlines. A stat quoted in a marketing hero is still tabular.
-- **Weight ceiling.** Still 620. No 700+ for marketing headlines, no matter how much the designer wants to.
-- **Primitive components.** `<Button>`, `<Pill>`, `<Tag>`, `<Status>`, `<DataCell>`, `<Input>` are imported from the same shared package as the app. Marketing does not fork primitives. If marketing needs a variant, it gets added to the shared primitive with a prop, not copied.
-- **Color discipline.** One accent, status colors only encode data semantics. A green pill on a marketing page still means "advance." If you want warmth on marketing, earn it from photography, generous whitespace, and the serif — not from breaking the palette.
-- **No shadows on buttons.** Ever. Same rule as the app.
-
-### What the marketing surface is permitted to compose differently
-
-#### Scale
-
-Marketing is spacious; the app is dense. Same tokens, different rhythm. The marketing display scale extends beyond the app's ceiling:
-
-| Role                   | Family       | Size | Weight | Line | Tracking |
-| ---------------------- | ------------ | ---- | ------ | ---- | -------- |
-| Marketing Display XL   | Inter        | 80px | 620    | 1.00 | -2.00px  |
-| Marketing Display      | Inter        | 64px | 620    | 1.02 | -1.50px  |
-| Marketing Section      | Inter        | 40px | 620    | 1.15 | -0.80px  |
-| Marketing Subsection   | Inter        | 28px | 620    | 1.25 | -0.42px  |
-| Marketing Lead (serif) | Source Serif | 22px | 400    | 1.55 | -0.22px  |
-| Marketing Body         | Inter        | 18px | 400    | 1.60 | 0        |
-| Marketing Caption      | Inter        | 14px | 520    | 1.50 | 0        |
-
-Negative letter-spacing still scales with size, same rule as the app. The 80px ceiling is deliberate — bigger reads as consumer SaaS and YieldStream shouldn't.
-
-#### Vertical rhythm
-
-- App sections: 32px between major sections, 16px between subsections.
-- Marketing sections: **96px** between major sections on mobile, **128px** on desktop. Hero sections get 160px of vertical padding below the fold.
-- This is the biggest rhythmic difference between the two surfaces and the most common place drift happens. Pin it.
-
-#### Container widths
-
-- Hero and feature grid: `max-width: 1200px`
-- Prose sections (manifesto, about, blog body): `max-width: 680px` — matching the `<Memo>` reading measure, because long-form marketing copy is editorial content and needs the same reading measure as an underwriting memo
-- Product screenshot sections: can break to `max-width: 1440px` when showing full-bleed app captures
-- Navigation and footer: full-width, content inside a 1200px container
-
-#### Serif permissions (expanded)
-
-Inside the app, Source Serif 4 is locked to `<Memo>`. On the marketing surface, the serif earns more real estate because marketing is partly an editorial act. The following marketing-specific components use serif:
-
-- `<Manifesto>` — the "why we built this" statement, typically one block of 3–5 paragraphs
-- `<PullQuote>` — large serif quotes (28–36px) used as section transitions
-- `<TestimonialBody>` — customer quotes in the testimonials section; attribution stays Inter
-- `<MarketingLead>` — the 22px serif paragraph that follows a section heading, used sparingly
-
-Everything else on the marketing site is still Inter: navigation, buttons, feature card titles, CTAs, footer, pricing tables, forms. The rule is the same as the app: **serif never touches chrome**. It lives only inside editorial blocks.
-
-#### Surface and elevation
-
-The marketing surface uses the same canvas (`#F8FAFC`) as the app. It does not get a brighter or warmer background to feel "inviting." The restraint _is_ the pitch.
-
-Marketing may use one elevation pattern the app does not: **full-bleed section bands**. Alternating sections can swap between `--canvas` and `--surface` (white) to create rhythm at scroll. The app never does this because it would fight with record panels, but marketing pages benefit from the tonal breathing it provides. Never more than two tones in rotation — no third background color.
-
-#### Product screenshots
-
-Product screenshots are the bridge between marketing and app. Because the design system is shared, screenshots sit on the marketing page without needing a fake browser chrome, a stylized device frame, or a gradient background behind them. Show the real app UI with real-looking deal data. The rules:
-
-- Screenshots sit directly on the marketing canvas with no frame
-- A single hairline border (`1px solid var(--border-standard)`) and an 8px radius, nothing else
-- No drop shadows, no glow, no perspective tilts, no floating
-- Data in screenshots should be plausible, not stylized — real-seeming deal names, realistic FICO scores, believable amounts. Fake-obvious data ("ACME CORP / $999,999,999") undermines the credibility the rest of the system is working to build.
-- Annotations on screenshots use the same `<Pill>` and `<Status>` components as the app, not marketing-only callout shapes
-
-#### Marketing-only components
-
-These components exist only on the marketing surface and do not ship in the shared primitive package:
-
-- `<Hero>` — full-width hero section with display headline, lead paragraph, and CTA cluster
-- `<FeatureGrid>` — 2 or 3 column grid of feature cards
-- `<PricingTable>` — pricing tiers with feature comparison
-- `<TestimonialBlock>` — customer quotes with attribution
-- `<Manifesto>` — serif-led "why we exist" block
-- `<CtaBanner>` — secondary conversion block, typically "Book a demo"
-- `<MarketingNav>` — horizontal top navigation (marketing uses top nav; app uses left rail)
-- `<MarketingFooter>` — multi-column footer
-
-These components _consume_ the shared primitives. A `<FeatureGrid>` card uses `<Button>` from the shared package for its CTA, not a marketing-only button. The rule: marketing composes primitives into marketing layouts; it never reinvents primitives.
-
-#### Navigation
-
-Marketing uses a horizontal top nav; the app uses the full-height left rail shell. This is the one structural difference between the two surfaces and it's correct — marketing visitors are navigating between contexts (Home, Product, Pricing, Docs, Blog), which is what top nav is for. App users are living inside one deal, which is what a left rail is for. Don't try to unify these.
-
-The marketing top nav uses:
-
-- Height: 64px
-- Background: `--canvas` at rest, `--surface` when scrolled (with `border-bottom: 1px solid var(--border-hairline)` on scroll only)
-- Logo left, nav links center or right, CTA cluster far right
-- Nav links: 14px Inter / 520 / `--ink-secondary`, hover to `--ink-primary`
-- Primary CTA ("Book a demo") uses the shared `<Button variant="primary">` — not a marketing-specific button
-
-#### Buttons on marketing
-
-Same three variants as the app (Primary, Secondary, Ghost), same tokens, same radius. The only difference is that marketing is permitted to use the `lg` size (14px / 10px 18px padding) for hero CTAs, where the app almost never does. One primary CTA per marketing page section, same discipline as the app.
-
-### Responsive
-
-Marketing is mobile-first in a way the app is not. The app assumes desktop-class displays; marketing has to work on phones because that's where a lot of prospect discovery happens. Breakpoints for marketing:
-
-| Name    | Width       | Behavior                                                                                      |
-| ------- | ----------- | --------------------------------------------------------------------------------------------- |
-| Mobile  | <640px      | Single column, hero display drops from 80px to 48px, section padding drops from 128px to 72px |
-| Tablet  | 640–1024px  | Two-column feature grids, hero at 64px                                                        |
-| Desktop | 1024–1440px | Full three-column feature grids where applicable, hero at 80px                                |
-| Wide    | >1440px     | Content max-widths cap; additional breathing room in margins                                  |
-
-### Build notes
-
-- Marketing and app should share a `packages/ui` (or equivalent) that exports tokens and primitive components
-- Marketing-only components live in the marketing app and import from `packages/ui`
-- The CSS variables file is shared. If marketing needs a new token, it gets added to the shared file with clear naming (`--marketing-display-xl`) so it doesn't pollute the app namespace
-- The design doc has exactly one source of truth. There is no `marketing-design-system.md`. This file is it.
-
-### Do's and don'ts (marketing-specific)
-
-**Do**
-
-- Use the same accent color (`#1B3A5F`) for marketing CTAs as for app CTAs
-- Let the serif carry more weight in editorial blocks — this is where marketing earns its distinct feel
-- Show real app screenshots without frames or device mockups
-- Use tabular-nums on every stat quoted in a headline, hero, or testimonial
-- Leave 96–128px of vertical rhythm between sections; marketing should breathe
-- Treat restraint as the pitch — a calm, credible marketing page is what sells a credit desk
-
-**Don't**
-
-- Don't introduce a "marketing palette" with warmer or brighter variants. One palette.
-- Don't use display faces other than Inter. One sans, one serif, one mono.
-- Don't put product screenshots inside fake browser chrome, device frames, or gradient halos
-- Don't use drop shadows or glows on buttons, cards, or CTAs on marketing, even though "everyone does"
-- Don't fork primitive components into marketing-only variants. Add a prop to the shared primitive instead.
-- Don't write a second design doc. This section is the marketing doc.

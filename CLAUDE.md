@@ -28,7 +28,7 @@ Tokens use the `$ds-` prefix (e.g. `$ds-canvas`, `$ds-ink-primary`, `$ds-accent`
 - **Status colors encode meaning** — `$ds-status-advance/caution/decline` are never decorative. A green element means "advance." Period.
 - **No shadows outside overlays** — elevation is tone-based. Shadows only on popovers and modals.
 - **Canvas is `#fefefe`** — never hardcode `#ffffff` as the page background. Use `$ds-canvas`.
-- **Accent is `#1b3a5f`** — never use teal (`#047987`) or any legacy green as the UI accent color.
+- **Accent is `#1f2937`** — never use teal (`#047987`), legacy navy (`#1b3a5f`), or any legacy green as the UI accent color.
 
 ## File Conventions
 

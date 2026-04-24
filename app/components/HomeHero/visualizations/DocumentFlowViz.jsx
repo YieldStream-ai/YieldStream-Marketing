@@ -84,9 +84,9 @@ export default function DocumentFlowViz() {
     >
       <defs>
         <linearGradient id="docScanGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#1B3A5F" stopOpacity="0" />
-          <stop offset="50%" stopColor="#1B3A5F" stopOpacity="1" />
-          <stop offset="100%" stopColor="#1B3A5F" stopOpacity="0" />
+          <stop offset="0%" stopColor="#1f2937" stopOpacity="0" />
+          <stop offset="50%" stopColor="#1f2937" stopOpacity="1" />
+          <stop offset="100%" stopColor="#1f2937" stopOpacity="0" />
         </linearGradient>
         <filter id="docGlow">
           <feGaussianBlur stdDeviation="3" result="blur" />
@@ -131,7 +131,7 @@ export default function DocumentFlowViz() {
           width="240"
           height="8"
           rx="4"
-          fill="#1B3A5F"
+          fill="#1f2937"
           initial={{ opacity: 0 }}
           animate={{
             opacity: [0, 0.15, 0],
@@ -169,7 +169,7 @@ export default function DocumentFlowViz() {
         fontFamily="var(--font-mono)"
         fontSize="8"
         letterSpacing="0.12em"
-        fill="#1B3A5F"
+        fill="#1f2937"
         variants={{
           hidden: { opacity: 0 },
           visible: { opacity: 0.7, transition: { delay: 1.0 } },
@@ -187,7 +187,7 @@ export default function DocumentFlowViz() {
           width={b.w}
           height={b.h}
           rx="2"
-          fill="#1B3A5F"
+          fill="#1f2937"
           opacity="0.8"
           custom={i}
           variants={blockReveal}

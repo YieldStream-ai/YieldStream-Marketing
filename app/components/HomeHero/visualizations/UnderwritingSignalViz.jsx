@@ -69,7 +69,7 @@ export default function UnderwritingSignalViz() {
     >
       <defs>
         <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#1B3A5F" />
+          <stop offset="0%" stopColor="#1f2937" />
           <stop offset="100%" stopColor="#2F7D4F" />
         </linearGradient>
         <filter id="scoreGlow">
@@ -149,7 +149,7 @@ export default function UnderwritingSignalViz() {
         fontFamily="var(--font-mono)"
         fontSize="22"
         fontWeight="700"
-        fill="#1B3A5F"
+        fill="#1f2937"
         filter={count >= 98 ? "url(#textGlow)" : "none"}
       >
         {count}%

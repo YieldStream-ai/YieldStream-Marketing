@@ -79,13 +79,13 @@
       background 0.3s ease;
 
     &--active {
-      border-color: #1b3a5f;
-      background: rgba(27, 58, 95, 0.04);
+      border-color: #1f2937;
+      background: rgba(31, 41, 55, 0.04);
     }
 
     &:hover {
-      border-color: #1b3a5f;
-      background: rgba(27, 58, 95, 0.04);
+      border-color: #1f2937;
+      background: rgba(31, 41, 55, 0.04);
     }
   }
 
@@ -127,8 +127,8 @@
       background 0.4s ease;
 
     &--confirmed {
-      border-color: rgba(27, 58, 95, 0.20);
-      background: rgba(27, 58, 95, 0.04);
+      border-color: rgba(31, 41, 55, 0.20);
+      background: rgba(31, 41, 55, 0.04);
     }
   }
 
@@ -228,7 +228,7 @@
     font-size: 0.8rem;
     font-weight: 500;
     color: white;
-    background: #1b3a5f;
+    background: #1f2937;
     opacity: 0.5;
     cursor: not-allowed;
     transition: opacity 0.4s ease;

@@ -1,140 +1,10 @@
 /* Home page - BEM: home__element--modifier */
 /* Institutional Minimalism Refactor */
 
-.home__first-fold-wrapper {
-  height: 200vh;
-  position: relative;
-  z-index: 2;
-  /* Expand to the inner edge of the layout rails on wide viewports.
-     Gap between layout__main edge and rail = (100vw - container-max) / 10 */
-  width: calc(100% + 2 * max(0px, (100vw - var(--container-max)) / 10));
-  margin-left: calc(-1 * max(0px, (100vw - var(--container-max)) / 10));
-}
-
 .home__first-fold {
-  height: calc(100vh - var(--nav-height));
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: var(--nav-height);
+  position: relative;
   z-index: 2;
-  background: var(--n0);
-  overflow: hidden;
-}
-
-.home__reveal-container {
-  height: 300vh;
-  margin-top: -100vh;
-  position: relative;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.home__reveal-quote {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: radial-gradient(var(--n50) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: auto;
-}
-
-.home__reveal-quote-icon {
-  position: absolute;
-  pointer-events: none;
-  color: var(--n700);
-  z-index: 0;
-
-  svg {
-    width: 140px;
-    height: 140px;
-  }
-
-  &--top-left {
-    top: 12%;
-    left: 8%;
-  }
-
-  &--right {
-    top: 38%;
-    right: 6%;
-  }
-
-  &--bottom-left {
-    bottom: 14%;
-    left: 12%;
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
-
-.home__reveal-quote-list {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
-  max-width: 720px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.home__reveal-quote-item {
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
-}
-
-.home__reveal-quote-num {
-  font-family: var(--font-mono);
-  font-size: 3rem;
-  font-weight: 600;
-  color: var(--n200);
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.home__reveal-quote-heading {
-  font-size: 1rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--n500);
-}
-
-.home__reveal-quote-text {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-  font-weight: 700;
-  color: var(--n600, #475569);
-  line-height: 1.2;
-}
-
-.home__reveal-quote-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  // margin-top: 24px;
-}
-
-.home__reveal-quote-rule {
-  width: 48px;
-  border: none;
-  border-top: 2px solid var(--p600);
-  margin: 0 0 20px;
-}
-
-.home__reveal-quote-desc {
-  font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
-  font-weight: 400;
-  color: var(--n400, #94a3b8);
-  line-height: 1.6;
-  letter-spacing: 0.01em;
+  background: #fefefe;
 }
 
 .home__gradient-fade {
@@ -470,25 +340,17 @@
   }
 
   &__note-card {
-    background: #fff;
+    background: var(--n50);
     border: 1px solid var(--border-card);
     border-radius: 12px;
     padding: 32px;
     color: var(--n800);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 2px 12px rgba(4, 121, 135, 0.06);
   }
 
   &__note-card-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at 0% 100%,
-      rgba(4, 121, 135, 0.1) 0%,
-      transparent 70%
-    );
-    pointer-events: none;
+    display: none;
   }
 
   &__note-label {
@@ -532,12 +394,12 @@
   overflow: hidden;
   background: linear-gradient(
     165deg,
-    #162033 0%,
+    #141619 0%,
     var(--surface-navy) 40%,
-    #0f1e35 70%,
-    #132440 100%
+    #0d0f13 70%,
+    #111317 100%
   );
-  padding: var(--space-6xl) 0;
+  padding: var(--space-4xl) 0;
   text-align: center;
 }
 

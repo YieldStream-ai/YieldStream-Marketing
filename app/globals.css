@@ -7,11 +7,11 @@
 :root {
   /* ── Accent aliases — prefer var(--accent) in new code ── */
   --p50: var(--accent-wash);
-  --p300: rgba(27, 58, 95, 0.25);
-  --p400: #4a7bad;
+  --p300: rgba(31, 41, 55, 0.25);
+  --p400: #4b5563;
   --p500: var(--accent-hover);
   --p600: var(--accent);
-  --p700: #152e4a;
+  --p700: #111827;
 
   /* ── Advance aliases — prefer var(--status-advance) in new code ── */
   --a50: rgba(47, 125, 79, 0.06);
@@ -48,9 +48,9 @@
   --ink-tertiary: #6b7280;
   --ink-quaternary: #9ca3af;
 
-  --accent: #1b3a5f;
-  --accent-hover: #264f7e;
-  --accent-wash: rgba(27, 58, 95, 0.05);
+  --accent: #1f2937;
+  --accent-hover: #111827;
+  --accent-wash: rgba(31, 41, 55, 0.04);
 
   --status-advance: #2f7d4f;
   --status-advance-wash: rgba(47, 125, 79, 0.07);
@@ -93,7 +93,7 @@
   --surface-muted: var(--surface-sunken);
   --surface-muted-hover: #e5e7eb;
   --surface-elevated: var(--surface);
-  --surface-navy: #0f1a2e;
+  --surface-navy: #0e0f11;
   --surface-dark: #0e0f11;
   --surface-dark-secondary: #16181b;
 
@@ -102,8 +102,8 @@
   --border-card: var(--border-standard);
 
   /* ── Mesh Gradient ── */
-  --mesh-teal: rgba(27, 58, 95, 0.04);
-  --mesh-blue: rgba(27, 58, 95, 0.03);
+  --mesh-teal: rgba(31, 41, 55, 0.04);
+  --mesh-blue: rgba(31, 41, 55, 0.03);
 
   /* ── Layout ── */
   --container-max: 1350px;
@@ -193,6 +193,11 @@ select {
   letter-spacing: -0.025em;
   color: var(--n900);
   font-weight: 600;
+}
+.display-lg em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
 }
 
 .display-md {
@@ -344,11 +349,11 @@ select {
 }
 
 .btn-emerald {
-  background: var(--status-advance);
+  background: var(--accent);
   color: white;
 }
 .btn-emerald:hover {
-  background: #22603c;
+  background: var(--accent-hover);
 }
 
 .btn-lg {
@@ -397,6 +402,15 @@ select {
   border-radius: inherit;
 }
 
+.section-rule {
+  width: 64px;
+  height: 1px;
+  background: #111827;
+  margin-bottom: 1rem;
+}
+.section-header.center .section-rule {
+  margin-inline: auto;
+}
 .section-header {
   margin-bottom: var(--space-2xl);
 }

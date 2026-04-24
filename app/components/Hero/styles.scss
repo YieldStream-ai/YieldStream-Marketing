@@ -54,7 +54,7 @@
     width: 22px;
     height: 22px;
     border-radius: 6px;
-    background: #1b3a5f;
+    background: #1f2937;
     color: white;
   }
 
@@ -70,7 +70,10 @@
   }
 
   &__accent {
-    color: #1b3a5f;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: #1f2937;
   }
 
   &__sub-wrap {
@@ -107,7 +110,7 @@
     height: 42px;
     padding: 0 22px;
     border-radius: 6px;
-    background: #1b3a5f;
+    background: #1f2937;
     color: white;
     font-size: 0.875rem;
     font-weight: 520;
@@ -115,7 +118,7 @@
     transition: background 0.15s;
 
     &:hover {
-      background: #264f7e;
+      background: #111827;
     }
   }
 
@@ -178,8 +181,8 @@
     width: 30px;
     height: 30px;
     border-radius: 7px;
-    background: rgba(27, 58, 95, 0.06);
-    color: #1b3a5f;
+    background: rgba(31, 41, 55, 0.06);
+    color: #1f2937;
     flex-shrink: 0;
   }
 }
