@@ -1,15 +1,34 @@
 /* HomeHero — white mode, Features-6 layout */
 
 .home__hero {
+  position: relative;
   width: 100%;
   background: #fefefe;
   min-height: calc(100vh - var(--nav-height));
   display: flex;
   flex-direction: column;
   padding: var(--space-3xl) 0 var(--space-4xl);
+  overflow: hidden;
+}
+
+.home__hero-ambient {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(15, 20, 25, 0.02),
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .home__hero > .container {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -96,7 +115,9 @@
   color: #6b7280;
   background: transparent;
   cursor: help;
-  transition: background 0.15s ease, border-color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
 
   svg {
     color: #9ca3af;
@@ -118,7 +139,9 @@
     border-bottom-color: #1f2937;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.15s ease-out 0.2s, transform 0.15s ease-out 0.2s;
+    transition:
+      opacity 0.15s ease-out 0.2s,
+      transform 0.15s ease-out 0.2s;
     z-index: 11;
   }
 
@@ -143,7 +166,9 @@
     white-space: normal;
     pointer-events: none;
     opacity: 0;
-    transition: opacity 0.15s ease-out 0.2s, transform 0.15s ease-out 0.2s;
+    transition:
+      opacity 0.15s ease-out 0.2s,
+      transform 0.15s ease-out 0.2s;
     z-index: 10;
   }
 
@@ -159,6 +184,12 @@
 
 /* ── Product screenshot ── */
 
+.home__hero-showcase {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
 .home__hero-screenshot {
   position: relative;
   border-radius: 12px;
@@ -167,9 +198,6 @@
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.06),
     0 1px 4px rgba(0, 0, 0, 0.04);
-  margin-bottom: 0;
-  flex: 1;
-  min-height: 0;
 }
 
 .home__hero-screenshot-img {
@@ -194,6 +222,221 @@
   pointer-events: none;
 }
 
+/* ── Callout cards ── */
+
+.home__hero-callout {
+  position: absolute;
+  top: -4rem;
+  right: -1rem;
+  z-index: 3;
+}
+
+.home__hero-callout--left {
+  top: auto;
+  right: auto;
+  bottom: -1.5rem;
+  left: -1rem;
+}
+
+.home__hero-callout-card {
+  position: relative;
+  width: 360px;
+  padding: 16px;
+  background: #fefefe;
+  border: 1px solid rgba(15, 20, 25, 0.1);
+  border-radius: 8px;
+  box-shadow:
+    0 1px 2px rgba(15, 20, 25, 0.04),
+    0 12px 32px -8px rgba(15, 20, 25, 0.12);
+}
+
+.home__hero-callout-meta {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10px;
+  font-weight: 520;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  line-height: 1;
+}
+
+.home__hero-callout-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 520;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.home__hero-callout-header-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1f2937;
+  flex-shrink: 0;
+}
+
+.home__hero-callout-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--advance {
+    background: #15803d;
+  }
+
+  &--caution {
+    background: #b8860b;
+  }
+}
+
+.home__hero-callout-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.home__hero-callout-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 0.5rem;
+  border-top: 1px solid #f1f5f9;
+
+  .home__hero-callout-dot {
+    margin-top: 4px;
+  }
+}
+
+.home__hero-callout-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.home__hero-callout-item-title {
+  font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #111827;
+  font-variant-numeric: tabular-nums;
+}
+
+.home__hero-callout-item-desc {
+  font-size: 11.5px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #64748b;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Score Breakdown (left callout) ── */
+
+.home__hero-score-bars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.home__hero-score-bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.home__hero-score-bar-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6b7280;
+  line-height: 1;
+}
+
+.home__hero-score-bar-value {
+  font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", monospace;
+  font-weight: 580;
+  color: #111827;
+  font-variant-numeric: tabular-nums;
+}
+
+.home__hero-score-bar-track {
+  width: 100%;
+  height: 4px;
+  background: #f1f5f9;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.home__hero-score-bar-fill {
+  height: 100%;
+  background: #1f2937;
+  border-radius: 2px;
+}
+
+/* ── Leader lines (CSS L-bends, positioned relative to cards) ── */
+
+.home__hero-leader {
+  position: absolute;
+  pointer-events: none;
+}
+
+.home__hero-leader-dot {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #cbd5e1;
+}
+
+/* Right card: line exits left edge, bends down toward hatched bars */
+.home__hero-leader--right {
+  top: 70%;
+  right: 100%;
+  width: 24px;
+  height: 40px;
+  border-top: 1px solid #cbd5e1;
+  border-left: 1px solid #cbd5e1;
+
+  .home__hero-leader-dot {
+    bottom: 0;
+    left: 0;
+    transform: translate(-50%, 50%);
+  }
+}
+
+/* Left card: line exits top edge, bends right toward Score Breakdown section */
+.home__hero-leader--left {
+  bottom: 100%;
+  left: 77%;
+  width: 50px;
+  height: 160px;
+  border-left: 1px solid #cbd5e1;
+  border-top: 1px solid #cbd5e1;
+
+  .home__hero-leader-dot {
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+}
+
 /* ── Responsive ── */
 
 @media (max-width: 1024px) {
@@ -202,6 +445,9 @@
     gap: var(--space-xl);
   }
 
+  .home__hero-callout {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
