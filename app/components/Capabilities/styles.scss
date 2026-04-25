@@ -37,6 +37,13 @@
     color: #1f2937;
   }
 
+  &__subhead {
+    font-size: 1.05rem;
+    color: var(--n500);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
   &__list {
     display: flex;
     flex-direction: column;

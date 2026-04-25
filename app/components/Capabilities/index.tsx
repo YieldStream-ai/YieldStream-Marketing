@@ -89,11 +89,14 @@ export default function Capabilities() {
       <div className="container">
         <div className="capabilities__header reveal">
           <div className="capabilities__rule" />
-          <span className="capabilities__section-label">Capabilities</span>
+          <span className="capabilities__section-label">End to End</span>
           <h2 className="capabilities__title">
-            What YieldStream does,{" "}
-            <span className="capabilities__title-accent">specifically.</span>
+            From statement to{" "}
+            <span className="capabilities__title-accent">renewal.</span>
           </h2>
+          <p className="capabilities__subhead">
+            Four capabilities. One continuous workflow.
+          </p>
         </div>
 
         <div className="capabilities__list">
