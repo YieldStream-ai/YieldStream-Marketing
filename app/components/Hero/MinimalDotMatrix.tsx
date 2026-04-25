@@ -100,7 +100,7 @@ export const MinimalDotMatrix: React.FC<Props> = ({
   );
 };
 
-type PlaneProps = Required<Omit<Props, "className" | "background">>;
+type PlaneProps = Required<Omit<Props, "className" | "background" | "fullWidth">>;
 
 const DotPlane: React.FC<PlaneProps> = ({
   dotColor,
