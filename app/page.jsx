@@ -1,14 +1,23 @@
 "use client";
 
-import { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "./components/useReveal";
-import CTABanner from "./components/CTABanner/CTABanner";
-import HomeHero from "./components/HomeHero/index";
+import PricingModal from "./components/PricingModal";
+import HomeHero from "./components/HomeHero";
 import HowItWorks from "./components/HowItWorks/index";
-import PlatformFeatures from "./components/PlatformFeatures/index";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Capabilities from "./components/Capabilities";
+import Moat from "./components/Moat";
+import Intelligence from "./components/Intelligence";
+import FundingFlow from "./components/FundingFlow/index";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useScroll,
+} from "framer-motion";
 import "./page.scss";
 
 function CtaTiltImage() {
@@ -54,19 +63,63 @@ function CtaTiltImage() {
   );
 }
 
+function FirstFold() {
+  return (
+    <div className="home__first-fold">
+      <HomeHero />
+    </div>
+  );
+}
+
+function BuyingSignal({ onOpenPricing }) {
+  return (
+    <section className="home__buying-signal">
+      <div className="home__buying-signal-glow home__buying-signal-glow--1" />
+      <div className="home__buying-signal-glow home__buying-signal-glow--2" />
+      <div className="container home__buying-signal-inner">
+        <span className="home__buying-signal-label">
+          Simple &amp; Transparent
+        </span>
+        <h2 className="home__buying-signal-title">
+          Take a look at the pricing.
+        </h2>
+        <p className="home__buying-signal-sub">
+          Straightforward plans built around submission volume — no seat counts,
+          no hidden add-ons. Find the one that fits and be live this week.
+        </p>
+        <div className="home__buying-signal-actions">
+          <button onClick={onOpenPricing} className="btn btn-primary btn-lg">
+            See Pricing
+          </button>
+          <Link href="/contact" className="home__buying-signal-link">
+            Book a Demo
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   useReveal();
+  const [showPricing, setShowPricing] = useState(false);
 
   return (
     <>
-      {/* ===== HERO ===== */}
-      <HomeHero />
+      {/* ===== FIRST FOLD (blur-fades on scroll) ===== */}
+      <FirstFold />
+
+      {/* ===== INTELLIGENCE — LENDER SCORING ===== */}
+      <Intelligence />
 
       {/* ===== HOW IT WORKS — STEPS ===== */}
       <HowItWorks />
 
-      {/* ===== PLATFORM FEATURES ===== */}
-      <PlatformFeatures />
+      {/* ===== CAPABILITIES ===== */}
+      <Capabilities />
+
+      {/* ===== THE MOAT — INTELLIGENCE FLYWHEEL ===== */}
+      <Moat />
 
       {/* ===== UNDERWRITER'S NOTE ===== */}
       <section className="section">
@@ -77,7 +130,7 @@ export default function Home() {
                 Transparent AI
               </div>
               <h2 className="display-lg">
-                Every underwrite
+                Every underwrite analysis
                 <br />
                 comes with a reason.
               </h2>
@@ -98,7 +151,7 @@ export default function Home() {
               <div className="home__note-card-glow" />
               <div
                 className="mono home__note-label"
-                style={{ color: "var(--p400)" }}
+                style={{ color: "var(--p600)" }}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -121,16 +174,16 @@ export default function Home() {
               </div>
               <p className="home__note-text">
                 Growing catering operation —{" "}
-                <strong style={{ color: "var(--p300)" }}>
+                <strong style={{ color: "var(--p700)" }}>
                   <span className="mono">$95K/mo</span>
                 </strong>{" "}
                 with only{" "}
-                <strong style={{ color: "var(--p300)" }}>
+                <strong style={{ color: "var(--p700)" }}>
                   <span className="mono">8.1%</span> stacking
                 </strong>
                 . 1 NSF was a timing issue (vendor payment). Well within
                 tolerance for most lenders.{" "}
-                <strong style={{ color: "var(--p300)" }}>
+                <strong style={{ color: "var(--p700)" }}>
                   <span className="mono">93%</span> confidence
                 </strong>{" "}
                 · Revenue: Growing
@@ -146,32 +199,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== STATS BAR ===== */}
-      <section className="section home__stats">
-        <div className="container">
-          <div className="home__stats-grid reveal">
-            {[
-              { num: "~120s", label: "PDF to Scored Intelligence" },
-              { num: "20+", label: "Risk Signals Extracted" },
-              { num: "3x", label: "Faster Deal Preparation" },
-              { num: "97%", label: "Extraction Accuracy" },
-            ].map((s) => (
-              <div key={s.label} className="home__stats-item">
-                <div className="display-stat">{s.num}</div>
-                <div className="label-mono">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CTABanner
-        headline="Start closing smarter."
-        sub="Join brokers automating their submission desk with AI-powered lender matching."
-        primaryText="Get Started"
-        primaryHref="/pricing"
-        secondaryText="Schedule a Demo"
-        secondaryHref="/contact"
+      {/* ===== BUYING SIGNAL ===== */}
+      <BuyingSignal onOpenPricing={() => setShowPricing(true)} />
+      <PricingModal
+        isOpen={showPricing}
+        onClose={() => setShowPricing(false)}
       />
     </>
   );

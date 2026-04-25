@@ -16,7 +16,7 @@
 
   &__featured {
     padding: 40px;
-    background: var(--p900);
+    background: var(--surface-navy);
     border-radius: 8px;
     color: white;
     margin-bottom: var(--space-3xl);
@@ -27,7 +27,7 @@
   &__featured-glow {
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 80% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+    background: radial-gradient(circle at 80% 30%, rgba(4, 121, 135, 0.1) 0%, transparent 50%);
     pointer-events: none;
   }
 
@@ -38,7 +38,7 @@
 
   &__featured-label {
     font-size: 0.72rem;
-    color: var(--a400);
+    color: var(--p500);
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
@@ -88,33 +88,6 @@
     color: var(--n400);
   }
 
-  &__newsletter {
-    text-align: center;
-  }
-
-  &__newsletter-label {
-    margin-bottom: 12px;
-  }
-
-  &__newsletter-desc {
-    max-width: 480px;
-    margin: 12px auto 24px;
-  }
-
-  &__newsletter-form {
-    display: flex;
-    gap: 8px;
-    max-width: 440px;
-    margin: 0 auto;
-  }
-
-  &__newsletter-input {
-    flex: 1;
-    padding: 12px 16px;
-    border: 1px solid var(--n200);
-    border-radius: 8px;
-    font-size: 0.9rem;
-  }
 }
 
 /* Resource Article Page */

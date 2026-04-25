@@ -1,0 +1,219 @@
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fefefe;
+  overflow: hidden;
+
+  &__matrix {
+    position: absolute;
+    inset: 0;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 580px;
+    padding: 0 var(--space-lg);
+    margin-left: var(--space-4xl);
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px 5px 9px;
+    border-radius: 100px;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    background: #ffffff;
+    color: #374151;
+    font-size: 0.8rem;
+    font-weight: 520;
+    text-decoration: none;
+    margin-bottom: 40px;
+    transition: border-color 0.15s, background 0.15s;
+    cursor: pointer;
+
+    &:hover {
+      border-color: rgba(15, 23, 42, 0.16);
+      background: #f6f7f9;
+    }
+  }
+
+  &__badge-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #1f2937;
+    color: white;
+  }
+
+  &__title {
+    font-family: var(--font-inter), "Inter Variable", system-ui, sans-serif;
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    font-weight: 620;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    color: #111827;
+    margin: 0 0 28px;
+    font-feature-settings: "cv11", "ss01", "ss03", "calt";
+  }
+
+  &__accent {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: #1f2937;
+  }
+
+  &__sub-wrap {
+    height: 4.2rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: hidden;
+    margin-bottom: 40px;
+    width: 100%;
+  }
+
+  &__sub {
+    font-family: var(--font-inter), "Inter Variable", system-ui, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    color: #6b7280;
+    max-width: 460px;
+    margin: 0;
+    text-align: left;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  &__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 22px;
+    border-radius: 6px;
+    background: #1f2937;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 520;
+    text-decoration: none;
+    transition: background 0.15s;
+
+    &:hover {
+      background: #111827;
+    }
+  }
+
+  &__btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 22px;
+    color: #6b7280;
+    font-size: 0.875rem;
+    font-weight: 520;
+    text-decoration: none;
+    transition: color 0.15s;
+
+    &:hover {
+      color: #111827;
+    }
+  }
+
+  &__divider {
+    width: 100%;
+    max-width: 340px;
+    height: 1px;
+    background: rgba(15, 23, 42, 0.06);
+    margin: 40px 0;
+  }
+
+  &__features {
+    display: flex;
+    gap: 40px;
+    justify-content: flex-start;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
+
+    strong {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 520;
+      color: #111827;
+      line-height: 1.3;
+    }
+
+    span {
+      display: block;
+      font-size: 0.8125rem;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+  }
+
+  &__feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    background: rgba(31, 41, 55, 0.06);
+    color: #1f2937;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    &__content {
+      margin-left: var(--space-2xl);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    &__content {
+      margin-left: 0;
+      padding: 0 var(--space-lg);
+    }
+
+    &__title {
+      font-size: 2.4rem;
+    }
+
+    &__sub-wrap {
+      height: auto;
+      min-height: 4.2rem;
+    }
+
+    &__features {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

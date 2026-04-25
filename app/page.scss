@@ -1,6 +1,18 @@
 /* Home page - BEM: home__element--modifier */
 /* Institutional Minimalism Refactor */
 
+.home__first-fold {
+  position: relative;
+  z-index: 2;
+  background: #fefefe;
+}
+
+.home__gradient-fade {
+  background: linear-gradient(to bottom, #dde3ea 0%, #fff 100px);
+  position: relative;
+  z-index: 2;
+}
+
 .home {
   /* ===== ALSO INCLUDED ===== */
   &__also-icon {
@@ -238,19 +250,88 @@
 
   /* ===== STATS BAR ===== */
   &__stats {
-    border-top: 1px solid var(--border-card);
-    border-bottom: 1px solid #c2c8d0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 var(--space-2xl);
+    background: linear-gradient(to bottom, #e8ecf0 0%, transparent 10rem);
+    position: relative;
+    height: 50vh;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(15, 26, 46, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 26, 46, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      mask-image: radial-gradient(
+        ellipse 70% 70% at 50% 50%,
+        black 20%,
+        transparent 100%
+      );
+      -webkit-mask-image: radial-gradient(
+        ellipse 70% 70% at 50% 50%,
+        black 20%,
+        transparent 100%
+      );
+    }
   }
 
   &__stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
     text-align: center;
+    padding: 2rem var(--space-lg);
+    border-bottom: 1px solid var(--border-card);
+    margin: 0 auto;
+  }
+
+  &__stats-pipe {
+    width: 1px;
+    height: 32px;
+    background: var(--n200);
+    flex-shrink: 0;
   }
 
   &__stats-item .label-mono {
     margin-top: 8px;
+  }
+
+  &__stats-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: var(--space-3xl);
+    position: relative;
+    z-index: 1;
+  }
+
+  &__stats-card {
+    background: #ffffff;
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__stats-card-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--n900);
+    margin-bottom: 8px;
+  }
+
+  &__stats-card-desc {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--n500);
   }
 
   /* ===== UNDERWRITER'S NOTE ===== */
@@ -259,28 +340,22 @@
   }
 
   &__note-card {
-    background: var(--surface-navy);
+    background: var(--n50);
+    border: 1px solid var(--border-card);
     border-radius: 12px;
     padding: 32px;
-    color: white;
+    color: var(--n800);
     position: relative;
     overflow: hidden;
   }
 
   &__note-card-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(
-      circle at 0% 100%,
-      rgba(16, 185, 129, 0.1) 0%,
-      transparent 50%
-    );
-    pointer-events: none;
+    display: none;
   }
 
   &__note-label {
     font-size: 0.72rem;
-    color: var(--a400);
+    color: var(--p600);
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 14px;
@@ -290,14 +365,14 @@
   &__note-text {
     font-size: 0.98rem;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--n600);
     position: relative;
   }
 
   &__note-footer {
     margin-top: 20px;
     padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--n150);
     display: flex;
     gap: 20px;
     position: relative;
@@ -305,11 +380,127 @@
 
   &__note-meta {
     font-size: 0.72rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: var(--n400);
   }
 
   &__feature-label {
     margin-bottom: 12px;
+  }
+}
+
+/* ===== BUYING SIGNAL ===== */
+.home__buying-signal {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    #141619 0%,
+    var(--surface-navy) 40%,
+    #0d0f13 70%,
+    #111317 100%
+  );
+  padding: var(--space-4xl) 0;
+  text-align: center;
+}
+
+.home__buying-signal-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+
+  &--1 {
+    width: 600px;
+    height: 600px;
+    top: -200px;
+    right: -100px;
+    background: radial-gradient(
+      circle,
+      rgba(4, 121, 135, 0.1) 0%,
+      transparent 70%
+    );
+  }
+
+  &--2 {
+    width: 500px;
+    height: 500px;
+    bottom: -150px;
+    left: -100px;
+    background: radial-gradient(
+      circle,
+      rgba(4, 121, 135, 0.07) 0%,
+      transparent 70%
+    );
+  }
+}
+
+.home__buying-signal-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home__buying-signal-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--p600);
+  margin-bottom: var(--space-xl);
+}
+
+.home__buying-signal-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: white;
+  margin: 0 0 var(--space-xl);
+  max-width: 720px;
+}
+
+.home__buying-signal-sub {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 520px;
+  margin: 0 0 var(--space-2xl);
+}
+
+.home__buying-signal-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .btn-primary {
+    background: var(--p600);
+    border-color: var(--p600);
+    &:hover {
+      background: var(--p700);
+      border-color: var(--p700);
+    }
+  }
+}
+
+.home__buying-signal-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s;
+  &:hover {
+    color: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .home__buying-signal-title br {
+    display: none;
   }
 }
 
@@ -320,13 +511,15 @@
   }
 
   .home__stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-2xl);
+    flex-wrap: wrap;
   }
-
 }
 
 @media (max-width: 768px) {
+  .home__stats-cards {
+    grid-template-columns: 1fr;
+  }
+
   .home__bento-grid {
     grid-template-columns: 1fr;
   }
@@ -347,8 +540,6 @@
   }
 
   .home__stats-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-xl);
+    flex-wrap: wrap;
   }
 }
-

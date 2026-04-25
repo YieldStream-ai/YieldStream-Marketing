@@ -90,4 +90,1113 @@
   &__section-title {
     margin-top: 12px;
   }
+
+  /* ── Mock UI panels ── */
+  &__mock {
+    background: #fefefe;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    color: #1e293b;
+  }
+
+  &__mock-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  &__mock-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+
+    &--green {
+      color: #2f7d4f;
+      background: #ecfdf5;
+    }
+    &--orange {
+      color: #c2410c;
+      background: #fff7ed;
+    }
+    &--teal {
+      color: #1f2937;
+      background: #f0fdfa;
+    }
+    &--red {
+      color: #b91c1c;
+      background: #fef2f2;
+    }
+    &--gray {
+      color: #64748b;
+      background: #f1f5f9;
+    }
+  }
+
+  /* ── Email mock ── */
+  &__mock-email {
+    padding: 16px;
+  }
+
+  &__mock-email-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 12px;
+
+    span:first-child {
+      color: #94a3b8;
+      width: 48px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__mock-email-subject {
+    padding: 8px 0 12px;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  &__mock-email-body {
+    padding: 12px 0;
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  &__mock-email-providers {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  &__mock-email-provider {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #475569;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &__mock-email-reply {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-left: 3px solid #1f2937;
+    font-size: 11px;
+    color: #64748b;
+    line-height: 1.5;
+
+    strong {
+      display: block;
+      font-size: 12px;
+      color: #1e293b;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+  }
+
+  /* ── Notification mock ── */
+  &__mock-notif-list {
+    padding: 0;
+  }
+
+  &__mock-notif {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &--unread {
+      background: #f8fafc;
+    }
+  }
+
+  &__mock-notif-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #1f2937;
+    flex-shrink: 0;
+    margin-top: 5px;
+
+    &--read {
+      background: transparent;
+    }
+  }
+
+  &__mock-notif-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__mock-notif-text {
+    font-size: 12px;
+    color: #1e293b;
+    line-height: 1.4;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  &__mock-notif-time {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 2px;
+  }
+
+  &__mock-notif-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    &--offer {
+      background: #ecfdf5;
+      color: #2f7d4f;
+    }
+    &--stale {
+      background: #fff7ed;
+      color: #c2410c;
+    }
+    &--renewal {
+      background: #f0fdfa;
+      color: #1f2937;
+    }
+    &--mention {
+      background: #f1f5f9;
+      color: #475569;
+    }
+    &--expiry {
+      background: #fef2f2;
+      color: #b91c1c;
+    }
+  }
+
+  /* ── Renewals table mock ── */
+  &__mock-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+      padding: 8px 12px;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #64748b;
+      text-align: left;
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    td {
+      padding: 10px 12px;
+      font-size: 12px;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: middle;
+    }
+  }
+
+  &__mock-amount {
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__mock-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__mock-progress-track {
+    width: 64px;
+    height: 5px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  &__mock-progress-fill {
+    height: 100%;
+    border-radius: 3px;
+
+    &--green {
+      background: #2f7d4f;
+    }
+    &--orange {
+      background: #f59e0b;
+    }
+    &--teal {
+      background: #1f2937;
+    }
+  }
+
+  &__mock-progress-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: #64748b;
+    min-width: 28px;
+  }
+
+  /* ── CSV import mock ── */
+  &__mock-import {
+    padding: 16px;
+  }
+
+  &__mock-dropzone {
+    border: 2px dashed #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    margin-bottom: 16px;
+    background: #f8fafc;
+
+    &--active {
+      border-color: #1f2937;
+      background: #f0fdfa;
+    }
+  }
+
+  &__mock-dropzone-icon {
+    color: #94a3b8;
+    margin-bottom: 4px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &__mock-dropzone-text {
+    font-size: 12px;
+    color: #64748b;
+  }
+
+  &__mock-dropzone-file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #1e293b;
+  }
+
+  &__mock-mapping {
+    margin-bottom: 12px;
+  }
+
+  &__mock-mapping-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 11px;
+  }
+
+  &__mock-mapping-from {
+    flex: 1;
+    padding: 4px 8px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    color: #475569;
+  }
+
+  &__mock-mapping-arrow {
+    color: #94a3b8;
+    flex-shrink: 0;
+    svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &__mock-mapping-to {
+    flex: 1;
+    padding: 4px 8px;
+    background: #ecfdf5;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #2f7d4f;
+  }
+
+  &__mock-summary {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__mock-summary-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #64748b;
+
+    strong {
+      font-weight: 600;
+      font-family: "JetBrains Mono", monospace;
+      font-variant-numeric: tabular-nums;
+    }
+
+    &--success strong {
+      color: #2f7d4f;
+    }
+    &--warn strong {
+      color: #f59e0b;
+    }
+    &--error strong {
+      color: #b91c1c;
+    }
+  }
+
+  /* ══════════════════════════════════════════════
+     New mockups — Bank Statement, Pipeline,
+     Submissions, Activity, Outreach, Lender
+     ══════════════════════════════════════════════ */
+
+  /* ── 1. Bank Statement / Profile ── */
+  &__mock-profile {
+    display: flex;
+    min-height: 320px;
+  }
+
+  &__mock-profile-tabs {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__mock-profile-tab {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: #94a3b8;
+    text-transform: none;
+    letter-spacing: 0;
+
+    &--active {
+      color: #1f2937;
+      background: #f1f5f9;
+    }
+  }
+
+  &__mock-profile-rail {
+    width: 180px;
+    flex-shrink: 0;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    padding: 12px;
+    overflow: hidden;
+  }
+
+  &__mock-profile-merchant {
+    margin-bottom: 16px;
+  }
+
+  &__mock-profile-merchant-name {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+  }
+
+  &__mock-profile-merchant-rep {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #64748b;
+  }
+
+  &__mock-profile-section {
+    margin-bottom: 12px;
+  }
+
+  &__mock-profile-section-title {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  &__mock-profile-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 0;
+    gap: 4px;
+  }
+
+  &__mock-profile-field-label {
+    font-size: 10px;
+    color: #94a3b8;
+    flex-shrink: 0;
+  }
+
+  &__mock-profile-field-value {
+    font-size: 11px;
+    color: #1e293b;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    &--safe {
+      color: #2f7d4f;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+
+  &__mock-profile-main {
+    flex: 1;
+    padding: 16px;
+    overflow: hidden;
+  }
+
+  &__mock-profile-pane-section {
+    margin-bottom: 16px;
+  }
+
+  &__mock-profile-pane-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 12px;
+  }
+
+  &__mock-profile-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 16px 0;
+  }
+
+  &__mock-profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+  }
+
+  &__mock-profile-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__mock-profile-cell-label {
+    font-size: 10px;
+    color: #94a3b8;
+  }
+
+  &__mock-profile-cell-value {
+    font-size: 12px;
+    color: #1e293b;
+  }
+
+  /* ── 2. Deal Pipeline / Kanban ── */
+  &__mock-kanban-toggles {
+    display: flex;
+    gap: 2px;
+    background: #f1f5f9;
+    border-radius: 4px;
+    padding: 2px;
+  }
+
+  &__mock-kanban-toggle {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 3px;
+    color: #94a3b8;
+    text-transform: none;
+    letter-spacing: 0;
+
+    &--active {
+      background: #fff;
+      color: #1e293b;
+    }
+  }
+
+  &__mock-kanban-tabs {
+    display: flex;
+    gap: 12px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  &__mock-kanban-tab {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    padding-bottom: 4px;
+
+    &--active {
+      color: #1e293b;
+      border-bottom: 2px solid #1f2937;
+    }
+  }
+
+  &__mock-kanban-tab-count {
+    font-size: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: #94a3b8;
+  }
+
+  &__mock-kanban {
+    display: flex;
+    gap: 6px;
+    padding: 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &__mock-kanban-col {
+    min-width: 120px;
+    max-width: 140px;
+    flex-shrink: 0;
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 8px;
+  }
+
+  &__mock-kanban-col-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__mock-kanban-col-title {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+  }
+
+  &__mock-kanban-col-count {
+    font-size: 9px;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: #94a3b8;
+    background: #e2e8f0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__mock-kanban-card {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 6px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__mock-kanban-card-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+  }
+
+  &__mock-kanban-card-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__mock-kanban-card-sub {
+    font-size: 10px;
+    color: #94a3b8;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── 3. Submission History ── */
+  &__mock-submissions-kpi {
+    display: flex;
+    gap: 16px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+  }
+
+  &__mock-submissions-kpi-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__mock-submissions-kpi-label {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #94a3b8;
+  }
+
+  &__mock-submissions-kpi-value {
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: #1e293b;
+  }
+
+  &__mock-submissions-tabs {
+    display: flex;
+    gap: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  &__mock-submissions-tab {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    padding-bottom: 4px;
+
+    &--active {
+      color: #1e293b;
+      border-bottom: 2px solid #1f2937;
+    }
+  }
+
+  &__mock-submissions-rows {
+    padding: 0;
+  }
+
+  &__mock-submissions-row {
+    border-bottom: 1px solid #f1f5f9;
+
+    &--expanded {
+      background: #f8fafc;
+    }
+  }
+
+  &__mock-submissions-row-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    flex-wrap: wrap;
+  }
+
+  &__mock-submissions-date {
+    font-size: 11px;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: #64748b;
+    min-width: 40px;
+  }
+
+  &__mock-submissions-ratio {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-left: auto;
+  }
+
+  &__mock-submissions-lenders {
+    margin: 0 16px 12px;
+    width: calc(100% - 32px);
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+
+    td,
+    th {
+      font-size: 10px;
+      padding: 6px 8px;
+    }
+  }
+
+  /* ── 4. Notes & Activity Log ── */
+  &__mock-activity-tabs {
+    display: flex;
+    gap: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  &__mock-activity-tab {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    padding-bottom: 4px;
+
+    &--active {
+      color: #1e293b;
+      border-bottom: 2px solid #1f2937;
+    }
+  }
+
+  &__mock-activity-list {
+    max-height: 360px;
+    overflow: hidden;
+  }
+
+  &__mock-activity-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    border-bottom: 1px solid #f1f5f9;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__mock-activity-date {
+    flex-shrink: 0;
+    width: 60px;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 10px;
+    color: #94a3b8;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  &__mock-activity-desc {
+    flex: 1;
+    min-width: 0;
+    font-size: 11px;
+    color: #1e293b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+  }
+
+  &__mock-activity-author {
+    flex-shrink: 0;
+    font-size: 10px;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  /* ── 5. Outreach Queue ── */
+  &__mock-outreach {
+    display: flex;
+    min-height: 340px;
+  }
+
+  &__mock-outreach-list {
+    flex: 1.1;
+    border-right: 1px solid #e2e8f0;
+    overflow: hidden;
+  }
+
+  &__mock-outreach-tabs {
+    display: flex;
+    gap: 12px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  &__mock-outreach-tab {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    padding-bottom: 4px;
+
+    &--active {
+      color: #1e293b;
+      border-bottom: 2px solid #1f2937;
+    }
+  }
+
+  &__mock-outreach-selected {
+    background: #f0fdfa;
+  }
+
+  &__mock-outreach-detail {
+    flex: 0.9;
+    padding: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__mock-outreach-detail-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__mock-outreach-detail-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  &__mock-outreach-detail-phone {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: #1f2937;
+  }
+
+  &__mock-outreach-snapshot {
+    background: #f8fafc;
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  &__mock-outreach-snapshot-title {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    margin-bottom: 8px;
+  }
+
+  &__mock-outreach-snapshot-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  &__mock-outreach-snapshot-field {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    font-size: 11px;
+    color: #1e293b;
+  }
+
+  &__mock-outreach-snapshot-label {
+    font-size: 9px;
+    color: #94a3b8;
+  }
+
+  &__mock-outreach-submissions {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 8px;
+  }
+
+  &__mock-outreach-submissions-title {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+    margin-bottom: 6px;
+  }
+
+  &__mock-outreach-submissions-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+    font-size: 11px;
+    color: #1e293b;
+    border-bottom: 1px solid #f1f5f9;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__mock-outreach-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__mock-outreach-schedule {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__mock-outreach-schedule-btn {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    color: #64748b;
+    background: #fff;
+  }
+
+  &__mock-outreach-cta {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    background: #1f2937;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    cursor: default;
+  }
+
+  /* ── 6. Lender Registry ── */
+  &__mock-lender-add {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #1f2937;
+    color: #fff;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  &__mock-lender-tabs {
+    display: flex;
+    gap: 12px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  &__mock-lender-tab {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    padding-bottom: 4px;
+
+    &--active {
+      color: #1e293b;
+      border-bottom: 2px solid #1f2937;
+    }
+  }
+
+  &__mock-lender-tab-count {
+    font-size: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    color: #94a3b8;
+  }
+
+  &__mock-lender-restriction {
+    margin-right: 3px;
+    font-size: 9px;
+    padding: 1px 5px;
+  }
+
+  /* ── Responsive: mockup simplifications ── */
+  @media (max-width: 768px) {
+    &__mock-profile-rail {
+      display: none;
+    }
+
+    &__mock-profile {
+      min-height: auto;
+    }
+
+    &__mock-outreach-detail {
+      display: none;
+    }
+
+    &__mock-outreach {
+      min-height: auto;
+    }
+
+    &__mock-activity-author {
+      display: none;
+    }
+
+    &__mock-submissions-hide-sm {
+      display: none;
+    }
+
+    &__mock-lender-hide-sm {
+      display: none;
+    }
+
+    &__mock-outreach-hide-sm {
+      display: none;
+    }
+
+    &__mock-kanban-col {
+      min-width: 100px;
+    }
+
+    &__mock-profile-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }

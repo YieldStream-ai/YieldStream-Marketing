@@ -1,7 +1,7 @@
 /* Underwriting page - BEM */
 .underwriting {
   &__hero {
-    padding: var(--space-6xl) 0 var(--space-3xl);
+    padding: var(--space-5xl) 0;
     background: var(--n0);
   }
 
@@ -20,39 +20,98 @@
 
   &__desc {
     margin-top: 12px;
-    margin-bottom: 24px;
+    margin-bottom: var(--space-xl);
   }
 
-  &__step-row {
+  &__audit-callout {
+    border-left: 3px solid var(--p600);
+    padding-left: var(--space-md);
+    margin-top: 12px;
+    margin-bottom: var(--space-2xl);
+  }
+
+  /* ── Audit Grid ── */
+  &__audit-grid {
+    align-items: start;
+  }
+
+  /* ── Accordion ── */
+  &__accordion {
     display: flex;
-    align-items: flex-start;
-    gap: 16px;
+    flex-direction: column;
   }
 
-  &__step-num {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+  &__accordion-item {
+    border-bottom: 1px solid var(--n300);
+    position: relative;
+
+    &:first-child {
+      border-top: 1px solid var(--n300);
+    }
+  }
+
+  &__accordion-item--active {
+    &::after {
+      content: '';
+      position: absolute;
+      right: -24px;
+      top: 50%;
+      width: 24px;
+      border-top: 1.5px dashed var(--p400);
+      opacity: 0.5;
+    }
+
+    @media (max-width: 1024px) {
+      &::after { display: none; }
+    }
+  }
+
+  &__accordion-trigger {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 600;
+    gap: var(--space-sm);
+    width: 100%;
+    padding: var(--space-md) 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: inherit;
+    font: inherit;
+  }
+
+  &__accordion-chevron {
+    margin-left: auto;
+    color: var(--n400);
     flex-shrink: 0;
+    display: flex;
   }
 
-  &__step-num--active {
-    background: var(--a500);
-    color: white;
+  &__accordion-panel-inner {
+    padding: 0 0 var(--space-md) calc(8px + var(--space-sm));
   }
 
-  &__step-num--default {
-    background: var(--p50);
-    color: var(--p700);
+  /* ── Step dot ── */
+  &__step-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background: var(--n200);
+    transition: background 0.25s, box-shadow 0.25s;
+  }
+
+  &__step-dot--active {
+    background: var(--p500);
+    box-shadow: 0 0 0 4px rgba(4, 121, 135, 0.15);
+  }
+
+  &__step-dot--completed {
+    background: var(--p500);
   }
 
   &__step-title {
-    font-size: 0.92rem;
+    font-size: 0.9375rem;
     font-weight: 600;
     color: var(--n800);
   }
@@ -60,46 +119,96 @@
   &__step-time {
     font-size: 0.75rem;
     color: var(--n400);
-    margin-left: auto;
     flex-shrink: 0;
+    margin-left: var(--space-sm);
+
+    &--bordered {
+      border: 1px solid var(--n300);
+      border-radius: 4px;
+      padding: 1px 8px;
+    }
   }
 
-  &__section-title {
-    margin-top: 12px;
+  &__note-grid {
+    align-items: start;
   }
 
-  &__signal-card {
-    padding: 20px;
+  &__note-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 24px;
   }
 
-  &__signal-title {
-    font-size: 0.92rem;
-    font-weight: 600;
-    margin-bottom: 4px;
-  }
+  &__note-quote {
+    border-left: 3px solid var(--n300);
+    margin: 0 0 20px 0;
+    padding: 16px 20px;
+    background: var(--n50, #f9fafb);
+    border-radius: 0 8px 8px 0;
 
-  &__note-card {
-    background: var(--p900);
-    border-radius: 8px;
-    padding: 24px;
-    color: white;
-  }
+    p {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--n700, #374151);
+      margin: 0;
+      font-style: italic;
+    }
 
-  &__note-label {
-    font-size: 0.7rem;
-    color: var(--a400);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-
-  &__note-text {
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.8);
+    strong {
+      font-style: normal;
+      color: var(--n900, #111827);
+    }
   }
 
   &__note-follow {
-    margin-top: 16px;
+    margin-top: 0;
+    color: var(--n500, #6b7280);
+  }
+
+  /* ── Elevated product screenshot (matches landing hero treatment) ── */
+  &__product-frame {
+    position: relative;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow:
+      0 0 0 1px var(--n150),
+      0 24px 80px rgba(15, 23, 42, 0.1);
+
+    img {
+      display: block;
+      width: calc(100% + 6px);
+      max-width: none;
+      height: auto;
+      margin-right: -6px;
+    }
+
+    &--fade::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background: linear-gradient(to bottom, transparent, var(--n0));
+      pointer-events: none;
+    }
+  }
+
+  &__product-glow {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(15, 23, 42, 0.03) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
   }
 }

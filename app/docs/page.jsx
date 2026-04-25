@@ -20,7 +20,6 @@ export default function DocsPage() {
 
   const showSection = (id) => {
     setActiveSection(id);
-    window.scrollTo({ top: document.querySelector('.docs-container-wrap').offsetTop, behavior: 'instant' });
   };
 
   return (

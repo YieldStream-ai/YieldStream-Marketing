@@ -1,6 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import './Footer.scss';
+import Link from "next/link";
+import "./Footer.scss";
 
 export default function Footer() {
   return (
@@ -9,12 +8,30 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/" className="nav-logo footer__logo">
-              <div className="footer__logo-container">
-                <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" priority />
-              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 120 120"
+                width={32}
+                height={32}
+                className="nav-logo-image"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="footerGradB" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#3a3a3a" />
+                    <stop offset="100%" stopColor="#0a0a0a" />
+                  </linearGradient>
+                </defs>
+                <path d="M 20 86 L 52 76 L 84 86 L 52 96 Z" fill="url(#footerGradB)" opacity="0.55" />
+                <path d="M 24 66 L 60 54 L 96 66 L 60 78 Z" fill="url(#footerGradB)" opacity="0.78" />
+                <path d="M 28 44 L 68 30 L 108 44 L 68 58 Z" fill="url(#footerGradB)" />
+              </svg>
               YieldStream
             </Link>
-            <p>The submission intelligence platform for MCA brokers. AI-powered lender matching that learns from every outcome.</p>
+            <p>
+              The submission intelligence platform for modern brokers.
+              AI-powered lender matching that learns from every outcome.
+            </p>
           </div>
           <div className="footer-col">
             <h4>Product</h4>
@@ -39,7 +56,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} YieldStream.ai — All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} YieldStream.ai — All rights
+            reserved.
+          </p>
           <div className="footer-bottom-links">
             <Link href="/privacy">Privacy</Link>
             <Link href="/terms">Terms</Link>

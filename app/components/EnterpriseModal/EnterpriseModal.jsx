@@ -64,7 +64,7 @@ export default function EnterpriseModal({ isOpen, onClose }) {
         {submitted ? (
           <div className="enterprise-modal__success">
             <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-              <circle cx="24" cy="24" r="24" fill="#047987" />
+              <circle cx="24" cy="24" r="24" fill="#1f2937" />
               <path d="M14 24l7 7 13-13" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <h3 className="enterprise-modal__success-title">You&apos;re on the list. We&apos;ll set up your account shortly.</h3>

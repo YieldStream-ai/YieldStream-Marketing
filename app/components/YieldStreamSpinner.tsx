@@ -165,7 +165,7 @@ export default function YieldStreamSpinner({
             gradientUnits="userSpaceOnUse"
           >
             <stop offset="0%" stopColor="#01313a" />
-            <stop offset="100%" stopColor="#047987" />
+            <stop offset="100%" stopColor="#1f2937" />
           </linearGradient>
           <linearGradient
             id="ys-gtr"
@@ -176,7 +176,7 @@ export default function YieldStreamSpinner({
             gradientUnits="userSpaceOnUse"
           >
             <stop offset="0%" stopColor="#01313a" />
-            <stop offset="100%" stopColor="#047987" />
+            <stop offset="100%" stopColor="#1f2937" />
           </linearGradient>
           <linearGradient
             id="ys-gb"

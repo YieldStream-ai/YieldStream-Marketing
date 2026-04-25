@@ -1,0 +1,220 @@
+.hero {
+  padding-top: var(--space-5xl);
+  padding-bottom: 0;
+  background: var(--n0);
+  text-align: center;
+  overflow: hidden;
+
+  &__inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // Social proof
+  &__proof {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-2xl);
+  }
+
+  &__avatars {
+    display: flex;
+  }
+
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--n0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--n700);
+    margin-left: -10px;
+    letter-spacing: 0;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  &__stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: #f59e0b;
+  }
+
+  &__star {
+    width: 14px;
+    height: 14px;
+  }
+
+  &__rating-score {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--n800);
+    margin-left: 4px;
+  }
+
+  &__rating-count {
+    font-size: 12px;
+    color: var(--n500);
+    line-height: 1;
+  }
+
+  // Headline
+  &__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    color: var(--n900);
+    margin-bottom: var(--space-xl);
+  }
+
+  &__title-muted {
+    color: var(--n400);
+  }
+
+  // Sub
+  &__sub-wrap {
+    min-height: 4rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: var(--space-2xl);
+  }
+
+  &__sub {
+    font-size: clamp(1rem, 1.5vw, 1.125rem);
+    color: var(--n500);
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0;
+  }
+
+  // CTAs
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: var(--space-md);
+  }
+
+  &__btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    height: 44px;
+    padding: 0 var(--space-xl);
+    background: var(--n900);
+    color: var(--n0);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: background 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      background: var(--n800);
+      transform: translateY(-1px);
+    }
+  }
+
+  &__btn-outline {
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 var(--space-xl);
+    background: transparent;
+    color: var(--n800);
+    border: 1.5px solid var(--n300);
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+
+    &:hover {
+      border-color: var(--n500);
+      color: var(--n900);
+      transform: translateY(-1px);
+    }
+  }
+
+  // Trust
+  &__trust {
+    font-size: 12px;
+    color: var(--n400);
+    margin-bottom: var(--space-5xl);
+  }
+
+  // Screenshot
+  &__screenshot {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    border-radius: 16px 16px 0 0;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px var(--n150),
+      0 24px 80px rgba(15, 23, 42, 0.1);
+  }
+
+  &__screenshot-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &__screenshot-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(to bottom, transparent, var(--n0));
+    pointer-events: none;
+  }
+
+  // Responsive
+  @media (max-width: 640px) {
+    padding-top: var(--space-3xl);
+
+    &__proof {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    &__rating {
+      align-items: center;
+    }
+
+    &__actions {
+      flex-direction: column;
+      width: 100%;
+
+      a {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}

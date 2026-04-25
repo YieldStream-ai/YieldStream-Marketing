@@ -44,8 +44,8 @@ const NODES = [
     label: "SUBMISSION DATA",
     sub: "PDFs, Applications, Financials",
     y: 28,
-    fill: "#eaf6f7",
-    stroke: "#047987",
+    fill: "rgba(31, 41, 55, 0.06)",
+    stroke: "#1f2937",
   },
   {
     id: "checks",
@@ -78,7 +78,7 @@ const NODES = [
     sub: "Probability-to-close",
     badge: "87%",
     y: 478,
-    fill: "#eaf6f7",
+    fill: "rgba(31, 41, 55, 0.06)",
     stroke: "#e2e8ed",
   },
   {
@@ -87,7 +87,7 @@ const NODES = [
     sub: null,
     y: 588,
     fill: "#d1fae5",
-    stroke: "#059669",
+    stroke: "#2F7D4F",
   },
 ];
 
@@ -210,7 +210,7 @@ export default function DecisionEngineSchematic() {
           cx={CX}
           cy={c.dotY}
           r="3"
-          fill="#63c2cb"
+          fill="#1f2937"
           variants={dotVariant}
         />
       ))}
@@ -304,7 +304,7 @@ export default function DecisionEngineSchematic() {
                 width={40}
                 height={22}
                 rx="6"
-                fill="#047987"
+                fill="#1f2937"
               />
               <text
                 x={CX + NODE_W / 2 - 38}

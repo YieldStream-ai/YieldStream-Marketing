@@ -15,7 +15,7 @@ export default function TermsPage() {
           YieldStream offers a 30-day money-back guarantee on all new subscriptions. If you are not satisfied with the
           platform for any reason, you may request a full refund within 30 days of your initial payment date by
           contacting us at{' '}
-          <a href="mailto:support@yieldstream.ai" style={{ color: '#047987' }}>support@yieldstream.ai</a>.
+          <a href="mailto:support@yieldstream.ai" style={{ color: '#1f2937' }}>support@yieldstream.ai</a>.
           Refunds are issued to the original payment method and typically process within 5&ndash;10 business days.
         </p>
         <p>

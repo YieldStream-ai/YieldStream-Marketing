@@ -22,7 +22,7 @@
   &__beta-banner {
     text-align: center;
     padding: 40px 32px;
-    background: var(--p50);
+    background: var(--n0);
     border-bottom: 1px solid var(--n200);
   }
 
@@ -407,7 +407,7 @@
 
   /* ── ROI callout bar ── */
   &__callout {
-    background: var(--p800);
+    background: var(--surface-navy);
     color: var(--n0);
     padding: 12px 24px;
     text-align: center;
@@ -437,7 +437,9 @@
     background: transparent;
     text-decoration: none;
     cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
+    transition:
+      border-color 0.15s,
+      background 0.15s;
     white-space: nowrap;
     flex-shrink: 0;
 

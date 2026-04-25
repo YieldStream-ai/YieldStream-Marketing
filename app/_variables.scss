@@ -1,0 +1,295 @@
+// ========================================
+// DESIGN SYSTEM v2 — DS2 TOKENS (FINAL)
+// YieldStream — Achromatic, Ink-Blue Design System
+// ========================================
+
+// ==================== SPACING ====================
+$space-0: 0;
+$space-1: 0.25rem; // 4px
+$space-2: 0.5rem; // 8px
+$space-3: 0.75rem; // 12px
+$space-4: 1rem; // 16px
+$space-5: 1.25rem;
+$space-6: 1.5rem;
+$space-8: 2rem;
+$space-10: 2.5rem;
+$space-12: 3rem;
+$space-16: 4rem;
+$space-20: 5rem;
+
+$spacers: (
+  0: $space-0,
+  1: $space-1,
+  2: $space-2,
+  3: $space-3,
+  4: $space-4,
+  5: $space-5,
+  6: $space-6,
+  8: $space-8,
+  10: $space-10,
+  12: $space-12,
+  16: $space-16,
+  20: $space-20,
+);
+
+// Layout content padding (right-column horizontal inset)
+$content-padding-x: $space-6;
+
+// ==================== TABLE DENSITY ====================
+$table-header-height: 32px;
+$table-row-height: 32px;
+$table-cell-padding-y: 6px;
+$table-cell-padding-x: 16px;
+
+// ==================== BORDER RADIUS ====================
+$radius-none: 0;
+$radius-sm: 1px;
+$radius-base: 2px; // Institutional sharp finish
+$radius-md: 2px;
+$radius-lg: 3px;
+$radius-xl: 4px;
+$radius-2xl: 6px;
+$radius-full: 9999px;
+
+$radii: (
+  none: $radius-none,
+  sm: $radius-sm,
+  base: $radius-base,
+  md: $radius-md,
+  lg: $radius-lg,
+  xl: $radius-xl,
+  2xl: $radius-2xl,
+  full: $radius-full,
+);
+
+// ==================== TYPOGRAPHY (SIZING) ====================
+$font-size-xs: 0.5625rem; // 9px - Meta data, labels
+$font-size-sm: 0.75rem; // 12px - Small body/Secondary
+$font-size-base: 0.875rem; // 14px - Main table/body text
+$font-size-lg: 0.9375rem; // 15px - Card headings
+$font-size-xl: 1.125rem; // 18px
+$font-size-2xl: 1.25rem; // 20px
+$font-size-3xl: 1.5rem;
+$font-size-4xl: 1.875rem;
+$font-size-5xl: 2.25rem;
+
+$font-sizes: (
+  xs: $font-size-xs,
+  sm: $font-size-sm,
+  base: $font-size-base,
+  lg: $font-size-lg,
+  xl: $font-size-xl,
+  2xl: $font-size-2xl,
+  3xl: $font-size-3xl,
+  4xl: $font-size-4xl,
+  5xl: $font-size-5xl,
+);
+
+// ==================== LINE HEIGHT & LETTER SPACING ====================
+$line-height-tight: 1.15;
+$line-height-snug: 1.3;
+$line-height-normal: 1.4;
+$line-height-relaxed: 1.6;
+
+$letter-spacing-tight: -0.015em;
+$letter-spacing-normal: 0;
+$letter-spacing-wide: 0.025em;
+$letter-spacing-wider: 0.05em;
+$letter-spacing-widest: 0.1em;
+
+// ==================== SHADOWS ====================
+$shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-base: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+$shadow-2xl: 0 30px 50px -10px rgba(0, 0, 0, 0.1);
+
+$shadows: (
+  xs: $shadow-xs,
+  sm: $shadow-sm,
+  base: $shadow-base,
+  md: $shadow-md,
+  lg: $shadow-lg,
+  xl: $shadow-xl,
+  2xl: $shadow-2xl,
+);
+
+// ==================== Z-INDEX ====================
+$z-base: 0;
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-indices: (
+  base: $z-base,
+  dropdown: $z-dropdown,
+  sticky: $z-sticky,
+  fixed: $z-fixed,
+  modal-backdrop: $z-modal-backdrop,
+  modal: $z-modal,
+  popover: $z-popover,
+  tooltip: $z-tooltip,
+);
+
+// ==================== TRANSITIONS ====================
+$transition-fast: 100ms;
+$transition-base: 150ms;
+$transition-slow: 250ms;
+$easing-linear: linear;
+$easing-in: cubic-bezier(0.4, 0, 1, 1);
+$easing-out: cubic-bezier(0, 0, 0.2, 1);
+$easing-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+// ==================== BREAKPOINTS ====================
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+$breakpoints: (
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  2xl: $breakpoint-2xl,
+);
+
+// ==================== FONT FAMILIES (LEGACY) ====================
+// Kept for compatibility — use DS2 equivalents when possible
+$font-sans: var(--font-inter), "Inter Variable", system-ui, sans-serif;
+$font-body: $font-sans;
+$font-display:
+  var(--font-source-serif), "Source Serif 4", Charter, Georgia, serif;
+$font-mono:
+  var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+$font-analytics-number:
+  var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+
+// ==================== FONT WEIGHTS (LEGACY) ====================
+// Kept for compatibility — use DS2 font-weight-* equivalents when possible
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-data: 500; // Financial figures
+
+// ==================== BORDER HAIRLINE (LEGACY) ====================
+// Kept for backward compatibility — prefer DS2 border variables
+$border-hairline: 1px solid rgba(15, 23, 42, 0.06);
+
+// ==================== CARD SURFACE TOKENS (LEGACY) ====================
+// Kept for compatibility with existing components — migrate to DS2 equivalents when touching these files
+$card-radius: 2px;
+$card-shadow:
+  0 1px 3px 0 rgba(0, 0, 0, 0.04),
+  0 0 0 1px rgba(15, 23, 42, 0.04);
+$card-inner-glow:
+  inset 0 1px 0 0 rgba(255, 255, 255, 0.7),
+  inset 0 -1px 0 0 rgba(15, 23, 42, 0.03);
+
+// ==================== DS2: SURFACES ====================
+$ds-canvas: lch(
+  98.94% 0.5 282
+); // Pure white with subtle cool tint for overall background
+
+$ds-surface: lch(100% 0.5 282); // Off-white with subtle cool tint
+
+$ds-surface-sunken: lch(
+  95.94% 0.5 282
+); // Fully desaturated, transparent for layering
+
+$ds-surface-sunken-subtle: lch(
+  90.94% 0.5 282
+); // More pronounced sunken effect for hover/active states
+
+// ==================== DS2: INK (Text Hierarchy) ====================
+$ds-ink-primary: #111827;
+$ds-ink-secondary: #374151;
+$ds-ink-tertiary: lch(38.376% 1.25 282 / 1);
+$ds-ink-quaternary: #9ca3af;
+
+// ==================== DS2: ACCENT (Single Chromatic) ====================
+$ds-accent: #1f2937; // Slate 800 — primary
+$ds-accent-hover: #111827; // Slate 900 — darker on hover
+$ds-accent-active: #030712; // Slate 950 — pressed
+$ds-accent-wash: rgba(31, 41, 55, 0.04); // Same hue, 4% tint
+$ds-accent-wash-hover: rgba(31, 41, 55, 0.06);
+$ds-surface-expanded: rgba(31, 41, 55, 0.025);
+$ds-accent-border: rgba(
+  31,
+  41,
+  55,
+  0.12
+); // For active tab underlines, focus rings
+$ds-accent-text-on: #ffffff; // Text on accent fills
+
+// ==================== DS2: STATUS (Data Semantics Only) ====================
+$ds-status-advance: #2f7d4f;
+$ds-status-advance-wash: rgba(47, 125, 79, 0.07);
+$ds-status-caution: #b8860b;
+$ds-status-caution-wash: rgba(184, 134, 11, 0.08);
+$ds-status-decline: #a8321e;
+$ds-status-decline-wash: rgba(168, 50, 30, 0.06);
+$ds-status-neutral: #6b7280;
+
+// ==================== DS2: BORDERS ====================
+// Softest separation, almost invisible.
+$ds-border-hairline: lch(96 1 250);
+// Standard surface and component border.
+$ds-border-standard: lch(92 1.5 250);
+// Stronger contrast for interactive elements or heavy lifting.
+$ds-border-strong: lch(85 2 250);
+
+// ==================== DS2: FOCUS ====================
+$ds-focus-border: $ds-accent; // #1f2937
+$ds-focus-ring: rgba(
+  31,
+  41,
+  55,
+  0.12
+); // Stronger than accent-wash for focus visibility
+
+// ==================== DS2: TYPOGRAPHY ====================
+
+// Font Families
+$ds-font-sans: var(--font-inter), "Inter Variable", system-ui, sans-serif;
+$ds-font-editorial:
+  var(--font-source-serif), "Source Serif 4", Charter, Georgia, serif;
+$ds-font-mono:
+  var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+
+// Font Weights — ceiling is 620, never bold (700+)
+$ds-font-weight-read: 400;
+$ds-font-weight-ui: 520; // Workhorse — labels, table headers, emphasis
+$ds-font-weight-announce: 620; // KPIs, deal names, section headings
+
+// Editorial weights
+$ds-font-weight-memo-body: 400;
+$ds-font-weight-memo-heading: 600;
+
+// ==================== DS2: ELEVATION ====================
+// Tone-based, shadows only for true overlays
+$ds-elevation-raised-shadow:
+  0 1px 2px rgba(15, 23, 42, 0.04),
+  0 0 0 1px $ds-border-hairline;
+$ds-elevation-overlay-shadow:
+  0 12px 32px rgba(15, 23, 42, 0.12),
+  0 0 0 1px $ds-border-standard;
+
+// ==================== DS2: DARK MODE ====================
+$ds-dark-canvas: #0e0f11;
+$ds-dark-surface: #16181b;
+$ds-dark-surface-sunken: #101113;
+$ds-dark-surface-raised: #1c1e22;
+$ds-dark-ink-primary: #f2f1ed;
+$ds-dark-ink-secondary: #c8c7c2;
+$ds-dark-ink-tertiary: #8a8a84;
+$ds-dark-ink-quaternary: #5e5e58;
+$ds-dark-accent: #6fa3d9;
+$ds-dark-accent-wash: rgba(111, 163, 217, 0.08);
+$ds-dark-border-hairline: rgba(255, 255, 255, 0.07);

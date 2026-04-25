@@ -4,7 +4,23 @@ import Link from "next/link";
 import Image from "next/image";
 import { useReveal } from "../components/useReveal";
 import CTABanner from "../components/CTABanner/CTABanner";
+import {
+  BankStatementMock,
+  DealPipelineMock,
+  SubmissionHistoryMock,
+  NotesActivityMock,
+  OutreachQueueMock,
+  LenderRegistryMock,
+  EmailMock,
+  NotificationsMock,
+  RenewalsMock,
+  CSVImportMock,
+} from "./mocks";
 import "./features.scss";
+
+/* Mock UI components are in ./mocks.tsx */
+
+/* ── Page ── */
 
 export default function FeaturesPage() {
   useReveal();
@@ -12,35 +28,6 @@ export default function FeaturesPage() {
   const features = [
     {
       num: "01",
-      label: "AI LENDER MATCHING",
-      title: "Every lender scored. Every match explained.",
-      desc: "The three-layer scoring engine weighs global performance data, your relationship history, and merchant-to-buybox attribute matching — then ranks every lender by expected commission, not just approval probability.",
-      bullets: [
-        "Composite scores from 0–100 with confidence intervals",
-        "Relationship history weighted at 50% — your moat, quantified",
-        "Time-decay ensures stale data never pollutes matches",
-        "Sort by best match, best yield, or fastest funding speed",
-      ],
-      image: "/images/Underwriting-Intelligence.png",
-      link: "/intelligence",
-      linkText: "How the scoring engine works →",
-    },
-    {
-      num: "02",
-      label: "OFFER COMPARISON",
-      title: "Compare every offer. Recommend the best one.",
-      desc: "When offers come back, YieldStream scores each one across advance amount, factor rate, term, daily remittance, total payback, net funding, commission, and buy rate.",
-      bullets: [
-        "Side-by-side comparison across all economic terms",
-        "Automated offer scoring with transparent reasoning breakdown",
-        "Color-coded indicators highlight best-in-class metrics",
-        'One-click "Send to Merchant" with formatted comparison',
-      ],
-      image: "/images/Underwriting-Approval-Comparison.png",
-      reverse: true,
-    },
-    {
-      num: "03",
       label: "AI BANK STATEMENT ANALYSIS",
       title: "Upload a PDF. Get an underwrite in minutes.",
       desc: "Drop a bank statement — the OCR pipeline extracts revenue, NSF patterns, stacking signals, daily balances, and 20+ risk indicators. Every signal feeds directly into lender matching.",
@@ -50,26 +37,27 @@ export default function FeaturesPage() {
         "Automatic revenue trend and NSF pattern analysis",
         "Merchant upload portal for direct document collection",
       ],
-      image: "/images/Document-Vault.png",
+      mock: <BankStatementMock />,
       link: "/underwriting",
       linkText: "Deep-dive: AI Underwriting →",
     },
     {
-      num: "04",
+      num: "02",
       label: "DEAL PIPELINE",
-      title: "See every deal. Know exactly where it stands.",
-      desc: "Kanban board or table view — your choice. Every deal flows through Intake → Underwriting → Ready to Submit → Out to Lenders → Offers Received → Contract Sent → Funded.",
+      title: "Pipeline stages that match how you actually fund.",
+      desc: "Define your own stages, set per-stage rules, and choose Kanban or table view — the pipeline adapts to your workflow, not the other way around. Every stage tracks running dollar totals, commission estimates, and deal velocity in real time.",
       bullets: [
+        "Define custom stages that mirror your actual funding workflow",
         "Drag-and-drop Kanban with running dollar totals per stage",
-        "Underwriter's Notes visible at a glance in table view",
         "Stale deal alerts flag merchants stuck in pipeline",
         "Commission estimates update in real-time as offers arrive",
+        "Per-stage rules trigger automations as deals progress",
       ],
-      image: "/images/Opportunities-Kanban.png",
+      mock: <DealPipelineMock />,
       reverse: true,
     },
     {
-      num: "05",
+      num: "03",
       label: "SUBMISSION HISTORY",
       title: "Full deal history. One click from any merchant.",
       desc: "Every submission, every lender response, every offer — organized under a single merchant record. Pull-through rate, offer rate, and funding speed update in real time so you always know where a deal stands and how a merchant has performed across past opportunities.",
@@ -79,38 +67,25 @@ export default function FeaturesPage() {
         "KPI strip tracks pull-through, offer rate, and avg days to fund per merchant",
         "Expandable rows reveal every approval, counter-offer, and expiration date",
       ],
-      image: "/images/Submissions.png",
+      mock: <SubmissionHistoryMock />,
     },
     {
-      num: "06",
+      num: "04",
       label: "NOTES & ACTIVITY LOG",
       title: "Every conversation tracked. Nothing falls through.",
-      desc: 'YieldStream logs every call, voicemail, and note against the merchant record — building a complete contact history your whole team can see. No more sticky notes or "did anyone call them back?"',
+      desc: "YieldStream logs every call, voicemail, and note against the merchant record — building a complete contact history your whole team can see. Pin context to any merchant, deal, or submission and find it instantly when you need it.",
       bullets: [
         "Call outcomes auto-logged — connected, voicemail, no answer, callback",
-        "Timestamped notes with rep attribution",
-        "Activity timeline shared across your entire ISO",
+        "Timestamped notes with rep attribution on a shared timeline",
+        "Pin notes to merchants, deals, or submissions — searchable across your portfolio",
+        "Visible inline on the outreach queue for quick context",
         "Follow-up dates surface overdue outreach automatically",
       ],
-      image: "/images/Activities.png",
+      mock: <NotesActivityMock />,
       reverse: true,
-      linkText: "See the activity timeline →",
     },
     {
-      num: "07",
-      label: "NOTES",
-      title: "Context that sticks to every merchant.",
-      desc: "Pin internal notes, call summaries, and deal context directly to the merchant record. Every note is timestamped and attributed — so your whole team sees the full picture before picking up the phone.",
-      bullets: [
-        "Pin notes to merchants, deals, or submissions",
-        "Timestamped with rep name for full accountability",
-        "Searchable across your entire portfolio",
-        "Visible inline on the outreach queue for quick context",
-      ],
-      image: "/images/Notes.png",
-    },
-    {
-      num: "08",
+      num: "05",
       label: "OUTREACH QUEUE",
       title: "A smart call list that knows who to dial next.",
       desc: "YieldStream builds a prioritized outreach queue from your merchant pipeline — surfacing overdue follow-ups, new leads, renewal candidates, and cold re-engages so reps stop guessing and start closing.",
@@ -120,12 +95,10 @@ export default function FeaturesPage() {
         "Renewal candidates flagged when funded deals approach payoff",
         "Per-rep queues — every broker sees only their book",
       ],
-      image: "/images/Outreach.png",
-      reverse: true,
-      linkText: "How the outreach queue works →",
+      mock: <OutreachQueueMock />,
     },
     {
-      num: "09",
+      num: "06",
       label: "LENDER REGISTRY",
       title: "Your entire lender network. Always current.",
       desc: "Track every lender's minimum FICO, revenue requirements, max positions, and state restrictions in one place. Status indicators show when buybox data needs refreshing.",
@@ -135,7 +108,62 @@ export default function FeaturesPage() {
         "State restriction tracking with badge indicators",
         "One-click add new lenders as your network grows",
       ],
-      image: "/images/Lender-Registry.png",
+      mock: <LenderRegistryMock />,
+      reverse: true,
+    },
+    {
+      num: "07",
+      label: "EMAIL INTEGRATION",
+      title: "Send from your inbox. Replies land on the record.",
+      desc: "Native Gmail and Outlook connection via OAuth. Send lender submissions, merchant outreach, and follow-ups from your own address — replies thread back to the merchant record automatically. No SMTP setup, no copy-paste, full deliverability.",
+      bullets: [
+        "One-click OAuth connect for Gmail and Outlook",
+        "Send lender submissions from your actual email address",
+        "Replies auto-thread to the merchant record",
+        "Full deliverability — no SPF/DKIM headaches",
+      ],
+      mock: <EmailMock />,
+    },
+    {
+      num: "08",
+      label: "NOTIFICATIONS",
+      title: "Every signal delivered. Nothing buried in noise.",
+      desc: "Real-time notification infrastructure across offers, expirations, status changes, stale deals, renewal windows, and team mentions. In-app and email delivery with per-user preference controls.",
+      bullets: [
+        "Real-time alerts for offers, expirations, and status changes",
+        "Stale deal and renewal window notifications",
+        "Team mentions and @-tagging across records",
+        "In-app + email delivery with per-user preference controls",
+      ],
+      mock: <NotificationsMock />,
+      reverse: true,
+    },
+    {
+      num: "09",
+      label: "RENEWALS TRACKING",
+      title: "Your renewal book, surfaced before competitors call.",
+      desc: "A dedicated renewals table surfaces every funded deal approaching paydown, sortable by paydown percentage, days to renewal window, and merchant value. Paired with automated alerts so you never miss a window.",
+      bullets: [
+        "Dedicated renewals table with every funded deal approaching paydown",
+        "Sort by paydown %, days to renewal window, or merchant value",
+        "Automated alerts 60 days before the optimal renewal window",
+        "Revenue opportunity estimates per renewal candidate",
+      ],
+      mock: <RenewalsMock />,
+    },
+    {
+      num: "10",
+      label: "DATA IMPORT",
+      title: "Migrate in minutes. Not months.",
+      desc: "Bulk merchant import via CSV with field mapping, deduplication, and validation. Move from spreadsheets, CRMs, or other ISO platforms in one upload.",
+      bullets: [
+        "CSV upload with automatic field mapping and preview",
+        "Built-in deduplication catches existing merchants",
+        "Validation flags missing or malformed data before import",
+        "API integration roadmap for CRM and platform sync",
+      ],
+      mock: <CSVImportMock />,
+      reverse: true,
     },
   ];
 
@@ -149,10 +177,10 @@ export default function FeaturesPage() {
             <h1 className="display-xl features__hero-title">
               Every tool a broker needs.
               <br />
-              Nothing they don't.
+              Nothing they don&apos;t.
             </h1>
             <p className="text-lg features__hero-sub">
-              Nine core capabilities that replace spreadsheets, gut feel, and
+              Ten core capabilities that replace spreadsheets, gut feel, and
               manual underwriting with data-driven intelligence that compounds
               with every deal.
             </p>
@@ -203,13 +231,17 @@ export default function FeaturesPage() {
               <div
                 className={`screenshot ${f.reverse ? "features__block-order-reverse" : ""}`}
               >
-                <Image
-                  src={f.image}
-                  alt={f.title}
-                  width={1400}
-                  height={800}
-                  priority
-                />
+                {f.mock ? (
+                  f.mock
+                ) : (
+                  <Image
+                    src={(f as { image?: string }).image ?? ""}
+                    alt={f.title}
+                    width={1400}
+                    height={800}
+                    priority
+                  />
+                )}
               </div>
             </div>
           ))}
@@ -222,29 +254,11 @@ export default function FeaturesPage() {
           <div className="section-header center reveal">
             <div className="label">Also Included</div>
             <h2 className="display-lg features__section-title">
-              And everything else you'd expect.
+              And everything else you&apos;d expect.
             </h2>
           </div>
           <div className="grid-4">
             {[
-              {
-                icon: (
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <polyline points="23 4 23 10 17 10" />
-                    <polyline points="1 20 1 14 7 14" />
-                    <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
-                  </svg>
-                ),
-                title: "Renewal Forecasting",
-                desc: "Daily alerts 60 days before 50% paydown — the optimal renewal window.",
-              },
               {
                 icon: (
                   <svg
@@ -328,23 +342,6 @@ export default function FeaturesPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                   >
-                    <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
-                    <path d="M13.73 21a2 2 0 01-3.46 0" />
-                  </svg>
-                ),
-                title: "Smart Notifications",
-                desc: "Real-time alerts for offers, expirations, and status changes.",
-              },
-              {
-                icon: (
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
                     <line x1="8" y1="6" x2="21" y2="6" />
                     <line x1="8" y1="12" x2="21" y2="12" />
                     <line x1="8" y1="18" x2="21" y2="18" />
@@ -371,6 +368,60 @@ export default function FeaturesPage() {
                 ),
                 title: "Decline Intelligence",
                 desc: "Every declined deal makes your next submission smarter. Auto-adjusting lender scores from outcome data.",
+              },
+              {
+                icon: (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+                    <line x1="4" y1="22" x2="4" y2="15" />
+                  </svg>
+                ),
+                title: "API Access",
+                desc: "RESTful API for custom integrations, reporting pipelines, and workflow automation.",
+              },
+              {
+                icon: (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
+                  </svg>
+                ),
+                title: "Audit Log",
+                desc: "Timestamped record of every action — who changed what, and when.",
+              },
+              {
+                icon: (
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                ),
+                title: "Role-Based Permissions",
+                desc: "Granular access controls per role — restrict data, features, and actions by team level.",
               },
             ].map((cap, i) => (
               <div

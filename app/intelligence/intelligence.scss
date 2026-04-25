@@ -1,7 +1,7 @@
 /* Intelligence page - BEM */
 .intelligence {
   &__hero {
-    padding: var(--space-6xl) 0 var(--space-3xl);
+    padding: var(--space-4xl) 0 var(--space-3xl);
     background: var(--n0);
   }
 
@@ -14,29 +14,65 @@
     margin: 16px auto 0;
   }
 
-  &__layers {
-    margin-bottom: var(--space-4xl);
+  &__hero-chart {
+    max-width: 1200px;
+    margin: var(--space-lg) auto 0;
   }
 
-  /* borderTop uses dynamic layer.color - keep inline */
+  /* ── Weighted Composition ── */
+
+  &__composition {
+    margin-top: var(--space-2xl);
+  }
+
+  &__composition-bar {
+    display: flex;
+    height: 12px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--space-xl);
+  }
+
+  &__composition-segment {
+    transition: width 0.6s var(--ease-out);
+  }
+
+  &__composition-cards {
+    display: grid;
+    grid-template-columns: 5fr 3fr 2fr;
+    gap: var(--space-lg);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__composition-card {
+    padding: 20px 24px;
+    border-top: 3px solid currentColor;
+  }
+
   &__layer-num {
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 620;
     margin-bottom: 4px;
+    font-variant-numeric: tabular-nums;
   }
 
   &__layer-label {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   &__layer-title {
     font-size: 1.15rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
+  /* ── Section titles ── */
+
   &__section-title {
-    color: white;
+    color: var(--p700);
     margin-top: 12px;
   }
 
@@ -45,10 +81,186 @@
     margin-top: 12px;
   }
 
+  /* ── Data Flywheel ── */
+
+  &__flywheel-layout {
+    display: grid;
+    grid-template-columns: 1fr 480px 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+    margin-top: var(--space-2xl);
+
+    @media (max-width: 1023px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+  }
+
+  &__flywheel-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+
+    &--left {
+      justify-self: end;
+      max-width: 320px;
+
+      @media (min-width: 1024px) {
+        .intelligence__loop-card {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            width: 24px;
+            height: 1px;
+            background: rgba(15, 23, 42, 0.15);
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            right: -29px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.25);
+          }
+        }
+      }
+    }
+
+    &--right {
+      justify-self: start;
+      max-width: 320px;
+
+      @media (min-width: 1024px) {
+        .intelligence__loop-card {
+          position: relative;
+
+          &::after {
+            content: "";
+            position: absolute;
+            left: -25px;
+            top: 50%;
+            width: 24px;
+            height: 1px;
+            background: rgba(15, 23, 42, 0.15);
+          }
+
+          &::before {
+            content: "";
+            position: absolute;
+            left: -29px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.25);
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1023px) {
+      &--left,
+      &--right {
+        justify-self: stretch;
+        max-width: none;
+      }
+    }
+  }
+
+  &__flywheel {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+
+    @media (max-width: 1023px) {
+      width: 300px;
+      height: 300px;
+      order: -1;
+    }
+
+    @media (max-width: 480px) {
+      width: 240px;
+      height: 240px;
+    }
+  }
+
+  &__flywheel-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__flywheel-node {
+    position: absolute;
+    z-index: 1;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--n600);
+    background: #fefefe;
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    border-radius: 4px;
+    padding: 6px 14px;
+    white-space: nowrap;
+
+    &--top {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &--right {
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%);
+    }
+
+    &--bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%);
+    }
+
+    &--left {
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    &--heavy {
+      background: #111827;
+      color: #ffffff;
+      border-color: #111827;
+    }
+  }
+
+  &__flywheel-pair-label {
+    margin-bottom: var(--space-md);
+  }
+
+  &__flywheel-pair-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* ── Loop cards (shared by flywheel pairs) ── */
+
   &__loop-card {
     padding: 28px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(15, 23, 42, 0.02);
+    border: 1px solid rgba(15, 23, 42, 0.06);
     border-radius: 8px;
   }
 
@@ -70,13 +282,32 @@
   &__loop-title {
     font-size: 1.05rem;
     font-weight: 600;
-    color: white;
+    color: var(--p700);
   }
 
   &__loop-desc {
     font-size: 0.88rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--n500);
     line-height: 1.65;
+  }
+
+  /* ── Time-Decay ── */
+
+  &__time-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3xl);
+    align-items: center;
+    margin-top: var(--space-xl);
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+  }
+
+  &__time-copy {
+    max-width: 540px;
   }
 
   &__label {
@@ -85,7 +316,28 @@
 
   &__time-desc {
     margin-top: 12px;
-    margin-bottom: 24px;
+    margin-bottom: 0;
+  }
+
+  &__time-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__time-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__time-group-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--n400);
   }
 
   &__time-row {
@@ -99,6 +351,7 @@
     color: var(--n500);
     width: 100px;
     flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
   }
 
   &__time-bar-bg {
@@ -120,43 +373,6 @@
     font-weight: 600;
     color: var(--p700);
     width: 50px;
-  }
-
-  &__progressive-card {
-    border-top: 3px solid var(--a500);
-  }
-
-  &__progressive-label {
-    color: var(--a600);
-    margin-bottom: 16px;
-  }
-
-  &__progressive-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-
-  &__progressive-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  &__progressive-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.88rem;
-    color: var(--n700);
-  }
-
-  &__progressive-check {
-    color: var(--a500);
-    display: inline-flex;
-    svg {
-      width: 14px;
-      height: 14px;
-    }
+    font-variant-numeric: tabular-nums;
   }
 }

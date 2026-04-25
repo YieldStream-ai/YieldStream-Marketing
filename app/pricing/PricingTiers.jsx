@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 import EnterpriseModal from "../components/EnterpriseModal";
+import "./pricing.scss";
 
 function AnimatedPrice({ value }) {
   const motionValue = useMotionValue(value);

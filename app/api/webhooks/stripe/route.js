@@ -189,22 +189,22 @@ function getFounderEmailHtml(signupLink) {
     .greeting { font-size: 28px; font-weight: 700; color: #0a1f22; margin-bottom: 14px; line-height: 1.25; }
     .subtext { font-size: 16px; color: #4a6068; line-height: 1.75; max-width: 520px; }
     .rate-section { background-color: #e6f4f5; padding: 32px 48px; border-bottom: 1px solid #c8dfe2; }
-    .rate-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #047987; margin-bottom: 8px; }
-    .rate-amount { font-size: 42px; font-weight: 800; color: #047987; font-family: 'Courier New', monospace; line-height: 1; }
-    .rate-per { font-size: 18px; font-weight: 400; color: #047987; }
+    .rate-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #1f2937; margin-bottom: 8px; }
+    .rate-amount { font-size: 42px; font-weight: 800; color: #1f2937; font-family: 'Courier New', monospace; line-height: 1; }
+    .rate-per { font-size: 18px; font-weight: 400; color: #1f2937; }
     .rate-note { font-size: 14px; color: #2d5a62; margin-top: 10px; line-height: 1.65; max-width: 480px; }
     .steps-section { background-color: #ffffff; padding: 40px 48px; border-bottom: 1px solid #edf2f3; }
     .steps-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #9ab0b5; margin-bottom: 28px; }
     .step { display: flex; gap: 18px; margin-bottom: 24px; align-items: flex-start; }
-    .step-num { width: 32px; height: 32px; min-width: 32px; background: #047987; color: #fff; border-radius: 50%; font-size: 13px; font-weight: 700; text-align: center; line-height: 32px; flex-shrink: 0; }
+    .step-num { width: 32px; height: 32px; min-width: 32px; background: #1f2937; color: #fff; border-radius: 50%; font-size: 13px; font-weight: 700; text-align: center; line-height: 32px; flex-shrink: 0; }
     .step-title { font-size: 15px; font-weight: 700; color: #0a1f22; margin-bottom: 4px; }
     .step-desc { font-size: 14px; color: #4a6068; line-height: 1.6; }
     .cta-section { background-color: #01313a; padding: 40px 48px; text-align: center; }
-    .cta-btn { display: inline-block; background: #047987; color: #fff; text-decoration: none; font-size: 16px; font-weight: 700; padding: 16px 48px; border-radius: 8px; letter-spacing: 0.02em; }
+    .cta-btn { display: inline-block; background: #1f2937; color: #fff; text-decoration: none; font-size: 16px; font-weight: 700; padding: 16px 48px; border-radius: 8px; letter-spacing: 0.02em; }
     .cta-url { font-size: 13px; color: #7ee8f0; margin-top: 14px; }
     .contact-section { background-color: #f7fafa; padding: 32px 48px; border-top: 1px solid #e2eaeb; }
     .contact-text { font-size: 14px; color: #4a6068; line-height: 1.7; }
-    .contact-text a { color: #047987; text-decoration: none; }
+    .contact-text a { color: #1f2937; text-decoration: none; }
     .footer { background-color: #0a1f22; padding: 28px 48px; }
     .footer-brand { color: #7ee8f0; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
     .footer-links { margin-bottom: 12px; }
@@ -294,26 +294,26 @@ function getProfessionalEmailHtml(signupLink) {
     .greeting { font-size: 28px; font-weight: 700; color: #0a1f22; margin-bottom: 14px; line-height: 1.25; }
     .subtext { font-size: 16px; color: #4a6068; line-height: 1.75; max-width: 520px; }
     .trial-section { background-color: #e6f4f5; padding: 32px 48px; border-bottom: 1px solid #c8dfe2; }
-    .trial-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #047987; margin-bottom: 8px; }
+    .trial-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #1f2937; margin-bottom: 8px; }
     .trial-date { font-size: 28px; font-weight: 800; color: #0a1f22; margin-bottom: 8px; }
     .trial-note { font-size: 14px; color: #2d5a62; line-height: 1.65; max-width: 480px; }
     .features-section { background-color: #ffffff; padding: 32px 48px; border-bottom: 1px solid #edf2f3; }
     .features-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #9ab0b5; margin-bottom: 20px; }
     .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .feature { font-size: 14px; color: #4a6068; line-height: 1.5; }
-    .check { color: #047987; margin-right: 8px; font-weight: 700; }
+    .check { color: #1f2937; margin-right: 8px; font-weight: 700; }
     .steps-section { background-color: #f7fafa; padding: 40px 48px; border-bottom: 1px solid #e2eaeb; }
     .steps-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: #9ab0b5; margin-bottom: 28px; }
     .step { display: flex; gap: 18px; margin-bottom: 24px; align-items: flex-start; }
-    .step-num { width: 32px; height: 32px; min-width: 32px; background: #047987; color: #fff; border-radius: 50%; font-size: 13px; font-weight: 700; text-align: center; line-height: 32px; flex-shrink: 0; }
+    .step-num { width: 32px; height: 32px; min-width: 32px; background: #1f2937; color: #fff; border-radius: 50%; font-size: 13px; font-weight: 700; text-align: center; line-height: 32px; flex-shrink: 0; }
     .step-title { font-size: 15px; font-weight: 700; color: #0a1f22; margin-bottom: 4px; }
     .step-desc { font-size: 14px; color: #4a6068; line-height: 1.6; }
     .cta-section { background-color: #01313a; padding: 40px 48px; text-align: center; }
-    .cta-btn { display: inline-block; background: #047987; color: #fff; text-decoration: none; font-size: 16px; font-weight: 700; padding: 16px 48px; border-radius: 8px; letter-spacing: 0.02em; }
+    .cta-btn { display: inline-block; background: #1f2937; color: #fff; text-decoration: none; font-size: 16px; font-weight: 700; padding: 16px 48px; border-radius: 8px; letter-spacing: 0.02em; }
     .cta-url { font-size: 13px; color: #7ee8f0; margin-top: 14px; }
     .contact-section { background-color: #f7fafa; padding: 32px 48px; border-top: 1px solid #e2eaeb; }
     .contact-text { font-size: 14px; color: #4a6068; line-height: 1.7; }
-    .contact-text a { color: #047987; text-decoration: none; }
+    .contact-text a { color: #1f2937; text-decoration: none; }
     .footer { background-color: #0a1f22; padding: 28px 48px; }
     .footer-brand { color: #7ee8f0; font-size: 14px; font-weight: 600; margin-bottom: 10px; }
     .footer-links { margin-bottom: 12px; }
@@ -401,7 +401,7 @@ function getGenericEmailHtml(signupLink, planMeta) {
   return `
     <h2>Welcome to YieldStream!</h2>
     <p>Your ${planMeta || ''} plan is now active. Click below to create your account:</p>
-    <p><a href="${signupLink}" style="display:inline-block;padding:12px 24px;background:#047987;color:white;text-decoration:none;border-radius:8px;font-weight:600;">Create Your Account &rarr;</a></p>
+    <p><a href="${signupLink}" style="display:inline-block;padding:12px 24px;background:#1f2937;color:white;text-decoration:none;border-radius:8px;font-weight:600;">Create Your Account &rarr;</a></p>
     <p style="color:#666;font-size:14px;">This link expires in 72 hours. If you need a new one, contact support@yieldstream.ai.</p>
   `;
 }

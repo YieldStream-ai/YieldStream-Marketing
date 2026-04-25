@@ -1,0 +1,520 @@
+// ========================================
+// DESIGN SYSTEM - MAIN FILE
+// YieldStream — Light Mode, Financial Data Optimized
+// ========================================
+// Import this file in your main app file
+
+// Fonts loaded via next/font in layout.jsx (Inter Variable, Source Serif 4, JetBrains Mono)
+
+// Core System
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ==================== CSS CUSTOM PROPERTIES ====================
+
+:root {
+  // Surfaces
+  --ds-canvas:               #{$ds-canvas};
+  --ds-surface:              #{$ds-surface};
+  --ds-surface-sunken:       #{$ds-surface-sunken};
+  --ds-surface-raised:       #{$ds-surface-raised};
+  --ds-surface-sunken-subtle: #{$ds-surface-sunken-subtle};
+  --ds-surface-expanded:     #{$ds-surface-expanded};
+
+  // Ink
+  --ds-ink-primary:    #{$ds-ink-primary};
+  --ds-ink-secondary:  #{$ds-ink-secondary};
+  --ds-ink-tertiary:   #{$ds-ink-tertiary};
+  --ds-ink-quaternary: #{$ds-ink-quaternary};
+
+  // Accent
+  --ds-accent:       #{$ds-accent};
+  --ds-accent-hover: #{$ds-accent-hover};
+  --ds-accent-wash:  #{$ds-accent-wash};
+
+  // Status
+  --ds-status-advance:       #{$ds-status-advance};
+  --ds-status-advance-wash:  #{$ds-status-advance-wash};
+  --ds-status-caution:       #{$ds-status-caution};
+  --ds-status-caution-wash:  #{$ds-status-caution-wash};
+  --ds-status-decline:       #{$ds-status-decline};
+  --ds-status-decline-wash:  #{$ds-status-decline-wash};
+  --ds-status-neutral:       #{$ds-status-neutral};
+
+  // Borders
+  --ds-border-hairline: #{$ds-border-hairline};
+  --ds-border-standard: #{$ds-border-standard};
+  --ds-border-strong:   #{$ds-border-strong};
+
+  // Focus
+  --ds-focus-border: #{$ds-focus-border};
+  --ds-focus-ring:   #{$ds-focus-ring};
+
+  // Typography
+  --ds-font-sans:      #{$ds-font-sans};
+  --ds-font-editorial: #{$ds-font-editorial};
+  --ds-font-mono:      #{$ds-font-mono};
+
+  // Elevation
+  --ds-elevation-raised-shadow:  #{$ds-elevation-raised-shadow};
+  --ds-elevation-overlay-shadow: #{$ds-elevation-overlay-shadow};
+
+  // Spacing
+  --ds-space-1:  #{$ds-space-1};
+  --ds-space-2:  #{$ds-space-2};
+  --ds-space-3:  #{$ds-space-3};
+  --ds-space-4:  #{$ds-space-4};
+  --ds-space-5:  #{$ds-space-5};
+  --ds-space-6:  #{$ds-space-6};
+  --ds-space-8:  #{$ds-space-8};
+  --ds-space-12: #{$ds-space-12};
+
+  // Radii
+  --ds-radius-pill: #{$ds-radius-pill};
+  --ds-radius-sm:   #{$ds-radius-sm};
+  --ds-radius-base: #{$ds-radius-base};
+  --ds-radius-md:   #{$ds-radius-md};
+  --ds-radius-lg:   #{$ds-radius-lg};
+
+  // Transitions
+  --ds-transition-fast: #{$ds-transition-fast};
+  --ds-transition-base: #{$ds-transition-base};
+}
+
+// ==================== BASE STYLES ====================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  @include smooth-scroll;
+}
+
+body {
+  margin: 0;
+  font-family: $ds-font-sans;
+  font-size: $ds-font-size-base;
+  line-height: $ds-line-height-normal;
+  color: $ds-ink-primary;
+  background-color: $ds-canvas;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="number"],
+.amount,
+.currency,
+.percentage {
+  font-variant-numeric: tabular-nums;
+}
+
+// ==================== GLOBAL FOCUS STYLE ====================
+
+.ds-focus-input {
+  transition: border-color $ds-transition-fast $ds-easing-out,
+              box-shadow $ds-transition-fast $ds-easing-out;
+
+  &:focus,
+  &:focus-visible {
+    border-color: $ds-focus-border !important;
+    box-shadow: 0 0 0 3px $ds-focus-ring !important;
+    outline: none;
+  }
+}
+
+// ==================== UTILITY CLASSES ====================
+
+.font-sans {
+  font-family: $ds-font-sans;
+}
+
+.font-editorial {
+  font-family: $ds-font-editorial;
+}
+
+.font-mono {
+  font-family: $ds-font-mono;
+}
+
+// Text sizes
+@each $name, $size in $font-sizes {
+  .text-#{$name} {
+    font-size: $size;
+  }
+}
+
+// Font weights
+@each $name, $weight in $font-weights {
+  .font-#{$name} {
+    font-weight: $weight;
+  }
+}
+
+// Text colors
+.text-primary {
+  color: $ds-ink-primary;
+}
+
+.text-accent {
+  color: $ds-accent;
+}
+
+.text-neutral {
+  color: $ds-ink-tertiary;
+}
+
+.text-success {
+  color: $ds-status-advance;
+}
+
+.text-warning {
+  color: $ds-status-caution;
+}
+
+.text-error {
+  color: $ds-status-decline;
+}
+
+// Background colors
+.bg-primary {
+  background-color: $ds-accent;
+}
+
+.bg-accent {
+  background-color: $ds-status-advance;
+}
+
+.bg-neutral {
+  background-color: $ds-surface-sunken;
+}
+
+.bg-surface {
+  background-color: $ds-surface;
+}
+
+// Spacing utilities
+@each $name, $space in $spacers {
+  .p-#{$name} {
+    padding: $space;
+  }
+
+  .pt-#{$name} {
+    padding-top: $space;
+  }
+
+  .pr-#{$name} {
+    padding-right: $space;
+  }
+
+  .pb-#{$name} {
+    padding-bottom: $space;
+  }
+
+  .pl-#{$name} {
+    padding-left: $space;
+  }
+
+  .px-#{$name} {
+    padding-left: $space;
+    padding-right: $space;
+  }
+
+  .py-#{$name} {
+    padding-top: $space;
+    padding-bottom: $space;
+  }
+
+  .m-#{$name} {
+    margin: $space;
+  }
+
+  .mt-#{$name} {
+    margin-top: $space;
+  }
+
+  .mr-#{$name} {
+    margin-right: $space;
+  }
+
+  .mb-#{$name} {
+    margin-bottom: $space;
+  }
+
+  .ml-#{$name} {
+    margin-left: $space;
+  }
+
+  .mx-#{$name} {
+    margin-left: $space;
+    margin-right: $space;
+  }
+
+  .my-#{$name} {
+    margin-top: $space;
+    margin-bottom: $space;
+  }
+
+  .gap-#{$name} {
+    gap: $space;
+  }
+}
+
+// Border radius
+@each $name, $radius in $radii {
+  .rounded-#{$name} {
+    border-radius: $radius;
+  }
+}
+
+// Shadows
+@each $name, $shadow in $shadows {
+  .shadow-#{$name} {
+    box-shadow: $shadow;
+  }
+}
+
+// Layout utilities
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-column {
+  @include flex-column;
+}
+
+.flex-row {
+  @include flex-row;
+}
+
+.grid {
+  display: grid;
+}
+
+.container {
+  @include container;
+}
+
+.truncate {
+  @include truncate;
+}
+
+// ==================== COMPONENT CLASSES ====================
+
+// Buttons (legacy — use ds-btn-* mixins for new work)
+.btn {
+  @include btn-base;
+}
+
+.btn-primary {
+  @include btn-filled;
+}
+
+.btn-accent {
+  @include btn-filled;
+  background-color: $ds-status-advance;
+
+  &:hover:not(:disabled) {
+    background-color: #22603C;
+  }
+}
+
+.btn-outline {
+  @include btn-outline;
+}
+
+.btn-sm {
+  @include btn-sm;
+}
+
+.btn-lg {
+  @include btn-lg;
+}
+
+// Cards
+.card {
+  @include card;
+}
+
+.card-interactive {
+  @include card-interactive;
+}
+
+.card-title {
+  @include text-display('xl', 'semibold');
+  margin-bottom: $ds-space-2;
+}
+
+.card-text {
+  color: $ds-ink-tertiary;
+  line-height: $ds-line-height-relaxed;
+}
+
+// Inputs
+.input {
+  @include input-base;
+}
+
+// Badges
+.badge {
+  @include badge-base;
+}
+
+.badge-primary {
+  @include badge-base;
+  background-color: $ds-accent-wash;
+  color: $ds-accent;
+}
+
+.badge-success {
+  background-color: $ds-status-advance-wash;
+  color: $ds-status-advance;
+}
+
+.badge-warning {
+  background-color: $ds-status-caution-wash;
+  color: $ds-status-caution;
+}
+
+.badge-error {
+  background-color: $ds-status-decline-wash;
+  color: $ds-status-decline;
+}
+
+// Financial status badges
+.badge-approved {
+  @include badge-approved;
+}
+
+.badge-pending {
+  @include badge-pending;
+}
+
+.badge-rejected {
+  @include badge-rejected;
+}
+
+// ==================== SIDEBAR COMPONENT ====================
+
+.sidebar {
+  @include sidebar-collapsed;
+  background: $ds-surface-sunken;
+  border-right: 1px solid $ds-border-hairline;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow: hidden;
+  z-index: $ds-z-sticky;
+
+  &:hover,
+  &.expanded {
+    @include sidebar-expanded;
+  }
+
+  &__header {
+    padding: $ds-space-4;
+    border-bottom: 1px solid $ds-border-hairline;
+  }
+
+  &__nav {
+    flex: 1;
+    padding: $ds-space-4;
+    overflow-y: auto;
+  }
+
+  &__item {
+    @include sidebar-item;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__label {
+    white-space: nowrap;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity $ds-transition-fast $ds-easing-out;
+  }
+
+  &:hover &__label,
+  &.expanded &__label {
+    opacity: 1;
+  }
+}
+
+// ==================== TABLE COMPONENT ====================
+
+.table {
+  @include table-base;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+// ==================== STAT CARD ====================
+
+.stat-card {
+  @include card;
+  padding: $ds-space-6;
+
+  &__label {
+    font-size: $ds-font-size-sm;
+    font-weight: $ds-font-weight-ui;
+    color: $ds-ink-tertiary;
+    text-transform: uppercase;
+    letter-spacing: $ds-letter-spacing-wider;
+    margin-bottom: $ds-space-2;
+  }
+
+  &__value {
+    @include stat-number;
+  }
+
+  &__change {
+    display: flex;
+    align-items: center;
+    gap: $ds-space-2;
+    margin-top: $ds-space-2;
+    font-size: $ds-font-size-sm;
+    font-weight: $ds-font-weight-ui;
+
+    &--positive {
+      color: $ds-status-advance;
+    }
+
+    &--negative {
+      color: $ds-status-decline;
+    }
+  }
+}
+
+// ==================== LAYOUT ====================
+
+.app-layout {
+  @include app-layout;
+}
+
+.main-content {
+  @include main-content;
+  margin-left: 60px; // Account for collapsed sidebar
+
+  .sidebar:hover ~ &,
+  .sidebar.expanded ~ & {
+    margin-left: 240px;
+  }
+}

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -188,25 +187,29 @@ export default function Nav() {
         animate={
           scrolled
             ? {
-                top: 20,
+                top: 0,
                 left: "50%",
                 x: "-50%",
-                width: 820,
-                height: 48,
-                borderRadius: 14,
-                paddingLeft: 24,
-                paddingRight: 24,
+                width: "calc(100vw - 2 * var(--rail-width))",
+                height: 56,
+                borderRadius: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
+                paddingLeft: 0,
+                paddingRight: 0,
                 boxShadow:
-                  "0 4px 24px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)",
+                  "0 1px 0 rgba(0,0,0,0.06)",
                 borderColor: "var(--n150)",
               }
             : {
                 top: 0,
                 left: "50%",
                 x: "-50%",
-                width: "100vw",
-                height: 56,
+                width: "calc(100vw - 2 * var(--rail-width))",
+                height: 76,
                 borderRadius: 0,
+                paddingTop: 0,
+                paddingBottom: 0,
                 paddingLeft: 0,
                 paddingRight: 0,
                 boxShadow: "0 0 0 rgba(0,0,0,0)",
@@ -217,20 +220,18 @@ export default function Nav() {
       >
         <div className="nav-inner">
           <Link href="/" className="nav-logo">
-            <Image src="/images/YieldStream_Logo.svg" alt="" width={32} height={32} className="nav-logo-image" priority />
-            <AnimatePresence>
-              {!scrolled && (
-                <motion.span
-                  initial={{ opacity: 0, width: 0 }}
-                  animate={{ opacity: 1, width: "auto" }}
-                  exit={{ opacity: 0, width: 0 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
-                  style={{ overflow: "hidden", whiteSpace: "nowrap" }}
-                >
-                  YieldStream
-                </motion.span>
-              )}
-            </AnimatePresence>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width={32} height={32} className="nav-logo-image" aria-hidden="true">
+              <defs>
+                <linearGradient id="navGradB" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3a3a3a" />
+                  <stop offset="100%" stopColor="#0a0a0a" />
+                </linearGradient>
+              </defs>
+              <path d="M 20 86 L 52 76 L 84 86 L 52 96 Z" fill="url(#navGradB)" opacity="0.55" />
+              <path d="M 24 66 L 60 54 L 96 66 L 60 78 Z" fill="url(#navGradB)" opacity="0.78" />
+              <path d="M 28 44 L 68 30 L 108 44 L 68 58 Z" fill="url(#navGradB)" />
+            </svg>
+            <span>YieldStream</span>
           </Link>
 
           {/* Desktop */}

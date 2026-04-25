@@ -1,6 +1,37 @@
 /* Layout - BEM */
+@use "variables" as *;
+
+$rail-bg: $ds-surface-sunken;
+
 .layout {
+  background: $rail-bg;
+
   &__main {
     padding-top: var(--nav-height);
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    max-width: var(--container-max);
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  &__rail {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: var(--rail-width);
+    background: $rail-bg;
+    z-index: 1;
+    pointer-events: none;
+
+    &--left {
+      left: 0;
+      border-right: 1px solid $ds-border-hairline;
+    }
+    &--right {
+      right: 0;
+      border-left: 1px solid $ds-border-hairline;
+    }
   }
 }

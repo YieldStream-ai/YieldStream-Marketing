@@ -2,8 +2,19 @@ import './globals.css';
 import './Layout.scss';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Inter, Source_Serif_4, JetBrains_Mono } from 'next/font/google';
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const sourceSerif4 = Source_Serif_4({
+  subsets: ['latin'],
+  variable: '--font-source-serif-4',
+  weight: ['400', '600'],
+});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-jetbrains-mono',
+  weight: ['400', '500'],
+});
 
 export const metadata = {
   title: {
@@ -25,13 +36,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${sourceSerif4.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <div className="layout__rail layout__rail--left" />
+        <div className="layout__rail layout__rail--right" />
         <Nav />
         <main className="layout__main">
           {children}
+          <Footer />
         </main>
-        <Footer />
       </body>
     </html>
   );

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { useReveal } from "../components/useReveal";
 import PricingTiers from "./PricingTiers";
-import "./pricing.scss";
 
 export default function PricingPage() {
   useReveal();
