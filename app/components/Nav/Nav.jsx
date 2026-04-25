@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import {
   ChevronDown,
   BarChart3,
@@ -91,6 +91,7 @@ export default function Nav() {
   const [mobileExpanded, setMobileExpanded] = useState(null);
 
   const [dims, setDims] = useState({ width: 0, height: 0, x: 0 });
+  const reducedMotion = useReducedMotion();
 
   const timeoutRef = useRef(null);
   const navRef = useRef(null);
@@ -218,7 +219,12 @@ export default function Nav() {
         }
         transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
       >
-        <div className="nav-inner">
+        <motion.div
+          className="nav-inner"
+          initial={reducedMotion ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y: -8, filter: "blur(4px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={reducedMotion ? { duration: 0 } : { duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
           <Link href="/" className="nav-logo">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width={32} height={32} className="nav-logo-image" aria-hidden="true">
               <defs>
@@ -411,7 +417,7 @@ export default function Nav() {
               <span />
             </span>
           </button>
-        </div>
+        </motion.div>
       </motion.nav>
 
       {/* Stripe-style page overlay when dropdown is open */}

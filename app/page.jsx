@@ -80,7 +80,7 @@ function BuyingSignal({ onOpenPricing }) {
         <span className="home__buying-signal-label">
           Simple &amp; Transparent
         </span>
-        <h2 className="home__buying-signal-title">View Access Tiers</h2>
+        <h2 className="home__buying-signal-title">Request Access</h2>
         <p className="home__buying-signal-sub">
           Straightforward plans built around submission volume — no seat counts,
           no hidden add-ons. Find the one that fits and be live this week.

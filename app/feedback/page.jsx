@@ -1,33 +1,14 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import { useReveal } from '../components/useReveal';
 import './feedback.scss';
 
 
-const statusColors = {
-  shipped: { bg: 'var(--a50)', color: 'var(--a700)', dot: 'var(--a500)' },
-  building: { bg: '#eff6ff', color: '#1d4ed8', dot: '#3b82f6' },
-  planned: { bg: 'var(--p50)', color: 'var(--p700)', dot: 'var(--p500)' },
-  considering: { bg: 'var(--n100)', color: 'var(--n600)', dot: 'var(--n400)' },
-};
-
-function getVotedItems() {
-  if (typeof window === 'undefined') return new Set();
-  try {
-    return new Set(JSON.parse(localStorage.getItem('ys_votes') || '[]'));
-  } catch { return new Set(); }
-}
-
-function saveVotedItems(set) {
-  localStorage.setItem('ys_votes', JSON.stringify([...set]));
-}
 
 export default function FeedbackPage() {
   useReveal();
-  const [tab, setTab] = useState('roadmap');
-  const [roadmap, setRoadmap] = useState([]);
-  const [votedIds, setVotedIds] = useState(new Set());
+  const [tab, setTab] = useState('request');
 
   // Feature request form state
   const [frTitle, setFrTitle] = useState('');
@@ -46,45 +27,6 @@ export default function FeedbackPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState(null);
-
-  useEffect(() => {
-    setVotedIds(getVotedItems());
-
-    fetch('/api/roadmap')
-      .then((res) => res.json())
-      .then(({ items }) => setRoadmap(items))
-      .catch(() => {});
-  }, []);
-
-  const handleVote = useCallback((itemId) => {
-    const alreadyVoted = votedIds.has(itemId);
-    const next = new Set(votedIds);
-
-    if (alreadyVoted) {
-      next.delete(itemId);
-    } else {
-      next.add(itemId);
-    }
-
-    setVotedIds(next);
-    saveVotedItems(next);
-
-    setRoadmap(prev => prev.map(column => ({
-      ...column,
-      items: column.items.map(item =>
-        item.id === itemId
-          ? { ...item, votes: item.votes + (alreadyVoted ? -1 : 1) }
-          : item
-      ),
-    })));
-
-    // Fire-and-forget vote to API
-    fetch('/api/vote', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ itemId, action: alreadyVoted ? 'unvote' : 'vote' }),
-    }).catch(() => {});
-  }, [votedIds]);
 
   const resetForms = () => {
     setFrTitle(''); setFrCategory('AI / Intelligence'); setFrDescription(''); setFrPriority(null);
@@ -171,45 +113,12 @@ export default function FeedbackPage() {
         <div className="container">
           <div className="reveal feedback__tabs">
             {[
-              { id: 'roadmap', label: 'Public Roadmap' },
               { id: 'request', label: 'Feature Request' },
               { id: 'bug', label: 'Report a Bug' },
             ].map(t => (
               <button key={t.id} onClick={() => handleTabChange(t.id)} className={`feedback__tab ${tab === t.id ? 'feedback__tab--active' : ''}`}>{t.label}</button>
             ))}
           </div>
-
-          {/* Roadmap */}
-          {tab === 'roadmap' && (
-            <div className="feedback__roadmap-grid">
-              {roadmap.map((column, ci) => (
-                <div key={ci}>
-                  <div className="feedback__column-header" style={{ background: statusColors[column.status].bg }}>
-                    <span className="feedback__column-dot" style={{ background: statusColors[column.status].dot }} />
-                    <span className="feedback__column-label" style={{ color: statusColors[column.status].color }}>{column.label}</span>
-                    <span className="mono feedback__column-count">{column.items.length}</span>
-                  </div>
-                  <div className="feedback__column-items">
-                    {column.items.map((item) => (
-                      <div key={item.id} className="card feedback__roadmap-card">
-                        <h4 className="feedback__roadmap-card-title">{item.title}</h4>
-                        <p className="feedback__roadmap-card-desc">{item.desc}</p>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <button
-                            type="button"
-                            onClick={() => handleVote(item.id)}
-                            className={`feedback__vote-btn ${votedIds.has(item.id) ? 'feedback__vote-btn--voted' : ''}`}
-                          >
-                            ♥ {item.votes}
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
 
           {/* Feature Request */}
           {tab === 'request' && (

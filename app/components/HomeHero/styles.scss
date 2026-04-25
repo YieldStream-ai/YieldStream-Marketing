@@ -8,7 +8,6 @@
   display: flex;
   flex-direction: column;
   padding: var(--space-3xl) 0 var(--space-4xl);
-  overflow: hidden;
 }
 
 .home__hero-ambient {
@@ -54,6 +53,10 @@
   margin: 0;
 }
 
+.home__hero-title-line {
+  display: block;
+}
+
 .home__hero-title-muted {
   color: #9ca3af;
 }
@@ -95,6 +98,8 @@
 /* ── Capability pills ── */
 
 .home__hero-pills {
+  position: relative;
+  z-index: 4;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -390,51 +395,22 @@
   border-radius: 2px;
 }
 
-/* ── Leader lines (CSS L-bends, positioned relative to cards) ── */
+/* ── Leader lines (SVG, positioned relative to cards) ── */
 
 .home__hero-leader {
   position: absolute;
   pointer-events: none;
+  overflow: visible;
 }
 
-.home__hero-leader-dot {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: #cbd5e1;
-}
-
-/* Right card: line exits left edge, bends down toward hatched bars */
 .home__hero-leader--right {
   top: 70%;
   right: 100%;
-  width: 24px;
-  height: 40px;
-  border-top: 1px solid #cbd5e1;
-  border-left: 1px solid #cbd5e1;
-
-  .home__hero-leader-dot {
-    bottom: 0;
-    left: 0;
-    transform: translate(-50%, 50%);
-  }
 }
 
-/* Left card: line exits top edge, bends right toward Score Breakdown section */
 .home__hero-leader--left {
   bottom: 100%;
   left: 77%;
-  width: 50px;
-  height: 160px;
-  border-left: 1px solid #cbd5e1;
-  border-top: 1px solid #cbd5e1;
-
-  .home__hero-leader-dot {
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-  }
 }
 
 /* ── Responsive ── */

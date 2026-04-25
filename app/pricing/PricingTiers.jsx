@@ -125,7 +125,7 @@ export default function PricingTiers({ annual, setAnnual }) {
         {/* Beta banner */}
         <div className="pricing__beta-banner">
           <span className="pricing__beta-label">INSTITUTIONAL BETA</span>
-          <h2 className="pricing__beta-heading">Try YieldStream During Beta</h2>
+          <h2 className="pricing__beta-heading">YieldStream Beta</h2>
           <p className="pricing__beta-desc">
             No credit card. No commitments. Create a free account and explore
             the full platform — your feedback will directly shape what we build
