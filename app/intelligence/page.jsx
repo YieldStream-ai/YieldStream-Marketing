@@ -100,7 +100,8 @@ export default function IntelligencePage() {
       <section className="section">
         <div className="container">
           <div className="section-header reveal">
-            <div className="label">The Learning Loop</div>
+            <div className="section-rule" />
+            <div className="label-mono">The Learning Loop</div>
             <h2 className="display-lg intelligence__section-title">
               Every outcome makes the system smarter.
             </h2>
@@ -204,9 +205,9 @@ export default function IntelligencePage() {
       {/* Time Decay */}
       <section className="section">
         <div className="container">
-          <div className="grid-feature reveal">
-            <div>
-              <div className="label intelligence__label">
+          <div className="reveal" style={{ maxWidth: 640 }}>
+              <div className="section-rule" />
+              <div className="label-mono intelligence__label">
                 Time-Decay Accuracy
               </div>
               <h2 className="display-lg">
@@ -243,49 +244,6 @@ export default function IntelligencePage() {
                   </div>
                 ))}
               </div>
-            </div>
-            <div>
-              <div className="card intelligence__progressive-card">
-                <div className="label intelligence__progressive-label">
-                  Progressive Unlock
-                </div>
-                <h3 className="intelligence__progressive-title">
-                  AI predictions earn trust before asking for it.
-                </h3>
-                <p className="text-sm" style={{ marginBottom: 20 }}>
-                  New organizations start with rule-based matching (attribute +
-                  global signals). The full AI Predictions view unlocks only
-                  after:
-                </p>
-                <div className="intelligence__progressive-list">
-                  {[
-                    "10+ recorded outcomes",
-                    "3+ qualified lenders in registry",
-                    "30+ days of historical data",
-                  ].map((req, i) => (
-                    <div key={i} className="intelligence__progressive-item">
-                      <span className="intelligence__progressive-check">
-                        <svg
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </span>{" "}
-                      {req}
-                    </div>
-                  ))}
-                </div>
-                <p className="text-sm" style={{ marginTop: 16 }}>
-                  This builds broker confidence gradually and ensures the system
-                  never overpromises on thin data.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>

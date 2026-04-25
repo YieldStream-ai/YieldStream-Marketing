@@ -60,9 +60,11 @@ export default function HomeHero() {
           </h1>
           <div className="home__hero-right">
             <p className="home__hero-desc">
-              Automate submission intelligence. Match lenders by buy-box,
-              generate real-time underwrites, and institutionalize your funding
-              workflow.
+              AI-powered lender matching that learns from every outcome. Upload
+              a statement, get a ranked list of who to send it to, and track
+              every deal in one place. YieldStream is the submission
+              intelligence platform built for brokers who want to work smarter,
+              not harder.
             </p>
           </div>
         </motion.div>

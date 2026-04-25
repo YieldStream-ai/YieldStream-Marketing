@@ -287,6 +287,12 @@
   overflow: hidden;
   background: var(--surface-navy);
   color: white;
+
+  .display-lg,
+  .display-xl,
+  .display-md {
+    color: #ffffff;
+  }
 }
 
 .security__isolation-glow {

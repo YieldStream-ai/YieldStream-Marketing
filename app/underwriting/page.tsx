@@ -5,6 +5,7 @@ import { useReveal } from "../components/useReveal";
 import CTABanner from "../components/CTABanner";
 import IngestionFlow from "../components/IngestionFlow";
 import AuditAccordion from "../components/AuditAccordion";
+import BankIntelligencePanel from "../components/BankIntelligencePanel";
 import "./underwriting.scss";
 
 export default function UnderwritingPage() {
@@ -32,6 +33,7 @@ export default function UnderwritingPage() {
       <section className="section-sm">
         <div className="container">
           <div className="section-header center reveal">
+            <div className="section-rule" />
             <div className="label-mono">The 2-Minute Audit</div>
             <h2 className="display-md">
               12 months of statements. Scored in under two minutes.
@@ -57,54 +59,14 @@ export default function UnderwritingPage() {
       <section className="section-sm section-alt">
         <div className="container">
           <div className="section-header center reveal">
+            <div className="section-rule" />
             <div className="label-mono">20+ Risk Signals</div>
             <h2 className="display-lg">
               From PDF statements to structured underwriting signals.
             </h2>
           </div>
-          <div className="grid-4">
-            {[
-              {
-                signal: "Monthly Revenue",
-                desc: "Average, trend direction, and volatility",
-              },
-              {
-                signal: "Daily Balances",
-                desc: "ADB calculation with low-point detection",
-              },
-              {
-                signal: "NSF Frequency",
-                desc: "Count, pattern, and severity classification",
-              },
-              {
-                signal: "Stacking Detection",
-                desc: "Active MCA positions and total burden",
-              },
-              {
-                signal: "DSCR",
-                desc: "Debt service coverage ratio calculation",
-              },
-              {
-                signal: "Revenue Trend",
-                desc: "Growing, stable, declining, or volatile",
-              },
-              {
-                signal: "Lien / Garnishment",
-                desc: "Automated flag detection in transactions",
-              },
-              {
-                signal: "Anomaly Detection",
-                desc: "Unusual deposits, gaps, or pattern breaks",
-              },
-            ].map((s, i) => (
-              <div
-                key={i}
-                className={`card reveal reveal-delay-${(i % 4) + 1} underwriting__signal-card`}
-              >
-                <h3 className="underwriting__signal-title">{s.signal}</h3>
-                <p className="text-sm">{s.desc}</p>
-              </div>
-            ))}
+          <div className="reveal">
+            <BankIntelligencePanel />
           </div>
         </div>
       </section>
@@ -113,6 +75,7 @@ export default function UnderwritingPage() {
       <section className="section-sm">
         <div className="container">
           <div className="section-header center reveal">
+            <div className="section-rule" />
             <div className="label-mono">The Underwriter's Note</div>
             <h2 className="display-lg">
               Underwriting intelligence you can read, verify, and trust.
@@ -176,6 +139,7 @@ export default function UnderwritingPage() {
       <section className="section-sm section-alt">
         <div className="container">
           <div className="section-header center reveal">
+            <div className="section-rule" />
             <div className="label-mono">Approval Comparison</div>
             <h2 className="display-lg">
               See which lenders overlap — and which don't.
