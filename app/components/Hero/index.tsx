@@ -17,7 +17,7 @@ const fadeUp = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 55,
       damping: 18,
       delay,
@@ -48,13 +48,13 @@ const wordItem = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { type: "spring", stiffness: 80, damping: 16 },
+    transition: { type: "spring" as const, stiffness: 80, damping: 16 },
   },
   exit: {
     opacity: 0,
     y: 8,
     filter: "blur(3px)",
-    transition: { duration: 0.2, ease: "easeIn" },
+    transition: { duration: 0.2, ease: "easeIn" as const },
   },
 };
 

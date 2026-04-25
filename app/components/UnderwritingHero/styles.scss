@@ -1,160 +1,102 @@
-@use "./variables" as *;
+@use "../../variables" as *;
 
 // ═══════════════════════════════════════════════════════════════════════════
-// UNDERWRITING HERO — Static marketing reproduction of the underwriting view
-// Mirrors .uw-memo styles but scoped to .uw-hero to avoid conflicts
+// UNDERWRITING HERO — Static marketing mockup of the underwriting view
 // ═══════════════════════════════════════════════════════════════════════════
-
-$uw-green: $ds-status-advance;
-$topbar-bg: #0e0f11;
 
 .uw-hero {
   background: $ds-surface;
-  border-radius: $ds-radius-lg;
+  border-radius: $radius-lg;
   overflow: hidden;
   font-family: $ds-font-sans;
   color: $ds-ink-primary;
-  max-width: 960px;
   box-shadow: $ds-elevation-raised-shadow;
   border: 1px solid $ds-border-standard;
 
   // ═══════════════════════════════════════════════════════════════════════
-  // Top Nav Bar
+  // Tab Bar
   // ═══════════════════════════════════════════════════════════════════════
 
-  &__topbar {
+  &__tabs {
     display: flex;
     align-items: center;
-    height: 48px;
-    background: $topbar-bg;
-    padding: 0 $ds-space-4;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    justify-content: space-between;
+    padding: 0 $space-6;
+    border-bottom: 1px solid $ds-border-hairline;
   }
 
-  &__topbar-left {
-    flex: 0 0 auto;
+  &__tabs-left {
     display: flex;
     align-items: center;
+    gap: 0;
   }
 
-  &__topbar-back {
-    display: flex;
+  &__tab {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border: none;
-    background: transparent;
-    color: rgba(255, 255, 255, 0.6);
-    border-radius: $ds-radius-base;
+    gap: 6px;
+    padding: 12px 14px;
+    font-size: 13px;
+    font-weight: $ds-font-weight-read;
+    color: $ds-ink-tertiary;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
     cursor: default;
-    padding: 0;
-  }
-
-  &__topbar-center {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  &__search {
-    display: flex;
-    align-items: center;
-    gap: $ds-space-2;
-    height: 30px;
-    width: 40%;
-    min-width: 200px;
-    max-width: 360px;
-    padding: 0 $ds-space-3;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 6px;
-  }
-
-  &__search-icon {
-    flex-shrink: 0;
-    color: rgba(255, 255, 255, 0.4);
-  }
-
-  &__search-text {
-    flex: 1;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.4);
     white-space: nowrap;
-  }
 
-  &__search-kbd {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-
-    kbd {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 20px;
-      height: 18px;
-      padding: 0 4px;
-      font-family: $ds-font-sans;
-      font-size: 11px;
-      color: rgba(255, 255, 255, 0.3);
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 3px;
+    &--active {
+      color: $ds-ink-primary;
+      font-weight: $ds-font-weight-ui;
+      border-bottom-color: $ds-ink-primary;
     }
   }
 
-  &__topbar-right {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: $ds-space-1;
+  &__tab-count {
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    color: $ds-ink-quaternary;
+    background: $ds-surface-sunken;
+    padding: 0 5px;
+    border-radius: 4px;
+    line-height: 1.6;
   }
 
-  &__topbar-icon {
+  &__tabs-right {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+  }
+
+  &__tab-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $ds-space-2;
+    padding: 6px;
     border: none;
     background: transparent;
-    color: rgba(255, 255, 255, 0.6);
+    color: $ds-ink-quaternary;
     cursor: default;
   }
 
-  &__topbar-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    background: $ds-accent;
-    color: #fff;
-    font-size: 11px;
-    font-weight: $ds-font-weight-announce;
-    margin-left: $ds-space-1;
-  }
-
   // ═══════════════════════════════════════════════════════════════════════
-  // Content area (below topbar)
+  // Content area
   // ═══════════════════════════════════════════════════════════════════════
 
   &__strip,
   &__section {
-    padding-left: $ds-space-12;
-    padding-right: $ds-space-12;
+    padding-left: $space-8;
+    padding-right: $space-8;
   }
 
   &__strip {
-    padding-top: $ds-space-8;
+    padding-top: $space-6;
+    padding-bottom: $space-6;
   }
 
   &__divider {
     border: none;
     border-top: 0.5px solid $ds-border-standard;
-    margin: $ds-space-6 $ds-space-12;
+    margin: $space-5 $space-8;
   }
 
   &__section-label {
@@ -162,9 +104,9 @@ $topbar-bg: #0e0f11;
     font-family: $ds-font-sans;
     font-weight: $ds-font-weight-ui;
     text-transform: uppercase;
-    letter-spacing: $ds-letter-spacing-wider;
+    letter-spacing: $letter-spacing-wider;
     color: $ds-ink-quaternary;
-    margin: 0 0 $ds-space-3 0;
+    margin: 0 0 $space-3 0;
   }
 
   // ═══════════════════════════════════════════════════════════════════════
@@ -174,14 +116,14 @@ $topbar-bg: #0e0f11;
   &__strip-row {
     display: flex;
     align-items: center;
-    gap: $ds-space-3;
+    gap: $space-3;
     flex-wrap: wrap;
   }
 
   &__strip-score {
     font-family: $ds-font-sans;
-    font-size: 26px;
-    font-weight: $ds-font-weight-ui;
+    font-size: 28px;
+    font-weight: $ds-font-weight-announce;
     color: $ds-ink-primary;
     line-height: 1;
     font-variant-numeric: tabular-nums;
@@ -191,11 +133,10 @@ $topbar-bg: #0e0f11;
     display: inline-flex;
     align-items: center;
     padding: 2px 8px;
-    font-size: 10px;
-    font-weight: $ds-font-weight-announce;
-    text-transform: uppercase;
-    letter-spacing: $ds-letter-spacing-wider;
-    border-radius: $ds-radius-pill;
+    font-size: 11px;
+    font-weight: $ds-font-weight-ui;
+    letter-spacing: 0.02em;
+    border-radius: $radius-full;
     line-height: 1.4;
 
     &--clean {
@@ -207,8 +148,8 @@ $topbar-bg: #0e0f11;
   &__strip-signals {
     display: flex;
     align-items: center;
-    gap: $ds-space-1;
-    font-size: 14px;
+    gap: $space-1;
+    font-size: 13px;
     color: $ds-ink-tertiary;
     font-weight: $ds-font-weight-read;
   }
@@ -219,56 +160,57 @@ $topbar-bg: #0e0f11;
   }
 
   &__strip-summary {
-    margin: $ds-space-3 0 0 0;
-    font-size: 14px;
-    line-height: 1.5;
+    margin: $space-4 0 0 0;
+    font-size: 13px;
+    line-height: 1.65;
     color: $ds-ink-secondary;
-    max-width: 680px;
   }
 
   // ═══════════════════════════════════════════════════════════════════════
   // Cash Flow Metric Grid
   // ═══════════════════════════════════════════════════════════════════════
 
+  &__section {
+    padding-bottom: $space-6;
+  }
+
   &__metric-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: $ds-space-3;
-    margin-bottom: $ds-space-8;
+    gap: $space-3;
   }
 
   &__metric-block {
-    padding: $ds-space-4;
+    padding: $space-4;
     display: flex;
     flex-direction: column;
-    gap: $ds-space-1;
+    gap: $space-1;
     background: $ds-surface;
     border: 1px solid $ds-border-hairline;
-    border-radius: $ds-radius-lg;
-    transition: border-color 0.15s ease;
+    border-radius: $radius-lg;
   }
 
   &__metric-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: $ds-space-2;
+    gap: $space-2;
   }
 
   &__metric-label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: $ds-font-weight-ui;
     color: $ds-ink-quaternary;
     text-transform: uppercase;
-    letter-spacing: $ds-letter-spacing-wider;
+    letter-spacing: $letter-spacing-wider;
   }
 
   &__metric-badge {
     display: inline-flex;
     align-items: center;
     padding: 1px 6px;
-    border-radius: $ds-radius-pill;
-    font-size: 14px;
+    border-radius: $radius-full;
+    font-size: 12px;
     font-weight: $ds-font-weight-ui;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
@@ -277,19 +219,17 @@ $topbar-bg: #0e0f11;
     &--positive {
       background: $ds-status-advance-wash;
       color: $ds-status-advance;
-      border: 1px solid rgba(47, 125, 79, 0.15);
     }
 
     &--neutral {
       background: $ds-surface-sunken;
       color: $ds-ink-tertiary;
-      border: 1px solid $ds-border-hairline;
     }
   }
 
   &__metric-value {
     font-family: $ds-font-sans;
-    font-size: $ds-font-size-2xl;
+    font-size: 24px;
     font-weight: $ds-font-weight-announce;
     color: $ds-ink-primary;
     font-variant-numeric: tabular-nums;
@@ -297,52 +237,59 @@ $topbar-bg: #0e0f11;
   }
 
   &__metric-sparkline {
-    margin-top: $ds-space-2;
+    margin-top: $space-2;
     height: 36px;
     width: 100%;
   }
 
-  // ═══════════════════════════════════════════════════════════════════════
-  // Active Debt Stack Table
-  // ═══════════════════════════════════════════════════════════════════════
-
-  &__section--last {
-    padding-bottom: $ds-space-8;
-  }
-
-  &__table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-
-  &__th {
-    font-size: 10px;
+  &__metric-pill {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 2px 8px;
+    border-radius: $radius-full;
+    font-size: 11px;
     font-weight: $ds-font-weight-ui;
-    text-transform: uppercase;
-    letter-spacing: $ds-letter-spacing-wider;
-    color: $ds-ink-quaternary;
-    padding: 6px 8px;
-    border-bottom: 0.5px solid $ds-border-standard;
-    text-align: left;
+    margin-top: $space-2;
 
-    &--right {
-      text-align: right;
+    &--healthy {
+      background: $ds-status-advance-wash;
+      color: $ds-status-advance;
     }
   }
 
-  &__td {
-    padding: 6px 8px;
-    color: $ds-ink-primary;
-    border-bottom: 0.5px solid $ds-border-hairline;
+  &__metric-sub {
+    font-size: 12px;
+    color: $ds-ink-quaternary;
+    margin-top: $space-1;
+  }
 
-    &--right {
-      text-align: right;
+  // ═══════════════════════════════════════════════════════════════════════
+  // Responsive
+  // ═══════════════════════════════════════════════════════════════════════
+
+  @media (max-width: 768px) {
+    &__metric-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    &--mono {
-      font-variant-numeric: tabular-nums;
-      font-weight: $ds-font-weight-ui;
+    &__tabs-right {
+      display: none;
+    }
+
+    &__strip,
+    &__section {
+      padding-left: $space-4;
+      padding-right: $space-4;
+    }
+
+    &__divider {
+      margin-left: $space-4;
+      margin-right: $space-4;
+    }
+
+    &__tabs {
+      padding: 0 $space-3;
+      overflow-x: auto;
     }
   }
 }

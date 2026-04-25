@@ -139,8 +139,8 @@
   align-items: center;
   gap: var(--space-xl);
   padding: var(--space-2xl);
-  background: var(--n50);
-  border: 1px solid var(--n150);
+  background: #1f2937;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   width: 100%;
 }
@@ -148,8 +148,8 @@
 .security__isolation-org {
   flex: 1;
   padding: var(--space-lg);
-  background: white;
-  border: 1px solid var(--n150);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
 }
 
@@ -159,7 +159,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--n400);
+  color: rgba(255, 255, 255, 0.5);
   margin-bottom: 10px;
 }
 
@@ -171,7 +171,7 @@
   span {
     height: 8px;
     border-radius: 4px;
-    background: var(--n100);
+    background: rgba(255, 255, 255, 0.12);
 
     &:nth-child(1) { width: 100%; }
     &:nth-child(2) { width: 80%; }
@@ -184,7 +184,7 @@
   flex-direction: column;
   align-items: center;
   gap: 4px;
-  color: var(--p600);
+  color: rgba(255, 255, 255, 0.7);
   flex-shrink: 0;
 
   span {
@@ -193,7 +193,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--p600);
+    color: rgba(255, 255, 255, 0.7);
   }
 }
 

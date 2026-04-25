@@ -129,66 +129,70 @@
     }
   }
 
-  &__note-card {
-    background: var(--surface-navy);
-    border-radius: 8px;
-    padding: var(--space-2xl);
-    color: white;
+  &__note-grid {
+    align-items: start;
   }
 
-  &__note-label {
-    font-size: 0.6875rem;
-    color: var(--p400);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
+  &__note-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 24px;
   }
 
-  &__note-text {
-    font-size: 0.9375rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
+  &__note-quote {
+    border-left: 3px solid var(--n300);
+    margin: 0 0 20px 0;
+    padding: 16px 20px;
+    background: var(--n50, #f9fafb);
+    border-radius: 0 8px 8px 0;
+
+    p {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      color: var(--n700, #374151);
+      margin: 0;
+      font-style: italic;
+    }
+
+    strong {
+      font-style: normal;
+      color: var(--n900, #111827);
+    }
   }
 
   &__note-follow {
-    margin-top: 16px;
+    margin-top: 0;
+    color: var(--n500, #6b7280);
   }
 
-  /* ── Elevated product screenshot (Stripe/Linear treatment) ── */
+  /* ── Elevated product screenshot (matches landing hero treatment) ── */
   &__product-frame {
     position: relative;
-    border-radius: 12px;
+    border-radius: 16px 16px 0 0;
     overflow: hidden;
     background: #ffffff;
     box-shadow:
-      0 0 0 1px rgba(15, 23, 42, 0.05),
-      0 4px 16px rgba(15, 23, 42, 0.04),
-      0 24px 80px rgba(15, 23, 42, 0.08);
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 12px;
-      padding: 1px;
-      background: linear-gradient(
-        180deg,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0) 50%
-      );
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      z-index: 1;
-    }
+      0 0 0 1px var(--n150),
+      0 24px 80px rgba(15, 23, 42, 0.1);
 
     img {
       display: block;
-      width: 100%;
+      width: calc(100% + 6px);
+      max-width: none;
       height: auto;
+      margin-right: -6px;
+    }
+
+    &--fade::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 45%;
+      background: linear-gradient(to bottom, transparent, var(--n0));
+      pointer-events: none;
     }
   }
 

@@ -231,19 +231,7 @@ export default function Nav() {
               <path d="M 24 66 L 60 54 L 96 66 L 60 78 Z" fill="url(#navGradB)" opacity="0.78" />
               <path d="M 28 44 L 68 30 L 108 44 L 68 58 Z" fill="url(#navGradB)" />
             </svg>
-            <AnimatePresence>
-              {!scrolled && (
-                <motion.span
-                  initial={{ opacity: 0, width: 0 }}
-                  animate={{ opacity: 1, width: "auto" }}
-                  exit={{ opacity: 0, width: 0 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 30, mass: 1 }}
-                  style={{ overflow: "hidden", whiteSpace: "nowrap" }}
-                >
-                  YieldStream
-                </motion.span>
-              )}
-            </AnimatePresence>
+            <span>YieldStream</span>
           </Link>
 
           {/* Desktop */}

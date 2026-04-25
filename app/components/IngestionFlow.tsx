@@ -4,29 +4,31 @@ import { useRef, useEffect, useCallback } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 
 /* ── animation timing ── */
-const NODE_DUR = 0.2;
-const ARROW_DUR = 0.16;
+const NODE_DUR = 0.25;
+const ARROW_DUR = 0.18;
 
 const DELAYS: Record<string, number> = {
   // nodes — each waits for the preceding arrow to finish
-  intake: 0,
-  parse: 0.36,
-  extract: 0.72,
-  enrich: 1.08,
-  match: 1.44,
-  score: 1.8,
-  ready: 2.16,
-  // arrows — each starts after its source node is visible
-  "intake-parse": 0.2,
-  "main-0": 0.56, // parse → extract
-  "main-1": 0.92, // extract → enrich
-  "enrich-down": 1.28,
-  "enrich-across": 1.28,
-  "enrich-match": 1.28,
-  "match-score": 1.64,
-  "score-down": 2.0,
-  "score-across": 2.0,
-  "score-ready": 2.0,
+  intake:  0,
+  parse:   0.43,
+  extract: 0.86,
+  enrich:  1.29,
+  match:   2.08,
+  score:   2.51,
+  ready:   3.30,
+  // straight arrows — each starts after its source node is visible
+  "intake-parse": 0.25,
+  "main-0":       0.68,   // parse → extract
+  "main-1":       1.11,   // extract → enrich
+  "match-score":  2.33,
+  // elbow: enrich → match (sequential: down, across, target)
+  "enrich-down":   1.54,
+  "enrich-across": 1.72,
+  "enrich-match":  1.90,
+  // elbow: score → ready (sequential: down, across, target)
+  "score-down":   2.76,
+  "score-across": 2.94,
+  "score-ready":  3.12,
 };
 
 /* Accordion sync points — maps step index to the delay of the triggering node */
@@ -190,7 +192,6 @@ function renderArrow(a: ArrowDef) {
       d={a.d}
       stroke="#94a3b3"
       strokeWidth="1.5"
-      strokeDasharray="6 4"
       fill="none"
       markerEnd={a.noArrow ? undefined : "url(#ingestionArrow)"}
       variants={makePathVariant(delay)}

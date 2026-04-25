@@ -7,6 +7,7 @@ import CTABanner from "../components/CTABanner";
 import IngestionFlow from "../components/IngestionFlow";
 import AuditAccordion from "../components/AuditAccordion";
 import BankIntelligencePanel from "../components/BankIntelligencePanel";
+import UnderwritingHero from "../components/UnderwritingHero";
 import "./underwriting.scss";
 
 export default function UnderwritingPage() {
@@ -67,8 +68,10 @@ export default function UnderwritingPage() {
               Every number extracted. Every number verifiable.
             </h2>
             <p className="text-lg">
-              AI pulls every metric from the statements. Your team verifies
-              each one against the source.
+              Statements are parsed line-by-line by deterministic
+              extractors&nbsp;&mdash; not LLMs&nbsp;&mdash; so the numbers are
+              exact. AI then turns those structured signals into the risk flags
+              and summaries your team reviews against the source.
             </p>
           </div>
           <div className="reveal">
@@ -84,54 +87,26 @@ export default function UnderwritingPage() {
             <div className="section-rule" />
             <div className="label-mono">The Underwriter's Note</div>
             <h2 className="display-lg">
-              One sentence your team can act on.
+              The note that replaces 20&nbsp;minutes of analysis.
             </h2>
           </div>
-          <div className="grid-feature reveal">
-            <div className="screenshot screenshot-elevated">
-              <Image
-                src="/images/Underwriting-Intelligence.png"
-                alt="Underwriting Intelligence"
-                width={1400}
-                height={800}
-                priority
-              />
-            </div>
-            <div>
-              <p className="text-md" style={{ marginTop: 0, marginBottom: 20 }}>
-                Every analysis generates a single human-readable sentence
-                explaining the structural assessment. Your team reads the note,
-                checks it against the data, and walks into every deal knowing
-                exactly how to position it.
+          <div className="grid-feature underwriting__note-grid reveal">
+            <UnderwritingHero />
+            <div className="underwriting__note-right">
+              <p className="text-md" style={{ marginTop: 0, marginBottom: 24 }}>
+                Every analysis generates a structured, human-readable
+                assessment. Your team reads the note, checks it against the
+                data, and walks into every deal knowing exactly how to
+                position&nbsp;it.
               </p>
-              <div className="underwriting__note-card">
-                <div className="mono underwriting__note-label">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    style={{
-                      width: 14,
-                      height: 14,
-                      display: "inline",
-                      verticalAlign: "middle",
-                      marginRight: 4,
-                    }}
-                  >
-                    <path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
-                  </svg>{" "}
-                  Example Note
-                </div>
-                <p className="underwriting__note-text">
+              <blockquote className="underwriting__note-quote">
+                <p>
                   Premium profile —{" "}
-                  <strong style={{ color: "var(--a300)" }}>$120K ADB</strong> is
-                  well above most lender floors; expect competitive factor
-                  rates. Revenue stable with no NSFs in 90 days.
+                  <strong>$120K ADB</strong> is well above most lender floors;
+                  expect competitive factor rates. Revenue stable with no NSFs
+                  in 90&nbsp;days.
                 </p>
-              </div>
+              </blockquote>
               <p className="text-sm underwriting__note-follow">
                 No black boxes. No unexplainable scores. Just clear signals your
                 team can verify against the source documents.
@@ -155,9 +130,9 @@ export default function UnderwritingPage() {
               scoring with reasoning, and one-click package generation.
             </p>
           </div>
-          <div className="reveal" style={{ marginTop: "var(--space-2xl)", position: "relative" }}>
+          <div className="reveal" style={{ position: "relative" }}>
             <div className="underwriting__product-glow" />
-            <div className="underwriting__product-frame">
+            <div className="underwriting__product-frame underwriting__product-frame--fade">
               <Image
                 src="/offer-comparison.png"
                 alt="Offer Comparison"
