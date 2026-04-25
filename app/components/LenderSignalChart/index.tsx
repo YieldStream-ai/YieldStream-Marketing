@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./styles.scss";
 
 const LENDERS = [
@@ -48,9 +48,17 @@ function scoreToY(v: number): number {
 export default function LenderSignalChart() {
   const defaultLender = LENDERS.find((l) => l.active)!;
   const [hoveredLender, setHoveredLender] = useState<string | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const activeLender =
     LENDERS.find((l) => l.name === hoveredLender) ?? defaultLender;
+
+  function handleMouseMove(e: React.MouseEvent) {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }
 
   return (
     <div className="lsc">
@@ -59,9 +67,10 @@ export default function LenderSignalChart() {
         Top matches plotted across four scoring axes
       </p>
 
-      <div className="lsc__chart-container">
-        {/* Dynamic tooltip — defaults to active lender */}
-        <div className="lsc__tooltip" style={{ left: "38%", top: -8 }}>
+      <div className="lsc__chart-container" ref={containerRef} onMouseMove={handleMouseMove}>
+        {/* Dynamic tooltip — follows cursor on hover */}
+        {hoveredLender && (
+        <div className="lsc__tooltip" style={{ left: mousePos.x + 12, top: mousePos.y - 16 }}>
           <div className="lsc__tooltip-title">{activeLender.name}</div>
           {AXES.slice(0, 3).map((axis) => (
             <div key={axis.key} className="lsc__tooltip-row">
@@ -89,6 +98,7 @@ export default function LenderSignalChart() {
             </span>
           </div>
         </div>
+        )}
 
         <div className="lsc__chart-wrap">
           {/* Y-axis ticks */}

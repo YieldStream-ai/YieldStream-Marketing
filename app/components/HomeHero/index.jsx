@@ -71,7 +71,7 @@ export default function HomeHero() {
           variants={fadeUp}
         >
           {VALUE_PROPS.map((prop, i) => (
-            <span className="home__hero-pill" key={i}>
+            <span className="home__hero-pill" key={i} data-tooltip={prop.desc}>
               <prop.icon size={14} strokeWidth={1.5} />
               {prop.title}
             </span>

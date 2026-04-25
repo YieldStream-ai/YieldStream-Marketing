@@ -8,8 +8,9 @@ import "./pricing.scss";
 
 function AnimatedPrice({ value }) {
   const motionValue = useMotionValue(value);
-  const displayed = useTransform(motionValue, (v) =>
-    "$" + Math.round(v).toLocaleString()
+  const displayed = useTransform(
+    motionValue,
+    (v) => "$" + Math.round(v).toLocaleString(),
   );
 
   useEffect(() => {
@@ -24,7 +25,16 @@ function AnimatedPrice({ value }) {
 }
 
 const CheckIcon = ({ size = 16 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
@@ -115,16 +125,26 @@ export default function PricingTiers({ annual, setAnnual }) {
         {/* Beta banner */}
         <div className="pricing__beta-banner">
           <span className="pricing__beta-label">INSTITUTIONAL BETA</span>
-          <h2 className="pricing__beta-heading">Try YieldStream Free During Beta</h2>
+          <h2 className="pricing__beta-heading">Try YieldStream During Beta</h2>
           <p className="pricing__beta-desc">
-            No credit card. No commitments. Create a free account and explore the full platform — your feedback will directly shape what we build next.
+            No credit card. No commitments. Create a free account and explore
+            the full platform — your feedback will directly shape what we build
+            next.
           </p>
           <div className="pricing__beta-trust">
-            <span className="pricing__beta-trust-item">No credit card required</span>
-            <span className="pricing__beta-trust-sep" aria-hidden="true">·</span>
+            <span className="pricing__beta-trust-item">
+              No credit card required
+            </span>
+            <span className="pricing__beta-trust-sep" aria-hidden="true">
+              ·
+            </span>
             <span className="pricing__beta-trust-item">Cancel anytime</span>
-            <span className="pricing__beta-trust-sep" aria-hidden="true">·</span>
-            <span className="pricing__beta-trust-item">Your feedback shapes the product</span>
+            <span className="pricing__beta-trust-sep" aria-hidden="true">
+              ·
+            </span>
+            <span className="pricing__beta-trust-item">
+              Your feedback shapes the product
+            </span>
           </div>
           <button
             className="pricing__beta-cta"
@@ -138,7 +158,9 @@ export default function PricingTiers({ annual, setAnnual }) {
         <div className="pricing__header-bar">
           <span className="pricing__header-label">Compare Plans</span>
           <div className="pricing__header-toggle">
-            <span className={`pricing__toggle-label ${!annual ? "pricing__toggle-label--active" : ""}`}>
+            <span
+              className={`pricing__toggle-label ${!annual ? "pricing__toggle-label--active" : ""}`}
+            >
               Monthly
             </span>
             <div
@@ -147,7 +169,9 @@ export default function PricingTiers({ annual, setAnnual }) {
             >
               <div className="pricing__toggle-knob" />
             </div>
-            <span className={`pricing__toggle-label ${annual ? "pricing__toggle-label--active" : ""}`}>
+            <span
+              className={`pricing__toggle-label ${annual ? "pricing__toggle-label--active" : ""}`}
+            >
               Annual
               <span className="pricing__toggle-badge">Save 20%</span>
             </span>
@@ -166,7 +190,9 @@ export default function PricingTiers({ annual, setAnnual }) {
                 {tier.monthly ? (
                   <>
                     <span className="pricing__plan-amount">
-                      <AnimatedPrice value={annual ? tier.annual : tier.monthly} />
+                      <AnimatedPrice
+                        value={annual ? tier.annual : tier.monthly}
+                      />
                     </span>
                     <span className="pricing__plan-interval">/month</span>
                   </>
@@ -189,7 +215,11 @@ export default function PricingTiers({ annual, setAnnual }) {
                   </Link>
                 ) : (
                   <button
-                    onClick={tier.name === "Enterprise" ? () => setShowEnterprise(true) : undefined}
+                    onClick={
+                      tier.name === "Enterprise"
+                        ? () => setShowEnterprise(true)
+                        : undefined
+                    }
                     className={`pricing__plan-cta pricing__plan-cta--${tier.ctaVariant}`}
                   >
                     {tier.cta}
@@ -200,10 +230,14 @@ export default function PricingTiers({ annual, setAnnual }) {
               {/* Row 5: Feature divider + label/badge */}
               <div className="pricing__plan-divider">
                 {tier.spotsRemaining && (
-                  <span className="pricing__plan-spots">{tier.spotsRemaining}</span>
+                  <span className="pricing__plan-spots">
+                    {tier.spotsRemaining}
+                  </span>
                 )}
                 {tier.featureLabel ? (
-                  <span className="pricing__plan-divider-label">{tier.featureLabel}</span>
+                  <span className="pricing__plan-divider-label">
+                    {tier.featureLabel}
+                  </span>
                 ) : null}
               </div>
 
@@ -216,13 +250,13 @@ export default function PricingTiers({ annual, setAnnual }) {
                   </li>
                 ))}
               </ul>
-
             </div>
           ))}
         </div>
 
         <p className="pricing__guarantee pricing__guarantee--blurred">
-          All plans include a 30-day money-back guarantee. Not the right fit? Full refund, no questions asked.
+          All plans include a 30-day money-back guarantee. Not the right fit?
+          Full refund, no questions asked.
         </p>
 
         {/* All plans include */}
@@ -242,14 +276,18 @@ export default function PricingTiers({ annual, setAnnual }) {
       {/* ROI callout bar */}
       <div className="pricing__callout">
         <span>
-          Your team spends 22+ hours a week on manual underwriting. YieldStream gives that time back.
+          Your team spends 22+ hours a week on manual underwriting. YieldStream
+          gives that time back.
         </span>
         <Link href="/checkout?plan=founder" className="pricing__callout-cta">
           Sign Up →
         </Link>
       </div>
 
-      <EnterpriseModal isOpen={showEnterprise} onClose={() => setShowEnterprise(false)} />
+      <EnterpriseModal
+        isOpen={showEnterprise}
+        onClose={() => setShowEnterprise(false)}
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useReveal } from "../components/useReveal";
 import CTABanner from "../components/CTABanner";
 import LenderSignalChart from "../components/LenderSignalChart";
+import AnimatedNumber from "../components/AnimatedNumber";
 import "./intelligence.scss";
 
 const LAYERS = [
@@ -119,18 +120,18 @@ const SYSTEM_MECHANISMS = [
 const TIME_GROUPS = [
   {
     label: "Recent",
-    rows: [{ range: "0–30 days", weight: "100%", bar: 100 }],
+    rows: [{ range: "0–30 days", weight: 100, bar: 100 }],
   },
   {
     label: "Aging",
     rows: [
-      { range: "31–90 days", weight: "40%", bar: 40 },
-      { range: "91–180 days", weight: "20%", bar: 20 },
+      { range: "31–90 days", weight: 40, bar: 40 },
+      { range: "91–180 days", weight: 20, bar: 20 },
     ],
   },
   {
     label: "Stale",
-    rows: [{ range: "180+ days", weight: "5%", bar: 5 }],
+    rows: [{ range: "180+ days", weight: 5, bar: 5 }],
   },
 ];
 
@@ -213,7 +214,7 @@ export default function IntelligencePage() {
                     className="mono intelligence__layer-num"
                     style={{ color: layer.color }}
                   >
-                    {layer.pct}%
+                    <AnimatedNumber value={layer.pct} suffix="%" />
                   </div>
                   <div
                     className="label intelligence__layer-label"
@@ -266,24 +267,6 @@ export default function IntelligencePage() {
                 viewBox="0 0 400 400"
                 fill="none"
               >
-                <defs>
-                  <marker
-                    id="arrow"
-                    viewBox="0 0 10 10"
-                    refX="10"
-                    refY="5"
-                    markerWidth="7"
-                    markerHeight="7"
-                    orient="auto-start-reverse"
-                    markerUnits="strokeWidth"
-                  >
-                    <path
-                      d="M 0 1 L 9 5 L 0 9 z"
-                      fill="#4b5563"
-                    />
-                  </marker>
-                </defs>
-
                 {/* Dashed outer ring — motion cue */}
                 <circle
                   cx="200"
@@ -298,36 +281,38 @@ export default function IntelligencePage() {
 
                 {/* Top → Right (Outcomes → Predictions) */}
                 <path
-                  d="M 232.8,45.5 A 158,158 0 0,1 354.5,167.2"
+                  d="M 232.8,45.5 A 158,158 0 0,1 352.6,159.1"
                   stroke="#4b5563"
                   strokeWidth="2.5"
                   fill="none"
-                  markerEnd="url(#arrow)"
                 />
                 {/* Right → Bottom (Predictions → Pull-through) */}
                 <path
-                  d="M 354.5,232.8 A 158,158 0 0,1 232.8,354.5"
+                  d="M 354.5,232.8 A 158,158 0 0,1 240.9,352.6"
                   stroke="#4b5563"
                   strokeWidth="2.5"
                   fill="none"
-                  markerEnd="url(#arrow)"
                 />
                 {/* Bottom → Left (Pull-through → Commissions) */}
                 <path
-                  d="M 167.2,354.5 A 158,158 0 0,1 45.5,232.8"
+                  d="M 167.2,354.5 A 158,158 0 0,1 47.4,240.9"
                   stroke="#4b5563"
                   strokeWidth="2.5"
                   fill="none"
-                  markerEnd="url(#arrow)"
                 />
                 {/* Left → Top (Commissions → Outcomes) */}
                 <path
-                  d="M 45.5,167.2 A 158,158 0 0,1 167.2,45.5"
+                  d="M 45.5,167.2 A 158,158 0 0,1 159.1,47.4"
                   stroke="#4b5563"
                   strokeWidth="2.5"
                   fill="none"
-                  markerEnd="url(#arrow)"
                 />
+
+                {/* Arrowheads — manually positioned on circle */}
+                <polygon points="-5,-4 -5,4 5,0" fill="#4b5563" transform="translate(352.6,159.1) rotate(75)" />
+                <polygon points="-5,-4 -5,4 5,0" fill="#4b5563" transform="translate(240.9,352.6) rotate(165)" />
+                <polygon points="-5,-4 -5,4 5,0" fill="#4b5563" transform="translate(47.4,240.9) rotate(255)" />
+                <polygon points="-5,-4 -5,4 5,0" fill="#4b5563" transform="translate(159.1,47.4) rotate(345)" />
               </svg>
 
               {FLYWHEEL_NODES.map((node) => (
@@ -390,7 +375,7 @@ export default function IntelligencePage() {
                         />
                       </div>
                       <span className="mono intelligence__time-weight">
-                        {d.weight}
+                        <AnimatedNumber value={d.weight} suffix="%" />
                       </span>
                     </div>
                   ))}

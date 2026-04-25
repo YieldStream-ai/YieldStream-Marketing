@@ -8,134 +8,62 @@ import React from "react";
 
 /* ── 1. Bank Statement Analysis ── */
 export function BankStatementMock() {
+  const documents = [
+    { date: "APR 9 1:21 PM", file: "YieldStream_February_2026_Statement.pdf", avgRev: "$155,000", nsfs: "0", months: "JAN 26", ai: "96%" },
+    { date: "APR 4 1:21 PM", file: "YieldStream_January_2026_Statement.pdf", avgRev: "$138,000", nsfs: "0", months: "DEC 25", ai: "94%" },
+    { date: "APR 14 1:21 PM", file: "YieldStream_March_2026_Statement.pdf", avgRev: "$175,000", nsfs: "0", months: "FEB 26", ai: "95%" },
+  ];
+
   return (
     <div className="features__mock">
-      <div className="features__mock-header">
-        <span>Profile</span>
-        <div className="features__mock-profile-tabs">
-          <span className="features__mock-profile-tab features__mock-profile-tab--active">Profile</span>
-          <span className="features__mock-profile-tab">Underwriting</span>
-          <span className="features__mock-profile-tab">Submissions</span>
-          <span className="features__mock-profile-tab">Documents</span>
-          <span className="features__mock-profile-tab">Notes</span>
-          <span className="features__mock-profile-tab">Activities</span>
+      <div className="features__mock-docs-header">
+        Documents <span className="features__mock-docs-count">3</span>
+      </div>
+
+      <div className="features__mock-docs-upload">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="24" height="24">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="12" y1="18" x2="12" y2="12" />
+          <polyline points="9 15 12 12 15 15" />
+        </svg>
+        <span className="features__mock-docs-upload-text">Upload documents</span>
+        <span className="features__mock-docs-upload-sub">or drag and drop PDF, JPG, PNG</span>
+      </div>
+
+      <div className="features__mock-docs-toolbar">
+        <div className="features__mock-docs-toolbar-left">
+          <span className="features__mock-docs-filter">All Types <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="10" height="10"><polyline points="6 9 12 15 18 9" /></svg></span>
+          <span className="features__mock-docs-filter">Sort: Name <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="10" height="10"><polyline points="6 9 12 15 18 9" /></svg></span>
+          <span className="features__mock-docs-search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" width="10" height="10"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+            Search documents...
+          </span>
         </div>
       </div>
-      <div className="features__mock-profile">
-        {/* Left rail */}
-        <div className="features__mock-profile-rail">
-          <div className="features__mock-profile-merchant">
-            <span className="features__mock-profile-merchant-name">YieldStream</span>
-            <span className="features__mock-profile-merchant-rep">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="12" height="12"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
-              Joshua Dinh
+
+      <div className="features__mock-docs-table">
+        <div className="features__mock-docs-table-head">
+          <span className="features__mock-docs-col features__mock-docs-col--date">Date</span>
+          <span className="features__mock-docs-col features__mock-docs-col--file">File</span>
+          <span className="features__mock-docs-col features__mock-docs-col--num">Avg Rev</span>
+          <span className="features__mock-docs-col features__mock-docs-col--num">NSFs</span>
+          <span className="features__mock-docs-col features__mock-docs-col--num">Months</span>
+          <span className="features__mock-docs-col features__mock-docs-col--ai">A.I.</span>
+        </div>
+        {documents.map((doc, i) => (
+          <div key={i} className="features__mock-docs-table-row">
+            <span className="features__mock-docs-col features__mock-docs-col--date features__mock-amount">{doc.date}</span>
+            <span className="features__mock-docs-col features__mock-docs-col--file">{doc.file}</span>
+            <span className="features__mock-docs-col features__mock-docs-col--num features__mock-amount">{doc.avgRev}</span>
+            <span className="features__mock-docs-col features__mock-docs-col--num features__mock-amount">{doc.nsfs}</span>
+            <span className="features__mock-docs-col features__mock-docs-col--num features__mock-amount">{doc.months}</span>
+            <span className="features__mock-docs-col features__mock-docs-col--ai">
+              <span className="features__mock-amount">{doc.ai}</span>
+              <span className="features__mock-docs-verified">Verified</span>
             </span>
           </div>
-
-          <div className="features__mock-profile-section">
-            <div className="features__mock-profile-section-title">Business Profile</div>
-            <div className="features__mock-profile-field">
-              <span className="features__mock-profile-field-label">Score (FICO)</span>
-              <span className="features__mock-profile-field-value">
-                <span className="features__mock-amount">780</span>
-                <span className="features__mock-badge features__mock-badge--green">Excellent</span>
-              </span>
-            </div>
-            <div className="features__mock-profile-field">
-              <span className="features__mock-profile-field-label">Time in Business</span>
-              <span className="features__mock-profile-field-value">3y 10m</span>
-            </div>
-            <div className="features__mock-profile-field">
-              <span className="features__mock-profile-field-label">Industry</span>
-              <span className="features__mock-profile-field-value">Technology</span>
-            </div>
-            <div className="features__mock-profile-field">
-              <span className="features__mock-profile-field-label">Clean List</span>
-              <span className="features__mock-profile-field-value">
-                <span className="features__mock-badge features__mock-badge--green">Clean</span>
-              </span>
-            </div>
-          </div>
-
-          <div className="features__mock-profile-section">
-            <div className="features__mock-profile-section-title">Financials</div>
-            <div className="features__mock-profile-field">
-              <span className="features__mock-profile-field-label">Revenue</span>
-              <span className="features__mock-profile-field-value"><span className="features__mock-amount">$175,000</span></span>
-            </div>
-            <div className="features__mock-profile-field">
-              <span className="features__mock-profile-field-label">Avg Daily Balance</span>
-              <span className="features__mock-profile-field-value"><span className="features__mock-amount">$49,000</span></span>
-            </div>
-          </div>
-
-          <div className="features__mock-profile-section">
-            <div className="features__mock-profile-section-title">Risk Flags</div>
-            <div className="features__mock-profile-field">
-              <span className="features__mock-profile-field-value features__mock-profile-field-value--safe">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="12" height="12"><polyline points="20 6 9 17 4 12" /></svg>
-                No flags detected
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right pane */}
-        <div className="features__mock-profile-main">
-          <div className="features__mock-profile-pane-section">
-            <div className="features__mock-profile-pane-title">Deal &amp; Status</div>
-            <div className="features__mock-profile-grid">
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Lifecycle Status</span>
-                <span className="features__mock-badge features__mock-badge--green">Funded</span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Assigned Rep</span>
-                <span className="features__mock-profile-cell-value">Joshua Dinh</span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Funding History</span>
-                <span className="features__mock-profile-cell-value">1x Funded <span className="features__mock-amount">$150,000</span></span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Risk Level</span>
-                <span className="features__mock-badge features__mock-badge--green">Low</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="features__mock-profile-divider" />
-
-          <div className="features__mock-profile-pane-section">
-            <div className="features__mock-profile-pane-title">Business Information</div>
-            <div className="features__mock-profile-grid">
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Legal / Corporate Name</span>
-                <span className="features__mock-profile-cell-value">YieldStream</span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">EIN</span>
-                <span className="features__mock-profile-cell-value features__mock-amount">83-4201957</span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Entity Type</span>
-                <span className="features__mock-badge features__mock-badge--gray">C-Corp</span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Industry</span>
-                <span className="features__mock-profile-cell-value">Technology</span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Monthly Revenue</span>
-                <span className="features__mock-profile-cell-value features__mock-amount">$175,888</span>
-              </div>
-              <div className="features__mock-profile-cell">
-                <span className="features__mock-profile-cell-label">Average Daily Balance</span>
-                <span className="features__mock-profile-cell-value features__mock-amount">$49,000</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
@@ -253,14 +181,6 @@ export function DealPipelineMock() {
 
 /* ── 3. Submission History ── */
 export function SubmissionHistoryMock() {
-  const kpis = [
-    { label: "Pull-through", value: "11%" },
-    { label: "Offer Rate", value: "33%" },
-    { label: "Avg Days to Fund", value: "5d" },
-    { label: "Total Funded", value: "1" },
-    { label: "Total Declined", value: "2" },
-  ];
-
   const lenderRows = [
     { lender: "Greenline Capital", status: "Approved", date: "Apr 4", offer: "$250,000", factor: "1.25", comm: "$19,000", net: "$237,500", days: "7d" },
     { lender: "BlueVine Advance", status: "Approved", date: "Apr 4", offer: "$220,000", factor: "1.29", comm: "$13,200", net: "$209,000", days: "5d" },
@@ -273,16 +193,6 @@ export function SubmissionHistoryMock() {
       <div className="features__mock-header">
         <span>Submissions</span>
         <span className="features__mock-badge features__mock-badge--teal">3 deals</span>
-      </div>
-
-      {/* KPI strip */}
-      <div className="features__mock-submissions-kpi">
-        {kpis.map((k, i) => (
-          <div key={i} className="features__mock-submissions-kpi-item">
-            <span className="features__mock-submissions-kpi-label">{k.label}</span>
-            <span className="features__mock-submissions-kpi-value">{k.value}</span>
-          </div>
-        ))}
       </div>
 
       {/* Tab filters */}
@@ -360,41 +270,65 @@ export function SubmissionHistoryMock() {
 
 /* ── 4. Notes & Activity Log ── */
 export function NotesActivityMock() {
-  const rows = [
-    { date: "Apr 2", time: "2:15p", desc: "TODO: Follow up with Alex Monday for final decision on Greenline offer. Ch...", author: "Merchant1", status: "Pending" },
-    { date: "Apr 2", time: "2:15p", desc: "Quick check-in with Alex. He confirmed Greenline is the frontrunner for the...", author: "Merchant1", status: "Pending" },
-    { date: "Apr 2", time: "2:15p", desc: "Sent Alex a comparison matrix of all 3 offers \u2014 Greenline ($250k/1.25/240...", author: "Merchant1", status: "Pending" },
-    { date: "Mar 29", time: "1:30p", desc: "Submitted renewal to Capital Plus (first right of refusal) and Fox Capital a...", author: "Merchant1", status: "Pending" },
-    { date: "Mar 29", time: "1:30p", desc: "Presented all 3 offers to Alex. He's leaning toward Greenline for the rate an...", author: "Merchant1", status: "Completed" },
-    { date: "Mar 28", time: "11:00a", desc: "Renewal opportunity created \u2014 Capital Plus position approaching 50% pay...", author: "Merchant1", status: "Completed" },
-    { date: "Mar 27", time: "4:15p", desc: "BlueVine approved $220K at 1.29 factor with weekly payment option. Natio...", author: "Merchant1", status: "Completed" },
-    { date: "Mar 25", time: "2:22p", desc: "Greenline approved first \u2014 $250K at 1.25 factor, 240-day term. This is ac...", author: "Merchant1", status: "Completed" },
-    { date: "Mar 24", time: "3:00p", desc: "Summit came back asking for Q4 P&L and AR aging report. Fair ask \u2014 they...", author: "Merchant1", status: "Completed" },
-    { date: "Mar 22", time: "10:45a", desc: "All 4 submissions sent. Updated statements show $175K MRR with contin...", author: "Merchant1", status: "Completed" },
+  const rows: { ts: string; type: "NOTE" | "CALL"; desc: string; entity: string; status: "Pending" | "Completed" }[] = [
+    { ts: "Apr 24 1:21p", type: "NOTE", desc: "TODO: Follow up with Alex Monday for final decision on Greenline offer. Check with Capital Plus on r...", entity: "Merchant", status: "Pending" },
+    { ts: "Apr 23 1:21p", type: "CALL", desc: "Quick check-in with Alex. He confirmed Greenline is the frontrunner for the $250K deal. CFO approved...", entity: "Merchant", status: "Completed" },
+    { ts: "Apr 22 1:21p", type: "NOTE", desc: "Sent Alex a comparison matrix of all 3 offers \u2014 Greenline ($250K/1.25/240d), National ($240K/1.27/18...", entity: "Merchant", status: "Pending" },
+    { ts: "Apr 22 1:21p", type: "NOTE", desc: "Submitted renewal to Capital Plus (first right of refusal) and Fox Capital as backup. Capital Plus s...", entity: "Merchant", status: "Completed" },
+    { ts: "Apr 21 1:21p", type: "CALL", desc: "Presented all 3 offers to Alex. He\u2019s leaning toward Greenline for the rate and full amount, but want...", entity: "Merchant", status: "Completed" },
+    { ts: "Apr 21 1:21p", type: "NOTE", desc: "Renewal opportunity created \u2014 Capital Plus position approaching 50% paydown. $100K requested for con...", entity: "Merchant", status: "Pending" },
+    { ts: "Apr 19 1:21p", type: "NOTE", desc: "BlueVine approved $220K at 1.29 factor with weekly payment option. National Funding approved $240K a...", entity: "Merchant", status: "Completed" },
+    { ts: "Apr 17 1:21p", type: "NOTE", desc: "Greenline approved first \u2014 $250K at 1.25 factor, 240-day term. This is an exceptional offer. Full am...", entity: "Merchant", status: "Completed" },
   ];
+
+  /* signal icons */
+  const noteIcon = (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="12" height="12" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+    </svg>
+  );
+  const callIcon = (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" width="12" height="12" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.81.36 1.6.7 2.35a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.75.34 1.54.57 2.35.7A2 2 0 0122 16.92z" />
+    </svg>
+  );
 
   return (
     <div className="features__mock">
-      <div className="features__mock-header">
-        <span>Activities</span>
-      </div>
       <div className="features__mock-activity-tabs">
         <span className="features__mock-activity-tab features__mock-activity-tab--active">All</span>
         <span className="features__mock-activity-tab">Calls</span>
         <span className="features__mock-activity-tab">Submissions</span>
         <span className="features__mock-activity-tab">Documents</span>
         <span className="features__mock-activity-tab">Emails</span>
+        <span className="features__mock-activity-tab">Note</span>
+        <span className="features__mock-activity-tab">System</span>
       </div>
+
+      {/* Table header */}
+      <div className="features__mock-activity-thead">
+        <span className="features__mock-activity-col features__mock-activity-col--signal" />
+        <span className="features__mock-activity-col features__mock-activity-col--ts">Timestamp</span>
+        <span className="features__mock-activity-col features__mock-activity-col--type">Type</span>
+        <span className="features__mock-activity-col features__mock-activity-col--desc">Description</span>
+        <span className="features__mock-activity-col features__mock-activity-col--entity">Entity/Lender</span>
+        <span className="features__mock-activity-col features__mock-activity-col--status">Status</span>
+      </div>
+
       <div className="features__mock-activity-list">
         {rows.map((r, i) => (
           <div key={i} className="features__mock-activity-row">
-            <div className="features__mock-activity-date">
-              <span>{r.date}</span>
-              <span>{r.time}</span>
-            </div>
-            <div className="features__mock-activity-desc">{r.desc}</div>
-            <span className="features__mock-activity-author">{r.author}</span>
-            <span className={`features__mock-badge features__mock-badge--${r.status === "Pending" ? "orange" : "green"}`}>
+            <span className="features__mock-activity-col features__mock-activity-col--signal">
+              {r.type === "CALL" ? callIcon : noteIcon}
+            </span>
+            <span className="features__mock-activity-col features__mock-activity-col--ts features__mock-amount">{r.ts}</span>
+            <span className="features__mock-activity-col features__mock-activity-col--type">
+              <span className="features__mock-badge features__mock-badge--gray">{r.type}</span>
+            </span>
+            <span className="features__mock-activity-col features__mock-activity-col--desc">{r.desc}</span>
+            <span className="features__mock-activity-col features__mock-activity-col--entity">{r.entity}</span>
+            <span className="features__mock-activity-col features__mock-activity-col--status">
+              <span className={`features__mock-activity-status-dot features__mock-activity-status-dot--${r.status === "Pending" ? "pending" : "completed"}`} />
               {r.status}
             </span>
           </div>
@@ -407,21 +341,18 @@ export function NotesActivityMock() {
 /* ── 5. Outreach Queue ── */
 export function OutreachQueueMock() {
   const merchants = [
-    { name: "Yield Stream LLC", action: "Call", industry: "Technology", phone: "(415) 555-0112", revenue: "$9k-$9k", selected: true },
-    { name: "Sunrise Dental Group", action: "Call", industry: "Healthcare", phone: "(862) 555-0198", revenue: "$9k-$9k" },
-    { name: "Lucky Dragon Chinese Kitchen", action: "Call", industry: "Restaurant", phone: "(718) 555-0234", revenue: "$9k-$9k" },
-    { name: "Interstate Welding & Fab", action: "Outreach", industry: "Manufacturing", phone: "(281) 555-0176", revenue: "$9k-$9k" },
-    { name: "Red Hawk Trucking", action: "Call", industry: "Trucking", phone: "(469) 555-0143", revenue: "$9k-$9k" },
-    { name: "Magnolia Home Staging", action: "Call", industry: "Real Estate", phone: "(404) 555-0189", revenue: "$9k-$9k" },
-    { name: "Titan Towing & Recovery", action: "Outreach", industry: "Towing", phone: "(312) 555-0165", revenue: "$9k-$9k" },
-    { name: "Brooklyn Bagel Works", action: "Call", industry: "Restaurant", phone: "(718) 555-0211", revenue: "$9k-$9k" },
+    { name: "Pacific Rim Imports", contact: "David Tanaka", action: "Call", context: "Cold — last contact 19d ago", industry: "Wholesale", phone: "(206) 555-0339", selected: true },
+    { name: "Sunrise Dental Group", contact: "Dr. Priya Sharma", action: "Call", context: "Cold — last contact 9d ago", industry: "Healthcare", phone: "(602) 555-0443" },
+    { name: "Quick Auto Repair", contact: "James Kowalski", action: "Call", context: "Cold — last contact 17d ago", industry: "Auto Repair", phone: "(312) 555-0891" },
+    { name: "Heartland Veterinary", contact: "—", action: "Call", context: "Cold — last contact 9d ago", industry: "Healthcare", phone: "(614) 555-0283" },
+    { name: "Prestige Auto Detailing", contact: "—", action: "Outreach", context: "Overdue — reach out today", industry: "Automotive", phone: "(470) 555-0831" },
   ];
 
   return (
     <div className="features__mock">
       <div className="features__mock-header">
         <span>Outreach</span>
-        <span className="features__mock-badge features__mock-badge--teal">{merchants.length} leads</span>
+        <span className="features__mock-badge features__mock-badge--teal">12 leads</span>
       </div>
       <div className="features__mock-outreach">
         {/* Left pane - call list */}
@@ -436,20 +367,24 @@ export function OutreachQueueMock() {
             <thead>
               <tr>
                 <th>Business</th>
-                <th>Action</th>
-                <th className="features__mock-outreach-hide-sm">Industry</th>
                 <th>Contact</th>
+                <th>Action</th>
+                <th className="features__mock-outreach-hide-sm">Context</th>
+                <th className="features__mock-outreach-hide-sm">Industry</th>
+                <th>Phone</th>
               </tr>
             </thead>
             <tbody>
               {merchants.map((m, i) => (
                 <tr key={i} className={m.selected ? "features__mock-outreach-selected" : ""}>
                   <td style={{ fontWeight: 500 }}>{m.name}</td>
+                  <td>{m.contact}</td>
                   <td>
                     <span className={`features__mock-badge features__mock-badge--${m.action === "Call" ? "teal" : "gray"}`}>
                       {m.action}
                     </span>
                   </td>
+                  <td className="features__mock-outreach-hide-sm features__mock-outreach-context">{m.context}</td>
                   <td className="features__mock-outreach-hide-sm">{m.industry}</td>
                   <td><span className="features__mock-amount">{m.phone}</span></td>
                 </tr>
@@ -461,10 +396,11 @@ export function OutreachQueueMock() {
         {/* Right pane - merchant detail */}
         <div className="features__mock-outreach-detail">
           <div className="features__mock-outreach-detail-header">
-            <span className="features__mock-outreach-detail-name">Yield Stream LLC</span>
+            <span className="features__mock-outreach-detail-name">Pacific Rim Imports</span>
+            <span className="features__mock-outreach-detail-subname">David Tanaka</span>
             <span className="features__mock-outreach-detail-phone">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="12" height="12"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" /></svg>
-              (800) 555-0443
+              (206) 555-0339
             </span>
           </div>
 
@@ -473,33 +409,53 @@ export function OutreachQueueMock() {
             <div className="features__mock-outreach-snapshot-grid">
               <div className="features__mock-outreach-snapshot-field">
                 <span className="features__mock-outreach-snapshot-label">Industry</span>
-                <span>Healthcare</span>
+                <span>Wholesale</span>
               </div>
               <div className="features__mock-outreach-snapshot-field">
-                <span className="features__mock-outreach-snapshot-label">Monthly Rev</span>
-                <span className="features__mock-amount">$9,400</span>
+                <span className="features__mock-outreach-snapshot-label">Monthly Revenue</span>
+                <span className="features__mock-amount">$215.6k</span>
               </div>
               <div className="features__mock-outreach-snapshot-field">
                 <span className="features__mock-outreach-snapshot-label">Time in Business</span>
-                <span>1.3 years</span>
+                <span>15 years 10 months</span>
               </div>
+            </div>
+          </div>
+
+          <div className="features__mock-outreach-activity">
+            <div className="features__mock-outreach-activity-title">Recent Activity</div>
+            <div className="features__mock-outreach-activity-item">
+              <span className="features__mock-outreach-activity-text">Renewal checkpoint: David mentioned business is growing and they&apos;ll likely need additional capital in 60-9...</span>
+              <span className="features__mock-outreach-activity-time">7d ago</span>
+            </div>
+            <div className="features__mock-outreach-activity-item">
+              <span className="features__mock-outreach-activity-text">Pricing review call with David. Walked through the offers received for Pacific Rim Imports...</span>
+              <span className="features__mock-outreach-activity-time">8d ago</span>
             </div>
           </div>
 
           <div className="features__mock-outreach-submissions">
             <div className="features__mock-outreach-submissions-title">Past Submissions</div>
             <div className="features__mock-outreach-submissions-row">
-              <span>Baseline Advance</span>
+              <span>National Funding Corp</span>
+              <span className="features__mock-outreach-submissions-date">Apr 11</span>
               <span className="features__mock-badge features__mock-badge--green">Approved</span>
+            </div>
+            <div className="features__mock-outreach-submissions-row">
+              <span>BlueVine Advance</span>
+              <span className="features__mock-outreach-submissions-date">Apr 5</span>
+              <span className="features__mock-badge features__mock-badge--red">Declined</span>
             </div>
             <div className="features__mock-outreach-submissions-row">
               <span>Greenline Capital</span>
+              <span className="features__mock-outreach-submissions-date">Apr 4</span>
               <span className="features__mock-badge features__mock-badge--green">Approved</span>
             </div>
-            <div className="features__mock-outreach-submissions-row">
-              <span>National Funding</span>
-              <span className="features__mock-badge features__mock-badge--green">Approved</span>
-            </div>
+          </div>
+
+          <div className="features__mock-outreach-notes">
+            <div className="features__mock-outreach-notes-label">Call Notes</div>
+            <div className="features__mock-outreach-notes-input">Type notes from this call...</div>
           </div>
 
           <div className="features__mock-outreach-actions">
@@ -508,6 +464,7 @@ export function OutreachQueueMock() {
               <span className="features__mock-outreach-schedule-btn">Tomorrow</span>
               <span className="features__mock-outreach-schedule-btn">+3d</span>
               <span className="features__mock-outreach-schedule-btn">+7d</span>
+              <span className="features__mock-outreach-schedule-btn">+14d</span>
             </div>
             <button className="features__mock-outreach-cta">Save + Next Lead</button>
           </div>
@@ -524,10 +481,6 @@ export function LenderRegistryMock() {
     { name: "Capital Plus Financial", status: "Fresh", statusColor: "green", updated: "Mar 27", fico: "550", revenue: "$15k", pos: "6", restrictions: ["NV"] },
     { name: "Fox Capital Group", status: "91d", statusColor: "orange", updated: "Mar 20", fico: "400", revenue: "$50k", pos: "6", restrictions: [] },
     { name: "Greenline Capital", status: "Fresh", statusColor: "green", updated: "Mar 27", fico: "525", revenue: "$35k", pos: "2", restrictions: ["NV", "ND", "SD"] },
-    { name: "National Funding Corp", status: "Fresh", statusColor: "green", updated: "Mar 27", fico: "580", revenue: "$10k", pos: "4", restrictions: [] },
-    { name: "Pinnacle Business Capital", status: "91d", statusColor: "orange", updated: "Mar 20", fico: "600", revenue: "$20k", pos: "3", restrictions: ["NV"] },
-    { name: "Summit Merchant Solutions", status: "Fresh", statusColor: "green", updated: "Mar 20", fico: "525", revenue: "$12k", pos: "5", restrictions: ["NV", "SD"] },
-    { name: "Velocity Funding Group", status: "91d", statusColor: "orange", updated: "Mar 20", fico: "580", revenue: "$10k", pos: "5", restrictions: [] },
   ];
 
   return (
@@ -537,7 +490,7 @@ export function LenderRegistryMock() {
         <span className="features__mock-lender-add">+ Add Lender</span>
       </div>
       <div className="features__mock-lender-tabs">
-        <span className="features__mock-lender-tab features__mock-lender-tab--active">All Lenders <span className="features__mock-lender-tab-count">8</span></span>
+        <span className="features__mock-lender-tab features__mock-lender-tab--active">All Lenders <span className="features__mock-lender-tab-count">4</span></span>
         <span className="features__mock-lender-tab">Needs Update <span className="features__mock-lender-tab-count">0</span></span>
         <span className="features__mock-lender-tab">Active <span className="features__mock-lender-tab-count">0</span></span>
       </div>
