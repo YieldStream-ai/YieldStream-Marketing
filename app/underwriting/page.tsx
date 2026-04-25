@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { useReveal } from "../components/useReveal";
 import CTABanner from "../components/CTABanner";
@@ -10,6 +11,7 @@ import "./underwriting.scss";
 
 export default function UnderwritingPage() {
   useReveal();
+  const [activeStep, setActiveStep] = useState(0);
 
   return (
     <>
@@ -18,12 +20,12 @@ export default function UnderwritingPage() {
           <div className="section-header center reveal">
             <div className="label">AI Underwriting</div>
             <h1 className="display-xl underwriting__hero-title">
-              The Submission{" "}
-              <em className="italic teal-gradient">Logic Engine.</em>
+              12 months of statements. Scored in under two minutes.
             </h1>
             <p className="text-lg underwriting__hero-sub">
-              12 months of high-density data. Extracted, scored, and matched in
-              &lt;120s.
+              YieldStream extracts every transaction, scores 20+ risk signals,
+              and matches your lender panel before your underwriter opens the
+              file.
             </p>
           </div>
         </div>
@@ -34,9 +36,9 @@ export default function UnderwritingPage() {
         <div className="container">
           <div className="section-header center reveal">
             <div className="section-rule" />
-            <div className="label-mono">The 2-Minute Audit</div>
+            <div className="label-mono">The Pipeline</div>
             <h2 className="display-md">
-              12 months of statements. Scored in under two minutes.
+              How a deal moves through YieldStream.
             </h2>
           </div>
           <div className="grid-feature underwriting__audit-grid reveal">
@@ -48,9 +50,9 @@ export default function UnderwritingPage() {
                 <strong>scores risk signals</strong> simultaneously — in under{" "}
                 <strong>120 seconds</strong>.
               </p>
-              <AuditAccordion />
+              <AuditAccordion activeStep={activeStep} />
             </div>
-            <IngestionFlow />
+            <IngestionFlow onAnimationStep={setActiveStep} />
           </div>
         </div>
       </section>
@@ -62,8 +64,12 @@ export default function UnderwritingPage() {
             <div className="section-rule" />
             <div className="label-mono">20+ Risk Signals</div>
             <h2 className="display-lg">
-              From PDF statements to structured underwriting signals.
+              Every number extracted. Every number verifiable.
             </h2>
+            <p className="text-lg">
+              AI pulls every metric from the statements. Your team verifies
+              each one against the source.
+            </p>
           </div>
           <div className="reveal">
             <BankIntelligencePanel />
@@ -78,7 +84,7 @@ export default function UnderwritingPage() {
             <div className="section-rule" />
             <div className="label-mono">The Underwriter's Note</div>
             <h2 className="display-lg">
-              Underwriting intelligence you can read, verify, and trust.
+              One sentence your team can act on.
             </h2>
           </div>
           <div className="grid-feature reveal">
@@ -142,18 +148,18 @@ export default function UnderwritingPage() {
             <div className="section-rule" />
             <div className="label-mono">Approval Comparison</div>
             <h2 className="display-lg">
-              See which lenders overlap — and which don't.
+              Which lenders actually overlap on this deal.
             </h2>
             <p className="text-lg">
-              The approval comparison view shows buybox overlaps that humans
-              miss. Color-coded term highlights, offer scoring with reasoning,
-              and one-click package generation.
+              Buybox overlaps humans miss. Color-coded term highlights, offer
+              scoring with reasoning, and one-click package generation.
             </p>
           </div>
-          <div className="reveal" style={{ marginTop: "var(--space-2xl)" }}>
-            <div className="screenshot screenshot-elevated">
+          <div className="reveal" style={{ marginTop: "var(--space-2xl)", position: "relative" }}>
+            <div className="underwriting__product-glow" />
+            <div className="underwriting__product-frame">
               <Image
-                src="/images/Underwriting-Approval-Comparison.png"
+                src="/offer-comparison.png"
                 alt="Offer Comparison"
                 width={1400}
                 height={800}

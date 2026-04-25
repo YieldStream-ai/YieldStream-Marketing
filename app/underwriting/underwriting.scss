@@ -106,6 +106,10 @@
     box-shadow: 0 0 0 4px rgba(4, 121, 135, 0.15);
   }
 
+  &__step-dot--completed {
+    background: var(--p500);
+  }
+
   &__step-title {
     font-size: 0.9375rem;
     font-weight: 600;
@@ -148,5 +152,59 @@
 
   &__note-follow {
     margin-top: 16px;
+  }
+
+  /* ── Elevated product screenshot (Stripe/Linear treatment) ── */
+  &__product-frame {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow:
+      0 0 0 1px rgba(15, 23, 42, 0.05),
+      0 4px 16px rgba(15, 23, 42, 0.04),
+      0 24px 80px rgba(15, 23, 42, 0.08);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      padding: 1px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0) 50%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__product-glow {
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(15, 23, 42, 0.03) 0%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
   }
 }

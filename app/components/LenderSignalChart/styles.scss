@@ -1,0 +1,226 @@
+/* LenderSignalChart — BEM */
+
+.lsc {
+  width: 100%;
+}
+
+.lsc__label {
+  font-size: 10px;
+  font-weight: 520;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.lsc__subtitle {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+}
+
+/* ── Chart layout ── */
+.lsc__chart-container {
+  position: relative;
+}
+
+.lsc__chart-wrap {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  grid-template-rows: 1fr auto;
+  gap: 0;
+}
+
+/* ── Y-axis ticks ── */
+.lsc__ticks {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.lsc__tick {
+  position: absolute;
+  right: 4px;
+  transform: translateY(-50%);
+  font-size: 10px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* ── SVG container + chart ── */
+.lsc__svg-container {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.lsc__svg {
+  width: 100%;
+  height: 380px;
+  display: block;
+
+  polyline {
+    transition: opacity 0.2s ease;
+  }
+}
+
+.lsc__dots-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.lsc__dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+}
+
+.lsc__dot--active {
+  width: 10px;
+  height: 10px;
+}
+
+/* ── Axis labels ── */
+.lsc__axes {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4px;
+}
+
+.lsc__axis {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.lsc__axis-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  font-weight: 520;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.lsc__info-icon {
+  width: 11px;
+  height: 11px;
+  color: #9ca3af;
+}
+
+.lsc__weight-label {
+  font-size: 10px;
+  color: #6b7280;
+}
+
+/* ── Tooltip ── */
+.lsc__tooltip {
+  position: absolute;
+  background: #111827;
+  color: #f2f1ed;
+  font-size: 11px;
+  line-height: 1.5;
+  padding: 8px 12px;
+  border-radius: 4px;
+  max-width: 240px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.lsc__tooltip-title {
+  font-weight: 620;
+  margin-bottom: 4px;
+  font-size: 11px;
+  color: #ffffff;
+}
+
+.lsc__tooltip-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.lsc__tooltip-label {
+  color: #9ca3af;
+}
+
+.lsc__tooltip-value {
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+
+.lsc__tooltip-divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 4px 0;
+}
+
+/* ── Legend ── */
+.lsc__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.lsc__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.lsc__legend-bar {
+  width: 12px;
+  height: 1.5px;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.lsc__legend-name {
+  font-size: 12px;
+  color: #374151;
+}
+
+.lsc__legend-score {
+  font-size: 11px;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .lsc__svg {
+    height: 240px;
+  }
+
+  .lsc__tooltip {
+    display: none;
+  }
+
+  .lsc__legend {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .lsc__axis-label {
+    font-size: 10px;
+  }
+
+  .lsc__weight-label {
+    display: none;
+  }
+}

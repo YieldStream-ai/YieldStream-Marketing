@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 
@@ -29,14 +29,25 @@ const STEPS = [
 
 const panelTransition = { duration: 0.3, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] };
 
-export default function AuditAccordion() {
+interface AuditAccordionProps {
+  activeStep?: number;
+}
+
+export default function AuditAccordion({ activeStep }: AuditAccordionProps) {
   const [openIndex, setOpenIndex] = useState(0);
+  const [userOverride, setUserOverride] = useState(false);
+
+  useEffect(() => {
+    if (activeStep !== undefined && !userOverride) {
+      setOpenIndex(activeStep);
+    }
+  }, [activeStep, userOverride]);
 
   return (
     <div className="underwriting__accordion">
       {STEPS.map((step, i) => {
         const isOpen = openIndex === i;
-        const isLast = i === STEPS.length - 1;
+        const isCompleted = activeStep !== undefined && i <= activeStep;
 
         return (
           <div key={i} className={`underwriting__accordion-item ${isOpen ? 'underwriting__accordion-item--active' : ''}`}>
@@ -45,9 +56,14 @@ export default function AuditAccordion() {
               aria-expanded={isOpen}
               aria-controls={`audit-panel-${i}`}
               id={`audit-trigger-${i}`}
-              onClick={() => { if (!isOpen) setOpenIndex(i); }}
+              onClick={() => {
+                if (!isOpen) {
+                  setUserOverride(true);
+                  setOpenIndex(i);
+                }
+              }}
             >
-              <span className={`underwriting__step-dot ${isOpen ? 'underwriting__step-dot--active' : ''}`} />
+              <span className={`underwriting__step-dot ${isOpen ? 'underwriting__step-dot--active' : ''} ${isCompleted && !isOpen ? 'underwriting__step-dot--completed' : ''}`} />
               <span className="underwriting__step-title">{step.title}</span>
               {step.time && <span className="mono underwriting__step-time underwriting__step-time--bordered">{step.time}</span>}
               <motion.span

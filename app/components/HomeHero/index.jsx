@@ -59,14 +59,23 @@ export default function HomeHero() {
             <span className="home__hero-title-muted"> modern brokers.</span>
           </h1>
           <div className="home__hero-right">
-            <p className="home__hero-desc">
-              AI-powered lender matching that learns from every outcome. Upload
-              a statement, get a ranked list of who to send it to, and track
-              every deal in one place. YieldStream is the submission
-              intelligence platform built for brokers who want to work smarter,
-              not harder.
-            </p>
           </div>
+        </motion.div>
+
+        {/* ── Capability pills ── */}
+        <motion.div
+          className="home__hero-pills"
+          initial="hidden"
+          animate="visible"
+          custom={0.15}
+          variants={fadeUp}
+        >
+          {VALUE_PROPS.map((prop, i) => (
+            <span className="home__hero-pill" key={i}>
+              <prop.icon size={14} strokeWidth={1.5} />
+              {prop.title}
+            </span>
+          ))}
         </motion.div>
 
         {/* ── Product screenshot ── */}
@@ -78,8 +87,8 @@ export default function HomeHero() {
           variants={fadeUp}
         >
           <Image
-            src="/images/Opportunities-Table.png"
-            alt="YieldStream opportunities pipeline"
+            src="/underwriting-lenders.png"
+            alt="YieldStream underwriting lender scoring interface"
             width={1920}
             height={1080}
             priority
@@ -88,24 +97,6 @@ export default function HomeHero() {
           <div className="home__hero-screenshot-fade" />
         </motion.div>
 
-        {/* ── Value props ── */}
-        <motion.div
-          className="home__hero-value-props"
-          initial="hidden"
-          animate="visible"
-          custom={0.45}
-          variants={fadeUp}
-        >
-          {VALUE_PROPS.map((prop, i) => (
-            <div className="home__hero-value-prop" key={i}>
-              <div className="home__hero-value-prop-icon">
-                <prop.icon size={18} strokeWidth={1.5} />
-              </div>
-              <h3 className="home__hero-value-prop-title">{prop.title}</h3>
-              <p className="home__hero-value-prop-desc">{prop.desc}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
