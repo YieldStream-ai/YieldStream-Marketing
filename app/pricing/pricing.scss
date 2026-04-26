@@ -185,7 +185,7 @@
   }
 
   &__plans--blurred {
-    filter: blur(6px);
+    filter: blur(12px);
     pointer-events: none;
     user-select: none;
   }
@@ -359,7 +359,7 @@
     padding-bottom: 48px;
 
     &--blurred {
-      filter: blur(6px);
+      filter: blur(12px);
       pointer-events: none;
       user-select: none;
     }

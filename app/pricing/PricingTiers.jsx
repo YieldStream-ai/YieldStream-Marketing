@@ -126,7 +126,7 @@ export default function PricingTiers({ annual, setAnnual }) {
         <div className="pricing__beta-banner">
           <span className="pricing__beta-label">Limited Release</span>
           <h2 className="pricing__beta-heading">
-            YieldStream: Institutional Alpha
+            YieldStream: Institutional Beta
           </h2>
           <p className="pricing__beta-desc">
             Secure 1 of 20 founding licenses and deploy the full submission
