@@ -1,81 +1,130 @@
-# YieldStream Marketing Site
+# YieldStream Marketing
 
-Premium multi-page marketing website for YieldStream.ai — the submission intelligence platform for MCA brokers.
+> Marketing surface for [YieldStream.ai](https://yieldstream.ai) — submission intelligence for MCA brokers.
 
-## Tech Stack
+Built with **Next.js 15 (App Router)**, **TypeScript**, **SCSS Modules (BEM)**, and a custom design-token system. Deployed on Vercel.
 
-- **Framework:** Next.js 15 (App Router)
-- **Styling:** Global CSS with design tokens (IBM Plex Sans/Mono + Newsreader)
-- **Forms:** Supabase + Resend (optional, graceful fallback)
-- **Deployment:** Vercel
+---
 
-## Quick Start
+## Architecture
+
+```
+app/
+├── layout.tsx              # Root layout — font loading, global providers
+├── page.tsx                # Homepage
+├── (routes)/               # Feature pages (pricing, intelligence, etc.)
+├── api/                    # Edge API routes (lead capture, checkout)
+├── _variables.scss         # Design tokens ($ds-* namespace)
+├── _mixins.scss            # Shared SCSS mixins
+└── globals.css             # Tailwind base (shadcn only)
+
+components/                 # Feature components (BEM + SCSS)
+src/components/ui/          # shadcn/ui primitives (Tailwind-scoped)
+```
+
+**Key decisions:**
+
+| Decision | Rationale |
+|----------|-----------|
+| BEM + SCSS over Tailwind for features | Maintainable at scale; Tailwind confined to `ui/` primitives |
+| Design tokens as SCSS variables | Single source of truth, compile-time resolution, no runtime cost |
+| Framer Motion for animation | Declarative, layout-aware, `AnimatePresence` for route transitions |
+| No global state library | Server Components + local state; no hydration tax |
+| MDX for content pages | Non-technical contributors can edit without touching components |
+
+## Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | Next.js 15, React 19, TypeScript |
+| Styling | SCSS Modules (BEM) + design tokens, Tailwind (shadcn only) |
+| Animation | Framer Motion 12 |
+| 3D | React Three Fiber + Three.js |
+| Data Viz | D3.js |
+| Payments | Stripe (Elements + server SDK) |
+| Content | MDX via `next-mdx-remote` |
+| UI Primitives | Radix UI + shadcn/ui |
+| Fonts | Inter Variable, Source Serif 4, JetBrains Mono |
+| Deploy | Vercel (Edge Runtime) |
+
+## Getting Started
 
 ```bash
+# Install dependencies
 npm install
+
+# Start dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open **http://localhost:3000**
 
-## Pages
+### Environment Variables
 
-| Route | Page |
-|-------|------|
-| `/` | Homepage — hero, problem, features, how it works, testimonials |
-| `/features` | Deep-dive on all 6 core features + 8 additional capabilities |
-| `/underwriting` | AI underwriting — 2-minute audit, risk signals, Underwriter's Note |
-| `/intelligence` | Three-layer scoring engine, learning loop, time-decay |
-| `/pricing` | 3 tiers, monthly/annual toggle, ROI calculator, FAQ |
-| `/security` | RLS, RBAC, audit trail, GDPR/CCPA, document vault |
-| `/about` | Founder story, principles, credibility |
-| `/contact` | Qualified lead form (volume + team size fields) |
-| `/feedback` | Public roadmap board, feature requests, bug reports |
-| `/resources` | Blog/thought leadership hub, newsletter signup |
-| `/privacy` | Privacy policy |
-| `/terms` | Terms of service |
-| `/cookies` | Cookie policy |
+Copy `.env.example` → `.env.local` and provide:
 
-## Forms Setup
+```env
+# Stripe
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
 
-1. Copy `.env.example` to `.env.local`
-2. Add your Supabase credentials
-3. Create the `marketing_leads` table:
-
-```sql
-CREATE TABLE marketing_leads (
-  id uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  type text NOT NULL,
-  data jsonb NOT NULL,
-  created_at timestamptz DEFAULT now()
-);
-
--- Allow anonymous inserts (marketing site uses anon key)
-ALTER TABLE marketing_leads ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Allow anonymous inserts" ON marketing_leads
-  FOR INSERT WITH CHECK (true);
+# Supabase (optional — graceful fallback if absent)
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-4. (Optional) Add Resend API key for email notifications
+## Scripts
+
+```bash
+npm run dev       # Next.js dev server (Turbopack)
+npm run build     # Production build
+npm run start     # Serve production build
+npm run lint      # ESLint (flat config)
+```
+
+## Design System
+
+Tokens live in `app/_variables.scss` under the `$ds-` namespace:
+
+```scss
+$ds-canvas:       #fefefe;
+$ds-ink-primary:  #1f2937;
+$ds-accent:       #1f2937;
+```
+
+**Constraints enforced:**
+- `font-weight` ceiling at **620** — no bold
+- Source Serif 4 restricted to `.memo` blocks
+- `tabular-nums` on all numeric data
+- Status colors (`advance` / `caution` / `decline`) are semantic, never decorative
+- No box-shadows outside overlays — elevation is tone-based
+
+Full spec: [`DESIGN.md`](./DESIGN.md)
+
+## Project Structure
+
+```
+.
+├── app/                    # Next.js App Router pages + layouts
+├── components/             # Feature components (BEM + SCSS)
+├── content/                # MDX content files
+├── lib/                    # Shared utilities
+├── public/                 # Static assets
+├── supabase/               # Migration files
+└── DESIGN.md               # Design system specification
+```
 
 ## Deployment
 
 ```bash
-vercel
+vercel --prod
 ```
 
-Recommended: deploy to root domain (`yieldstream.ai`) with the app at `app.yieldstream.ai`.
+Production: `yieldstream.ai`
+App: `app.yieldstream.ai`
 
-## Design System
+---
 
-- **Primary:** Teal (#047987)
-- **Accent:** Emerald (#10b981) — CTAs and success states only
-- **Display font:** Newsreader (serif, editorial)
-- **Body font:** IBM Plex Sans (matches the app)
-- **Mono font:** IBM Plex Mono (data, labels, code)
+## License
 
-All design tokens are in `app/globals.css` as CSS variables.
-
-## Images
-
-Product screenshots are in `public/images/`. Replace with updated screenshots as the product evolves.
+Proprietary. All rights reserved.
