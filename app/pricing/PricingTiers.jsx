@@ -124,12 +124,15 @@ export default function PricingTiers({ annual, setAnnual }) {
       <div className="pricing__container">
         {/* Beta banner */}
         <div className="pricing__beta-banner">
-          <span className="pricing__beta-label">INSTITUTIONAL BETA</span>
-          <h2 className="pricing__beta-heading">YieldStream Beta</h2>
+          <span className="pricing__beta-label">Limited Release</span>
+          <h2 className="pricing__beta-heading">
+            YieldStream: Institutional Alpha
+          </h2>
           <p className="pricing__beta-desc">
-            No credit card. No commitments. Create a free account and explore
-            the full platform — your feedback will directly shape what we build
-            next.
+            Secure 1 of 20 founding licenses and deploy the full submission
+            intelligence platform across your entire operation. Be a part of the
+            next wave of submission intelligence — with no seat limits, no
+            hidden fees, and direct influence on the product roadmap.
           </p>
           <div className="pricing__beta-trust">
             <span className="pricing__beta-trust-item">
@@ -138,12 +141,14 @@ export default function PricingTiers({ annual, setAnnual }) {
             <span className="pricing__beta-trust-sep" aria-hidden="true">
               ·
             </span>
-            <span className="pricing__beta-trust-item">Cancel anytime</span>
+            <span className="pricing__beta-trust-item">
+              Unrestricted termination
+            </span>
             <span className="pricing__beta-trust-sep" aria-hidden="true">
               ·
             </span>
             <span className="pricing__beta-trust-item">
-              Your feedback shapes the product
+              Direct product influence
             </span>
           </div>
           <button

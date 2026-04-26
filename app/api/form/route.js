@@ -1,15 +1,5 @@
 import { NextResponse } from 'next/server';
 
-/**
- * POST /api/form
- * Handles contact, feature request, bug report, and newsletter submissions.
- * 
- * Wire up your Supabase and Resend credentials in .env.local:
- * SUPABASE_URL=https://your-project.supabase.co
- * SUPABASE_SERVICE_KEY=your-service-role-key
- * RESEND_API_KEY=re_xxxxx
- */
-
 export async function POST(request) {
   try {
     const body = await request.json();
@@ -19,24 +9,6 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Missing type or data' }, { status: 400 });
     }
 
-    // 1. Store in Supabase
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
-
-    if (supabaseUrl && supabaseKey) {
-      await fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': supabaseKey,
-          'Authorization': `Bearer ${supabaseKey}`,
-          'Prefer': 'return=minimal',
-        },
-        body: JSON.stringify({ type, data }),
-      });
-    }
-
-    // 2. Send notification email via Resend
     const resendKey = process.env.RESEND_API_KEY;
 
     if (resendKey) {
@@ -65,6 +37,8 @@ export async function POST(request) {
         const err = await emailRes.json();
         console.error('Resend error:', err);
       }
+    } else {
+      console.warn('RESEND_API_KEY missing — skipping email notification');
     }
 
     return NextResponse.json({ success: true });

@@ -17,11 +17,11 @@ export default function PricingPage() {
           <div className="section-header center reveal">
             <div className="label">Pricing</div>
             <h1 className="display-xl pricing__hero-title">
-              Pricing that scales with your pipeline.
+              Institutional access for high-volume desks.
             </h1>
             <p className="text-lg pricing__hero-sub">
-              Every plan includes unlimited merchants, unlimited deals, and full
-              platform access. Choose the volume that fits your operation.
+              Deploy the full underwriting engine across your entire operation.
+              Select a tier based on monthly submission capacity.
             </p>
           </div>
         </div>

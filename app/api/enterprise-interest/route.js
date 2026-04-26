@@ -8,33 +8,6 @@ export async function POST(request) {
       return NextResponse.json({ error: 'Email is required' }, { status: 400 });
     }
 
-    // Store in Supabase
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
-
-    if (supabaseUrl && supabaseKey) {
-      const sbRes = await fetch(`${supabaseUrl}/rest/v1/marketing_leads`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': supabaseKey,
-          'Authorization': `Bearer ${supabaseKey}`,
-          'Prefer': 'return=minimal',
-        },
-        body: JSON.stringify({
-          type: 'enterprise_interest',
-          data: { email, volume, notes },
-        }),
-      });
-      if (!sbRes.ok) {
-        const sbBody = await sbRes.text();
-        console.error('Supabase insert failed:', sbRes.status, sbBody);
-      }
-    } else {
-      console.warn('Supabase credentials missing — skipping lead storage');
-    }
-
-    // Send notification email via Resend
     const resendKey = process.env.RESEND_API_KEY;
 
     if (resendKey) {
