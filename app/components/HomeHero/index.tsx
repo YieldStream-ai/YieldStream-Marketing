@@ -101,21 +101,19 @@ export default function HomeHero() {
         </div>
 
         {/* ── Capability pills ── */}
-        <div className="home__hero-pills">
+        <motion.div
+          className="home__hero-pills"
+          initial={initial(12)}
+          animate={animate}
+          transition={transition(0.7, 0.85)}
+        >
           {VALUE_PROPS.map((prop, i) => (
-            <motion.span
-              className="home__hero-pill"
-              key={i}
-              data-tooltip={prop.desc}
-              initial={initial(12)}
-              animate={animate}
-              transition={transition(0.6, 0.95 + i * 0.08)}
-            >
+            <span className="home__hero-pill" key={i} data-tooltip={prop.desc}>
               <prop.icon size={14} strokeWidth={1.5} />
               {prop.title}
-            </motion.span>
+            </span>
           ))}
-        </div>
+        </motion.div>
 
         {/* ── Product screenshot + callout wrapper ── */}
         <div className="home__hero-showcase">
@@ -123,7 +121,7 @@ export default function HomeHero() {
             className="home__hero-screenshot"
             initial={initial(24)}
             animate={animate}
-            transition={transition(1.1, 1.5)}
+            transition={transition(1.1, 0.95)}
           >
             <Image
               src="/underwriting-lenders.png"
@@ -141,7 +139,7 @@ export default function HomeHero() {
             className="home__hero-callout"
             initial={initial(8)}
             animate={animate}
-            transition={transition(0.7, 1.5)}
+            transition={transition(0.7, 0.95)}
           >
             <div className="home__hero-callout-card">
               <span className="home__hero-callout-meta">AUTO-COMPUTED</span>
@@ -174,7 +172,7 @@ export default function HomeHero() {
                   fill="none"
                   initial={reduced ? { pathLength: 1 } : { pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={transition(0.9, 1.65)}
+                  transition={transition(0.9, 1.1)}
                 />
                 <motion.circle
                   cx="0.5"
@@ -183,7 +181,7 @@ export default function HomeHero() {
                   fill="#cbd5e1"
                   initial={reduced ? { opacity: 1 } : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={transition(0.25, 2.55)}
+                  transition={transition(0.25, 2.0)}
                 />
               </svg>
             </div>
@@ -194,7 +192,7 @@ export default function HomeHero() {
             className="home__hero-callout home__hero-callout--left"
             initial={initial(8)}
             animate={animate}
-            transition={transition(0.7, 1.6)}
+            transition={transition(0.7, 1.05)}
           >
             <div className="home__hero-callout-card">
               <span className="home__hero-callout-meta">WEIGHTED</span>
@@ -232,7 +230,7 @@ export default function HomeHero() {
                   fill="none"
                   initial={reduced ? { pathLength: 1 } : { pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={transition(0.9, 1.75)}
+                  transition={transition(0.9, 1.2)}
                 />
                 <motion.circle
                   cx="49"
@@ -241,7 +239,7 @@ export default function HomeHero() {
                   fill="#cbd5e1"
                   initial={reduced ? { opacity: 1 } : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={transition(0.25, 2.65)}
+                  transition={transition(0.25, 2.1)}
                 />
               </svg>
             </div>
