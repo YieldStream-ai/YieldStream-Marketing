@@ -5,8 +5,6 @@ import { FileText, Target, BarChart3, Cpu } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import "./styles.scss";
 
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
-
 const VALUE_PROPS = [
   {
     icon: FileText,
@@ -61,13 +59,15 @@ const HEADLINE_LINES = ["The Institutional", "Underwriting Engine for"];
 export default function HomeHero() {
   const reduced = useReducedMotion();
 
-  const initial = (y: number) =>
-    reduced ? { opacity: 1, y: 0, filter: "blur(0px)" } : { opacity: 0, y, filter: "blur(4px)" };
+  const initial = (y: number, scale?: number) =>
+    reduced
+      ? { opacity: 1, y: 0, ...(scale ? { scale: 1 } : {}) }
+      : { opacity: 0, y, ...(scale ? { scale } : {}) };
 
-  const animate = { opacity: 1, y: 0, filter: "blur(0px)" };
+  const animate = { opacity: 1, y: 0, scale: 1 };
 
   const transition = (duration: number, delay: number) =>
-    reduced ? { duration: 0 } : { duration, ease: EASE, delay };
+    reduced ? { duration: 0 } : { duration, ease: "easeOut" as const, delay };
 
   return (
     <section className="home__hero">
@@ -80,18 +80,18 @@ export default function HomeHero() {
               <motion.span
                 key={i}
                 className="home__hero-title-line"
-                initial={initial(16)}
+                initial={initial(20)}
                 animate={animate}
-                transition={transition(0.85, 0.3 + i * 0.1)}
+                transition={transition(0.6, i * 0.08)}
               >
                 {line}
               </motion.span>
             ))}
             <motion.span
               className="home__hero-title-line home__hero-title-muted"
-              initial={initial(16)}
+              initial={initial(20)}
               animate={animate}
-              transition={transition(0.85, 0.5)}
+              transition={transition(0.6, 0.16)}
             >
               modern brokers.
             </motion.span>
@@ -101,27 +101,29 @@ export default function HomeHero() {
         </div>
 
         {/* ── Capability pills ── */}
-        <motion.div
-          className="home__hero-pills"
-          initial={initial(12)}
-          animate={animate}
-          transition={transition(0.7, 0.85)}
-        >
+        <div className="home__hero-pills">
           {VALUE_PROPS.map((prop, i) => (
-            <span className="home__hero-pill" key={i} data-tooltip={prop.desc}>
+            <motion.span
+              className="home__hero-pill"
+              key={i}
+              data-tooltip={prop.desc}
+              initial={initial(12)}
+              animate={animate}
+              transition={transition(0.4, 0.15 + i * 0.1)}
+            >
               <prop.icon size={14} strokeWidth={1.5} />
               {prop.title}
-            </span>
+            </motion.span>
           ))}
-        </motion.div>
+        </div>
 
         {/* ── Product screenshot + callout wrapper ── */}
         <div className="home__hero-showcase">
           <motion.div
             className="home__hero-screenshot"
-            initial={initial(24)}
+            initial={initial(15, 0.97)}
             animate={animate}
-            transition={transition(1.1, 0.95)}
+            transition={transition(0.7, 0.2)}
           >
             <Image
               src="/underwriting-lenders.png"
@@ -139,7 +141,7 @@ export default function HomeHero() {
             className="home__hero-callout"
             initial={initial(8)}
             animate={animate}
-            transition={transition(0.7, 0.95)}
+            transition={transition(0.5, 0.5)}
           >
             <div className="home__hero-callout-card">
               <span className="home__hero-callout-meta">AUTO-COMPUTED</span>
@@ -172,7 +174,7 @@ export default function HomeHero() {
                   fill="none"
                   initial={reduced ? { pathLength: 1 } : { pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={transition(0.9, 1.1)}
+                  transition={transition(0.9, 0.8)}
                 />
                 <motion.circle
                   cx="0.5"
@@ -181,7 +183,7 @@ export default function HomeHero() {
                   fill="#cbd5e1"
                   initial={reduced ? { opacity: 1 } : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={transition(0.25, 2.0)}
+                  transition={transition(0.25, 1.5)}
                 />
               </svg>
             </div>
@@ -192,7 +194,7 @@ export default function HomeHero() {
             className="home__hero-callout home__hero-callout--left"
             initial={initial(8)}
             animate={animate}
-            transition={transition(0.7, 1.05)}
+            transition={transition(0.5, 0.6)}
           >
             <div className="home__hero-callout-card">
               <span className="home__hero-callout-meta">WEIGHTED</span>
@@ -230,7 +232,7 @@ export default function HomeHero() {
                   fill="none"
                   initial={reduced ? { pathLength: 1 } : { pathLength: 0 }}
                   animate={{ pathLength: 1 }}
-                  transition={transition(0.9, 1.2)}
+                  transition={transition(0.9, 0.9)}
                 />
                 <motion.circle
                   cx="49"
@@ -239,7 +241,7 @@ export default function HomeHero() {
                   fill="#cbd5e1"
                   initial={reduced ? { opacity: 1 } : { opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={transition(0.25, 2.1)}
+                  transition={transition(0.25, 1.6)}
                 />
               </svg>
             </div>

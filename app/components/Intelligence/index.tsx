@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Crosshair, MessageSquare, AlertTriangle, RefreshCw } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import LenderOrbit from "../LenderSignalOrbit";
 import "./styles.scss";
 
 const FEATURES = [
@@ -155,7 +156,7 @@ export default function Intelligence() {
           </div>
 
           <div className="intel__visual">
-            <LenderPanel />
+            <LenderOrbit />
           </div>
         </div>
       </div>

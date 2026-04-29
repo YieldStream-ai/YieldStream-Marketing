@@ -106,7 +106,7 @@
   --mesh-blue: rgba(31, 41, 55, 0.03);
 
   /* ── Layout ── */
-  --container-max: 1350px;
+  --container-max: 1440px;
   --container-narrow: 800px;
   --nav-height: 76px;
   --rail-width: max(0px, calc((100vw - var(--container-max)) / 2.5));

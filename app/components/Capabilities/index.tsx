@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion, type Variants } from "framer-motion";
 import "./styles.scss";
 
 const MODEL_CAPABILITIES = [
@@ -83,11 +84,32 @@ const CAPABILITIES = [
   },
 ];
 
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const rowReveal: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
 export default function Capabilities() {
   return (
     <section className="capabilities">
       <div className="container">
-        <div className="capabilities__header reveal">
+        <motion.div
+          className="capabilities__header"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={fadeUp}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <div className="capabilities__rule" />
           <span className="capabilities__section-label">End to End</span>
           <h2 className="capabilities__title">
@@ -97,11 +119,18 @@ export default function Capabilities() {
           <p className="capabilities__subhead">
             Four capabilities. One continuous workflow.
           </p>
-        </div>
+        </motion.div>
 
         <div className="capabilities__list">
           {CAPABILITIES.map((cap) => (
-            <div className="capabilities__row reveal" key={cap.id}>
+            <motion.div
+              className="capabilities__row"
+              key={cap.id}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={rowReveal}
+            >
               <div className="capabilities__row-index">
                 <span className="capabilities__row-id">
                   {cap.id} / {cap.code}
@@ -127,17 +156,30 @@ export default function Capabilities() {
                   </div>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
 
-          <div className="capabilities__divider reveal">
+          <motion.div
+            className="capabilities__divider"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={rowReveal}
+          >
             <span className="capabilities__divider-label">
               How the model learns
             </span>
-          </div>
+          </motion.div>
 
           {MODEL_CAPABILITIES.map((cap) => (
-            <div className="capabilities__row reveal" key={cap.id}>
+            <motion.div
+              className="capabilities__row"
+              key={cap.id}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={rowReveal}
+            >
               <div className="capabilities__row-index">
                 <span className="capabilities__row-id">
                   {cap.id} / {cap.code}
@@ -163,7 +205,7 @@ export default function Capabilities() {
                   </div>
                 )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

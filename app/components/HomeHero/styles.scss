@@ -209,6 +209,9 @@
   display: block;
   width: 100%;
   height: auto;
+  max-height: 56vh;
+  object-fit: cover;
+  object-position: top left;
 }
 
 .home__hero-screenshot-fade {
@@ -239,7 +242,7 @@
 .home__hero-callout--left {
   top: auto;
   right: auto;
-  bottom: -1.5rem;
+  bottom: -2.5rem;
   left: -1rem;
 }
 

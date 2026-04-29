@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import "./styles.scss";
 
 const STEPS = [
@@ -50,13 +50,11 @@ const STEPS = [
 const CONNECTOR_COUNT = STEPS.length - 1;
 const TRAVEL_MS = 800;
 const PAUSE_MS = 600;
-// Stagger fade-in timing
-const HERO_SETTLE = 1.1; // seconds — last hero element finishes around here
-const STAGGER_DELAY = 0.1; // seconds between each card
-const FADE_DURATION = 0.4; // seconds per card fade
-// Total time before spark starts (wait for all cards to fade in)
-const STAGGER_TOTAL_MS =
-  (HERO_SETTLE + STEPS.length * STAGGER_DELAY + FADE_DURATION) * 1000 + 200;
+const STAGGER_DELAY = 0.1;
+const FADE_DURATION = 0.4;
+// Delay before spark starts after cards fade in
+const SPARK_DELAY_MS =
+  (STEPS.length * STAGGER_DELAY + FADE_DURATION) * 1000 + 200;
 
 /* Straight connector between steps */
 function Connector({ sparkProgress }) {
@@ -74,9 +72,9 @@ function Connector({ sparkProgress }) {
 }
 
 export default function FundingFlow() {
-  // litSteps: set of step indices that have been reached (stay lit)
-  // sparkConnector: which connector the spark is traveling (0-3, or null)
-  // sparkProgress: 0-1 progress through the current connector
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.3 });
+
   const [litSteps, setLitSteps] = useState(new Set());
   const [sparkConnector, setSparkConnector] = useState(null);
   const [sparkProgress, setSparkProgress] = useState(0);
@@ -88,7 +86,6 @@ export default function FundingFlow() {
     const elapsed = Date.now() - startRef.current;
 
     let t = elapsed;
-    // Phase: initial pause on step 0
     if (t < PAUSE_MS) {
       setLitSteps(new Set([0]));
       setSparkConnector(null);
@@ -98,10 +95,8 @@ export default function FundingFlow() {
     }
     t -= PAUSE_MS;
 
-    // For each connector + next step pause
     for (let i = 0; i < CONNECTOR_COUNT; i++) {
       if (t < TRAVEL_MS) {
-        // Spark is traveling connector i
         setSparkConnector(i);
         setSparkProgress(t / TRAVEL_MS);
         rafRef.current = requestAnimationFrame(tick);
@@ -110,7 +105,6 @@ export default function FundingFlow() {
       t -= TRAVEL_MS;
 
       if (t < PAUSE_MS) {
-        // Paused on step i+1 — add it to lit set
         setLitSteps((prev) => {
           const next = new Set(prev);
           next.add(i + 1);
@@ -124,40 +118,39 @@ export default function FundingFlow() {
       t -= PAUSE_MS;
     }
 
-    // All done — all steps stay lit, no more spark
     setLitSteps(new Set(STEPS.map((_, i) => i)));
     setSparkConnector(null);
     setDone(true);
   }, []);
 
   useEffect(() => {
+    if (!isInView || done) return;
+
     const timeout = setTimeout(() => {
       startRef.current = Date.now();
       rafRef.current = requestAnimationFrame(tick);
-    }, STAGGER_TOTAL_MS);
+    }, SPARK_DELAY_MS);
+
     return () => {
       clearTimeout(timeout);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [tick]);
+  }, [isInView, tick, done]);
 
   return (
-    <motion.div
-      className="funding-flow"
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.5 }}
-    >
+    <div className="funding-flow" ref={containerRef}>
+      <span className="funding-flow__section-label">Platform Performance</span>
       <div className="funding-flow__track">
         {STEPS.map((step, i) => (
           <div className="funding-flow__step-group" key={step.label}>
             <motion.div
-              className={`funding-flow__node${litSteps.has(i) ? " funding-flow__node--active" : ""}`}
+              className="funding-flow__node"
               initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{
                 duration: FADE_DURATION,
-                delay: HERO_SETTLE + i * STAGGER_DELAY,
+                delay: i * STAGGER_DELAY,
                 ease: "easeOut",
               }}
             >
@@ -189,6 +182,6 @@ export default function FundingFlow() {
           </div>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }

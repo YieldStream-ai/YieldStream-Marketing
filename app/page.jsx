@@ -107,14 +107,17 @@ export default function Home() {
       {/* ===== FIRST FOLD (blur-fades on scroll) ===== */}
       <FirstFold />
 
-      {/* ===== INTELLIGENCE — LENDER SCORING ===== */}
-      <Intelligence />
+      {/* ===== END-TO-END FLOW ===== */}
+      <FundingFlow />
+
+      {/* ===== CAPABILITIES ===== */}
+      <Capabilities />
 
       {/* ===== HOW IT WORKS — STEPS ===== */}
       <HowItWorks />
 
-      {/* ===== CAPABILITIES ===== */}
-      <Capabilities />
+      {/* ===== INTELLIGENCE — LENDER SCORING ===== */}
+      <Intelligence />
 
       {/* ===== THE MOAT — INTELLIGENCE FLYWHEEL ===== */}
       <Moat />
