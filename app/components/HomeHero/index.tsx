@@ -126,8 +126,8 @@ export default function HomeHero() {
             transition={transition(0.7, 0.2)}
           >
             <Image
-              src="/underwriting-lenders.png"
-              alt="YieldStream underwriting lender scoring interface"
+              src="/first-fold-hero.png"
+              alt="YieldStream platform hero overview"
               width={1920}
               height={1080}
               priority
@@ -202,22 +202,28 @@ export default function HomeHero() {
                 <span className="home__hero-callout-header-dot" />
                 Score Breakdown
               </div>
-              <ul className="home__hero-score-bars">
-                {SCORE_BREAKDOWN.map((item, i) => (
-                  <li className="home__hero-score-bar-row" key={i}>
-                    <div className="home__hero-score-bar-label">
-                      <span>{item.label}</span>
-                      <span className="home__hero-score-bar-value">{item.value}</span>
-                    </div>
-                    <div className="home__hero-score-bar-track">
-                      <div
-                        className="home__hero-score-bar-fill"
-                        style={{ width: `${item.value}%` }}
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <div className="home__hero-score-body">
+                <div className="home__hero-score-composite">
+                  <span className="home__hero-score-composite-label">Score</span>
+                  <span className="home__hero-score-composite-value">{COMPOSITE_SCORE}</span>
+                </div>
+                <ul className="home__hero-score-bars">
+                  {SCORE_BREAKDOWN.map((item, i) => (
+                    <li className="home__hero-score-bar-row" key={i}>
+                      <div className="home__hero-score-bar-label">
+                        <span>{item.label}</span>
+                        <span className="home__hero-score-bar-value">{item.value}</span>
+                      </div>
+                      <div className="home__hero-score-bar-track">
+                        <div
+                          className="home__hero-score-bar-fill"
+                          style={{ width: `${item.value}%` }}
+                        />
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <svg
                 className="home__hero-leader home__hero-leader--left"
                 width="51"

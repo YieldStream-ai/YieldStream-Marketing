@@ -2,23 +2,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1.5rem;
+  background: lch(98.94% 0.5 282deg);
+  border-radius: 16px;
+  overflow: hidden;
 
   &__card {
     width: 100%;
-    max-width: 420px;
-    background: white;
-    border-radius: 12px;
-    border: 1px solid hsl(210 15% 90%);
-    padding: 2rem 1.75rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    max-width: 620px;
+    background: transparent;
+    padding: 2rem 1.5rem 1rem;
     font-family: inherit;
-    transform: scale(0.9);
-    transform-origin: center;
     position: relative;
     overflow: visible;
   }
 
+  &__header {
+    // no extra styles needed, just a grouping wrapper
+  }
+
+  &__footer {
+    // grouping wrapper for footer content
+  }
+
+  /* ── Cursor ── */
   &__cursor-wrap {
     position: absolute;
     top: 0;
@@ -45,96 +52,194 @@
   }
 
   &__file-chip-name {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 500;
     color: hsl(210 10% 20%);
   }
 
-  &__heading {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: hsl(210 10% 15%);
-    text-align: center;
-    margin: 0 0 0.375rem;
+  /* ── Security badge ── */
+  &__security-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.62rem;
+    color: hsl(210 8% 58%);
+    margin-bottom: 0.5rem;
   }
 
-  &__subheading {
-    font-size: 0.8rem;
-    color: hsl(210 8% 45%);
+  /* ── Header ── */
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: hsl(210 10% 10%);
     text-align: center;
-    line-height: 1.5;
+    margin: 0 0 0.25rem;
+  }
+
+  &__subtitle {
+    font-size: 0.7rem;
+    color: hsl(210 8% 55%);
+    text-align: center;
     margin: 0 0 1.25rem;
   }
 
+  /* ── Section label ── */
+  &__section-label {
+    font-size: 0.58rem;
+    font-weight: 600;
+    color: hsl(210 8% 58%);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+
+  /* ── Document cards ── */
+  &__doc-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 0.75rem;
+  }
+
+  &__doc-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 10px;
+    border: 1px solid hsl(210 15% 90%);
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition:
+      border-color 0.35s ease,
+      background 0.35s ease;
+
+    &--received {
+      border-color: hsl(142 40% 78%);
+      background: hsl(142 50% 97%);
+    }
+  }
+
+  &__doc-badge {
+    position: absolute;
+    top: -8px;
+    right: -2px;
+    font-size: 0.54rem;
+    font-weight: 500;
+    color: hsl(142 71% 35%);
+    background: lch(98.94% 0.5 282deg);
+    padding: 1px 4px;
+    white-space: nowrap;
+  }
+
+  &__doc-icon {
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  &__doc-text {
+    min-width: 0;
+  }
+
+  &__doc-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: hsl(210 10% 12%);
+    margin: 0 0 2px;
+  }
+
+  &__doc-desc {
+    font-size: 0.56rem;
+    color: hsl(210 8% 55%);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* ── Drop zone ── */
   &__dropzone {
-    border: 2px dashed hsl(210 15% 85%);
-    border-radius: 10px;
-    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    padding: 1.75rem 1.25rem 1.25rem;
     text-align: center;
-    margin-bottom: 0.875rem;
-    cursor: pointer;
-    background: transparent;
+    margin-bottom: 1rem;
+    background: white;
+    border: 1px solid hsl(210 12% 91%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     transition:
       border-color 0.3s ease,
       background 0.3s ease;
 
     &--active {
-      border-color: #1f2937;
-      background: rgba(31, 41, 55, 0.04);
-    }
-
-    &:hover {
-      border-color: #1f2937;
-      background: rgba(31, 41, 55, 0.04);
+      border-color: hsl(210 12% 91%);
+      background: white;
     }
   }
 
-  &__dropzone-icon {
-    display: block;
-    margin: 0 auto 0.5rem;
+  &__dropzone-icon-wrap {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 0.625rem;
+    background: hsl(220 10% 93%);
+    border-radius: 8px;
   }
 
   &__dropzone-title {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    color: hsl(210 10% 20%);
-    margin: 0 0 0.25rem;
+    color: hsl(210 10% 12%);
+    margin: 0 0 0.2rem;
   }
 
   &__dropzone-hint {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: hsl(210 8% 55%);
-    margin: 0;
+    margin: 0 0 0.75rem;
   }
 
-  &__staged {
+  &__dropzone-link {
+    color: hsl(210 10% 20%);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ── Format tags ── */
+  &__format-tags {
     display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-    margin-bottom: 0.875rem;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  &__format-tag {
+    font-size: 0.56rem;
+    font-weight: 500;
+    color: hsl(210 8% 55%);
+    padding: 2px 8px;
+    border: 1px solid hsl(210 15% 88%);
+    border-radius: 4px;
+    background: white;
+  }
+
+  /* ── Staged file row ── */
+  &__staged {
+    margin-top: 0.875rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid hsl(210 10% 90%);
   }
 
   &__file-row {
     display: flex;
     align-items: center;
-    gap: 0.625rem;
-    padding: 0.625rem 0.75rem;
-    border: 1px solid hsl(210 15% 88%);
-    border-radius: 8px;
-    background: hsl(210 10% 97%);
-    transition:
-      border-color 0.4s ease,
-      background 0.4s ease;
-
-    &--confirmed {
-      border-color: rgba(31, 41, 55, 0.20);
-      background: rgba(31, 41, 55, 0.04);
-    }
+    gap: 0.5rem;
+    padding: 0.375rem 0;
   }
 
   &__file-row-icon {
     flex-shrink: 0;
-    transition: stroke 0.4s ease;
   }
 
   &__file-info {
@@ -143,56 +248,48 @@
   }
 
   &__file-name {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 500;
-    color: hsl(210 10% 55%);
+    color: hsl(210 10% 20%);
     margin: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: color 0.4s ease;
-
-    &--confirmed {
-      color: hsl(210 10% 20%);
-    }
   }
 
-  &__file-pages {
-    font-size: 0.65rem;
+  &__file-meta {
+    font-size: 0.55rem;
     color: hsl(210 8% 55%);
     margin: 0;
+    font-variant-numeric: tabular-nums;
   }
 
   &__file-type {
     flex-shrink: 0;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.125rem;
+    align-items: center;
+    gap: 5px;
   }
 
   &__file-select {
-    height: 26px;
-    padding: 0 0.5rem;
+    height: 24px;
+    padding: 0 0.4rem;
     border: 1px solid hsl(210 15% 85%);
-    border-radius: 6px;
-    font-size: 0.68rem;
-    color: hsl(210 10% 70%);
+    border-radius: 5px;
+    font-size: 0.6rem;
+    color: hsl(210 10% 30%);
     background: white;
-    opacity: 0.35;
-    cursor: not-allowed;
-    transition:
-      color 0.4s ease,
-      opacity 0.4s ease;
-
-    &--confirmed {
-      color: hsl(210 10% 20%);
-      opacity: 0.5;
-    }
+    cursor: default;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 0.875rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 3px center;
   }
 
   &__file-detected {
-    font-size: 0.58rem;
+    font-size: 0.54rem;
     color: transparent;
     font-style: italic;
     transition: color 0.4s ease;
@@ -204,8 +301,8 @@
 
   &__file-status {
     flex-shrink: 0;
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,6 +313,7 @@
     transform-origin: center;
   }
 
+  /* ── Submit button ── */
   &__submit {
     width: 100%;
     height: 40px;
@@ -225,30 +323,63 @@
     gap: 0.5rem;
     border: none;
     border-radius: 8px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 500;
     color: white;
     background: #1f2937;
-    opacity: 0.5;
-    cursor: not-allowed;
-    transition: opacity 0.4s ease;
-
-    &--ready {
-      opacity: 1;
-      cursor: default;
-    }
+    cursor: default;
+    margin-top: 0.75rem;
   }
 
-  &__submit-icon {
-    flex-shrink: 0;
+  /* ── Footer ── */
+  &__footer-badges {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 0.625rem;
   }
 
-  &__security {
-    font-size: 0.65rem;
-    color: hsl(210 8% 60%);
+  &__footer-badge {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.58rem;
+    color: hsl(210 8% 58%);
+  }
+
+  &__footer-sep {
+    font-size: 0.58rem;
+    color: hsl(210 8% 72%);
+    margin: 0 2px;
+  }
+
+  &__branding {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.62rem;
+    color: hsl(210 8% 55%);
     text-align: center;
-    margin: 0.875rem 0 0;
-    line-height: 1.5;
+    margin: 0 0 0.25rem;
+  }
+
+  &__branding-logo {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &__branding-name {
+    font-weight: 600;
+    color: hsl(210 10% 15%);
+  }
+
+  &__legal {
+    font-size: 0.56rem;
+    color: hsl(210 8% 62%);
+    text-align: center;
+    margin: 0;
   }
 }
 

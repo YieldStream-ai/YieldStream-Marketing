@@ -223,9 +223,10 @@
   background: linear-gradient(
     to bottom,
     rgba(254, 254, 254, 0) 0%,
-    rgba(254, 254, 254, 0.2) 35%,
-    rgba(254, 254, 254, 0.55) 65%,
-    rgba(254, 254, 254, 0.9) 100%
+    rgba(254, 254, 254, 0.35) 30%,
+    rgba(254, 254, 254, 0.75) 55%,
+    rgba(254, 254, 254, 0.95) 80%,
+    #fefefe 100%
   );
   pointer-events: none;
 }
@@ -248,8 +249,8 @@
 
 .home__hero-callout-card {
   position: relative;
-  width: 360px;
-  padding: 16px;
+  width: 400px;
+  padding: 18px 20px;
   background: #fefefe;
   border: 1px solid rgba(15, 20, 25, 0.1);
   border-radius: 8px;
@@ -352,6 +353,12 @@
 
 /* ── Score Breakdown (left callout) ── */
 
+.home__hero-score-body {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .home__hero-score-bars {
   list-style: none;
   margin: 0;
@@ -359,6 +366,41 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  flex: 1;
+  min-width: 0;
+}
+
+.home__hero-score-composite {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.home__hero-score-composite-label {
+  font-size: 10px;
+  font-weight: 520;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  line-height: 1;
+}
+
+.home__hero-score-composite-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 44px;
+  background: rgba(21, 128, 61, 0.06);
+  border-radius: 6px;
+  font-family: ui-monospace, "JetBrains Mono", "IBM Plex Mono", monospace;
+  font-size: 1.25rem;
+  font-weight: 580;
+  line-height: 1;
+  color: #15803d;
+  font-variant-numeric: tabular-nums;
 }
 
 .home__hero-score-bar-row {

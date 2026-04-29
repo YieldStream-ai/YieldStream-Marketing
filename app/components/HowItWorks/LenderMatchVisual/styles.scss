@@ -43,8 +43,8 @@
 
   &__thead {
     display: grid;
-    grid-template-columns: 20px 1fr 60px 1.2fr 48px;
-    gap: 6px;
+    grid-template-columns: 20px 1fr 1.4fr 140px 1fr;
+    gap: 8px;
     align-items: center;
     padding: 6px 0;
     border-bottom: 1px solid var(--n100);
@@ -57,10 +57,10 @@
 
   &__row {
     display: grid;
-    grid-template-columns: 20px 1fr 60px 1.2fr 48px;
-    gap: 6px;
+    grid-template-columns: 20px 1fr 1.4fr 140px 1fr;
+    gap: 8px;
     align-items: center;
-    padding: 10px 0;
+    padding: 12px 0;
     border-bottom: 1px solid var(--n50);
 
     &:last-child {
@@ -116,6 +116,31 @@
     font-size: 0.5625rem;
     color: var(--n400);
     margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  // ── Why cell ──
+  &__why-cell {
+    min-width: 0;
+  }
+
+  &__why-bold {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--n900);
+    margin-bottom: 1px;
+  }
+
+  &__why-detail {
+    font-size: 0.5625rem;
+    font-weight: 400;
+    color: var(--n500);
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   // ── Score cell ──
@@ -124,14 +149,14 @@
     flex-direction: column;
     gap: 3px;
     align-items: center;
+    padding: 0 3px;
   }
 
   &__score-num {
     font-family: var(--font-mono);
     font-variant-numeric: tabular-nums;
-    font-size: 0.875rem;
+    font-size: 0.9375rem;
     font-weight: 620;
-    color: var(--n900);
     line-height: 1;
   }
 
@@ -145,49 +170,57 @@
 
   &__score-fill {
     height: 100%;
-    background: var(--status-advance);
     border-radius: 2px;
   }
 
-  // ── Signal cell ──
-  &__signal-cell {
+  // ── Terms cell ──
+  &__terms-cell {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     min-width: 0;
   }
 
-  &__signal-label {
-    display: flex;
-    align-items: center;
-    gap: 3px;
+  &__terms-text {
     font-size: 0.5625rem;
-    font-weight: 500;
-    color: var(--n800);
+    font-variant-numeric: tabular-nums;
+    font-weight: 450;
+    color: var(--n600);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  &__signal-check {
+  &__expand-icon {
     flex-shrink: 0;
-    color: var(--status-advance);
+    color: var(--n300);
   }
 
-  // ── Fit cell ──
-  &__fit-cell {
+  &__fit-pill {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 0.5625rem;
-    font-weight: 500;
-    color: var(--status-advance);
+    font-size: 0.5rem;
+    font-weight: 550;
+    color: var(--n600);
+    background: var(--n0);
+    border: 1px solid var(--n100);
+    padding: 1px 6px;
+    border-radius: 4px;
     white-space: nowrap;
   }
 
   &__fit-dot {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: var(--status-advance);
     flex-shrink: 0;
+
+    &--viable {
+      background: #c8a631;
+    }
   }
 
   // ── AI Callout ──
