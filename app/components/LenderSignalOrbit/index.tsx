@@ -254,6 +254,7 @@ export default function LenderOrbit() {
           border: "0.5px solid rgba(31, 41, 55, 0.18)",
           boxShadow: "0 0 20px rgba(31, 41, 55, 0.06)",
           overflow: "visible",
+          zIndex: 9,
           animation: "spinCW 18s linear infinite",
         }}
       >

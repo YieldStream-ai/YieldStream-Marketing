@@ -7,9 +7,9 @@
 
 @keyframes orbit-note-appear {
   0%   { opacity: 0; transform: translateY(3px); }
-  2%   { opacity: 1; transform: translateY(0); }
-  6%   { opacity: 1; transform: translateY(0); }
-  9%   { opacity: 0; transform: translateY(-2px); }
+  3%   { opacity: 1; transform: translateY(0); }
+  14%  { opacity: 1; transform: translateY(0); }
+  18%  { opacity: 0; transform: translateY(-2px); }
   100% { opacity: 0; transform: translateY(-2px); }
 }
 
@@ -90,5 +90,5 @@
   animation: orbit-note-appear var(--note-period, 12s) ease-out infinite var(--note-delay, 0s);
   animation-fill-mode: backwards;
   pointer-events: none;
-  z-index: 12;
+  z-index: 20;
 }
