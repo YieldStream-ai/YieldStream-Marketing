@@ -122,43 +122,6 @@ export default function PricingTiers({ annual, setAnnual }) {
   return (
     <div style={{ padding: "48px 24px 0", maxWidth: 1100, margin: "0 auto" }}>
       <div className="pricing__container">
-        {/* Beta banner */}
-        <div className="pricing__beta-banner">
-          <span className="pricing__beta-label">Limited Release</span>
-          <h2 className="pricing__beta-heading">
-            YieldStream: Institutional Beta
-          </h2>
-          <p className="pricing__beta-desc">
-            Secure 1 of 20 founding licenses and deploy the full submission
-            intelligence platform across your entire operation. Be a part of the
-            next wave of submission intelligence — with no seat limits, no
-            hidden fees, and direct influence on the product roadmap.
-          </p>
-          <div className="pricing__beta-trust">
-            <span className="pricing__beta-trust-item">
-              No credit card required
-            </span>
-            <span className="pricing__beta-trust-sep" aria-hidden="true">
-              ·
-            </span>
-            <span className="pricing__beta-trust-item">
-              Unrestricted termination
-            </span>
-            <span className="pricing__beta-trust-sep" aria-hidden="true">
-              ·
-            </span>
-            <span className="pricing__beta-trust-item">
-              Direct product influence
-            </span>
-          </div>
-          <button
-            className="pricing__beta-cta"
-            onClick={() => setShowEnterprise(true)}
-          >
-            Get Access →
-          </button>
-        </div>
-
         {/* Header bar */}
         <div className="pricing__header-bar">
           <span className="pricing__header-label">Compare Plans</span>
@@ -184,7 +147,7 @@ export default function PricingTiers({ annual, setAnnual }) {
         </div>
 
         {/* Plan columns */}
-        <div className="pricing__plans pricing__plans--blurred">
+        <div className="pricing__plans">
           {tiers.map((tier) => (
             <div key={tier.name} className="pricing__plan">
               {/* Row 1: Plan name */}
@@ -259,7 +222,7 @@ export default function PricingTiers({ annual, setAnnual }) {
           ))}
         </div>
 
-        <p className="pricing__guarantee pricing__guarantee--blurred">
+        <p className="pricing__guarantee">
           All plans include a 30-day money-back guarantee. Not the right fit?
           Full refund, no questions asked.
         </p>

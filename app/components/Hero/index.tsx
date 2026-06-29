@@ -125,7 +125,7 @@ export default function Hero() {
             <span className="hero__badge-icon">
               <Zap size={13} />
             </span>
-            <span>Request beta access</span>
+            <span>Get started today</span>
             <ChevronRight size={14} />
           </button>
         </motion.div>

@@ -71,9 +71,9 @@ export default function EnterpriseModal({ isOpen, onClose }) {
           </div>
         ) : (
           <>
-            <h2 className="enterprise-modal__heading">Request Beta Access</h2>
+            <h2 className="enterprise-modal__heading">Talk to Sales</h2>
             <p className="enterprise-modal__subheading">
-              Get free access to the full platform. No credit card required.
+              Tell us about your operation and we&apos;ll get back to you within 1 business day.
             </p>
 
             <form onSubmit={handleSubmit} className="enterprise-modal__form">
@@ -120,7 +120,7 @@ export default function EnterpriseModal({ isOpen, onClose }) {
               {error && <div className="enterprise-modal__error">{error}</div>}
 
               <button type="submit" disabled={loading} className="enterprise-modal__submit">
-                {loading ? 'Submitting...' : 'Request Beta Access'}
+                {loading ? 'Submitting...' : 'Send Message'}
               </button>
 
               <p className="enterprise-modal__footer">
