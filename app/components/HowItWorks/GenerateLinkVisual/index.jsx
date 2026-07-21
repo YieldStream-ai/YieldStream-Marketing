@@ -42,11 +42,7 @@ export default function GenerateLinkVisual() {
     <div className="glv" ref={cardRef}>
       <motion.div
         className="glv__card"
-        animate={
-          zoomed
-            ? { scale: 1.08, y: -10 }
-            : { scale: 0.9, y: 0 }
-        }
+        animate={zoomed ? { scale: 1.08, y: -10 } : { scale: 0.9, y: 0 }}
         transition={{
           duration: zoomed ? 0.7 : 0.5,
           ease: [0.25, 0.1, 0.25, 1],
@@ -102,14 +98,20 @@ export default function GenerateLinkVisual() {
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
               <polyline points="14 2 14 8 20 8" />
             </svg>
-            <span className="glv__file-chip-name">bank_statements_june.pdf</span>
+            <span className="glv__file-chip-name">
+              bank_statements_june.pdf
+            </span>
           </div>
         </motion.div>
 
         {/* Top chrome — fades out on zoom */}
         <motion.div
           className="glv__chrome"
-          animate={zoomed ? { opacity: 0, height: 0, marginBottom: 0 } : { opacity: 1, height: "auto", marginBottom: 16 }}
+          animate={
+            zoomed
+              ? { opacity: 0, height: 0, marginBottom: 0 }
+              : { opacity: 1, height: "auto", marginBottom: 16 }
+          }
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={{ overflow: "hidden" }}
         >
@@ -133,8 +135,12 @@ export default function GenerateLinkVisual() {
           </div>
 
           {/* Title */}
-          <h2 className="glv__title">Documents requested for YieldStream LLC</h2>
-          <p className="glv__subtitle">Requested by Joshua Dinh · YieldStream LLC</p>
+          <h2 className="glv__title">
+            Documents requested for YieldStream LLC
+          </h2>
+          <p className="glv__subtitle">
+            Requested by Joshua Dinh · YieldStream LLC
+          </p>
         </motion.div>
 
         {/* Requested documents — stays visible during zoom */}
@@ -175,7 +181,13 @@ export default function GenerateLinkVisual() {
                       animate={{ scale: 1 }}
                       transition={{ duration: 0.25, ease: "easeOut" }}
                     >
-                      <circle cx="12" cy="12" r="10" fill="hsl(142 71% 95%)" stroke="hsl(142 71% 40%)" />
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        fill="hsl(142 71% 95%)"
+                        stroke="hsl(142 71% 40%)"
+                      />
                       <polyline points="16 9 10.5 15 8 12.5" />
                     </motion.svg>
                   ) : (
@@ -227,12 +239,15 @@ export default function GenerateLinkVisual() {
           </div>
           <p className="glv__dropzone-title">Drop your documents here</p>
           <p className="glv__dropzone-hint">
-            or <span className="glv__dropzone-link">tap to browse</span> from your device
+            or <span className="glv__dropzone-link">tap to browse</span> from
+            your device
           </p>
 
           <div className="glv__format-tags">
             {FORMAT_TAGS.map((tag) => (
-              <span key={tag} className="glv__format-tag">{tag}</span>
+              <span key={tag} className="glv__format-tag">
+                {tag}
+              </span>
             ))}
           </div>
 
@@ -358,7 +373,17 @@ export default function GenerateLinkVisual() {
           {/* Footer badges */}
           <div className="glv__footer-badges">
             <span className="glv__footer-badge">
-              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                 <path d="M7 11V7a5 5 0 0 1 10 0v4" />
               </svg>
@@ -366,7 +391,17 @@ export default function GenerateLinkVisual() {
             </span>
             <span className="glv__footer-sep">·</span>
             <span className="glv__footer-badge">
-              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <circle cx="12" cy="12" r="10" />
                 <polyline points="12 6 12 12 16 14" />
               </svg>
@@ -374,7 +409,17 @@ export default function GenerateLinkVisual() {
             </span>
             <span className="glv__footer-sep">·</span>
             <span className="glv__footer-badge">
-              <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="11"
+                height="11"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
               SOC 2 compliant
@@ -384,20 +429,43 @@ export default function GenerateLinkVisual() {
           {/* Branding */}
           <p className="glv__branding">
             Powered by{" "}
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="14" height="14" className="glv__branding-logo" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 120 120"
+              width="14"
+              height="14"
+              className="glv__branding-logo"
+              aria-hidden="true"
+            >
               <defs>
-                <linearGradient id="glvGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <linearGradient
+                  id="glvGrad"
+                  x1="0%"
+                  y1="100%"
+                  x2="100%"
+                  y2="0%"
+                >
                   <stop offset="0%" stopColor="#3a3a3a" />
                   <stop offset="100%" stopColor="#0a0a0a" />
                 </linearGradient>
               </defs>
-              <path d="M 20 86 L 52 76 L 84 86 L 52 96 Z" fill="url(#glvGrad)" opacity="0.55" />
-              <path d="M 24 66 L 60 54 L 96 66 L 60 78 Z" fill="url(#glvGrad)" opacity="0.78" />
-              <path d="M 28 44 L 68 30 L 108 44 L 68 58 Z" fill="url(#glvGrad)" />
-            </svg>
-            {" "}<span className="glv__branding-name">YieldStream</span>
+              <path
+                d="M 20 86 L 52 76 L 84 86 L 52 96 Z"
+                fill="url(#glvGrad)"
+                opacity="0.55"
+              />
+              <path
+                d="M 24 66 L 60 54 L 96 66 L 60 78 Z"
+                fill="url(#glvGrad)"
+                opacity="0.78"
+              />
+              <path
+                d="M 28 44 L 68 30 L 108 44 L 68 58 Z"
+                fill="url(#glvGrad)"
+              />
+            </svg>{" "}
+            <span className="glv__branding-name">YieldStream</span>
           </p>
-          <p className="glv__legal">Privacy policy · Terms</p>
         </motion.div>
       </motion.div>
     </div>

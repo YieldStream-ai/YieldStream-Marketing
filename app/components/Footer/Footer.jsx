@@ -17,14 +17,31 @@ export default function Footer() {
                 aria-hidden="true"
               >
                 <defs>
-                  <linearGradient id="footerGradB" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <linearGradient
+                    id="footerGradB"
+                    x1="0%"
+                    y1="100%"
+                    x2="100%"
+                    y2="0%"
+                  >
                     <stop offset="0%" stopColor="#3a3a3a" />
                     <stop offset="100%" stopColor="#0a0a0a" />
                   </linearGradient>
                 </defs>
-                <path d="M 20 86 L 52 76 L 84 86 L 52 96 Z" fill="url(#footerGradB)" opacity="0.55" />
-                <path d="M 24 66 L 60 54 L 96 66 L 60 78 Z" fill="url(#footerGradB)" opacity="0.78" />
-                <path d="M 28 44 L 68 30 L 108 44 L 68 58 Z" fill="url(#footerGradB)" />
+                <path
+                  d="M 20 86 L 52 76 L 84 86 L 52 96 Z"
+                  fill="url(#footerGradB)"
+                  opacity="0.55"
+                />
+                <path
+                  d="M 24 66 L 60 54 L 96 66 L 60 78 Z"
+                  fill="url(#footerGradB)"
+                  opacity="0.78"
+                />
+                <path
+                  d="M 28 44 L 68 30 L 108 44 L 68 58 Z"
+                  fill="url(#footerGradB)"
+                />
               </svg>
               YieldStream
             </Link>
@@ -46,13 +63,11 @@ export default function Footer() {
             <Link href="/about">About</Link>
             <Link href="/resources">Resources</Link>
             <Link href="/contact">Contact</Link>
-            <Link href="/feedback">Feedback & Roadmap</Link>
+            <Link href="/feedback">Feedback</Link>
           </div>
           <div className="footer-col">
             <h4>Legal</h4>
-            <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>
-            <Link href="/cookies">Cookie Policy</Link>
           </div>
         </div>
         <div className="footer-bottom">
